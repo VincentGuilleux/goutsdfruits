@@ -15,8 +15,14 @@
   </head>
 
   <body>
-    <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
-    <%= yield %>
+    <div class="d-flex">
+      <div class="navbar-layout-wrapper">
+        <%= render 'shared/navbar' %>
+      </div>
+      <div class="page-layout-wrapper">
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
