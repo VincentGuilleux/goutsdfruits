@@ -1,0 +1,13 @@
+.main-container {
+  display: flex;
+  padding: 30px 35px 0 35px;
+}
+
+.container-index-products {
+  flex: 1;
+  display: grid;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 35px;
+}

@@ -1,4 +1,31 @@
 <h1 class="page-title">Produits</h1>
-<p class="sub-title">Produit sub-§title</p>
-<p class="product-category">Catégorie de produit</p>
-<p class="description">Produits</p>
+
+<div class="main-container">
+  <div class="container-index-products">
+    <% @products.each do |product| %>
+      <div class="card-product" >
+        <%= cl_image_tag product.photo.key, width: 300, height: 200, crop: :fill %>
+        <div class="card-product-infos">
+          <div class="card-product-header">
+            <p>Fruits frais</p> <!-- A REMPLACER PAR LIGNE DU DESSOUS QUAND SEED MAJ -->
+            <!-- <p><#%= product.product_category %> € </p> -->
+            <h3><%= (product.unit_price_cents/100).to_i %> €
+              <% if product.unit_type == 'g' %>
+                <sup>/kg </sup></h3>
+              <% else %>
+                <sup>/<%= product.unit_type %> </sup></h3>
+              <% end %>
+          </div>
+          <div>
+            <h1><%= product.name %> </h1>
+          </div>
+          <div class="card-product-footer">
+            <h2>kg restant <!-- EN ATTENTE METHODE CALCUL STOCK --></h2>
+            <%= link_to image_tag('pencil-write-2.svg'), product_path(product) %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
