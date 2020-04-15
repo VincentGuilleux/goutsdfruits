@@ -5,21 +5,78 @@
   top: 0;
   left: 0;
   height: 100vh;
-  width: 104px;
+  width: 110px;
   display: flex;
   flex-direction: column;
 }
+
 .navbar-avatar {
-  margin:0 auto;
+  margin:20px auto 0 auto;
 }
 
-
-.navbar-goutsdfruits .navbar-avatar img {
+.navbar-avatar img {
   width: 60px;
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
 }
+
+.navbar-logo {
+  margin:25px auto 20px auto;
+}
+
+
+.navbar-goutsdfruits .navbar-logo img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.navbar-picto {
+color:$white;
+font-size: 10px;
+font-weight: 400;
+letter-spacing: 1.5px;
+}
+
+.navbar-picto li span {
+margin-top: 8px;
+}
+
+
+.navbar-picto li {
+  margin-top: 50px;
+  display :flex;
+  flex-direction: column;
+  align-items: center;
+  opacity: 0.4;
+  &:hover {
+    opacity: 0.80;
+    transition: 100ms
+  }
+  &.active {
+  opacity: 1;
+  }
+}
+
+.navbar-goutsdfruits .navbar-picto img{
+  color:$white;
+  width: 24px;
+  height: 24px;
+}
+
+.navbar-goutsdfruits svg {
+ fill:$white;
+}
+
+.navbar-goutsdfruits .navbar-logout img{
+  color:$white;
+  width: 24px;
+  height: 24px;
+  padding-bottom: 25px;
+}
+
 
 // .navbar-goutsdfruits .navbar-collapse {
 //   flex-grow: 0;
