@@ -6,7 +6,7 @@
       <div class="card-product" >
         <%= cl_image_tag product.photo.key, width: 300, height: 200, crop: :fill %>
         <div class="card-product-infos">
-          <div class="card-product-header">
+          <div class="card-product-subelement">
             <p>Fruits frais</p> <!-- A REMPLACER PAR LIGNE DU DESSOUS QUAND SEED MAJ -->
             <!-- <p><#%= product.product_category %> € </p> -->
             <h3><%= (product.unit_price_cents/100).to_i %> €
@@ -19,7 +19,7 @@
           <div>
             <h1><%= product.name %> </h1>
           </div>
-          <div class="card-product-footer">
+          <div class="card-product-subelement">
             <h2>kg restant <!-- EN ATTENTE METHODE CALCUL STOCK --></h2>
             <%= link_to image_tag('pencil-write-2.svg'), product_path(product) %>
           </div>

@@ -17,14 +17,8 @@
   padding: 0 16px;
 }
 
-// for category and price
-.card-product-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-// for remaning stock and link to product_show
-.card-product-footer {
+// for category & price / for remaning stock & link to product_show
+.card-product-subelement {
   display: flex;
   justify-content: space-between;
 }
