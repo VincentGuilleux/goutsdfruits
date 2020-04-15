@@ -1,8 +1,16 @@
 .order-card-collapsed-dashboard {
-
+  margin-bottom: 20px;
+  .order-card-header {
+    padding: 18px;
+  }
 }
 
 .grey-medium {
   color: $grey_medium;
 }
 
+// n° de commande et dates
+.small-text-bold {
+  font-size: 12px;
+  font-weight: bold;
+}
