@@ -25,6 +25,10 @@ User.destroy_all
 # product_lot
 # user
 
+user_admin = User.create!(email: 'marie@gmail.com', password: 'azerty', name: 'Marie' , address: "L'Orgerie, 79140 Le Pin")
+user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
+user_admin.save!
+
 
 # 1 - Create "client"
 client1 = Client.create!(first_name: "Sébastien", last_name:"Etienne", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay")
