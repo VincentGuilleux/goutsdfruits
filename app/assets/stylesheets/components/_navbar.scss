@@ -1,12 +1,17 @@
-.navbar-lewagon {
+.navbar-goutsdfruits {
   justify-content: space-between;
-  background: white;
+  background: $green;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 104px;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-goutsdfruits .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-goutsdfruits .navbar-brand img {
   width: 40px;
 }
