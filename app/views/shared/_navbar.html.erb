@@ -1,16 +1,53 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-goutsdfruits">
   <div class="navbar-avatar"> <%= image_tag "madame-gazeau.jpg"%></div>
     <ul class="list-inline navbar-picto">
-      <li class="active"><%= image_tag "layout-dashboard-1.svg"%><span>DASHBOARD</span></li>
-      <li><%= image_tag "fruit-pear.svg"%> <span>PRODUITS</span></li>
-      <li><%= image_tag "task-list-approve.svg"%> <span>COMMANDES</span></li>
-      <li><%= image_tag "multiple-neutral-2.svg"%> <span>CLIENTS</span></li>
-      <li><%= image_tag "analytics-pie-2.svg"%> <span>STATISTIQUES</span></li>
-      <li><%= image_tag "cog.svg"%> <span>PARAMÈTRES</span></li>
+      <li>
+        <%= link_to dashboard_path, class: "active" do %>
+          <%= image_tag "layout-dashboard-1.svg" %>
+          <span>DASHBOARD</span>
+        <% end %>
+      </li>
+
+
+      <li>
+        <%= link_to products_path do %>
+        <%= image_tag "fruit-pear.svg" %>
+        <span>PRODUITS</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to orders_path do %>
+        <%= image_tag "task-list-approve.svg"%>
+        <span>COMMANDES</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to clients_path do %>
+        <%= image_tag "multiple-neutral-2.svg"%>
+        <span>CLIENTS</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to dashboard_path do %>
+        <%= image_tag "analytics-pie-2.svg"%>
+        <span>STATISTIQUES</span></li>
+        <% end %>
+
+      <li>
+        <%= link_to dashboard_path do %>
+        <%= image_tag "cog.svg"%>
+        <span>PARAMÈTRES</span></li>
+        <% end %>
     </ul>
   <div>
     <ul class="list-inline navbar-picto">
-      <li><%= image_tag "logout-2.svg"%></li>
+      <li >
+        <%= link_to destroy_user_session_path, method: :delete do %>
+        <%= image_tag "logout-2.svg"%></li>
+        <% end %>
     </ul>
     <div class="navbar-logo"> <%= image_tag "Farm-manager-logo-white-png"%></div>
   </div>

@@ -34,24 +34,27 @@
 }
 
 .navbar-picto {
-color:$white;
-font-size: 10px;
-font-weight: 400;
-letter-spacing: 1.5px;
+ color:$white;
+ font-size: 10px;
+ font-weight: 400;
+ letter-spacing: 1.5px;
 }
 
 .navbar-picto li span {
-margin-top: 8px;
+ margin-top: 8px;
 }
 
 
-.navbar-picto li {
+.navbar-picto li a {
   margin-top: 50px;
   display :flex;
   flex-direction: column;
   align-items: center;
+  color:$white;
   opacity: 0.4;
+  text-decoration: none;
   &:hover {
+    color:$white;
     opacity: 0.80;
     transition: 100ms
   }
