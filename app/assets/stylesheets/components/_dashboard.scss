@@ -1,3 +1,38 @@
-.all-sections {
-  display: grid;
+.dashboard-grid {
+display: grid;
+grid-template-columns: 2fr 4fr;
+grid-template-rows: repeat(8, 1fr);
+grid-column-gap: 15px;
+grid-row-gap: 15px;
+}
+
+.div-page-title {
+  grid-area: 1 / 1 / 2 / 2;
+  background-color: #fbc3c8;
+}
+
+.div-search-bar {
+  grid-area: 1 / 2 / 2 / 3;
+  background-color: #cbdcd1;
+}
+.dash-div-orders {
+  grid-area: 2 / 1 / 9 / 2;
+  background-color: $white;
+  border: solid 1px $green;
+}
+.dash-div-stats {
+  grid-area: 2 / 2 / 9 / 3;
+  background-color: #fbfcfc;
+}
+.dash-div-notifications {
+  grid-area: 2 / 2 / 3 / 3;
+  background-color: #f4ebd3;
+}
+.dash-div-numbers {
+  grid-area: 3 / 2 / 6 / 3;
+  background-color: #ffe2d4;
+}
+.dash-div-graphs {
+  grid-area: 6 / 2 / 9 / 3;
+  background-color: #b5dce2;
 }
