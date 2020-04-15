@@ -17,7 +17,8 @@ grid-row-gap: 15px;
 }
 .dash-div-orders {
   grid-area: 2 / 1 / 9 / 2;
-  background-color: #d4d9da;
+  background-color: $white;
+  border: solid 1px $green;
 }
 .dash-div-stats {
   grid-area: 2 / 2 / 9 / 3;
