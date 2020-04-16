@@ -1,18 +1,75 @@
 <div class="container">
-  <h1 class ="page-title"><%=@product.name%></h1>
-
-  <div class="card-product">
-    <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/skateboard.jpg" />
-    <div class="card-product-infos">
-      <h2>Product name</h2>
-      <p>Product description with <strong>relevant info</strong> only.</p>
+  <div class="card-product-show">
+    <div class="card-product-show-img">
+      <%= cl_image_tag @product.photo.key%>
     </div>
+  <div class="card-product-show-infos">
+
+    <div class="card-product-show-header">
+      <span class="product-show-category"><%= @product.product_category.capitalize%></span>
+      <div class="card-product-show-title">
+        <h1 class="page-title"><%=@product.name.capitalize%><h1>
+        <span class="card-product-show-price"><%= (@product.unit_price_cents/100).to_i %> €
+              <% if @product.unit_type == 'g' %>
+                <sup>/kg </sup></span>
+              <% else %>
+                <sup>/<%= @product.unit_type %> </sup></span>
+              <% end %>
+      </div>
+      <p class="product-show-description"><%= @product.description%></p>
+    </div>
+
+    <div class="card-product-stock">
+      <div class="form-content">
+        <%= simple_form_for @product, html: { class: 'form-inline' } do |f| %>
+        <%= f.input :name, label: false, class: 'input-small'%>
+        <%= f.input :name, label: false %>
+        <%= f.input :name, label: false %>
+        <%= f.input :name, label: false %>
+        <%= link_to  do %>
+        <%= image_tag "add-circle.svg" %>
+        <%= f.submit "+"%>
+        <% end %>
+        <% end %>
+      </div>
+      <table class="table">
+        <thead>
+          <tr class="card-product-show-table">
+            <th scope="col">N°lot</th>
+            <th scope="col">Date de production</th>
+            <th scope="col">Date d'expiration</th>
+            <th scope="col">Quantité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card-product-show-footer">
+      <span class="card-product-total-stock">Total stock</span>
+      <span class="card-product-total-stock"> 60 <sup>bouteilles</sup></span>
+    </div>
+
   </div>
-</div>
 
-
-<div class="container">
-  <div>
-    <%= cl_image_tag @product.photo.key, height: 300, width: 500, crop: :fill %>
   </div>
 </div>
