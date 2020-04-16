@@ -1,6 +1,10 @@
 .order-card-collapsed-dashboard {
   margin-bottom: 20px;
+  background-color: $white_smoke;
   .order-card-header {
+    padding: 18px 18px 0 18px;
+  }
+  .order-card-avancement-part {
     padding: 18px;
   }
 }
@@ -13,4 +17,15 @@
 .small-text-bold {
   font-size: 12px;
   font-weight: bold;
+}
+
+.line-order-card {
+  height: 1px;
+  background-color: $grey_light;
+  margin: 0 20px 0 20px;
+}
+
+.price-font {
+  font-weight: bold;
+  color: $green;
 }
