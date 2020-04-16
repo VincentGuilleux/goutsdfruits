@@ -9,7 +9,7 @@
       <span class="product-show-category"><%= @product.product_category.capitalize%></span>
       <div class="card-product-show-title">
         <h1 class="page-title"><%=@product.name.capitalize%><h1>
-        <span><%= (@product.unit_price_cents/100).to_i %> €
+        <span class="card-product-show-price"><%= (@product.unit_price_cents/100).to_i %> €
               <% if @product.unit_type == 'g' %>
                 <sup>/kg </sup></span>
               <% else %>
@@ -20,36 +20,53 @@
     </div>
 
     <div class="card-product-stock">
-      <form class="form-inline">
-        <div class="form-group mb-2">
-          <label for="inputPassword2" class="sr-only">0</label>
-          <input type="password" class="form-control" id="inputPassword2" placeholder="0">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">JJ/MM/AAAA</label>
-          <input type="password" class="form-control" id="inputPassword2" placeholder="JJ/MM/AAAA">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">JJ/MM/AAAA</label>
-          <input type="password" class="form-control" id="inputPassword2" placeholder="JJ/MM/AAAA">
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-          <label for="inputPassword2" class="sr-only">0</label>
-          <input type="password" class="form-control" id="inputPassword2" placeholder="0">
-        </div>
-        <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
-      </form>
-      <h5></strong>N°lot Date de production Date d'expiration Quantité</strong></h5>
-      <ul>
-        <li>234 20.03.2020 20.03.2020 20</li>
-        <li>234 20.03.2020 20.03.2020 20</li>
-        <li>234 20.03.2020 20.03.2020 20</li>
-      </ul>
+      <div class="form-content">
+        <%= simple_form_for @product, html: { class: 'form-inline' } do |f| %>
+        <%= f.input :name, label: false, class: 'input-small'%>
+        <%= f.input :name, label: false %>
+        <%= f.input :name, label: false %>
+        <%= f.input :name, label: false %>
+        <%= link_to  do %>
+        <%= image_tag "add-circle.svg" %>
+        <%= f.submit "+"%>
+        <% end %>
+        <% end %>
+      </div>
+      <table class="table">
+        <thead>
+          <tr class="card-product-show-table">
+            <th scope="col">N°lot</th>
+            <th scope="col">Date de production</th>
+            <th scope="col">Date d'expiration</th>
+            <th scope="col">Quantité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td><%=@production_date %></td>
+            <td><%=@expiry_date %></td>
+            <td>20</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div class="card-product-show-footer">
-      <h5>Total stock</h5>
-      <h5>60 bouteilles</h5>
+      <span class="card-product-total-stock">Total stock</span>
+      <span class="card-product-total-stock"> 60 <sup>bouteilles</sup></span>
     </div>
 
   </div>
