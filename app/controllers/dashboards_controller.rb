@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
   def show
-    @orders = Order.all
+    @orders = Order.includes(:client, :order_lines)
   end
 
   def prepare

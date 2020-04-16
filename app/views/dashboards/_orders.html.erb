@@ -1,6 +1,14 @@
+<div class="page-title orders-title">
+  <p>Commandes</p>
+  <div class="add-order">
+    <%= link_to "#" do %>
+      <p>Ajouter une commandes</p>
+      <%= image_tag "add-circle-light-grey.svg" %>
+    <% end %>
+  </div>
+</div>
 <% @orders.each do |order| %>
-
-  <div class="card order-card-collapsed-dashboard">
+  <div class="card order-card-dashboard-main order-card-collapsed-dashboard">
     <div class="order-card-header">
       <div class="d-flex justify-content-between">
         <div>
@@ -17,8 +25,9 @@
     </div>
     <div class="line-order-card"></div>
     <div class="order-card-header-bottom-part">
-      <div class="d-flex justify-content-between">
-        <div class="order-card-picto d-flex">
+      <div class="underline"></div>
+      <div class="justify-content-between">
+        <div class="order-card-picto">
           <div class="action-picto done-action">
             <%= image_tag 'shipment-clock-white.svg' %>
           </div>
@@ -29,13 +38,36 @@
             <%= image_tag 'delivery-truck-light-grey.svg' %>
           </div>
         </div>
-        <div class="order-card-picto">
+      </div>
+      <div class="order-card-picto">
+        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
           <%= image_tag 'add-medium-grey.svg' %>
+        </a>
+      </div>
+    </div>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body order-card-collapsed-dashboard">
+        <div class="order-lines-dashboard">
+          <% order.order_lines.each do |order_line| %>
+            <div class="order-line">
+              <p class="product-name"><%= order_line.product.name %></p>
+              <div class="price">
+                <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
+                <div class="separation"></div>
+                <p class="total-price"><%= order_line.total_price_cents / 100 %> €</p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="order-address-dashboard">
+          <p class="name"><%= order.client.first_name %> <%= order.client.last_name %></p>
+          <div class="line-address"></div>
+          <p class="address"><%= order.client.address %></p>
+          <p class="address"><%= order.client.post_code %> <%= order.client.city %></p>
         </div>
       </div>
-      <div class="underline"></div>
     </div>
   </div>
-
 <% end %>
+
 

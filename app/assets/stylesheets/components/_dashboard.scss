@@ -9,12 +9,24 @@ height: 100vh;
 
 .div-page-title {
   grid-area: 1 / 1 / 2 / 2;
-  // background-color: $white;
-  background-color: #b5dce2;
+  background-color: $white;
+  // background-color: #b5dce2;
   padding: 38px 32px 24px 32px;
   position: sticky;
   top: 0;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  & img {
+    height: 24px;
+    width: 24px;
+    margin-right: 18px;
+  }
+  p {
+    font-size: 14px;
+    color: $green_light;
+    margin-bottom: 0;
+  }
 }
 
 .div-search-bar {
