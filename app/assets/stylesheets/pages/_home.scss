@@ -41,6 +41,13 @@
   font-family: $font-family-sans-serif;
 }
 
+.avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+
 .btn-xl {
   padding: 1.25rem 2.25rem;
   font-size: 0.85rem;
@@ -49,3 +56,10 @@
   border: none;
   border-radius: 10rem;
 }
+
+.testimonial p {
+  text-align: justify;
+}
+// div {
+//   border: red 1px solid;
+// }
