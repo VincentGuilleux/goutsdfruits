@@ -1,10 +1,12 @@
 .order-card-collapsed-dashboard {
   margin-bottom: 20px;
   background-color: $white_smoke;
+  border: none;
+  border-radius: 5px;
   .order-card-header {
     padding: 18px 18px 0 18px;
   }
-  .order-card-avancement-part {
+  .order-card-header-bottom-part {
     padding: 18px;
   }
 }
@@ -28,4 +30,56 @@
 .price-font {
   font-weight: bold;
   color: $green;
+}
+
+
+PICTOS
+
+.order-card-picto {
+  // display: flex;
+  // flex-direction: row;
+  // align-items: center;
+  // justify-content: center;
+}
+
+//
+.order-card-picto img {
+ width: 16px;
+ height: 16px;
+ margin: 8px auto 0 auto;
+ display: block;
+}
+
+.line-order-card-picto {
+  height: 1px;
+  background-color: $green;
+}
+
+.action-picto {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: $grey_very_light;
+  margin-right: 16px;
+}
+
+.waiting-action {
+  background-color: $white_smoke;
+  border: 4px solid $grey_light;
+}
+
+.done-action {
+  height: 40px;
+  width: 40px;
+  background-color: $green;
+  & img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.underline {
+  height: 2px;
+  width: 200px;
+  background-color: red;
 }
