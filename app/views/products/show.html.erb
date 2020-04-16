@@ -7,7 +7,7 @@
 
     <div class="card-product-show-header">
       <span class="product-show-category"><%= @product.product_category.capitalize%></span>
-      <div>
+      <div class="card-product-show-title">
         <h1 class="page-title"><%=@product.name.capitalize%><h1>
         <span><%= (@product.unit_price_cents/100).to_i %> €
               <% if @product.unit_type == 'g' %>
