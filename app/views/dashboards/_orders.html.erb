@@ -11,8 +11,8 @@
         </div>
       </div>
       <div class="d-flex justify-content-between">
-        <h5><%= order.client.first_name %> <%= order.client.last_name %> </h5>
-        <h5 class="price-font"><%= order.total_price_cents / 100 %> €</p>
+        <h1 class="name-font"><%= order.client.first_name %> <%= order.client.last_name %> </h1>
+        <h1 class="price-font"><%= order.total_price_cents / 100 %> €</h1>
       </div>
     </div>
     <div class="line-order-card"></div>
@@ -26,7 +26,7 @@
             <%= image_tag 'shipment-check-light-green.svg' %>
           </div>
           <div class="action-picto">
-            <%= image_tag 'shipment-in-transit-medium-grey.svg' %>
+            <%= image_tag 'delivery-truck-light-grey.svg' %>
           </div>
         </div>
         <div class="order-card-picto">
