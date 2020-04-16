@@ -1,16 +1,197 @@
-.order-card-collapsed-dashboard {
-  margin-bottom: 20px;
-  .order-card-header {
-    padding: 18px;
+// TITLE -------------------------
+
+.orders-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $white;
+  position: sticky;
+  top: 0;
+  z-index: +2;
+  padding-bottom: 24px;
+  p {
+  margin-bottom: 0;
+  }
+  .add-order a {
+    display: flex;
+    padding-top: 5px;
+    p {
+      font-size: 11px;
+      font-weight: bold;
+      color: $grey_light;
+    }
+    & img {
+      margin-left: 4px;
+      height: 18px;
+      width: 18px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
   }
 }
 
-.grey-medium {
-  color: $grey_medium;
+// CARDS --------------------------
+
+.order-card-dashboard-main {
+  margin-bottom: 20px;
 }
 
-// n° de commande et dates
-.small-text-bold {
-  font-size: 12px;
-  font-weight: bold;
+.order-card-collapsed-dashboard {
+  background-color: $white_smoke;
+  border: none;
+  border-radius: 5px;
+  .order-card-header {
+    padding: 13px 18px 0 18px;
+  }
+  .order-card-header-bottom-part {
+    display:flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 13px 18px 13px 18px;
+  }
+  h1 {
+    font-weight: 900;
+    font-size: 20px;
+    margin-bottom: 13px;
+  }
+  .price-font {
+    color: $green;
+  }
+  .name-font {
+    color: $grey_dark;
+  }
+  p {
+    font-size: 12px;
+    font-weight: bold;
+    color: $grey_medium;
+  }
+}
+
+.order-lines-dashboard {
+  background-color: $white;
+  border-radius: 5px;
+  padding: 0 20px;
+  margin-bottom: 16px;
+  .order-line {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $white_smoke;
+    padding-top: 16px;
+    padding-bottom: 14px;
+    p {
+      margin-bottom: 0;
+    }
+    .product-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: $grey_dark;
+    }
+    .price {
+      .separation {
+        background-color: $grey_very_light;
+        height: 17px;
+        width: 1px;
+        margin: 0 16px;
+        position: absolute;
+        right: 70px;
+      }
+      .unit-price {
+        font-size: 10px;
+        color: $grey_light;
+        font-weight: bold;
+        position: absolute;
+        right: 100px;
+        line-height: 21px;
+      }
+      .total-price {
+        font-size: 14px;
+        color: $grey_medium;
+        font-weight: 900;
+      }
+    }
+  }
+}
+
+.order-address-dashboard {
+  background-color: $white;
+  border-radius: 5px;
+  padding: 20px;
+  p {
+    margin-bottom: 0;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: $grey_medium;
+  }
+  .line-address {
+    height: 1px;
+    background-color: $white_smoke;
+    margin: 13px 0 13px 0;
+  }
+  .address {
+    font-size: 14px;
+    color: $grey_dark;
+    padding-bottom: 6px;
+  }
+}
+
+// LINE----------------------------------------
+
+.line-order-card {
+  height: 1px;
+  background-color: $grey_light;
+  margin: 0 20px 0 20px;
+}
+
+
+// PICTOS -------------------------------------
+
+.order-card-picto {
+  display: flex;
+  align-items: center;
+}
+
+.order-card-picto img {
+ width: 16px;
+ height: 16px;
+ margin: 8px auto;
+ display: block;
+}
+
+.action-picto {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  background-color: $grey_very_light;
+  margin-right: 16px;
+  z-index: +1;
+}
+
+.waiting-action {
+  background-color: $white_smoke;
+  border: 4px solid $green_light;
+  & img {
+    margin: 4px auto;
+  }
+}
+
+.done-action {
+  height: 40px;
+  width: 40px;
+  background-color: $green;
+  & img {
+    width: 24px;
+    height: 24px;
+    margin: 8px auto;
+  }
+}
+
+.underline {
+  height: 2px;
+  width: 120px;
+  background-color: $grey_light;
+  position: absolute;
+  top: 117px;
 }
