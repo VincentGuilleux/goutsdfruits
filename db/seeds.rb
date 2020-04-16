@@ -152,28 +152,30 @@ product18.save!
 
 #les fruits frais
 
-product19 = Product.new(name:"Cerises fraîches",description:"Cerises", unit_price_cents: 1200 ,unit_type:"gramme",product_fruit: "cerise", product_type:"fruit", product_category:"fruit frais")
+
+product19 = Product.new(name:"Cerises fraîches",description:"Cerises", unit_price_cents: 1,unit_type:"gramme",product_fruit: "cerise", product_type:"fruit", product_category:"fruit frais")
 product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product19.save!
 
-product20 = Product.new(name:"Fraises fraîches en barquettes",description:"Fraises fraîches en barquettes", unit_price_cents: 600 ,unit_type:"gramme",product_fruit: "fraise", product_type:"fruit", product_category:"fruit frais")
+product20 = Product.new(name:"Fraises fraîches en barquettes",description:"Fraises fraîches en barquettes", unit_price_cents: 1, unit_type:"gramme",product_fruit: "fraise", product_type:"fruit", product_category:"fruit frais")
+
 product20.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product20.save!
 puts "product 4/5"
 
-product21 = Product.new(name:"Prunes fraîches aux Kgs",description:"Prunes fraîches en parquettes", unit_price_cents: 600 ,unit_type:"gramme",product_fruit: "prune", product_type:"fruit", product_category:"fruit frais")
+product21 = Product.new(name:"Prunes fraîches aux Kgs",description:"Prunes fraîches en parquettes", unit_price_cents: 1, unit_type:"gramme",product_fruit: "prune", product_type:"fruit", product_category:"fruit frais")
 product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product21.save!
 
 #les plants
 
-product22 = Product.new(name:"Plant de cassis",description:"Plant de cassis", unit_price_cents: 45000 ,unit_type:"plant",product_fruit: "câssis", product_type:"végétal", product_category:"Pépinière")
+product22 = Product.new(name:"Plant de cassis",description:"Plant de cassis", unit_price_cents: 4500,unit_type:"plant",product_fruit: "câssis", product_type:"végétal", product_category:"Pépinière")
 product22.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/petit-plant.jpg')), filename: 'petit-plant.jpg', content_type: 'image/jpg')
 product22.save!
 
 #les grand plants
 
-product23 = Product.new(name:"Plant de pomme",description:"Plant de pomme", unit_price_cents: 90000 ,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
+product23 = Product.new(name:"Plant de pomme",description:"Plant de pomme", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
 product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/grand-plant.jpg')), filename: 'grand-plant.jpg', content_type: 'image/jpg')
 product23.save!
 puts "product done"
@@ -243,15 +245,11 @@ product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Da
 product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 16")
 product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 17")
 product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 18")
-product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 19")
-product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 20")
-product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 21")
-product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 22")
-product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 23")
-
-
-
-
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 6000, remaining_quantity: 6000, lot_number: "lot 19")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 7000, remaining_quantity: 7000, lot_number: "lot 20")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 8000, remaining_quantity: 8000, lot_number: "lot 21")
+product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 9, lot_number: "lot 22")
+product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 8, remaining_quantity: 6, lot_number: "lot 23")
 
 # 7 - create "order_line_product_lots" pour les 4 premiers produits
 order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
