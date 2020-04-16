@@ -1,1 +1,51 @@
 // Specific CSS for your home-page
+
+.logo {
+ // background: url("LogoFarmManager.png") no-repeat;
+ position: relative;
+ left: 17px;
+ top: 26px;
+ width: 182px;
+ height: 149px;
+ display: block;
+ text-indent: -9999px;
+}
+
+
+.banner {
+  background-size: cover;
+  background-position: center;
+  // padding: 150px 0;
+  height: 100vh;
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                    url(image_path('banner-home.jpg'));
+}
+
+.banner h1 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.banner p {
+  font-size: 20px;
+  color: white;
+  opacity: .7;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+}
+
+
+.btn {
+  font-family: $font-family-sans-serif;
+}
+
+.btn-xl {
+  padding: 1.25rem 2.25rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 10rem;
+}
