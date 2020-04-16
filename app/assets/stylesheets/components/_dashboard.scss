@@ -4,6 +4,7 @@ grid-template-columns: 2fr 4fr;
 grid-template-rows: repeat(8, 1fr);
 // grid-column-gap: 15px;
 // grid-row-gap: 15px;
+height: 100vh;
 }
 
 .div-page-title {
@@ -11,6 +12,9 @@ grid-template-rows: repeat(8, 1fr);
   // background-color: $white;
   background-color: #b5dce2;
   padding: 38px 32px 24px 32px;
+  position: sticky;
+  top: 0;
+  overflow: hidden;
 }
 
 .div-search-bar {
@@ -18,19 +22,21 @@ grid-template-rows: repeat(8, 1fr);
   background-color: #cbdcd1;
   // background-color: $white_smoke;
   padding: 38px 32px 24px 32px;
+  position: sticky;
+  top: 0;
 }
 
 .dash-div-orders {
   grid-area: 2 / 1 / 9 / 2;
   background-color: $white;
   padding: 0 32px;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 
-// .dash-div-stats {
-//   grid-area: 2 / 2 / 9 / 3;
-//   background-color: #fbfcfc;
-//   // background-color: $white_smoke;
-// }
+.dash-div-stats {
+  grid-area: 2 / 2 / 9 / 3;
+}
 
 .dash-div-notifications {
   grid-area: 2 / 2 / 3 / 3;
