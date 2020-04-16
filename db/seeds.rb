@@ -152,11 +152,11 @@ product18.save!
 
 #les fruits frais
 
-product19 = Product.new(name:"Cerises fraîches aux Kgs",description:"Cerises aux Kgs", unit_price_cents: 1200 ,unit_type:"gramme",product_fruit: "cerise", product_type:"fruit", product_category:"fruit frais")
+product19 = Product.new(name:"Cerises fraîches",description:"Cerises", unit_price_cents: 1200 ,unit_type:"gramme",product_fruit: "cerise", product_type:"fruit", product_category:"fruit frais")
 product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product19.save!
 
-product20 = Product.new(name:"Fraises fraîches en parquettes",description:"Fraises fraîches en parquettes", unit_price_cents: 600 ,unit_type:"gramme",product_fruit: "fraise", product_type:"fruit", product_category:"fruit frais")
+product20 = Product.new(name:"Fraises fraîches en barquettes",description:"Fraises fraîches en barquettes", unit_price_cents: 600 ,unit_type:"gramme",product_fruit: "fraise", product_type:"fruit", product_category:"fruit frais")
 product20.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product20.save!
 puts "product 4/5"
