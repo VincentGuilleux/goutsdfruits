@@ -1,4 +1,4 @@
-// for all pages
+// for all page titles + monthly data results
 .page-title {
   color: $grey_dark;
   font-weight: 900;
@@ -6,13 +6,6 @@
 }
 
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
-.sub-title {
-  color: $grey_dark;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-// n° de commande et dates
 .small-text-bold {
   font-size: 12px;
   font-weight: bold;
@@ -32,6 +25,12 @@
   font-size: 20px;
   font-weight: 800;
 }
+
+.big-text-semi-bold {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 
 // colors
 .white {

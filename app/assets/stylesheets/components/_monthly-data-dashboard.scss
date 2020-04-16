@@ -1,0 +1,32 @@
+.monthly-data-card-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 60px;
+  grid-row-gap: 15px;
+}
+
+.monthly-data-card {
+  height: 105px;
+  background-color: $white;
+  display: flex;
+  border-radius: 8px;
+}
+
+.monthly-data-card img {
+  margin-left: 20px;
+  margin-right: 20px;
+  height: 24px;
+  width: 24px;
+  object-fit: cover;
+  align-self: center;
+}
+
+.monthly-data-infos {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column; // makes the 2 items listed on a column instead of a row (default)
+  height:100%;
+  width:100%;
+}
