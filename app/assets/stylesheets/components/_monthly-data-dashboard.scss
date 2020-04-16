@@ -1,0 +1,28 @@
+.monthly-data-card-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  justify-content: space-between;
+  grid-column-gap: 60px;
+  grid-row-gap: 15px;
+}
+
+.monthly-data-card {
+  background-color: $white;
+  display: flex;
+  border-radius: 8px;
+}
+
+.monthly-data-card img {
+  height: 100%;
+  width: 24px;
+  object-fit: cover;
+}
+
+.monthly-data-infos {
+  flex-direction: column;
+  width:100%;
+  height:100%;
+  padding: 0 16px;
+}
