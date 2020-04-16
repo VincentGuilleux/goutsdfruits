@@ -1,7 +1,8 @@
 .navbar-goutsdfruits {
   justify-content: space-between;
   background: $green;
-  position: fixed;
+  // position: fixed; (c'était sticky)
+  position: sticky;
   top: 0;
   left: 0;
   height: 100vh;
