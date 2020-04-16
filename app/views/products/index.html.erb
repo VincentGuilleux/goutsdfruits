@@ -7,10 +7,9 @@
         <%= cl_image_tag product.photo.key, width: 300, height: 200, crop: :fill %>
         <div class="card-product-infos">
           <div class="card-product-subelement">
-            <p>Fruits frais</p> <!-- A REMPLACER PAR LIGNE DU DESSOUS QUAND SEED MAJ -->
-            <!-- <p><#%= product.product_category %> € </p> -->
+            <p> <%= product.product_category %> </p>
             <h3><%= (product.unit_price_cents/100).to_i %> €
-              <% if product.unit_type == 'g' %>
+              <% if product.unit_type == 'decigramme' %>
                 <sup>/kg </sup></h3>
               <% else %>
                 <sup>/<%= product.unit_type %> </sup></h3>
@@ -20,7 +19,11 @@
             <h1><%= product.name %> </h1>
           </div>
           <div class="card-product-subelement pr-3">
-            <h2>kg restant <!-- EN ATTENTE METHODE CALCUL STOCK --></h2>
+            <% if product.unit_type == 'decigramme' %>
+            <h2><%= product.total_remaining_quantity/100 %> kgs</h2>
+            <% else %>
+            <h2><%= product.total_remaining_quantity %> <%= product.unit_type %>s</h2>
+            <% end %>
             <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
           </div>
         </div>
@@ -28,4 +31,3 @@
     <% end %>
   </div>
 </div>
-
