@@ -9,10 +9,11 @@
           <div class="card-product-subelement">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <p class="semi-small-text-bold green">
-              <%= (product.unit_price_cents/100).to_i %> €
               <% if product.unit_type == 'decigramme' %>
+               <%= (product.unit_price_cents).to_i %> €
                 <sup>/kg </sup>
               <% else %>
+              <%= (product.unit_price_cents)/100.to_i %> €
                 <sup>/<%= product.unit_type %> </sup>
               <% end %>
             </p>
@@ -21,11 +22,13 @@
             <p class="big-text-bold grey-dark"><%= product.name %> </p>
           </div>
           <div class="card-product-subelement">
+            <p class="semi-small-text-bold grey-medium">
             <% if product.unit_type == 'decigramme' %>
-            <p class="semi-small-text-bold grey-medium"><%= product.total_remaining_quantity/100 %> kgs
+              <%= product.total_remaining_quantity/100 %> kgs
             <% else %>
-            <%= product.total_remaining_quantity %> <%= product.unit_type %>s</p>
+              <%= product.total_remaining_quantity %> <%= product.unit_type %>s
             <% end %>
+            </p>
             <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
           </div>
         </div>
