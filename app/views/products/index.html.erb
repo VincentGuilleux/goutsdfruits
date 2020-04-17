@@ -1,4 +1,4 @@
-<h1 class="page-title">Produits</h1>
+<div class="page-title pl-4 pt-4">Produits</div>
 
 <div class="main-container">
   <div class="container-index-products">
@@ -29,7 +29,7 @@
               <%= product.total_remaining_quantity %> <%= product.unit_type %>s
             <% end %>
             </p>
-            <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
+            <%= link_to image_tag('pencil-write-2-grey-light.svg', class: 'rounded-borders'), product_path(product) %>
           </div>
         </div>
       </div>
