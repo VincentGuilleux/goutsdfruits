@@ -106,3 +106,10 @@
   background-color: white;
 }
 
+.banner-footer {
+  background-size: cover;
+  background-position: center;
+  height: 30vh;
+  background-image: url(image_path('fermier-pomme.jpg'));
+  // linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+}
