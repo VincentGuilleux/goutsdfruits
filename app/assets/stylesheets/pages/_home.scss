@@ -48,8 +48,8 @@
 
 
 .btn-left-home {
-  color: $green_light;
-  border: 2px solid $green_light;
+  color: $green;
+  border: 2px solid #68A676;
   padding: 20px 45px;
   margin:20px;
   border-radius: 30px;
@@ -69,13 +69,13 @@
   padding: 20px 45px;
   margin:20px;
   border-radius: 30px;
-  background: #68A676;
+  background: $green;
   transition: background 0.3s ease;
   font-size: 30px;
 }
 
 .btn-right-home:hover {
-   background: #1BCB7F;
+   background: $green_light;
    color: white;
    text-decoration: none;
 }
