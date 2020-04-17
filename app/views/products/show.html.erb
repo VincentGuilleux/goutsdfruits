@@ -24,13 +24,11 @@
     <div class="card-product-stock">
       <div class="form-content">
         <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
-          <%= f.input :lot_number, label: false, class: 'input-small'%>
+          <%= f.input :lot_number, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'} %>
           <%= f.input :production_date, label: false, as: :date %>
           <%= f.input :expiry_date, label: false, as: :date%>
-          <%= f.input :quantity, label: false %>
-          <%= f.submit do%>
-            <%= image_tag "add-circle.svg" %>
-          <% end %>
+          <%= f.input :quantity, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'}  %>
+          <%= f.submit "+"%>
         <% end %>
       </div>
       <table class="table">
