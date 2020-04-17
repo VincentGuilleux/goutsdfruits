@@ -53,99 +53,99 @@ puts "       )  ( ') - client done"
 
 #création de seulement 4 produits pour réduire le temps de chargement du seed lors d'essai et le nombre d'images stockés sur cloudinary
 
-# product_category: "fruit frais" / "gourmandises" / "pépinière"
+# product_category: "Fruit frais" / "Gourmandises" / "pépinière"
 # product fruit: le fruit de base
 # product_type: "confiture"/"sorbet"/"fruits"/"biscuit"/"végétal"
 # unit_type: "pot"/"gramme"/"paquet"/"plant"/"bouteille"/"sachet"/"bocal"
 
 #les sorbets
 
-product1 = Product.new(name:"Sorbets fraise",description:"Sorbets fraise", unit_price_cents: 800, unit_type:"pot", product_fruit: "fraise", product_type:"sorbet", product_category:"gourmandise")
+product1 = Product.new(name:"Sorbet fraise",description:"Sorbet fraise", unit_price_cents: 800, unit_type:"pot", product_fruit: "fraise", product_type:"sorbet", product_category:"Gourmandise")
 product1.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
 product1.save!
 
-product2 = Product.new(name:"Sorbets framboise",description:"Sorbets framboise", unit_price_cents: 800, unit_type:"pot", product_fruit: "framboise", product_type:"sorbet", product_category:"gourmandise")
+product2 = Product.new(name:"Sorbet framboise",description:"Sorbet framboise", unit_price_cents: 800, unit_type:"pot", product_fruit: "framboise", product_type:"sorbet", product_category:"Gourmandise")
 product2.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
 product2.save!
 
 
-product3 = Product.new(name:"Sorbets mûres",description:"Sorbets mûres", unit_price_cents: 800, unit_type:"pot", product_fruit: "mûres", product_type:"sorbet", product_category:"gourmandise")
+product3 = Product.new(name:"Sorbet mûres",description:"Sorbet mûres", unit_price_cents: 800, unit_type:"pot", product_fruit: "mûres", product_type:"sorbet", product_category:"Gourmandise")
 product3.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
 product3.save!
 
 
 #les tartelettes
 
-product4 = Product.new(name:"tartelette aux mirabelles",description:"tartelette aux mirabelles", unit_price_cents: 300, unit_type:"paquet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"gourmandise")
+product4 = Product.new(name:"tartelette aux mirabelles",description:"tartelette aux mirabelles", unit_price_cents: 300, unit_type:"sachet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"Gourmandise")
 product4.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/tartelette.jpg')), filename: 'tartelette.jpg', content_type: 'image/jpg')
 product4.save!
 
 #les gelées
 
-product5 = Product.new(name:"Gelée de pommes / sureau",description:"Gelée de pommes / sureau", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "pomme", product_type:"gelée", product_category:"gourmandise")
+product5 = Product.new(name:"Gelée de pommes au sureau",description:"Gelée de pommes / sureau", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "pomme", product_type:"gelée", product_category:"Gourmandise")
 product5.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product5.save!
 
 puts "      (  /  )  - product 1/5"
-product6 = Product.new(name:"Gelée de groseilles",description:"Gelée de groseilles", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "groseilles", product_type:"gelée", product_category:"gourmandise")
+product6 = Product.new(name:"Gelée de groseilles",description:"Gelée de groseilles", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "groseilles", product_type:"gelée", product_category:"Gourmandise")
 product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product6.save!
 
-product7 = Product.new(name:"Gelée de mûres sauvages",description:"Gelée de mûres sauvages", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"gourmandise")
+product7 = Product.new(name:"Gelée de mûres sauvages",description:"Gelée de mûres sauvages", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"Gourmandise")
 product7.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product7.save!
 
-product8 = Product.new(name:"Gelée de coings",description:"Gelée de coings", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "coings", product_type:"gelée", product_category:"gourmandise")
+product8 = Product.new(name:"Gelée de coings",description:"Gelée de coings", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "coings", product_type:"gelée", product_category:"Gourmandise")
 product8.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product8.save!
 
 #les sirops
 
-product9 = Product.new(name:"Sirop de menthe",description:"Sirop de menthe", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "menthe", product_type:"sirop", product_category:"gourmandise")
+product9 = Product.new(name:"Sirop de menthe",description:"Sirop de menthe", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "menthe", product_type:"sirop", product_category:"Gourmandise")
 product9.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
 product9.save!
 
-product10 = Product.new(name:"Sirop de sureau",description:"Sirop de sureau", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "sureau", product_type:"sirop", product_category:"gourmandise")
+product10 = Product.new(name:"Sirop de sureau",description:"Sirop de sureau", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "sureau", product_type:"sirop", product_category:"Gourmandise")
 product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
 product10.save!
 puts "       |(__)|   - product 2/5"
 
-product11 = Product.new(name:"Sirop de fraise",description:"Sirop de fraise", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "fraise", product_type:"sirop", product_category:"gourmandise")
+product11 = Product.new(name:"Sirop de fraise",description:"Sirop de fraise", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "fraise", product_type:"sirop", product_category:"Gourmandise")
 product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
 product11.save!
 
 #les compotes
-product12 = Product.new(name:"Compote de pommes",description:"Compotte de pommes", unit_price_cents: 500 ,unit_type:"pot",product_fruit: "pomme", product_type:"compote", product_category:"gourmandise")
+product12 = Product.new(name:"Compote de pommes",description:"Compotte de pommes", unit_price_cents: 500 ,unit_type:"pot",product_fruit: "pomme", product_type:"compote", product_category:"Gourmandise")
 product12.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/compote.jpg')), filename: 'compote.jpg', content_type: 'image/jpg')
 product12.save!
 
 #les biscuits
-product13 = Product.new(name:"Financier aux framboises",description:"Financier aux framboises", unit_price_cents: 700 ,unit_type:"paquet",product_fruit: "framboise", product_type:"biscuit", product_category:"gourmandise")
+product13 = Product.new(name:"Financier aux framboises",description:"Financier aux framboises", unit_price_cents: 700 ,unit_type:"sachet",product_fruit: "framboise", product_type:"biscuit", product_category:"Gourmandise")
 product13.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/financiers.jpg')), filename: 'financiers.jpg', content_type: 'image/jpg')
 product13.save!
 
 #les coulis
-product14 = Product.new(name:"Coulis de framboises",description:"Coulis de framboises", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "framboises", product_type:"coulis", product_category:"gourmandise")
+product14 = Product.new(name:"Coulis de framboises",description:"Coulis de framboises", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "framboises", product_type:"coulis", product_category:"Gourmandise")
 product14.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product14.save!
 
-product15 = Product.new(name:"Coulis de câssis",description:"Coulis de câssis", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "câssis", product_type:"coulis", product_category:"gourmandise")
+product15 = Product.new(name:"Coulis de cassis",description:"Testez le nappage de coulis de cassis sur vos yaourts ou gâteaux au chocolat. Moins sucré qu’une confiture, sa saveur est à découvrir d’urgence !", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "cassis", product_type:"coulis", product_category:"Gourmandise")
 product15.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product15.save!
 puts "cat's team     - product 3/5"
 
-product16 = Product.new(name:"Coulis de mûres sauvages",description:"Coulis de mûres sauvages", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres sauvages", product_type:"coulis", product_category:"gourmandise")
+product16 = Product.new(name:"Coulis de mûres sauvages",description:"Coulis de mûres sauvages", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres sauvages", product_type:"coulis", product_category:"Gourmandise")
 product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product16.save!
 
 #les pâtes de fruits
-product17 = Product.new(name:"Pâte de fruits",description:"Pâte de fruits", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "câssis", product_type:"pâtes de fruits", product_category:"gourmandise")
+product17 = Product.new(name:"Pâte de fruits",description:"Pâte de fruits", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâtes de fruits", product_category:"Gourmandise")
 product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/financiers.jpg')), filename: 'financiers.jpg', content_type: 'image/jpg')
 product17.save!
 
 
 #les fruits en sirop
-product18 = Product.new(name:"Cerises en sirop",description:"Cerises en sirop", unit_price_cents: 800, unit_type:"pot", product_fruit: "cerise", product_type:"bocal", product_category:"gourmandise")
+product18 = Product.new(name:"Cerises en sirop",description:"Cerises en sirop", unit_price_cents: 800, unit_type:"pot", product_fruit: "cerise", product_type:"bocal", product_category:"Gourmandise")
 product18.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cerises.jpg')), filename: 'cerises.jpg', content_type: 'image/jpg')
 product18.save!
 
@@ -153,23 +153,23 @@ product18.save!
 #les fruits frais
 
 
-product19 = Product.new(name:"Cerises fraîches",description:"Cerises", unit_price_cents: 9,unit_type:"decigramme",product_fruit: "cerise", product_type:"fruit", product_category:"fruit frais")
+product19 = Product.new(name:"Cerises",description:"Cerises", unit_price_cents: 9,unit_type:"decigramme",product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
 product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product19.save!
 
-product20 = Product.new(name:"Fraises fraîches en barquettes",description:"Fraises fraîches en barquettes", unit_price_cents: 5, unit_type:"decigramme",product_fruit: "fraise", product_type:"fruit", product_category:"fruit frais")
+product20 = Product.new(name:"Fraises",description:"Fraises fraîches en barquettes", unit_price_cents: 5, unit_type:"decigramme",product_fruit: "fraise", product_type:"fruit", product_category:"Fruit frais")
 
 product20.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product20.save!
 puts "product 4/5"
 
-product21 = Product.new(name:"Prunes fraîches aux Kgs",description:"Prunes fraîches en parquettes", unit_price_cents: 3, unit_type:"decigramme",product_fruit: "prune", product_type:"fruit", product_category:"fruit frais")
+product21 = Product.new(name:"Prunes",description:"Prunes fraîches en barquettes", unit_price_cents: 3, unit_type:"decigramme",product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
 product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product21.save!
 
 #les plants
 
-product22 = Product.new(name:"Plant de cassis",description:"Plant de cassis", unit_price_cents: 4500,unit_type:"plant",product_fruit: "câssis", product_type:"végétal", product_category:"Pépinière")
+product22 = Product.new(name:"Plant de cassis",description:"Plant de cassis", unit_price_cents: 4500,unit_type:"plant",product_fruit: "cassis", product_type:"végétal", product_category:"Pépinière")
 product22.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/petit-plant.jpg')), filename: 'petit-plant.jpg', content_type: 'image/jpg')
 product22.save!
 
@@ -183,8 +183,8 @@ puts "product done"
 
 # 4 - Create "order" 4 status / pending / prepared / delivered / paid
 #création de commandes "completed" pour calcul statistique
-order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,14) ,total_price_cents: 6000 ,status:"paid", payment_method:"cash")
-order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,12) ,total_price_cents: 10000 ,status:"paid", payment_method:"cash")
+order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,14) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash")
+order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,12) ,total_price_cents: 10800 ,status:"paid", payment_method:"cash")
 #création d'une commande avec + order_lines en attente
 order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,15) ,total_price_cents: 16200 ,status:"pending")
 order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,10) ,total_price_cents: 3200 ,status:"prepared")
@@ -197,9 +197,9 @@ puts "orders done"
 order_line1 = OrderLine.create!(order_id: order1.id ,product_id: product2.id, quantity: 5 ,total_price_cents: 6000)
 
 #création d'1 order avec 3 order_line  #order2
-order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 12000)
-order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 1400)
-order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 2000)
+order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 8000)
+order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 1600)
+order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 1200)
 
 #création d'1 order avec 4 order_line
 order_line5 = OrderLine.create!(order_id: order3.id ,product_id: product22.id, quantity: 1 ,total_price_cents: 4500) #petit plant
