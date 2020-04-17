@@ -1,0 +1,28 @@
+.stats-data-card-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 60px;
+
+}
+
+.stats-data-card {
+  height: 220px;
+  background-color: $white;
+  display: flex;
+  border-radius: 8px;
+}
+
+.stats-data-card img {
+  height: 160px;
+  object-fit: cover;
+  align-self: center;
+}
+
+.stats-data-infos {
+  margin-left: 30px;
+  display: flex;
+  flex-direction: column; // makes the 2 items listed on a column instead of a row (default)
+  height:100%;
+  width:100%;
+}
