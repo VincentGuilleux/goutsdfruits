@@ -4,23 +4,31 @@
   <div class="container-index-products">
     <% @products.each do |product| %>
       <div class="card-product" >
-        <%= cl_image_tag product.photo.key, width: 300, height: 200, crop: :fill %>
-        <div class="card-product-infos">
+        <%= cl_image_tag product.photo.key %>
+        <div class="card-product-infos py-2">
           <div class="card-product-subelement">
-            <p>Fruits frais</p> <!-- A REMPLACER PAR LIGNE DU DESSOUS QUAND SEED MAJ -->
-            <!-- <p><#%= product.product_category %> € </p> -->
-            <h3><%= (product.unit_price_cents/100).to_i %> €
-              <% if product.unit_type == 'g' %>
-                <sup>/kg </sup></h3>
+            <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
+            <p class="semi-small-text-bold green">
+              <% if product.unit_type == 'decigramme' %>
+               <%= (product.unit_price_cents).to_i %> €
+                <sup>/kg </sup>
               <% else %>
-                <sup>/<%= product.unit_type %> </sup></h3>
+              <%= (product.unit_price_cents)/100.to_i %> €
+                <sup>/<%= product.unit_type %> </sup>
               <% end %>
+            </p>
           </div>
           <div>
-            <h1><%= product.name %> </h1>
+            <p class="big-text-bold grey-dark"><%= product.name %> </p>
           </div>
-          <div class="card-product-subelement pr-3">
-            <h2>kg restant <!-- EN ATTENTE METHODE CALCUL STOCK --></h2>
+          <div class="card-product-subelement">
+            <p class="semi-small-text-bold grey-medium">
+            <% if product.unit_type == 'decigramme' %>
+              <%= product.total_remaining_quantity/100 %> kgs
+            <% else %>
+              <%= product.total_remaining_quantity %> <%= product.unit_type %>s
+            <% end %>
+            </p>
             <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
           </div>
         </div>
@@ -28,4 +36,3 @@
     <% end %>
   </div>
 </div>
-

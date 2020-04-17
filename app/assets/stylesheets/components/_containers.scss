@@ -11,3 +11,12 @@
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 35px;
 }
+
+.container-show-product {
+  flex: 1;
+  display: grid;
+  flex-direction: row;
+  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 35px;
+}

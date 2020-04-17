@@ -1,19 +1,87 @@
-// for all pages
+// for all page titles + monthly data results
 .page-title {
   color: $grey_dark;
   font-weight: 900;
   font-size: 32px;
+  padding-left: 35px;
 }
 
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
-.sub-title {
-  color: $grey_dark;
-  font-weight: 700;
-  font-size: 20px;
-}
-
-// n° de commande et dates
 .small-text-bold {
   font-size: 12px;
   font-weight: bold;
+}
+
+.semi-small-text-bold {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.semi-small-text {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.big-text-bold {
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.big-text-semi-bold {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+
+// colors
+.white {
+color: $white;
+}
+
+.white-smoke {
+color: $white_smoke;
+}
+
+.blue {
+color: $blue;
+}
+
+.red-alert {
+color: $red_alert;
+}
+
+.orange-alert {
+color: $orange_alert;
+}
+
+.yellow-alert {
+color: $yellow_alert;
+}
+
+.green-dark {
+color: $green_dark;
+}
+
+.green {
+color: $green;
+}
+
+.green-light {
+color: $green_light;
+}
+
+.grey-dark {
+color: $grey_dark;
+}
+
+.grey-medium {
+color: $grey_medium;
+}
+
+.grey-light {
+color: $grey_light;
+}
+
+.grey-very-light {
+color: $grey_very-light;
 }

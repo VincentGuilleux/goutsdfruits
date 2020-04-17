@@ -3,10 +3,12 @@
   background-color: white;
   display: flex;
   align-items: center;
+  border-radius: 8px;
 }
 
 .card-product img {
   height: 100%;
+  width: 150px;
   object-fit: cover;
 }
 
@@ -14,6 +16,7 @@
   display: flex;
   flex-direction: column;
   width:100%;
+  height:100%;
   padding: 0 16px;
 }
 
@@ -23,44 +26,9 @@
   justify-content: space-between;
 }
 
-// for fruit_category
-.card-product p {
-  font-size: 13px;
-  color: $grey_medium;
-}
-
-// for price
-.card-product h3 {
-  font-size: 13px;
-  font-weight: 900;
-  color: $green;
-}
-
-// for name
-.card-product h1 {
-  font-size: 20px;
-  font-weight: 900;
-  color: $grey_dark;
-}
-
-// for remaining stock
-.card-product h2 {
-  font-size: 13px;
-  font-weight: 900;
-  color: $grey_medium;
-}
-
 // for edit link
-.card-product-footer img {
+.card-product-subelement a img {
   width: 20px;
   height: 20px;
   fill: $grey_medium;
 }
-
-
-
-
-
-
-
-
