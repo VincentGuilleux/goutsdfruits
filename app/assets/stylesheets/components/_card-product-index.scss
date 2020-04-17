@@ -10,6 +10,7 @@
   height: 100%;
   width: 150px;
   object-fit: cover;
+  border-radius: 8px 0 0 8px;
 }
 
 .card-product-infos {
@@ -31,9 +32,4 @@
   width: 20px;
   height: 20px;
   fill: $grey_medium;
-}
-
-// for image
-.rounded-borders {
-  border-radius: 8px;
 }
