@@ -10,7 +10,7 @@
       <div class="card-product-show-title">
         <h1 class="page-title"><%=@product.name.capitalize%><h1>
         <span class="card-product-show-price"><%= (@product.unit_price_cents/100).to_i %> €
-              <% if @product.unit_type == 'g' %>
+              <% if @product.unit_type == 'decigramme' %>
                 <sup>/kg </sup></span>
               <% else %>
                 <sup>/<%= @product.unit_type %> </sup></span>
@@ -55,10 +55,11 @@
 
     <div class="card-product-show-footer">
       <span class="card-product-total-stock">Total stock</span>
-      <span class="card-product-total-stock"> <%= @product.total_remaining_quantity%> <% if @product.unit_type == 'g' %>
-                <sup>/kg </sup></span>
+      <span class="card-product-total-stock"> <%= @product.total_remaining_quantity%>
+              <% if @product.unit_type == 'decigramme' %>
+                kg</span>
               <% else %>
-                <sup>/<%= @product.unit_type %> </sup></span>
+                <%= @product.unit_type %></span>
               <% end %>
     </div>
 
