@@ -89,15 +89,15 @@
 //   border: red 1px solid;
 // }
 
-.testimonial .bgimage {
- background-image: url(image_path('fermier-pomme.jpg'));
- background-size: cover;
- background-position: center;
- height:100%;
- width:100%;
- // position: relative;
- // z-index: 1;
-}
+// .testimonial .bgimage {
+//  background-image: url(image_path('fermier-pomme.jpg'));
+//  background-size: cover;
+//  background-position: center;
+//  height:100%;
+//  width:100%;
+//  // position: relative;
+//  // z-index: 1;
+// }
 
 // https://miro.medium.com/max/1252/1*ezDx9-ESuWX-QTWfDrFHkg.jpeg
 
@@ -109,7 +109,7 @@
 .banner-footer {
   background-size: cover;
   background-position: center;
-  height: 30vh;
+  height: 45vh;
   background-image: url(image_path('fermier-pomme.jpg'));
   // linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
 }
