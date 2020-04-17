@@ -15,7 +15,9 @@
     <%= render 'shared/flashes' %>
     <div class="d-flex">
       <div class="navbar-layout-wrapper">
-        <%= render 'shared/navbar' %>
+        <%= unless controller.action_name == "home"
+         render 'shared/navbar'
+         end %>
       </div>
       <div class="page-layout-wrapper">
         <%= yield %>
