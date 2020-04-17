@@ -3,11 +3,5 @@ class DashboardsController < ApplicationController
     @orders = Order.includes(:client, :order_lines)
   end
 
-  def prepare
 
-  end
-
-  def deliver
-
-  end
 end

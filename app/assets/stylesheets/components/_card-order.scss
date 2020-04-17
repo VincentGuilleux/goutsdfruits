@@ -15,6 +15,7 @@
   .add-order a {
     display: flex;
     padding-top: 5px;
+    outline: 0;
     p {
       font-size: 11px;
       font-weight: bold;
@@ -41,8 +42,12 @@
   background-color: $white_smoke;
   border: none;
   border-radius: 5px;
+  padding-topo: 0;
   .order-card-header {
-    padding: 13px 18px 0 18px;
+    padding: 15px 18px 0 18px;
+  }
+  .order-card-name-price {
+    margin-top: -14px;
   }
   .order-card-header-bottom-part {
     display:flex;
@@ -62,7 +67,7 @@
     color: $grey_dark;
   }
   p {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: bold;
     color: $grey_medium;
   }
@@ -96,19 +101,12 @@
         position: absolute;
         right: 70px;
       }
-      .unit-price {
-        font-size: 10px;
-        color: $grey_light;
-        font-weight: bold;
-        position: absolute;
-        right: 100px;
-        line-height: 21px;
-      }
       .total-price {
         font-size: 14px;
         color: $grey_medium;
         font-weight: 900;
       }
+      .sup-price {  top: -.3em; font-weight: 500; }
     }
   }
 }
@@ -151,6 +149,9 @@
 .order-card-picto {
   display: flex;
   align-items: center;
+  a {
+    outline: 0;
+  }
 }
 
 .order-card-picto img {
@@ -165,7 +166,7 @@
   width: 32px;
   border-radius: 50%;
   background-color: $grey_very_light;
-  margin-right: 16px;
+  margin-right: 24px;
   z-index: +1;
 }
 
@@ -191,7 +192,14 @@
 .underline {
   height: 2px;
   width: 120px;
-  background-color: $grey_light;
+  background-color: $grey_very_light;
   position: absolute;
   top: 117px;
+}
+
+.collapse-btn {
+  transform: rotate(180deg);
+  &:active {
+    transform: none;
+  }
 }

@@ -31,8 +31,8 @@ height: 100vh;
 
 .div-search-bar {
   grid-area: 1 / 2 / 2 / 3;
-  background-color: #cbdcd1;
-  // background-color: $white_smoke;
+  // background-color: #cbdcd1;
+  background-color: $white_smoke;
   padding: 38px 32px 24px 32px;
   position: sticky;
   top: 0;
@@ -52,21 +52,21 @@ height: 100vh;
 
 .dash-div-notifications {
   grid-area: 2 / 2 / 3 / 3;
-  background-color: #f4ebd3;
-  // background-color: $white_smoke;
+  // background-color: #f4ebd3;
+  background-color: $white_smoke;
   padding: 24px 32px;
 }
 
 .dash-div-numbers {
   grid-area: 3 / 2 / 6 / 3;
-  background-color: #ffe2d4;
-  // background-color: $white_smoke;
+  // background-color: #ffe2d4;
+  background-color: $white_smoke;
   padding: 24px 32px;
 }
 
 .dash-div-graphs {
   grid-area: 6 / 2 / 9 / 3;
-  background-color: #b5dce2;
-  // background-color: $white_smoke;
+  // background-color: #b5dce2;
+  background-color: $white_smoke;
   padding: 24px 32px;
 }
