@@ -15,8 +15,7 @@
 }
 
 .monthly-data-card img {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 32px;
   height: 24px;
   width: 24px;
   object-fit: cover;
@@ -24,9 +23,13 @@
 }
 
 .monthly-data-infos {
-  margin-left: 30px;
+  margin-left: 24px;
   display: flex;
   flex-direction: column; // makes the 2 items listed on a column instead of a row (default)
   height:100%;
   width:100%;
+}
+
+.monthly-data-infos  .page-title { // creates a margin on top of the number so that it is nearer the text in grey (for ex.: 'Nouveaux Clients')
+  margin: 16px 0 0 0;
 }
