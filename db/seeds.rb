@@ -76,7 +76,7 @@ product3.save!
 
 #les tartelettes
 
-product4 = Product.new(name:"tartelette aux mirabelles",description:"tartelette aux mirabelles", unit_price_cents: 300, unit_type:"sachet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"Gourmandise")
+product4 = Product.new(name:"Tartelette aux mirabelles",description:"Tartelette aux mirabelles", unit_price_cents: 300, unit_type:"sachet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"Gourmandise")
 product4.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/tartelette.jpg')), filename: 'tartelette.jpg', content_type: 'image/jpg')
 product4.save!
 
@@ -194,7 +194,7 @@ puts "orders done"
 
 # 5 - Create "order_lines" pour les 6 orders plus haut
 #order1
-order_line1 = OrderLine.create!(order_id: order1.id ,product_id: product2.id, quantity: 5 ,total_price_cents: 6000)
+order_line1 = OrderLine.create!(order_id: order1.id ,product_id: product2.id, quantity: 5 ,total_price_cents: 4000)
 
 #création d'1 order avec 3 order_line  #order2
 order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 8000)
