@@ -9,10 +9,12 @@
       <span class="product-show-category"><%= @product.product_category.capitalize%></span>
       <div class="card-product-show-title">
         <h1 class="page-title"><%=@product.name.capitalize%><h1>
-        <span class="card-product-show-price"><%= (@product.unit_price_cents/100).to_i %> €
-              <% if @product.unit_type == 'g' %>
+        <span class="card-product-show-price">
+              <% if @product.unit_type == 'decigramme' %>
+                <%= (@product.unit_price_cents).to_i %> €
                 <sup>/kg </sup></span>
               <% else %>
+                <%= (@product.unit_price_cents/100).to_i %> €
                 <sup>/<%= @product.unit_type %> </sup></span>
               <% end %>
       </div>
@@ -21,15 +23,12 @@
 
     <div class="card-product-stock">
       <div class="form-content">
-        <%= simple_form_for @product, html: { class: 'form-inline' } do |f| %>
-        <%= f.input :name, label: false, class: 'input-small'%>
-        <%= f.input :name, label: false %>
-        <%= f.input :name, label: false %>
-        <%= f.input :name, label: false %>
-        <%= link_to  do %>
-        <%= image_tag "add-circle.svg" %>
-        <%= f.submit "+"%>
-        <% end %>
+        <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
+          <%= f.input :lot_number, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'} %>
+          <%= f.input :production_date, label: false, as: :date %>
+          <%= f.input :expiry_date, label: false, as: :date%>
+          <%= f.input :quantity, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'}  %>
+          <%= f.submit "+"%>
         <% end %>
       </div>
       <table class="table">
@@ -42,31 +41,33 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td><%=@production_date %></td>
-            <td><%=@expiry_date %></td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td><%=@production_date %></td>
-            <td><%=@expiry_date %></td>
-            <td>20</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td><%=@production_date %></td>
-            <td><%=@expiry_date %></td>
-            <td>20</td>
-          </tr>
+          <% @product.product_lots.each do |product_lot|%>
+            <tr>
+              <th scope="row"><%=product_lot.lot_number%></th>
+              <td><%=product_lot.production_date%></td>
+              <td><%=product_lot.expiry_date %></td>
+              <td>
+              <% if @product.unit_type == 'decigramme' %>
+                <%=product_lot.remaining_quantity/100 %>
+              <% else %>
+                <%= product_lot.remaining_quantity %>
+              <% end %>
+              </td>
+            </tr>
+          <% end %>
         </tbody>
       </table>
     </div>
 
     <div class="card-product-show-footer">
       <span class="card-product-total-stock">Total stock</span>
-      <span class="card-product-total-stock"> 60 <sup>bouteilles</sup></span>
+      <span class="card-product-total-stock">
+              <% if @product.unit_type == 'decigramme' %>
+                <%= @product.total_remaining_quantity/100 %> kg</span>
+              <% else %>
+                <%= @product.total_remaining_quantity %>
+                <%= @product.unit_type %>s</span>
+              <% end %>
     </div>
 
   </div>

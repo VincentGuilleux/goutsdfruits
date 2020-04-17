@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :clients, only: [:index] #Not nested because not linked to a client show (the client will be input in the form)
 
   resources :products, only: [:index, :show] do
-    resources :products_lots, only: [:create] # has many between orders & product_lots ? Not necessary
+    resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
   end
 
   resources :orders, only: [:index, :create] do #No New because pop-up for order creation/ No show because collapse
