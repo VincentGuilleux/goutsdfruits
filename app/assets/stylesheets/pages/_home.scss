@@ -1,5 +1,10 @@
 // Specific CSS for your home-page
 
+.full-page-width {
+  width: 100%;
+  background-color:white;
+}
+
 .logo {
  // background: url("LogoFarmManager.png") no-repeat;
  position: relative;
@@ -7,26 +12,23 @@
  top: 26px;
  width: 182px;
  height: 149px;
- display: block;
- text-indent: -9999px;
+ display: flex;
 }
 
 
 .banner {
   background-size: cover;
   background-position: center;
-  // padding: 150px 0;
   height: 100vh;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    url(image_path('banner-home.jpg'));
+  background-image: url(image_path('banner-home.jpg'));
+  // linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
 }
 
 .banner h1 {
-  margin: 0;
-  color: white;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
-  font-weight: bold;
+  font-size: 42px;
+  // text-align: justify;
+
+  // width: 1000px;
 }
 
 .banner p {
@@ -37,10 +39,6 @@
 }
 
 
-.btn {
-  font-family: $font-family-sans-serif;
-}
-
 .avatar-large {
   width: 100px;
   height: 100px;
@@ -48,18 +46,62 @@
 }
 
 
-.btn-xl {
-  padding: 1.25rem 2.25rem;
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: none;
-  border-radius: 10rem;
+.btn-left-home {
+  color: #68A676;
+  border: 2px solid #68A676;
+  padding: 20px 45px;
+  margin:20px;
+  border-radius: 30px;
+  background: white;
+  transition: background 0.3s ease;
+  font-size: 30px;
 }
+
+.btn-left-home:hover {
+   background: #1BCB7F;
+   color: white;
+   text-decoration: none;
+}
+
+.btn-right-home {
+  color: white;
+  padding: 20px 45px;
+  margin:20px;
+  border-radius: 30px;
+  background: #68A676;
+  transition: background 0.3s ease;
+  font-size: 30px;
+}
+
+.btn-right-home:hover {
+   background: #1BCB7F;
+   color: white;
+   text-decoration: none;
+}
+
 
 .testimonial p {
   text-align: justify;
 }
+
 // div {
 //   border: red 1px solid;
 // }
+
+.testimonial .bgimage {
+ background-image: url(image_path('fermier-pomme.jpg'));
+ background-size: cover;
+ background-position: center;
+ height:100%;
+ width:100%;
+ // position: relative;
+ // z-index: 1;
+}
+
+// https://miro.medium.com/max/1252/1*ezDx9-ESuWX-QTWfDrFHkg.jpeg
+
+.bgcolor {
+  // width: 100vh;
+  background-color: white;
+}
+
