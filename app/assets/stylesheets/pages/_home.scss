@@ -7,12 +7,10 @@
 
 .logo {
  // background: url("LogoFarmManager.png") no-repeat;
- position: relative;
- left: 17px;
- top: 26px;
  width: 182px;
  height: 149px;
- display: flex;
+ margin: 0 auto;
+ margin-top: 30px;
 }
 
 
@@ -43,60 +41,52 @@
   width: 100px;
   height: 100px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
-
-.btn-left-home {
-  color: #68A676;
-  border: 2px solid #68A676;
-  padding: 20px 45px;
-  margin:20px;
-  border-radius: 30px;
-  background: white;
-  transition: background 0.3s ease;
-  font-size: 30px;
-}
-
-.btn-left-home:hover {
-   background: #1BCB7F;
-   color: white;
-   text-decoration: none;
-}
 
 .btn-right-home {
   color: white;
-  padding: 20px 45px;
-  margin:20px;
+  padding: 10px 30px;
+  margin:10px;
   border-radius: 30px;
-  background: #68A676;
+  background: $green;
   transition: background 0.3s ease;
   font-size: 30px;
 }
 
 .btn-right-home:hover {
-   background: #1BCB7F;
+   background: $green_dark;
    color: white;
    text-decoration: none;
 }
 
+.home-img {
+ // background: url("LogoFarmManager.png") no-repeat;
+ // position: relative;
+ width: 100%;
+ height: 100%;
+ object-fit: cover;
+}
+
 
 .testimonial p {
-  text-align: justify;
+  text-align: center;
 }
 
 // div {
 //   border: red 1px solid;
 // }
 
-.testimonial .bgimage {
- background-image: url(image_path('fermier-pomme.jpg'));
- background-size: cover;
- background-position: center;
- height:100%;
- width:100%;
- // position: relative;
- // z-index: 1;
-}
+// .testimonial .bgimage {
+//  background-image: url(image_path('fermier-pomme.jpg'));
+//  background-size: cover;
+//  background-position: center;
+//  height:100%;
+//  width:100%;
+//  // position: relative;
+//  // z-index: 1;
+// }
 
 // https://miro.medium.com/max/1252/1*ezDx9-ESuWX-QTWfDrFHkg.jpeg
 
@@ -105,3 +95,10 @@
   background-color: white;
 }
 
+.banner-footer {
+  background-size: cover;
+  background-position: top 30px;
+  height: 45vh;
+  background-image: url(image_path('fermier-pomme.jpg')),
+  linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+}
