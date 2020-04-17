@@ -146,20 +146,16 @@
 
 // PICTOS -------------------------------------
 
+        // <i class="fas fa-check"></i>
+        // <i class="fas fa-shipping-fast"></i>
+        // <i class="fas fa-truck"></i>
+        // <i class="fas fa-receipt"></i>
+
 .order-card-picto {
   display: flex;
   align-items: center;
-  a {
-    outline: 0;
-  }
 }
 
-.order-card-picto img {
- width: 16px;
- height: 16px;
- margin: 8px auto;
- display: block;
-}
 
 .action-picto {
   height: 32px;
@@ -168,24 +164,44 @@
   background-color: $grey_very_light;
   margin-right: 24px;
   z-index: +1;
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  a {
+    outline: 0;
+    color: white;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
 
 .waiting-action {
   background-color: $white_smoke;
   border: 4px solid $green_light;
-  & img {
-    margin: 4px auto;
+  a {
+    outline: 0;
+    color: $green_light;
+    &:hover {
+      text-decoration: none;
+      color: $green_light;
+    }
   }
 }
 
 .done-action {
   height: 40px;
   width: 40px;
+  font-size: 25px;
   background-color: $green;
-  & img {
-    width: 24px;
-    height: 24px;
-    margin: 8px auto;
+  a {
+    outline: 0;
+    color: white;
+    &:hover {
+      text-decoration: none;
+      color: white;
+    }
   }
 }
 
@@ -203,3 +219,29 @@
     transform: none;
   }
 }
+
+.order-card-picto img {
+ width: 16px;
+ height: 16px;
+ margin: 8px auto;
+ display: block;
+}
+
+// .waiting-action {
+//   background-color: $white_smoke;
+//   border: 4px solid $green_light;
+//   & img {
+//     margin: 4px auto;
+//   }
+// }
+
+// .done-action {
+//   height: 40px;
+//   width: 40px;
+//   background-color: $green;
+//   & img {
+//     width: 24px;
+//     height: 24px;
+//     margin: 8px auto;
+//   }
+// }

@@ -35,39 +35,50 @@
 
           <% if order.status=="pending" %>
 
-            <div class="action-picto done-action">
-              <%= image_tag 'shipment-clock-white.svg' %>
-            </div>
             <div class="action-picto waiting-action">
-              <%= link_to (image_tag 'shipment-check-light-green.svg'), prepare_order_path(order.id), method: :patch%>
+              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
             </div>
             <div class="action-picto">
-              <%= image_tag 'delivery-truck-white.svg' %>
+              <i class="fas fa-truck"></i>
+            </div>
+            <div class="action-picto">
+              <i class="fas fa-receipt"></i>
             </div>
 
           <% elsif order.status =="prepared" %>
 
             <div class="action-picto done-action">
-              <%= image_tag 'shipment-clock-white.svg' %>
-            </div>
-            <div class="action-picto done-action">
-              <%= link_to (image_tag 'shipment-check-white.svg'), prepare_order_path(order.id), method: :patch%>
-              <%#= image_tag 'shipment-check-white.svg' %>
+              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
             </div>
             <div class="action-picto waiting-action">
-              <%= link_to (image_tag 'delivery-truck-light-green.svg'), deliver_order_path(order.id), method: :patch %>
+              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+            </div>
+            <div class="action-picto ">
+              <i class="fas fa-receipt"></i>
+            </div>
+
+          <% elsif order.status =="delivered"%>
+
+            <div class="action-picto done-action">
+              <i class="fas fa-check"></i>
+            </div>
+            <div class="action-picto done-action">
+              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+            </div>
+            <div class="action-picto done-action">
+              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
             </div>
 
           <% else %>
 
             <div class="action-picto done-action">
-              <%= image_tag 'shipment-clock-white.svg' %>
+              <i class="fas fa-check"></i>
             </div>
             <div class="action-picto done-action">
-              <%= image_tag 'shipment-check-white.svg' %>
+              <i class="fas fa-shipping-fast"></i>
             </div>
             <div class="action-picto done-action">
-              <%= link_to (image_tag 'delivery-truck-white.svg'), deliver_order_path(order.id), method: :patch %>
+              <i class="fas fa-receipt"></i>
             </div>
 
           <% end %>
@@ -109,3 +120,47 @@
 <% end %>
 
 
+
+
+<!-- CODE FOR PICTO AS IMG INSTEAD OF FONTAWESOME -->
+
+
+<!--
+<%# if order.status=="pending" %>
+
+  <div class="action-picto done-action">
+    <%#= image_tag 'shipment-clock-white.svg' %>
+  </div>
+  <div class="action-picto waiting-action">
+    <%#= link_to (image_tag 'shipment-check-light-green.svg'), prepare_order_path(order.id), method: :patch%>
+  </div>
+  <div class="action-picto">
+    <%#= image_tag 'delivery-truck-white.svg' %>
+  </div>
+
+<%# elsif order.status =="prepared" %>
+
+  <div class="action-picto done-action">
+    <%#= image_tag 'shipment-clock-white.svg' %>
+  </div>
+  <div class="action-picto done-action">
+    <%#= link_to (image_tag 'shipment-check-white.svg'), prepare_order_path(order.id), method: :patch%>
+    <%#= image_tag 'shipment-check-white.svg' %>
+  </div>
+  <div class="action-picto waiting-action">
+    <%#= link_to (image_tag 'delivery-truck-light-green.svg'), deliver_order_path(order.id), method: :patch %>
+  </div>
+
+<%# else %>
+
+  <div class="action-picto done-action">
+    <%#= image_tag 'shipment-clock-white.svg' %>
+  </div>
+  <div class="action-picto done-action">
+    <%#= image_tag 'shipment-check-white.svg' %>
+  </div>
+  <div class="action-picto done-action">
+    <%#= link_to (image_tag 'delivery-truck-white.svg'), deliver_order_path(order.id), method: :patch %>
+  </div>
+
+<%# end %> -->
