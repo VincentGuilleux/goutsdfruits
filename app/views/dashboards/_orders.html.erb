@@ -40,12 +40,12 @@
         </div>
       </div>
       <div class="order-card-picto">
-        <a data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+        <a data-toggle="collapse" href="#order-<%=order.id %>" role="button" aria-expanded="false" aria-controls="order-<%=order.id %>">
           <%= image_tag 'add-medium-grey.svg' %>
         </a>
       </div>
     </div>
-    <div class="collapse" id="collapseExample">
+    <div class="collapse" id="order-<%=order.id %>">
       <div class="card card-body order-card-collapsed-dashboard">
         <div class="order-lines-dashboard">
           <% order.order_lines.each do |order_line| %>
