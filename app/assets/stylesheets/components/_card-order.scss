@@ -158,42 +158,54 @@
 
 
 .action-picto {
-  height: 32px;
-  width: 32px;
+  height: 35px;
+  width: 35px;
   border-radius: 50%;
   background-color: $grey_very_light;
   margin-right: 24px;
   z-index: +1;
-  font-size: 20px;
+  font-size: 17px;
   color: white;
   text-align: center;
-  a {
-    outline: 0;
-    color: white;
-    &:hover {
-      text-decoration: none;
-      color: white;
-    }
+  .fa-truck {
+    margin: 9px auto;
+  }
+  .fa-receipt {
+    margin: 9px auto;
   }
 }
 
 .waiting-action {
+  height: 39px;
+  width: 39px;
   background-color: $white_smoke;
   border: 4px solid $green_light;
   a {
     outline: 0;
     color: $green_light;
-    &:hover {
+  }
+  &:hover {
+    background-color: $green_light;
+    a {
+      color: white;
       text-decoration: none;
-      color: $green_light;
     }
+  }
+  .fa-check {
+    margin: 7px auto;
+  }
+  .fa-truck {
+    margin: 7px auto;
+  }
+  .fa-receipt {
+    margin: 7px auto;
   }
 }
 
 .done-action {
   height: 40px;
   width: 40px;
-  font-size: 25px;
+  font-size: 20px;
   background-color: $green;
   a {
     outline: 0;
@@ -202,6 +214,16 @@
       text-decoration: none;
       color: white;
     }
+  }
+  .fa-check {
+    margin: 7px;
+    font-size: 26px;
+  }
+  .fa-shipping-fast {
+    margin: 9px auto;
+  }
+  .fa-receipt {
+    margin: 9px auto;
   }
 }
 
