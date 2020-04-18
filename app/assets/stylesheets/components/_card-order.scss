@@ -235,13 +235,16 @@
   width: 130px;
   background-color: $grey_very_light;
   position: absolute;
-  top: 103px;
+  top: 97px;
 }
 
 .collapse-btn {
   transform: rotate(180deg);
-  &:active {
-    transform: none;
+  a {
+    outline: 0;
+    &:focus {
+      transform: rotate(180deg);
+    }
   }
 }
 
