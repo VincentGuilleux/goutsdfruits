@@ -4,8 +4,17 @@ class DashboardsController < ApplicationController
   end
 
   def products_total_value
+    # for each product, calculate its remaining_quantity * price
+    # ProductLot.select("SUM(ProductLot.remaining_quantity")
+    # Product.joins(:products_lots).remaining_quantity.count
     # Product.select(:unit_price_cents)
     # ProductLot.sum(:remaining_quantity)
+    @products = Product.all
+    products_total_value = 0
+    @products.each do |product|
+      products_total_value += product.unit_price_cents * product.total_remaining_quantity
+    end
+    return products_total_value/100
   end
 
   def orders_number_current_month

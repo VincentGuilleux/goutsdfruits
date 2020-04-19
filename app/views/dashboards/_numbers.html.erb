@@ -29,8 +29,8 @@
   <div class="monthly-data-card" >
     <%= image_tag('shipment-upload-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="page-title">XXX</p>
-      <p class="big-text-semi-bold grey-light">Valeur stock</p>
+      <p class="page-title"><%= number_with_delimiter(products_total_value) %> <sup>€</sup></p>
+      <p class="big-text-semi-bold grey-light">Valeur du stock</p>
     </div>
   </div>
 
