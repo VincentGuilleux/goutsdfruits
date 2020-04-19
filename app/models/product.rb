@@ -11,4 +11,5 @@ class Product < ApplicationRecord
     end
     return total_remaining_quantity
   end
+
 end
