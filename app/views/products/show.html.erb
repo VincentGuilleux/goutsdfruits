@@ -12,10 +12,10 @@
         <span class="card-product-show-price">
               <% if @product.unit_type == 'decigramme' %>
                 <%= (@product.unit_price_cents).to_i %> €
-                <sup>/kg </sup></span>
+                <sup>/ kg </sup></span>
               <% else %>
                 <%= (@product.unit_price_cents/100).to_i %> €
-                <sup>/<%= @product.unit_type %> </sup></span>
+                <sup>/ <%= @product.unit_type %> </sup></span>
               <% end %>
       </div>
       <p class="product-show-description"><%= @product.description%></p>
@@ -63,10 +63,11 @@
       <span class="card-product-total-stock">Total stock</span>
       <span class="card-product-total-stock">
               <% if @product.unit_type == 'decigramme' %>
-                <%= @product.total_remaining_quantity/100 %> kg</span>
+                <%= @product.total_remaining_quantity/100 %>
+                <%= "kg".pluralize(@product.total_remaining_quantity) %></span>
               <% else %>
                 <%= @product.total_remaining_quantity %>
-                <%= @product.unit_type %>s</span>
+                <%= @product.unit_type.pluralize(@product.total_remaining_quantity) %></span>
               <% end %>
     </div>
 

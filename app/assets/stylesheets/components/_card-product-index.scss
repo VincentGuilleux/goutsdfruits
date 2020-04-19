@@ -4,6 +4,11 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
+  &:hover {
+    color:$grey_light;
+    opacity: 0.80;
+    transition: 100ms
+  }
 }
 
 .card-product img {
@@ -22,14 +27,15 @@
 }
 
 // for category & price / for remaning stock & link to product_show
-.card-product-subelement {
+.card-product-text-line {
   display: flex;
   justify-content: space-between;
 }
 
 // for edit link
-.card-product-subelement a img {
+.card-product-text-line a img {
   width: 20px;
   height: 20px;
   fill: $grey_medium;
+  visibility: hidden;
 }
