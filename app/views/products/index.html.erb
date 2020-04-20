@@ -3,33 +3,33 @@
 <div class="main-container">
   <div class="container-index-products">
     <% @products.each do |product| %>
-      <div class="card-product" >
+      <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <%= cl_image_tag product.photo.key %>
-        <div class="card-product-infos py-2">
-          <div class="card-product-subelement">
+        <div class="card-product-infos">
+          <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <p class="semi-small-text-bold green">
               <% if product.unit_type == 'decigramme' %>
                <%= (product.unit_price_cents).to_i %> €
-                <sup>/kg </sup>
+                <sup>/ kg </sup>
               <% else %>
               <%= (product.unit_price_cents)/100.to_i %> €
-                <sup>/<%= product.unit_type %> </sup>
+                <sup>/ <%= product.unit_type %> </sup>
               <% end %>
             </p>
           </div>
           <div>
             <p class="big-text-bold grey-dark"><%= product.name %> </p>
           </div>
-          <div class="card-product-subelement">
+          <div class="card-product-text-line">
             <p class="semi-small-text-bold grey-medium">
             <% if product.unit_type == 'decigramme' %>
-              <%= product.total_remaining_quantity/100 %> kgs
+              <%= pluralize(product.total_remaining_quantity/100, "kg") %>
             <% else %>
-              <%= product.total_remaining_quantity %> <%= product.unit_type %>s
+              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
             <% end %>
             </p>
-            <%= link_to image_tag('pencil-write-2-grey-light.svg', class: 'rounded-borders'), product_path(product) %>
+            <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
           </div>
         </div>
       </div>
