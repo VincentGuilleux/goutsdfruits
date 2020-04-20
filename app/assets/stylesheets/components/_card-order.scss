@@ -81,6 +81,7 @@
   .order-line {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid $white_smoke;
     padding-top: 16px;
     padding-bottom: 14px;
@@ -106,7 +107,15 @@
         color: $grey_medium;
         font-weight: 900;
       }
-      .sup-price {  top: -.3em; font-weight: 500; }
+      .sup-price {
+        top: -.3em;
+        font-weight: 500;
+      }
+      .unit-price {
+        position: absolute;
+        right: 110px;
+        padding-top: 3px;
+      }
     }
   }
 }
@@ -145,11 +154,6 @@
 
 
 // PICTOS -------------------------------------
-
-        // <i class="fas fa-check"></i>
-        // <i class="fas fa-shipping-fast"></i>
-        // <i class="fas fa-truck"></i>
-        // <i class="fas fa-receipt"></i>
 
 .order-card-picto {
   display: flex;
@@ -238,22 +242,35 @@
   top: 97px;
 }
 
+// COLLAPSE BUTTON --------------------------
+
 .collapse-btn {
-  transform: rotate(180deg);
-  a {
+  .btn-link {
     outline: 0;
-    &:focus {
-      transform: rotate(180deg);
-    }
+  }
+  .fas {
+    color: $grey_light;
+    font-size: 20px;
   }
 }
 
-.order-card-picto img {
- width: 16px;
- height: 16px;
- margin: 8px auto;
- display: block;
+[data-toggle="collapse"] .fa:before {
+  content: "\f077";
 }
+
+[data-toggle="collapse"].collapsed .fa:before {
+  content: "\f078";
+}
+
+// OLD CSS class----------------------------------
+
+
+// .order-card-picto img {
+//  width: 16px;
+//  height: 16px;
+//  margin: 8px auto;
+//  display: block;
+// }
 
 // .waiting-action {
 //   background-color: $white_smoke;
