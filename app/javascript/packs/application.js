@@ -32,3 +32,26 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
 });
+
+
+// button collapse dashbord orders
+
+// const orders = document.querySelector('.dashboard-orders').childNodes;
+// // const button = document.querySelector('.link-collapse');
+
+
+// orders.forEach((order) => {
+//   let collapseIcon = document.querySelector('#collapse-icon');
+//   order.addEventListener('click', (event) => {
+//     console.log(order);
+//     if(collapseIcon.className == 'fas fa-chevron-up'){
+//       collapseIcon.className = 'fas fa-chevron-down';
+//       console.log(event);
+//     } else if(collapseIcon.className == 'fas fa-chevron-down'){
+//       collapseIcon.className = 'fas fa-chevron-up';
+//       console.log(event);
+//     };
+//   });
+// });
+
+
