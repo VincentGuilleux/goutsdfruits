@@ -32,15 +32,15 @@ user_admin.save!
 puts "      |    /|     - user done"
 
 # 1 - Create "client"
-client1 = Client.create!(first_name: "Sébastien", last_name:"Etienne", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay")
-client2 = Client.create!(first_name: "Anne", last_name:"Mabire", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay")
-client3 = Client.create!(first_name: "Maud", last_name:"De La Gourmerie", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay")
-client4 = Client.create!(first_name: "Vincent", last_name:"Guilleux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand")
-client5 = Client.create!(first_name: "Benoît", last_name:"Poelvorde", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre")
-client6 = Client.create!(first_name: "Guillaume", last_name:"Canet", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur")
-client7 = Client.create!(first_name: "Magalie", last_name:"Jean", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille")
+client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay")
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay")
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay")
+client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand")
+client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre")
+client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur")
+client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille")
 client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas")
-client9 = Client.create!(first_name: "Gad", last_name:"Elmaleh", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin")
+client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin")
 client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest")
 client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux")
 
@@ -60,53 +60,53 @@ puts "       )  ( ') - client done"
 
 #les sorbets
 
-product1 = Product.new(name:"Sorbet fraise",description:"Sorbet fraise", unit_price_cents: 800, unit_type:"pot", product_fruit: "fraise", product_type:"sorbet", product_category:"Gourmandise")
+product1 = Product.new(name:"Sorbet fraise",description:"Gout's Fruit vous offre le meilleur du Sorbet fraise à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 800, unit_type:"pot", product_fruit: "fraise", product_type:"sorbet", product_category:"Gourmandise")
 product1.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
 product1.save!
 
-product2 = Product.new(name:"Sorbet framboise",description:"Sorbet framboise", unit_price_cents: 800, unit_type:"pot", product_fruit: "framboise", product_type:"sorbet", product_category:"Gourmandise")
+product2 = Product.new(name:"Sorbet framboise",description:"Gout's Fruit vous offre le meilleur du Sorbet framboise à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 800, unit_type:"pot", product_fruit: "framboise", product_type:"sorbet", product_category:"Gourmandise")
 product2.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
 product2.save!
 
 
-product3 = Product.new(name:"Sorbet mûres",description:"Sorbet mûres", unit_price_cents: 800, unit_type:"pot", product_fruit: "mûres", product_type:"sorbet", product_category:"Gourmandise")
-product3.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
+product3 = Product.new(name:"Sorbet mûres",description:"Gout's Fruit vous offre le meilleur du Sorbet mûres à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 800, unit_type:"pot", product_fruit: "mûres", product_type:"sorbet", product_category:"Gourmandise")
+product3.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbetmures.jpg')), filename: 'sorbetmures.jpg', content_type: 'image/jpg')
 product3.save!
 
 
 #les tartelettes
 
-product4 = Product.new(name:"Tartelette aux mirabelles",description:"Tartelette aux mirabelles", unit_price_cents: 300, unit_type:"sachet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"Gourmandise")
+product4 = Product.new(name:"Tartelette aux mirabelles",description:"Gout's Fruit vous offre le meilleur de la Tartelette aux mirabelles à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 300, unit_type:"sachet", product_fruit: "mirabelles", product_type:"tartelettes", product_category:"Gourmandise")
 product4.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/tartelette.jpg')), filename: 'tartelette.jpg', content_type: 'image/jpg')
 product4.save!
 
 #les gelées
 
-product5 = Product.new(name:"Gelée de pommes au sureau",description:"Gelée de pommes / sureau", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "pomme", product_type:"gelée", product_category:"Gourmandise")
+product5 = Product.new(name:"Gelée de pommes au sureau",description:"Gout's Fruit vous offre le meilleur de la Gelée de pomme et sureau à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "pomme", product_type:"gelée", product_category:"Gourmandise")
 product5.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product5.save!
 
 puts "      (  /  )  - product 1/5"
-product6 = Product.new(name:"Gelée de groseilles",description:"Gelée de groseilles", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "groseilles", product_type:"gelée", product_category:"Gourmandise")
-product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
+product6 = Product.new(name:"Gelée de groseilles",description:"Une recette fondante réalisée avec le jus de deux fruits rouges du jardin qui se marient parfaitement pour un goût frais et gourmand", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "groseilles", product_type:"gelée", product_category:"Gourmandise")
+product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/geleegroseille.jpg')), filename: 'geleegroseille.jpg', content_type: 'image/jpg')
 product6.save!
 
-product7 = Product.new(name:"Gelée de mûres sauvages",description:"Gelée de mûres sauvages", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"Gourmandise")
-product7.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
+product7 = Product.new(name:"Gelée de mûres",description:"Une recette fondante réalisée avec le jus de deux fruits rouges du jardin qui se marient parfaitement pour un goût frais et gourmand", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"Gourmandise")
+product7.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/geleemures.jpg')), filename: 'geleemures.jpg', content_type: 'image/jpg')
 product7.save!
 
-product8 = Product.new(name:"Gelée de coings",description:"Gelée de coings", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "coings", product_type:"gelée", product_category:"Gourmandise")
+product8 = Product.new(name:"Gelée de coings",description:"Gout's Fruit vous offre le meilleur de la Gelée de Coings à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "coings", product_type:"gelée", product_category:"Gourmandise")
 product8.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product8.save!
 
 #les sirops
 
 product9 = Product.new(name:"Sirop de menthe",description:"Sirop de menthe", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "menthe", product_type:"sirop", product_category:"Gourmandise")
-product9.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
+product9.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/siropmenthe.jpg')), filename: 'siropmenthe.jpg', content_type: 'image/jpg')
 product9.save!
 
 product10 = Product.new(name:"Sirop de sureau",description:"Sirop de sureau", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "sureau", product_type:"sirop", product_category:"Gourmandise")
-product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
+product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/siropsureau.jpg')), filename: 'siropsureau.jpg', content_type: 'image/jpg')
 product10.save!
 puts "       |(__)|   - product 2/5"
 
@@ -126,7 +126,7 @@ product13.save!
 
 #les coulis
 product14 = Product.new(name:"Coulis de framboises",description:"Coulis de framboises", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "framboises", product_type:"coulis", product_category:"Gourmandise")
-product14.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
+product14.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulisframboise.jpg')), filename: 'coulisframboise.jpg', content_type: 'image/jpg')
 product14.save!
 
 product15 = Product.new(name:"Coulis de cassis",description:"Testez le nappage de coulis de cassis sur vos yaourts ou gâteaux au chocolat. Moins sucré qu’une confiture, sa saveur est à découvrir d’urgence !", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "cassis", product_type:"coulis", product_category:"Gourmandise")
@@ -134,7 +134,7 @@ product15.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product15.save!
 puts "cat's team     - product 3/5"
 
-product16 = Product.new(name:"Coulis de mûres sauvages",description:"Coulis de mûres sauvages", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres sauvages", product_type:"coulis", product_category:"Gourmandise")
+product16 = Product.new(name:"Coulis de mûres",description:"Coulis de mûres", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres", product_type:"coulis", product_category:"Gourmandise")
 product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product16.save!
 
@@ -175,7 +175,7 @@ product22.save!
 
 #les grand plants
 
-product23 = Product.new(name:"Plant de pomme",description:"Plant de pomme", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
+product23 = Product.new(name:"Plant de pommier",description:"Plant de pommier", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
 product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/grand-plant.jpg')), filename: 'grand-plant.jpg', content_type: 'image/jpg')
 product23.save!
 puts "product done"
@@ -218,38 +218,38 @@ puts "order_line done"
 
 # 6 - create "product_lots"
 # création d'un lot pour chaque produit en stock
-product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,12,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 1")
-product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,12,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 2")
-product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,12,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 3")
-product_lot3bis = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,21) ,expiry_date: Date.new(2020,12,1), quantity: 4, remaining_quantity: 4, lot_number: "lot 3")
-product_lot4 = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,25) ,expiry_date: Date.new(2020,12,20), quantity: 15, remaining_quantity: 13, lot_number: "lot 4")
-product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,26) ,expiry_date: Date.new(2020,12,20), quantity: 7, remaining_quantity: 7, lot_number: "lot 4")
+product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,12,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
+product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,12,1), quantity: 15, remaining_quantity: 10, lot_number: "20042")
+product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,12,1), quantity: 10, remaining_quantity: 8, lot_number: "20043")
+product_lot3bis = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,21) ,expiry_date: Date.new(2020,12,1), quantity: 4, remaining_quantity: 4, lot_number: "20043")
+product_lot4 = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,25) ,expiry_date: Date.new(2020,12,20), quantity: 15, remaining_quantity: 13, lot_number: "20044")
+product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,26) ,expiry_date: Date.new(2020,12,20), quantity: 7, remaining_quantity: 7, lot_number: "20044")
 
 #lot avec stock faible
-product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,6,20), quantity: 50, remaining_quantity: 4, lot_number: "lot 5")
-product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,6,20), quantity: 50, remaining_quantity: 0, lot_number: "lot 6")
+product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,6,20), quantity: 50, remaining_quantity: 4, lot_number: "20045")
+product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,6,20), quantity: 50, remaining_quantity: 0, lot_number: "20046")
 
 #lot avec date de préremption inf à 15 jrs
-product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,2,25) ,expiry_date: Date.new(2020,4,25), quantity: 50, remaining_quantity: 10, lot_number: "lot 5")
-product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,2,25) ,expiry_date: Date.new(2020,4,29), quantity: 50, remaining_quantity: 5, lot_number: "lot 6")
+product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,2,25) ,expiry_date: Date.new(2020,4,25), quantity: 50, remaining_quantity: 10, lot_number: "20045")
+product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,2,25) ,expiry_date: Date.new(2020,4,29), quantity: 50, remaining_quantity: 5, lot_number: "20046")
 puts "product_lot done"
 
 #lot pour les produits 9 à 23
-product_lot9 = ProductLot.create!(product_id: product9.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 9")
-product_lot10 = ProductLot.create!(product_id: product10.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 10")
-product_lot11 = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 11")
-product_lot12 = ProductLot.create!(product_id: product12.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 12")
-product_lot13 = ProductLot.create!(product_id: product13.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 13")
-product_lot14 = ProductLot.create!(product_id: product14.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 14")
-product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "lot 15")
-product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "lot 16")
-product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 17")
-product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "lot 18")
-product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 600, remaining_quantity: 600, lot_number: "lot 19")
-product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 700, remaining_quantity: 700, lot_number: "lot 20")
-product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 800, remaining_quantity: 800, lot_number: "lot 21")
-product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 9, lot_number: "lot 22")
-product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 8, remaining_quantity: 6, lot_number: "lot 23")
+product_lot9 = ProductLot.create!(product_id: product9.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "20049")
+product_lot10 = ProductLot.create!(product_id: product10.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "200410")
+product_lot11 = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "200411")
+product_lot12 = ProductLot.create!(product_id: product12.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "200412")
+product_lot13 = ProductLot.create!(product_id: product13.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "200413")
+product_lot14 = ProductLot.create!(product_id: product14.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "200414")
+product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 50, remaining_quantity: 45, lot_number: "200415")
+product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 15, remaining_quantity: 10, lot_number: "200416")
+product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "200417")
+product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 8, lot_number: "200418")
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 600, remaining_quantity: 600, lot_number: "200419")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 700, remaining_quantity: 700, lot_number: "200420")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,1), quantity: 800, remaining_quantity: 800, lot_number: "200421")
+product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 10, remaining_quantity: 9, lot_number: "200422")
+product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 8, remaining_quantity: 6, lot_number: "200423")
 
 # 7 - create "order_line_product_lots" pour les 4 premiers produits
 order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
