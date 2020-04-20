@@ -5,7 +5,7 @@
     <% @products.each do |product| %>
       <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <%= cl_image_tag product.photo.key, alt: "image produit" %>
-        <%#= cl_image_tag product.photo.key, alt: "image produit", :width=>"150", :height=>"120" %>
+        <%#= cl_image_tag product.photo.key, alt: "image produit", :width=>"120", :height=>"120" %>
         <div class="card-product-infos">
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
