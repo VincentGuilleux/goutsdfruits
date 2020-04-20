@@ -18,12 +18,13 @@
   background-size: cover;
   background-position: center;
   height: 100vh;
-  background-image: url(image_path('verger.jpg'));
-  // linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                    url(image_path('verger.jpg'));
 }
 
 .banner h1 {
   font-size: 42px;
+  color: white;
   // text-align: justify;
 
   // width: 1000px;
