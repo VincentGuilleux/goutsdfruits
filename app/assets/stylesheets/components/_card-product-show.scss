@@ -22,7 +22,7 @@
   background-color: $white;
   display: flex;
   border-radius: 5px;
-  margin-top: 200px;
+  margin-top: 120px;
 }
 
 .card-product-show-img img{
@@ -69,4 +69,7 @@
   font-size: 16px;
 }
 
-
+.form-control:disabled, .form-control[readonly] {
+    background-color: #FFFFFF;
+    opacity: 1;
+}
