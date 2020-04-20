@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
   end
 
-  resources :orders, only: [:index, :create] do #No New because pop-up for order creation/ No show because collapse
+  resources :orders, only: [:index, :new, :create] do # No show because collapse
     member do
       patch :prepare
       patch :deliver
