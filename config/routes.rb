@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       patch :pay
     end
   end
+  # resources :order_lines, only: [:create] #created by Anne for new order form
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

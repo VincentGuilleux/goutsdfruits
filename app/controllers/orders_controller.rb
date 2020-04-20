@@ -37,4 +37,25 @@ class OrdersController < ApplicationController
       redirect_to dashboard_path
     end
   end
+
+  def new
+    @order = Order.new
+    @order.order_lines.build
+  end
+
+  def create
+    @order = Order.new(order_params)
+    binding.pry
+    if @order.save!
+      redirect_to dashboard_path
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def order_params
+    params.require(:order).permit(:client_id, order_lines_attributes: [:product_id, :quantity])
+  end
 end

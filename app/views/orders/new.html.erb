@@ -1,0 +1,16 @@
+<div class="container new-order">
+  <div class="new-order-title page-title">
+    <p>Nouvelle commande</p>
+  </div>
+  <div class="container">
+    <%= simple_form_for @order do |ff| %>
+      <%= ff.association :client, label_method: :full_name %>
+      <%= ff.simple_fields_for :order_lines do |f| %>
+        <%= render 'order_line_fields', f: f %>
+        <%= link_to_add_fields 'Ajouter un produit', ff, :order_lines %>
+      <% end %>
+      <%= ff.submit %>
+    <% end %>
+  </div>
+</div>
+
