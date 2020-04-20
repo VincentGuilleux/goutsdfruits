@@ -91,7 +91,7 @@ product6 = Product.new(name:"Gelée de groseilles",description:"Gelée de grosei
 product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product6.save!
 
-product7 = Product.new(name:"Gelée de mûres sauvages",description:"Gelée de mûres sauvages", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"Gourmandise")
+product7 = Product.new(name:"Gelée de mûres",description:"Gelée de mûres", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûres", product_type:"gelée", product_category:"Gourmandise")
 product7.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
 product7.save!
 
@@ -134,7 +134,7 @@ product15.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product15.save!
 puts "cat's team     - product 3/5"
 
-product16 = Product.new(name:"Coulis de mûres sauvages",description:"Coulis de mûres sauvages", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres sauvages", product_type:"coulis", product_category:"Gourmandise")
+product16 = Product.new(name:"Coulis de mûres",description:"Coulis de mûres", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûres", product_type:"coulis", product_category:"Gourmandise")
 product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product16.save!
 
