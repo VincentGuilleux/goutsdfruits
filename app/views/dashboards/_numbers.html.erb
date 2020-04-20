@@ -21,15 +21,17 @@
   <div class="monthly-data-card" >
     <%= image_tag('task-list-approve-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="page-title"><%= orders_total_current_month %></p>
-      <p class="big-text-semi-bold grey-light">Nombre de commandes</p>
+      <p class="page-title"><%= orders_total_current_month %>
+        <sup><span class="big-text-bold">€</span></sup></p>
+      <p class="big-text-semi-bold grey-light">Total des commandes</p>
     </div>
   </div>
 
   <div class="monthly-data-card" >
     <%= image_tag('shipment-upload-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="page-title"><%= number_with_delimiter(products_total_value) %> <sup>€</sup></p>
+      <p class="page-title"><%= number_with_delimiter(products_total_value) %>
+        <sup><span class="big-text-bold">€</span></sup></p>
       <p class="big-text-semi-bold grey-light">Valeur du stock</p>
     </div>
   </div>
