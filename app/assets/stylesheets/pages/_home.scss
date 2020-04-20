@@ -22,8 +22,10 @@
 }
 
 .banner h1 {
-  font-size: 42px;
+  font-size: 38px;
   color: white;
+  padding-bottom: 10px;
+
 }
 
 .banner p {
@@ -49,7 +51,7 @@
   border-radius: 30px;
   background: $green;
   transition: background 0.3s ease;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .btn-right-home:hover {
@@ -85,3 +87,10 @@
   background-image: linear-gradient(rgba(247,247,247,0), rgba(0,0,0,0.1)),
   url(image_path('vegetables.png'));
 }
+
+.picto-home {
+ color: $grey_medium;
+ font-size: 24px;
+ letter-spacing: 1.5px
+}
+
