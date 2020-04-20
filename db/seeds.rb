@@ -1,13 +1,16 @@
  require "open-uri"
 
-OrderLineProductLot.destroy_all
-ProductLot.destroy_all
-OrderLine.destroy_all
-Order.destroy_all
-Client.destroy_all
-Product.destroy_all
-User.destroy_all
-
+# OrderLineProductLot.destroy_all
+# ProductLot.destroy_all
+# OrderLine.destroy_all
+# Order.destroy_all
+# Client.destroy_all
+# Product.destroy_all
+# User.destroy_all
+rails db:drop
+rails db:create
+rails db:migrate
+rails db:seed
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
@@ -243,9 +246,9 @@ product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Da
 product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,10,15), quantity: 15, remaining_quantity: 10, lot_number: "200416")
 product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,20), quantity: 10, remaining_quantity: 8, lot_number: "200417")
 product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,7,20), quantity: 10, remaining_quantity: 8, lot_number: "200418")
-product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 600, remaining_quantity: 600, lot_number: "200419")
-product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 700, remaining_quantity: 700, lot_number: "200420")
-product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,5,10), quantity: 800, remaining_quantity: 800, lot_number: "200421")
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 600, remaining_quantity: 6, lot_number: "200419")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 700, remaining_quantity: 7, lot_number: "200420")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,5,10), quantity: 800, remaining_quantity: 8, lot_number: "200421")
 product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,4,23), quantity: 10, remaining_quantity: 9, lot_number: "200422")
 product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,5,10), quantity: 8, remaining_quantity: 6, lot_number: "200423")
 
