@@ -1,4 +1,4 @@
-<div class="page-title pl-4 pt-4">Produits</div>
+<div class="page-title pl60 pt40">Produits</div>
 
 <div class="main-container">
   <div class="container-index-products">
@@ -22,13 +22,15 @@
             <p class="big-text-bold grey-dark"><%= product.name %> </p>
           </div>
           <div class="card-product-text-line">
-            <p class="semi-small-text-bold grey-medium">
-            <% if product.unit_type == 'decigramme' %>
-              <%= pluralize(product.total_remaining_quantity/100, "kg") %>
-            <% else %>
-              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
-            <% end %>
+
+            <p class="semi-small-text-bold grey-medium <%= 'red-alert bold' if product.total_remaining_quantity == 0 %>">
+              <% if product.unit_type == 'decigramme' %>
+                <%= pluralize(product.total_remaining_quantity/100, "kg") %>
+              <% else %>
+                <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+              <% end %>
             </p>
+
             <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
           </div>
         </div>
