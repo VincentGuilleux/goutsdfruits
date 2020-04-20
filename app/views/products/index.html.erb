@@ -1,11 +1,42 @@
-<div class="page-title pl60 pt40">Produits</div>
+<div class="page-title pl60 pt40 pb20">Produits</div>
+
+<div class="container-index-filters pl60">
+
+  <div class="dropdown">
+    <div class="middle-text semi-bold grey-medium mr45">Fruit</div>
+    <div id="DropdownFruit" class="dropdown-content">
+    <% Product.fruits.each do |type| %>
+      <a href="#"><%= type %></a>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <div class="middle-text semi-bold grey-medium mr45">Catégorie</div>
+    <div id="DropdownCategory" class="dropdown-content">
+    <% Product.categories.each do |type| %>
+      <a href="#"><%= type %></a>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <div class="middle-text semi-bold grey-medium mr45">Type</div>
+    <!-- <button class="dropbtn">Type</button> -->
+    <div id="DropdownType" class="dropdown-content">
+    <% Product.types.each do |type| %>
+      <a href="#"><%= type %></a>
+    <% end %>
+    </div>
+  </div>
+
+</div>
 
 <div class="main-container">
   <div class="container-index-products">
     <% @products.each do |product| %>
       <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <%= cl_image_tag product.photo.key, alt: "image produit" %>
-        <%#= cl_image_tag product.photo.key, alt: "image produit", :width=>"120", :height=>"120" %>
         <div class="card-product-infos">
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
