@@ -37,6 +37,9 @@
   margin-top: 20px;
   margin-right: 25px;
   margin-bottom: 20px;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
 }
 
 .card-product-show-footer {
@@ -73,3 +76,23 @@
     background-color: #FFFFFF;
     opacity: 1;
 }
+
+.picto-add {
+  width: 32px;
+  height: 32px;
+  margin-left: 10px;
+}
+
+.scroll-thead{
+    width: 100%;
+    display: inline-table;
+}
+.scroll-tbody-y
+{
+    display: block;
+    overflow-y: scroll;
+}
+.table-body{
+    height: 220px;
+}
+

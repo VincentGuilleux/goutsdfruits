@@ -22,17 +22,8 @@
     </div>
 
     <div class="card-product-stock">
-      <div class="form-content">
-        <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
-          <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px; margin-right: 10px'} %>
-          <%= f.input :production_date, label: false, as: :string, input_html: {class: 'production_date'} %>
-          <%= f.input :production_date, label: false, as: :string, input_html: {class: 'expiry_date'} %>
-          <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px; margin-left: 10px'}  %>
-          <%= f.submit "", :type => :image, :src => image_path("add-circle.svg") %>
-        <% end %>
-      </div>
       <table class="table">
-        <thead>
+        <thead class="scroll-thead">
           <tr class="card-product-show-table">
             <th scope="col">N°lot</th>
             <th scope="col">Date de production</th>
@@ -40,7 +31,16 @@
             <th scope="col">Quantité</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody class="scroll-tbody-y table-body">
+          <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
+          <tr>
+            <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'} %></td>
+            <td> <%= f.input :production_date, label: false, as: :string, input_html: {class: 'production_date'} %></td>
+            <td> <%= f.input :production_date, label: false, as: :string, input_html: {class: 'expiry_date'} %></td>
+            <td> <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'}  %></td>
+            <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
+          <% end %>
+          </tr>
           <% @product.product_lots.each do |product_lot|%>
             <tr>
               <th scope="row"><%=product_lot.lot_number%></th>
