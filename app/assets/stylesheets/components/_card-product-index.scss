@@ -4,11 +4,16 @@
   display: flex;
   align-items: center;
   border-radius: 8px;
-  box-shadow: 0px 2px 16px rgba(0, 0, 0, 007);
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
   &:hover {
-    color:$grey_light;
     opacity: 0.80;
-    transition: 100ms
+    transition: 200ms;
+    transform: translate(0px, -2px);
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
+  }
+  &:hover .card-product-text-line a img {
+  opacity: 1;
+  transition: 200ms;
   }
 }
 
@@ -19,7 +24,10 @@
   border-radius: 8px 0 0 8px;
 }
 
-.card-product p { margin-bottom: 0; }
+.card-product p {
+  margin-bottom: 0;
+  margin-left: 0;
+}
 
 .card-product-infos {
   display: flex;
@@ -41,5 +49,5 @@
   width: 20px;
   height: 20px;
   fill: $grey_medium;
-  visibility: hidden;
+  opacity: 0;
 }
