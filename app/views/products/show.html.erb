@@ -15,7 +15,7 @@
                 <sup>/kg </sup></span>
               <% else %>
                 <%= (@product.unit_price_cents/100).to_i %> €
-                <sup>/<%= @product.unit_type %> </sup></span>
+                <sup>/ <%= @product.unit_type %> </sup></span>
               <% end %>
       </div>
       <p class="product-show-description"><%= @product.description%></p>
@@ -25,11 +25,12 @@
       <div class="form-content">
         <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
           <%= f.input :lot_number, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'} %>
-          <%= f.input :production_date, label: false, as: :date %>
-          <%= f.input :expiry_date, label: false, as: :date%>
+          <%= f.input :production_date, label: false, as: :string, input_html: {class: 'production_date'} %>
+          <%= f.input :production_date, label: false, as: :string, input_html: {class: 'expiry_date'} %>
           <%= f.input :quantity, label: false, :input_html => {:maxlength =>3,:style=> 'width: 50px'}  %>
           <%= f.submit "+"%>
         <% end %>
+
       </div>
       <table class="table">
         <thead>
@@ -60,7 +61,7 @@
     </div>
 
     <div class="card-product-show-footer">
-      <span class="card-product-total-stock">Total stock</span>
+      <span class="card-product-total-stock">Stock total</span>
       <span class="card-product-total-stock">
               <% if @product.unit_type == 'decigramme' %>
                 <%= @product.total_remaining_quantity/100 %> kg</span>
