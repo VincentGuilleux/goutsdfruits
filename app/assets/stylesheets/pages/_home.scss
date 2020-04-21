@@ -6,8 +6,8 @@
 }
 
 .logo {
- width: 182px;
- height: 149px;
+ width: 160px;
+ height: 105px;
  margin: 0 auto;
  margin-top: 30px;
 }
@@ -18,12 +18,14 @@
   background-position: center;
   height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    url(image_path('verger.jpg'));
+                    url(image_path('FemmeChamps.jpg'));
 }
 
 .banner h1 {
-  font-size: 42px;
+  font-size: 38px;
   color: white;
+  padding-bottom: 10px;
+
 }
 
 .banner p {
@@ -49,7 +51,7 @@
   border-radius: 30px;
   background: $green;
   transition: background 0.3s ease;
-  font-size: 30px;
+  font-size: 20px;
 }
 
 .btn-right-home:hover {
@@ -85,3 +87,9 @@
   background-image: linear-gradient(rgba(247,247,247,0), rgba(0,0,0,0.1)),
   url(image_path('vegetables.png'));
 }
+
+.picto-home {
+ width: 80px;
+ height: 80px;
+}
+
