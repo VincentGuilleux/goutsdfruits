@@ -45,7 +45,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    binding.pry
+    # binding.pry
+
+    @order.order_lines.each do |order_line|
+      order_line.total_price_cents = order_line.product.unit_price * order_line.quantity
+      @order.total_price_cents += order_line.total_price_cents
+    end
+
     if @order.save!
       redirect_to dashboard_path
     else
