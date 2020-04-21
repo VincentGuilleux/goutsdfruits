@@ -3,12 +3,16 @@
     <p>Nouvelle commande</p>
   </div>
   <div class="container">
-    <%= simple_form_for @order do |ff| %>
-      <%= ff.association :client, label_method: :full_name %>
-      <%= ff.simple_fields_for :order_lines  do |f| %>
-        <%= render 'order_line_fields', f: f %>
-        <%= link_to_add_fields 'Ajouter un produit', ff, :order_lines %>
-      <% end %>
+    <%= simple_form_for @order, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |ff| %>
+      <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input' }, label: false, prompt: "Sélectionner un client" %>
+      <div class="order-line">
+        <div class="form-inline">
+          <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
+            <%= render 'order_line_fields', f: f %>
+          <% end %>
+        </div>
+            <%= link_to_add_fields 'Ajouter un produit', ff, :order_lines %>
+      </div>
       <%= ff.input :payment_method, as: :radio_buttons ,collection: [ "Monnaie", "Carte bancaire", "Chèque"], label: 'Méthode de paiement :', wrapper: :vertical_collection_inline %>
       <%= ff.submit %>
     <% end %>

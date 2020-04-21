@@ -55,6 +55,10 @@ class OrdersController < ApplicationController
     sum = 0
 
     @order.order_lines.each do |order_line|
+      if order_line.quantity > order_line.product.total_remaining_quantity
+        flash[:alert] = "Il n'y a pas assez de stock"
+      end
+
       order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
       sum += order_line.total_price_cents
     end
@@ -63,7 +67,7 @@ class OrdersController < ApplicationController
 
     if @order.save!
       generate_order_line_product_lots
-      redirect_to dashboard_path
+      redirect_to orders_path
     else
       render :new
     end
