@@ -5,10 +5,11 @@
   <div class="container">
     <%= simple_form_for @order do |ff| %>
       <%= ff.association :client, label_method: :full_name %>
-      <%= ff.simple_fields_for :order_lines do |f| %>
+      <%= ff.simple_fields_for :order_lines, wrapper: :inline_form, html: { class: "form-inline" }, wrapper_mappings: { boolean: :inline_boolean }  do |f| %>
         <%= render 'order_line_fields', f: f %>
         <%= link_to_add_fields 'Ajouter un produit', ff, :order_lines %>
       <% end %>
+      <%= ff.input :payment_method, as: :radio_buttons ,collection: [ "Monnaie", "Carte bancaire", "Chèque"], label: 'Méthode de paiement :', wrapper: :vertical_collection_inline %>
       <%= ff.submit %>
     <% end %>
   </div>
