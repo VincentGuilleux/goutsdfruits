@@ -1,5 +1,77 @@
  // child of _card-order.scss
 
+.date-page-order-index {
+  background-color: $white_smoke;
+  display: flex;
+  align-items: center;
+  margin:30px;
+  & img {
+    height: 24px;
+    width: 24px;
+    margin-right: 18px;
+  }
+  p {
+    font-size: 14px;
+    color: $green_light;
+    margin-bottom: 0;
+  }
+}
+
+.header-order-index{
+  background-color: $white_smoke;
+  display: flex;
+  .add-order a {
+    display: flex;
+    padding-top: 5px;
+    outline: 0;
+    p {
+      font-size: 11px;
+      font-weight: bold;
+      color: $grey_dark;
+    }
+    & img {
+      margin-left: 4px;
+      height: 18px;
+      width: 18px;
+      color: $grey_dark;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+// orders-title {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   background-color: $white;
+//   position: sticky;
+//   top: 0;
+//   z-index: +2;
+//   padding-bottom: 24px;
+//   p {
+//   margin-bottom: 0;
+//   }
+//   .add-order a {
+//     display: flex;
+//     padding-top: 5px;
+//     outline: 0;
+//     p {
+//       font-size: 11px;
+//       font-weight: bold;
+//       color: $grey_light;
+//     }
+//     & img {
+//       margin-left: 4px;
+//       height: 18px;
+//       width: 18px;
+//     }
+//     &:hover {
+//       text-decoration: none;
+//     }
+//   }
+// }
 
 .order-index {
   background-color: $white;
@@ -7,8 +79,19 @@
   margin: 40px;
 }
 
-// div {
-//   border: 1px red solid;
-// }
+.divr {
+  border: 1px red solid;
+}
 
+.mg20 {
+  margin:20px;
+}
 
+.font-price-order-index {
+  font-size: 25px;
+  font-weight: bold;
+  color: $grey_dark;
+  margin-top: 5px;
+  margin-right: 25px;
+
+}

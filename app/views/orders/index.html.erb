@@ -1,27 +1,43 @@
-<h1> commandes</h1>
 
-<div class="order-index">
+
+<div class="date-page-order-index">
+    <%= image_tag 'calendar-3-light-green.svg' %>
+    <p><%= Date.today %> </p>
+  </div>
+
+
+<div class="header-order-index">
+  <h1> commandes</h1>
+  <div class="add-order">
+    <%= link_to "#" do %>
+      <p>Ajouter une commande</p>
+      <%= image_tag "add-circle-light-grey.svg" %>
+    <% end %>
+  </div>
+
+</div>
+<!-- <div class="order-index"> -->
   <% @orders.each do |order| %>
   <!-- essai -->
     <div>
-      <div class="d-flex justify-content-between order-index">
+      <div class="d-flex justify-content-between order-index ">
 
-        <div class="d-flex p-1">
+        <div class="d-flex p-1 align-items-center">
           <div>
-            <p class="small-text-bold green-light p-1">#GF<%= order.id %></p>
+            <p class="small-text-bold green-light p-2">#GF<%= order.id %></p>
           </div>
           <div>
-            <p class="small-text-bold grey-dark p-1"> <%= order.date %></p>
+            <p class="small-text-bold grey-dark p-2 "> <%= order.date %></p>
           </div>
           <div>
-            <h2 class="name-font p-2"><%= order.client.first_name %> <%= order.client.last_name %> </h2>
+            <h2 class="big-text-bold p-2"><%= order.client.first_name %> <%= order.client.last_name %> </h2>
           </div>
         </div>
 
-        <div class="d-flex">
+        <div class="d-flex align-items-center">
           <!-- prix -->
           <div>
-            <h1 class="price-font"><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
+            <h1 class="font-price-order-index"><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
           </div>
           <!-- picto -->
           <div class="order-card-picto">
@@ -91,7 +107,7 @@
   <!-- ORDER LINES + ADDRESS -->
 
       <div class="collapse" id="order-<%=order.id %>">
-        <div class="card card-body order-card-collapsed-dashboard">
+        <div class="card card-body order-card-collapsed-dashboard mg20">
           <div class="order-lines-dashboard">
             <% order.order_lines.each do |order_line| %>
               <div class="order-line">
@@ -114,5 +130,5 @@
       </div>
     </div>
   <% end %>
-</div>
+<!-- </div> -->
 
