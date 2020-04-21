@@ -1,7 +1,7 @@
 <div class="page-title orders-title">
   <p>Commandes</p>
   <div class="add-order">
-    <%= link_to "#" do %>
+    <%= link_to new_order_path do %>
       <p>Ajouter une commande</p>
       <%= image_tag "add-circle-light-grey.svg" %>
     <% end %>
@@ -16,12 +16,12 @@
             <p class="small-text-bold grey-medium">#GF<%= order.id %></p>
           </div>
           <div>
-            <p class="small-text-bold grey-medium"> <%= order.date %></p>
+            <p class="small-text-bold grey-medium"> <%= order.date%></p>
           </div>
         </div>
         <div class="d-flex justify-content-between order-card-name-price">
           <h1 class="name-font"><%= order.client.first_name %> <%= order.client.last_name %> </h1>
-          <h1 class="price-font"><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
+          <h1 class="price-font"><%= order.total_price_cents.to_i / 100 %> <sup class="sup-price"> € </sup> </h1>
         </div>
       </div>
 
@@ -36,8 +36,9 @@
 
             <% if order.status=="pending" %>
 
+
               <div class="action-picto waiting-action">
-                <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
               </div>
               <div class="action-picto">
                 <i class="fas fa-truck"></i>
@@ -102,9 +103,9 @@
               <div class="order-line">
                 <p class="product-name"><%= order_line.product.name %></p>
                 <div class="price">
-                  <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
+                  <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> <sup class="sup-price"> € </sup></p>
                   <div class="separation"></div>
-                  <p class="total-price"><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </p>
+                  <p class="total-price"><%= order_line.total_price_cents.to_i / 100 %> <sup class="sup-price"> € </sup> </p>
                 </div>
               </div>
             <% end %>
@@ -121,47 +122,3 @@
   <% end %>
 </div>
 
-
-
-<!-- CODE FOR PICTO AS IMG INSTEAD OF FONTAWESOME -->
-
-
-<!--
-<%# if order.status=="pending" %>
-
-  <div class="action-picto done-action">
-    <%#= image_tag 'shipment-clock-white.svg' %>
-  </div>
-  <div class="action-picto waiting-action">
-    <%#= link_to (image_tag 'shipment-check-light-green.svg'), prepare_order_path(order.id), method: :patch%>
-  </div>
-  <div class="action-picto">
-    <%#= image_tag 'delivery-truck-white.svg' %>
-  </div>
-
-<%# elsif order.status =="prepared" %>
-
-  <div class="action-picto done-action">
-    <%#= image_tag 'shipment-clock-white.svg' %>
-  </div>
-  <div class="action-picto done-action">
-    <%#= link_to (image_tag 'shipment-check-white.svg'), prepare_order_path(order.id), method: :patch%>
-    <%#= image_tag 'shipment-check-white.svg' %>
-  </div>
-  <div class="action-picto waiting-action">
-    <%#= link_to (image_tag 'delivery-truck-light-green.svg'), deliver_order_path(order.id), method: :patch %>
-  </div>
-
-<%# else %>
-
-  <div class="action-picto done-action">
-    <%#= image_tag 'shipment-clock-white.svg' %>
-  </div>
-  <div class="action-picto done-action">
-    <%#= image_tag 'shipment-check-white.svg' %>
-  </div>
-  <div class="action-picto done-action">
-    <%#= link_to (image_tag 'delivery-truck-white.svg'), deliver_order_path(order.id), method: :patch %>
-  </div>
-
-<%# end %> -->

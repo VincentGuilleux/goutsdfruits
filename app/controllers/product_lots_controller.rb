@@ -6,11 +6,9 @@ class ProductLotsController < ApplicationController
     @product_lot.product = @product
     @product_lot.remaining_quantity = @product_lot.quantity
 
-    if @product_lot.save
-      redirect_to product_path(@product)
-    else
-      render :new
-    end
+    @product_lot.save
+    redirect_to product_path(@product)
+
   end
 
   private

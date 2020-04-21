@@ -29,32 +29,28 @@ import flatpickr from "flatpickr";
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
+import { dropdownFruit, dropdownCategory, dropdownType } from '../components/dropdown';
 
 document.addEventListener('turbolinks:load', () => {
+  $("[data-form-prepend]").click(function(e) {
+    var obj = $($(this).attr("data-form-prepend"));
+    var time = new Date().getTime();
+    obj.find("input, select, textarea").each(function() {
+      $(this).attr("name", function() {
+        return $(this)
+          .attr("name")
+          .replace("new_record", time);
+      });
+    });
+    obj.insertBefore(this);
+    return false;
+  });
+
   flatpickrInit();
-  // Call your functions here, e.g:
-  // initSelect2();
+  dropdownFruit();
+  dropdownCategory();
+  dropdownType();
 });
 
-
-// button collapse dashbord orders
-
-// const orders = document.querySelector('.dashboard-orders').childNodes;
-// // const button = document.querySelector('.link-collapse');
-
-
-// orders.forEach((order) => {
-//   let collapseIcon = document.querySelector('#collapse-icon');
-//   order.addEventListener('click', (event) => {
-//     console.log(order);
-//     if(collapseIcon.className == 'fas fa-chevron-up'){
-//       collapseIcon.className = 'fas fa-chevron-down';
-//       console.log(event);
-//     } else if(collapseIcon.className == 'fas fa-chevron-down'){
-//       collapseIcon.className = 'fas fa-chevron-up';
-//       console.log(event);
-//     };
-//   });
-// });
 
 
