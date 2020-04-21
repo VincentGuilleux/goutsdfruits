@@ -32,14 +32,6 @@ import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownCategory, dropdownType } from '../components/dropdown';
 
 document.addEventListener('turbolinks:load', () => {
-  flatpickrInit();
-  dropdownFruit();
-  dropdownCategory();
-  dropdownType();
-
-  // Call your functions here, e.g:
-  // initSelect2();
-  
   $("[data-form-prepend]").click(function(e) {
     var obj = $($(this).attr("data-form-prepend"));
     var time = new Date().getTime();
@@ -53,6 +45,15 @@ document.addEventListener('turbolinks:load', () => {
     obj.insertBefore(this);
     return false;
   });
+  flatpickrInit();
+  dropdownFruit();
+  dropdownCategory();
+  dropdownType();
+
+  // Call your functions here, e.g:
+  // initSelect2();
+
+
 });
 
 
