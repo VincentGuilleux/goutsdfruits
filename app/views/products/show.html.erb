@@ -31,7 +31,7 @@
           <tr>
             <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'} %></td>
             <td> <%= f.input :production_date, label: false, as: :string, input_html: {class: 'production_date'} %></td>
-            <td> <%= f.input :production_date, label: false, as: :string, input_html: {class: 'expiry_date'} %></td>
+            <td> <%= f.input :expiry_date, label: false, as: :string, input_html: {class: 'expiry_date'} %></td>
             <td> <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'}  %></td>
             <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
           <% end %>

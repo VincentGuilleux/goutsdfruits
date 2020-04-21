@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
     @order.total_price_cents = sum
 
     if @order.save!
-      # generate_junction
+      generate_junction
       redirect_to dashboard_path
     else
       render :new
@@ -77,24 +77,24 @@ class OrdersController < ApplicationController
 
   def generate_junction
     @order.order_lines.each do |order_line|
-      @order_line_product_lot = OrderLineProductLot.new
-      @order_line_product_lot.quantity = order_line.quantity
-      @order_line_product_lot.order_line_id = order_line.id
+      selected_lots = order_line.product.product_lots.where("expiry_date > ? AND remaining_quantity > 0", Date.today).order(:expiry_date)
+      necessary_quantity = order_line.quantity
 
-      if order_line.product.product_lots.first.remaining_quantity >= order_line.quantity
-        @order_line_product_lot.product_lot_id = order_line.product.product_lots.first.id
-        order_line.product_lots.first.remaining_quantity -= order_line.quantity
-      else
-        @order_line_product_lot.product_lot_id = order_line.product.product_lots.first.id
-        @order_line_product_lot.quantity = order_line.product_lots.first.remaining_quantity
-        OrderLineProductLot.new
-        binding.pry
+      selected_lots.each do |selected_lot|
+        break if necessary_quantity == 0
+
+        quantity = [necessary_quantity, selected_lot.remaining_quantity].min
+        order_line_product_lot = OrderLineProductLot.new
+        order_line_product_lot.order_line_id = order_line.id
+        order_line_product_lot.product_lot = selected_lot
+        order_line_product_lot.quantity = quantity
+        order_line_product_lot.save
+
+        selected_lot.remaining_quantity -= quantity
+        selected_lot.save
+
+        necessary_quantity -= quantity
       end
-
-
-      binding.pry
     end
   end
-
-
 end
