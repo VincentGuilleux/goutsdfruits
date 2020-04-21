@@ -32,11 +32,12 @@ document.addEventListener('turbolinks:load', () => {
 
   $("[data-form-prepend]").click(function(e) {
     var obj = $($(this).attr("data-form-prepend"));
+    var time = new Date().getTime();
     obj.find("input, select, textarea").each(function() {
       $(this).attr("name", function() {
         return $(this)
           .attr("name")
-          .replace("new_record", new Date().getTime());
+          .replace("new_record", time);
       });
     });
     obj.insertBefore(this);
