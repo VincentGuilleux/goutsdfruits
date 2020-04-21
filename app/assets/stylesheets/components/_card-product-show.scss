@@ -81,6 +81,7 @@
   width: 32px;
   height: 32px;
   margin-left: 10px;
+  outline: 0;
 }
 
 .scroll-thead{
@@ -96,3 +97,8 @@
     height: 220px;
 }
 
+.table thead th { border: 0px }
+
+.form-group {
+  margin-bottom: 0;
+}
