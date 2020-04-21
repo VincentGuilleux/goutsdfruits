@@ -6,8 +6,8 @@
 }
 
 .logo {
- width: 182px;
- height: 149px;
+ width: 160px;
+ height: 105px;
  margin: 0 auto;
  margin-top: 30px;
 }
@@ -18,7 +18,7 @@
   background-position: center;
   height: 100vh;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
-                    url(image_path('verger.jpg'));
+                    url(image_path('FemmeChamps.jpg'));
 }
 
 .banner h1 {
@@ -89,8 +89,7 @@
 }
 
 .picto-home {
- color: $grey_medium;
- font-size: 24px;
- letter-spacing: 1.5px
+ width: 80px;
+ height: 80px;
 }
 
