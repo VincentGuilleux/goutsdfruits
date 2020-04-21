@@ -63,7 +63,7 @@ product1.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbet
 product1.save!
 
 product2 = Product.new(name:"Sorbet framboise",description:"Gouts d'Fruits vous offre le meilleur du sorbet framboise à travers une recette authentique et gourmande, pour votre plus grand plaisir !", unit_price_cents: 800, unit_type:"pot", product_fruit: "framboise", product_type:"sorbet", product_category:"Gourmandise")
-product2.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
+product2.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbet-framboise.jpg')), filename: 'sorbet-framboise.jpg', content_type: 'image/jpg')
 product2.save!
 
 
@@ -86,7 +86,7 @@ product5.save!
 
 puts "      (  /  )  - product 1/5"
 product6 = Product.new(name:"Gelée de groseilles",description:"Une recette fondante réalisée avec le jus de deux fruits rouges du jardin qui se marient parfaitement pour un goût frais et gourmand", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "groseille", product_type:"gelée", product_category:"Gourmandise")
-product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/geleegroseille.jpg')), filename: 'geleegroseille.jpg', content_type: 'image/jpg')
+product6.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelee-groseille.jpg')), filename: 'gelee-groseille.jpg', content_type: 'image/jpg')
 product6.save!
 
 product7 = Product.new(name:"Gelée de mûres",description:"Une recette fondante réalisée avec le jus de deux fruits rouges du jardin qui se marient parfaitement pour un goût frais et gourmand", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "mûre", product_type:"gelée", product_category:"Gourmandise")
@@ -94,31 +94,31 @@ product7.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/geleem
 product7.save!
 
 product8 = Product.new(name:"Gelée de coings",description:"Gout's Fruit vous offre le meilleur de la Gelée de Coings à travers une recette authentique et gourmande, pour votre plus grand plaisir, tout simplement !", unit_price_cents: 600 ,unit_type:"pot",product_fruit: "coing", product_type:"gelée", product_category:"Gourmandise")
-product8.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelée.jpg')), filename: 'gelée.jpg', content_type: 'image/jpg')
+product8.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelee-coing.jpg')), filename: 'gelee-coing', content_type: 'image/jpg')
 product8.save!
 
 #les sirops
 
-product9 = Product.new(name:"Sirop de menthe",description:"Sirop de menthe", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "menthe", product_type:"sirop", product_category:"Gourmandise")
+product9 = Product.new(name:"Sirop de menthe",description:"Retrouvez les saveurs rafraichissantes dans une boisson légère à diluer selon les goûts.", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "menthe", product_type:"sirop", product_category:"Gourmandise")
 product9.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/siropmenthe.jpg')), filename: 'siropmenthe.jpg', content_type: 'image/jpg')
 product9.save!
 
-product10 = Product.new(name:"Sirop de sureau",description:"Sirop de sureau", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "sureau", product_type:"sirop", product_category:"Gourmandise")
+product10 = Product.new(name:"Sirop de sureau",description:"Retrouvez les saveurs rafraichissantes dans une boisson légère à diluer selon les goûts.", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "sureau", product_type:"sirop", product_category:"Gourmandise")
 product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/siropsureau.jpg')), filename: 'siropsureau.jpg', content_type: 'image/jpg')
 product10.save!
 puts "       |(__)|   - product 2/5"
 
-product11 = Product.new(name:"Sirop de fraise",description:"Sirop de fraise", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "fraise", product_type:"sirop", product_category:"Gourmandise")
-product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop.jpg')), filename: 'sirop.jpg', content_type: 'image/jpg')
+product11 = Product.new(name:"Sirop de fraise",description:"Retrouvez les saveurs rafraichissantes dans une boisson légère à diluer selon les goûts.", unit_price_cents: 700, unit_type:"bouteille", product_fruit: "fraise", product_type:"sirop", product_category:"Gourmandise")
+product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sirop-fraise.jpg')), filename: 'sirop-fraise.jpg', content_type: 'image/jpg')
 product11.save!
 
 #les compotes
-product12 = Product.new(name:"Compote de pommes",description:"Compotte de pommes", unit_price_cents: 500 ,unit_type:"pot",product_fruit: "pomme", product_type:"compote", product_category:"Gourmandise")
+product12 = Product.new(name:"Compote de pommes",description:"Goûts d’Fruits marie dans ses compotes la douceur de la pomme à la saveur des autres fruits du vergers.", unit_price_cents: 500 ,unit_type:"pot",product_fruit: "pomme", product_type:"compote", product_category:"Gourmandise")
 product12.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/compote.jpg')), filename: 'compote.jpg', content_type: 'image/jpg')
 product12.save!
 
 #les biscuits
-product13 = Product.new(name:"Financier aux framboises",description:"Financier aux framboises", unit_price_cents: 700 ,unit_type:"sachet",product_fruit: "framboise", product_type:"biscuit", product_category:"Gourmandise")
+product13 = Product.new(name:"Financier aux framboises",description:"Goûts d’Fruits peut préparer pour vous de délicieux financiers à la framboise,  ou tout autre gâteau fruité sur commande.", unit_price_cents: 700 ,unit_type:"sachet",product_fruit: "framboise", product_type:"biscuit", product_category:"Gourmandise")
 product13.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/financiers.jpg')), filename: 'financiers.jpg', content_type: 'image/jpg')
 product13.save!
 
@@ -128,22 +128,22 @@ product14.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product14.save!
 
 product15 = Product.new(name:"Coulis de cassis",description:"Testez le nappage de coulis de cassis sur vos yaourts ou gâteaux au chocolat. Moins sucré qu’une confiture, sa saveur est à découvrir d’urgence !", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "cassis", product_type:"coulis", product_category:"Gourmandise")
-product15.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
+product15.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis-cassis.jpg')), filename: 'coulis-cassis.jpg', content_type: 'image/jpg')
 product15.save!
 puts "cat's team     - product 3/5"
 
-product16 = Product.new(name:"Coulis de mûres",description:"Coulis de mûres", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûre", product_type:"coulis", product_category:"Gourmandise")
-product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
+product16 = Product.new(name:"Coulis de mûres",description:"Testez le nappage de coulis de mûres sur vos yaourts ou gâteaux au chocolat. Moins sucré qu’une confiture, sa saveur est à découvrir d’urgence !", unit_price_cents: 800 ,unit_type:"pot",product_fruit: "mûre", product_type:"coulis", product_category:"Gourmandise")
+product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis-mure.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product16.save!
 
 #les pâtes de fruits
-product17 = Product.new(name:"Pâte de fruits",description:"Pâte de fruits", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
-product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/financiers.jpg')), filename: 'financiers.jpg', content_type: 'image/jpg')
+product17 = Product.new(name:"Pâte de fruits",description:"Faites plaisir à toute la famille avec des pâtes de fruits, vendues en sachets aux multiples saveurs.", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
+product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/pates-de-fruits.jpg')), filename: 'pates-de-fruits.jpg', content_type: 'image/jpg')
 product17.save!
 
 
 #les fruits en sirop
-product18 = Product.new(name:"Cerises en sirop",description:"Cerises en sirop", unit_price_cents: 800, unit_type:"pot", product_fruit: "cerise", product_type:"fruit au sirop", product_category:"Gourmandise")
+product18 = Product.new(name:"Cerises en sirop",description:"Pour vos salades ou clafoutis, les bocaux préservent toutes les saveurs des fruits cueillis à maturité.", unit_price_cents: 800, unit_type:"pot", product_fruit: "cerise", product_type:"fruit au sirop", product_category:"Gourmandise")
 product18.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cerises.jpg')), filename: 'cerises.jpg', content_type: 'image/jpg')
 product18.save!
 
@@ -151,7 +151,7 @@ product18.save!
 #les fruits frais
 
 
-product19 = Product.new(name:"Cerises",description:"Cerises", unit_price_cents: 900,unit_type:"kg",product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
+product19 = Product.new(name:"Cerises",description:"Rouge vif, noire ou blanche, laissez-vous tenter par le goût subtil des premiers fruits de l’année.", unit_price_cents: 900,unit_type:"kg",product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
 product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product19.save!
 
@@ -161,19 +161,19 @@ product20.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/frais
 product20.save!
 puts "product 4/5"
 
-product21 = Product.new(name:"Prunes",description:"Prunes fraîches en barquettes", unit_price_cents: 300, unit_type:"kg",product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
-product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/fraises.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
+product21 = Product.new(name:"Prunes",description:"Pour vos tartes, bocaux ou pour picorer, profitez des prunes gorgées de soleil.", unit_price_cents: 300, unit_type:"kg",product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
+product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
 product21.save!
 
 #les plants
 
-product22 = Product.new(name:"Plant de cassis",description:"Plant de cassis", unit_price_cents: 4500,unit_type:"plant",product_fruit: "cassis", product_type:"végétal", product_category:"Pépinière")
+product22 = Product.new(name:"Plant de cassis",description:"Pour assouvir votre gourmandise et votre envie de nature, Goûts d’Fruits développe une pépinière et propose de vous accompagner dans l’aménagement de votre jardin.", unit_price_cents: 4500,unit_type:"plant",product_fruit: "cassis", product_type:"végétal", product_category:"Pépinière")
 product22.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/petit-plant.jpg')), filename: 'petit-plant.jpg', content_type: 'image/jpg')
 product22.save!
 
 #les grand plants
 
-product23 = Product.new(name:"Pommier",description:"Pommier", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
+product23 = Product.new(name:"Pommier",description:"Pour assouvir votre gourmandise et votre envie de nature, Goûts d’Fruits développe une pépinière et propose de vous accompagner dans l’aménagement de votre jardin.", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
 product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/grand-plant.jpg')), filename: 'grand-plant.jpg', content_type: 'image/jpg')
 product23.save!
 puts "product done"
