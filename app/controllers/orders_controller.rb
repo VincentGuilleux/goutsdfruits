@@ -38,6 +38,10 @@ class OrdersController < ApplicationController
     end
   end
 
+  def index
+    @orders = Order.all
+  end
+
   def new
     @order = Order.new
     @order.order_lines.build
@@ -58,7 +62,7 @@ class OrdersController < ApplicationController
     @order.total_price_cents = sum
 
     if @order.save!
-      # generate_junction
+      generate_order_line_product_lots
       redirect_to dashboard_path
     else
       render :new
@@ -71,28 +75,26 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:client_id, order_lines_attributes: [:product_id, :quantity])
   end
 
-  # def generate_junction
-  #   @order.order_lines.each do |order_line|
-  #     @order_line_product_lot = OrderLineProductLot.new
-  #     @order_line_product_lot.quantity = order_line.quantity
-  #     @order_line_product_lot.order_line_id = order_line.id
+  def generate_order_line_product_lots
+    @order.order_lines.each do |order_line|
+      selected_lots = order_line.product.product_lots.where("expiry_date > ? AND remaining_quantity > 0", Date.today).order(:expiry_date)
+      necessary_quantity = order_line.quantity
 
-  #     if order_line.product.product_lots.first.remaining_quantity >= order_line.quantity
-  #       @order_line_product_lot.product_lot_id = order_line.product.product_lots.first.id
-  #       order_line.product_lots.first.remaining_quantity -= order_line.quantity
-  #     else
-  #       @order_line_product_lot.product_lot_id = order_line.product.product_lots.first.id
-  #       @order_line_product_lot.quantity = order_line.product_lots.first.remaining_quantity
-  #       @order_line_product_lot = OrderLineProductLot.new
-        # end
+      selected_lots.each do |selected_lot|
+        break if necessary_quantity == 0
 
+        quantity = [necessary_quantity, selected_lot.remaining_quantity].min
+        order_line_product_lot = OrderLineProductLot.new
+        order_line_product_lot.order_line_id = order_line.id
+        order_line_product_lot.product_lot = selected_lot
+        order_line_product_lot.quantity = quantity
+        order_line_product_lot.save
 
-  #     binding.pry
-  #   end
-  # end
+        selected_lot.remaining_quantity -= quantity
+        selected_lot.save
 
-  def index
-    @orders = Order.all
+        necessary_quantity -= quantity
+      end
+    end
   end
-
 end

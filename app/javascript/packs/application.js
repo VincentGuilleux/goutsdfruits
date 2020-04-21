@@ -45,15 +45,11 @@ document.addEventListener('turbolinks:load', () => {
     obj.insertBefore(this);
     return false;
   });
+
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();
   dropdownType();
-
-  // Call your functions here, e.g:
-  // initSelect2();
-
-
 });
 
 
