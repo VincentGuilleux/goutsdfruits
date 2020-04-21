@@ -197,7 +197,7 @@
       transition: 0.3s ease;
     }
   }
-  .fa-check {
+  .fa-clock {
     font-size: 20px;
     margin: 5px auto;
   }
@@ -261,32 +261,3 @@
 [data-toggle="collapse"].collapsed .fa:before {
   content: "\f078";
 }
-
-// OLD CSS class----------------------------------
-
-
-// .order-card-picto img {
-//  width: 16px;
-//  height: 16px;
-//  margin: 8px auto;
-//  display: block;
-// }
-
-// .waiting-action {
-//   background-color: $white_smoke;
-//   border: 4px solid $green_light;
-//   & img {
-//     margin: 4px auto;
-//   }
-// }
-
-// .done-action {
-//   height: 40px;
-//   width: 40px;
-//   background-color: $green;
-//   & img {
-//     width: 24px;
-//     height: 24px;
-//     margin: 8px auto;
-//   }
-// }
