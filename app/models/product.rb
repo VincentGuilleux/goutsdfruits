@@ -12,4 +12,16 @@ class Product < ApplicationRecord
     return total_remaining_quantity
   end
 
+  def self.types
+    Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
+  end
+
+  def self.categories
+    Product.all.map(&:product_category).uniq.sort_by { |word| word.downcase }
+  end
+
+  def self.fruits
+    Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }
+  end
+
 end

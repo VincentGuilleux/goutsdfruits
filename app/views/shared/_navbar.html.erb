@@ -2,7 +2,7 @@
   <div class="navbar-avatar"> <%= image_tag "madame-gazeau.jpg"%></div>
     <ul class="list-inline navbar-picto">
       <li>
-        <%= link_to dashboard_path, class: "active" do %>
+        <%= link_to dashboard_path, class: " #{'active' if controller_name == 'dashboards'} "  do %>
           <%= image_tag "layout-dashboard-1.svg" %>
           <span>DASHBOARD</span>
         <% end %>
@@ -10,21 +10,21 @@
 
 
       <li>
-        <%= link_to products_path do %>
+        <%= link_to products_path, class: " #{'active' if controller_name == 'products'} " do %>
         <%= image_tag "fruit-pear.svg" %>
         <span>PRODUITS</span>
         <% end %>
       </li>
 
       <li>
-        <%= link_to orders_path do %>
+        <%= link_to orders_path, class: " #{'active' if controller_name == 'orders'} " do %>
         <%= image_tag "task-list-approve.svg"%>
         <span>COMMANDES</span>
         <% end %>
       </li>
 
       <li>
-        <%= link_to clients_path do %>
+        <%= link_to clients_path, class: " #{'active' if controller_name == 'clients'} " do %>
         <%= image_tag "multiple-neutral-2.svg"%>
         <span>CLIENTS</span>
         <% end %>
@@ -32,7 +32,7 @@
 
       <li>
         <%= link_to dashboard_path do %>
-        <%= image_tag "analytics-pie-2.svg"%>
+        <%= image_tag "analytics-pie.svg"%>
         <span>STATISTIQUES</span></li>
         <% end %>
 

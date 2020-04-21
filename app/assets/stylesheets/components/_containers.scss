@@ -1,8 +1,12 @@
 .main-container {
   display: flex;
-  padding: 30px 40px 0 40px;
+  padding: 30px 60px 0 60px;
 }
 
+.container-index-filters {
+  display: flex;
+  flex-direction: row;
+}
 .container-index-products {
   flex: 1;
   display: grid;

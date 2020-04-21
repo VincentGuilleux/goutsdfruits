@@ -5,6 +5,22 @@
   font-size: 24px;
 }
 
+.pl60 {
+  padding-left: 60px;
+}
+
+.mr45 {
+  margin-right: 45px;
+}
+
+.pt40 {
+  padding-top: 40px;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
+
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
 .small-text-bold {
   font-size: 12px;
@@ -21,15 +37,27 @@
   font-weight: 400;
 }
 
+.middle-text {
+  font-size: 18px;
+}
+
+.big-text-semi-bold {
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .big-text-bold {
   font-size: 20px;
   font-weight: 800;
   line-height: 20px;
 }
 
-.big-text-semi-bold {
-  font-size: 16px;
-  font-weight: 600;
+.semi-bold {
+font-weight: 600;
+}
+
+.bold {
+font-weight: bold;
 }
 
 
