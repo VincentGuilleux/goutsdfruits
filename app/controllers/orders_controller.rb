@@ -62,7 +62,7 @@ class OrdersController < ApplicationController
     @order.total_price_cents = sum
 
     if @order.save!
-      generate_junction
+      generate_order_line_product_lots
       redirect_to dashboard_path
     else
       render :new
@@ -75,7 +75,7 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:client_id, order_lines_attributes: [:product_id, :quantity])
   end
 
-  def generate_junction
+  def generate_order_line_product_lots
     @order.order_lines.each do |order_line|
       selected_lots = order_line.product.product_lots.where("expiry_date > ? AND remaining_quantity > 0", Date.today).order(:expiry_date)
       necessary_quantity = order_line.quantity
