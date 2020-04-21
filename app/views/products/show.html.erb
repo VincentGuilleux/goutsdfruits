@@ -8,31 +8,33 @@
     <div class="card-product-show-header">
       <span class="product-show-category"><%= @product.product_category.capitalize%></span>
       <div class="card-product-show-title">
-        <h1 class="page-title"><%=@product.name.capitalize%><h1>
+        <h1 class="page-title"><%=@product.name.capitalize%></h1>
         <span class="card-product-show-price">
           <%= (@product.unit_price_cents/100).to_i %> €
           <sup>/ <%= @product.unit_type %> </sup></span>
       </div>
-      <p class="product-show-description"><%= @product.description%></p>
+      <p class="product-show-description pt-3"><%= @product.description%></p>
     </div>
 
     <div class="card-product-stock">
       <table class="table">
         <thead class="scroll-thead">
           <tr class="card-product-show-table">
-            <th scope="col">N°lot</th>
+            <th style="padding-right: 35px;" scope="col">N°lot</th>
             <th scope="col">Date de production</th>
-            <th scope="col">Date d'expiration</th>
-            <th scope="col">Quantité</th>
+            <th style="padding-right: 35px;" scope="col">Date d'expiration</th>
+            <th style="padding-right: 20px;" scope="col">Quantité</th>
+            <th style="width: 80px;"scope="col"></th>
           </tr>
         </thead>
         <tbody class="scroll-tbody-y table-body">
           <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
           <tr>
+
             <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'} %></td>
-            <td> <%= f.input :production_date, label: false, as: :string, input_html: {class: 'production_date'} %></td>
-            <td> <%= f.input :expiry_date, label: false, as: :string, input_html: {class: 'expiry_date'} %></td>
-            <td> <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'}  %></td>
+            <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'production_date'} %></td>
+            <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'expiry_date'} %></td>
+            <td> <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 50px'}  %></td>
             <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
           <% end %>
           </tr>
@@ -42,6 +44,7 @@
               <td><%=product_lot.production_date%></td>
               <td><%=product_lot.expiry_date %></td>
               <td><%= product_lot.remaining_quantity %></td>
+              <td></td>
             </tr>
           <% end %>
         </tbody>
