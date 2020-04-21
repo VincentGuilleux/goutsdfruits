@@ -54,6 +54,7 @@
   color:$white;
   opacity: 0.4;
   text-decoration: none;
+  outline: 0;
   &:hover {
     color:$white;
     opacity: 0.80;
@@ -83,6 +84,7 @@
   height: 24px;
   padding-bottom: 25px;
 }
+
 
 
 // .navbar-goutsdfruits .navbar-collapse {
