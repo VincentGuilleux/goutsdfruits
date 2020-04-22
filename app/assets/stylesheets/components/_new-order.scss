@@ -1,3 +1,123 @@
 .new-order {
-  text-align: center;
+  margin-top: 72px;
+  width: 750px;
+  background-color: white;
+  border-radius: 5px;
+  padding: 40px 15px 40px 15px;
+
+  .new-order-title {
+    text-align: center;
+    margin-bottom: 40px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  .client-input {
+    background-color: $white_smoke;
+    margin-bottom: 50px;
+    border-radius: 5px;
+  }
+  .order-line {
+    .form-inline {
+      justify-content: left;
+      width: 750px;
+      .product-input {
+        background-color: $white_smoke;
+        width: 490px;
+        margin-bottom: 20px;
+        margin-right: 10px;
+        border-radius: 5px;
+      }
+
+      .quantity-input {
+        background-color: $white_smoke;
+        width: 150px;
+        margin-bottom: 20px;
+        border-radius: 5px;
+      }
+
+      & a {
+        display: flex;
+        margin-bottom: 20px;
+        outline: 0;
+        & img {
+          margin: 0 5px 0 10px;
+          height: 30px;
+          width: 30px;
+          z-index: 4;
+        }
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  .submit-btn {
+    background-color: $green;
+    border-radius: 5px;
+    color: white;
+    margin-top: 50px;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
+    &:hover {
+      background-color: $green_dark;
+    }
+  }
+
+
+
+
+  // PAYMENT SELECTION-------------------------------
+  // .order_payment_method {
+  //   margin-top: 40px;
+  //   text-align: center;
+  // }
+  .payment-label {
+    margin-top: 50px;
+  }
+
+  .payment-choices {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .payment-choice {
+    background: $green;
+    padding: 20px;
+    border-radius: 5px;
+    opacity: .4;
+    flex: 0 0 20%;
+    text-align: center;
+    p {
+      margin-bottom: 0;
+      padding-top: 5px;
+      font-size: 15px;
+      font-weight: bold;
+    }
+    & label {
+      margin-bottom: 0;
+    }
+    & i {
+      font-size: 30px;
+    }
+    .hidden {
+      display: none;
+    }
+    &:hover {
+      opacity: 1;
+      cursor: pointer;
+    }
+    &.active {
+    background: $green;
+    color: white;
+    opacity: 1;
+      p {
+        color: white;
+      }
+    }
+  }
+
 }
+
