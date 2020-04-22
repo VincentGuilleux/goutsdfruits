@@ -76,7 +76,6 @@
   font-weight: 700;
   font-size: 16px;
   color: $grey_dark
-
 }
 
 .orga-card{
@@ -96,6 +95,11 @@
 
 .order-line.order-index-bottom {
   display:grid;
-  grid-template-columns: 5fr 2fr 1fr;
+  grid-template-columns: 7fr 2fr 1fr;
 }
-//
+
+.index-total-price{
+  font-size: 20px;
+  color: $grey_dark;
+  font-weight: 900;
+}
