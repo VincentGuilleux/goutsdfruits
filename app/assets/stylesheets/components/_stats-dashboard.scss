@@ -14,7 +14,7 @@
 }
 
 .stats-data-card img {
-  height: 80px;
+  height: 60px;
   border-radius: 8px 0 0 8px;
   object-fit: cover;
   align-self: center;
@@ -28,4 +28,12 @@
   width:100%;
 }
 
-.
+.card-best-product {
+  border-radius: 0px 8px 8px 0px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  background-color: $white_smoke;
+  width: 320px;
+
+}
