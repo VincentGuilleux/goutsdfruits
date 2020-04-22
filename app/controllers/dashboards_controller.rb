@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
   def show
-    @orders = Order.order(date: :desc).includes(:client, :order_lines, :products)
+    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
   end
 
   def products_total_value
