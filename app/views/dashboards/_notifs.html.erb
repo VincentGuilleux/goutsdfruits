@@ -1,8 +1,9 @@
 <div class="notification-card-grid">
 
 <%# low_stock.each do |low_stock|  %>
+<!-- pour l'instant la méthode low_stock ne récupère que le 1er item de l'array (return low_stock_list.first) donc pas besoin d'itérer, une seul carte de notification pour stock bas est générée) -->
   <div class="notification-card background-red-alert">
-    <p class="middle-text bold white">Stock de <%= low_stock.name.downcase %></p>
+    <p class="middle-text bold white"><%= low_stock.name.downcase %></p>
     <p class="small-text white">
       <% if low_stock.total_remaining_quantity == 0 %>
         Stock vide !
@@ -14,8 +15,8 @@
 <%# end %>
 
   <div class="notification-card background-yellow-alert">
-    <p class="middle-text bold white">Stock de fraise trop ancien</p>
-    <p class="small-text white">06.04.2020</p>
+    <p class="middle-text bold white"><%= old_stock.product.name.downcase %></p>
+    <p class="small-text white">date d'expiration : <%= old_stock.expiry_date.strftime("%B %d, %Y") %></p>
   </div>
 
 

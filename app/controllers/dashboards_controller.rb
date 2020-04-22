@@ -1,14 +1,20 @@
 class DashboardsController < ApplicationController
+
+  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :low_stock, :old_stock
+  # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
+    # Par exemple pour orders_number_current_month à reclasser dans Order model
+      #   scope :for_current_month, -> do
+      #     where('extract(year from date) = ? AND extract(month from date) = ?', Date.today.year, Date.today.month)
+      #   end
+      # end
+     # On pourrait ensuite rajouter dans la show du controlleur dashboard @current_month_orders = Order.for_current_month.count et l'appeler de cette façon
+     # l'intérêt d'un scope par rapport à une méthode de Classe c'est que cela fonctionne un peu comme une méthode ActiveRecord on peut donc y chaîner d'autres requêtes SQL ou méthodes.
+
   def show
     @orders = Order.order(date: :desc).includes(:client, :order_lines, :products)
   end
 
   def products_total_value
-    # for each product, calculate its remaining_quantity * price
-    # ProductLot.select("SUM(ProductLot.remaining_quantity")
-    # Product.joins(:products_lots).remaining_quantity.count
-    # Product.select(:unit_price_cents)
-    # ProductLot.sum(:remaining_quantity)
     @products = Product.all
     products_total_value = 0
     @products.each do |product|
@@ -16,6 +22,8 @@ class DashboardsController < ApplicationController
     end
     return products_total_value/100
   end
+
+  # Methods used to calculated monthly_data stats
 
   def orders_number_current_month
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).count
@@ -29,13 +37,15 @@ class DashboardsController < ApplicationController
     Client.where('extract(year from created_at) = ?', year_now).where('extract(month from created_at) = ?', month_now).count
   end
 
+  # Methods used for notifications
+
+  def low_stock # A refactoriser via méthode SQL, on peut faire beaucoup plus court
   # Pour chaque produit récupérer la remaining quantity
-  # Vérifier si cette valeur est inférieur à un critère donné
+  # Vérifier si cette valeur est inférieure à un critère donné
   # Renvoyer la liste de tous les produits concernés
-  def low_stock
-    low_stock_trigger = 6 # Montant fixe pour l'instant qui trigger l'alimentation de la liste des low_stocks
-    low_stock_list = Array.new
     @products = Product.all
+    low_stock_trigger = 6 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
+    low_stock_list = Array.new
     @products.each do |product|
        if product.total_remaining_quantity < low_stock_trigger
        low_stock_list << product
@@ -44,7 +54,18 @@ class DashboardsController < ApplicationController
     return low_stock_list.first # Pour l'instant on ne renvoit qu'un item de cet array
   end
 
-  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :low_stock
+  def old_stock
+    expiry_date_trigger = Date.today + 15 # Trigger fixe pour l'instant à J+15
+    # old_stock_list = Array.new
+    old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).order(:expiry_date) # renvoit un array des product_lots répondant aux cond° ci-dessus et trié par date d'expiration
+    # old_product_lots.each do |old_product_lot|
+    #   old_product_lot = Product.find(old_product_lot.product_id)
+    #   old_product = Product.find(old_product_lot.product_id)
+    #   old_stock_list << old_product # crée un array de tous les produits satisfaisant à la cond° d'ancienneté
+    # end
+    oldest_product = old_product_lots.first # Pour l'instant on ne renvoit qu'un item
+  end
+
 
   private
 
