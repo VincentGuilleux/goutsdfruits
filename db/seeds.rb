@@ -138,7 +138,7 @@ product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product16.save!
 
 #les pâtes de fruits
-product17 = Product.new(name:"Pâte de fruits",description:"Faites plaisir à toute la famille avec des pâtes de fruits, vendues en sachets aux multiples saveurs.", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
+product17 = Product.new(name:"Pâte de fruits au cassis",description:"Faites plaisir à toute la famille avec des pâtes de fruits, vendues en sachets aux multiples saveurs.", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
 product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/pates-de-fruits.jpg')), filename: 'pates-de-fruits.jpg', content_type: 'image/jpg')
 product17.save!
 
