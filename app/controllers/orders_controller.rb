@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, order_lines_attributes: [:product_id, :quantity])
   end
 
   def generate_order_line_product_lots
