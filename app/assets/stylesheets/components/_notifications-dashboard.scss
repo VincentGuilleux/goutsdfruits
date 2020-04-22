@@ -1,0 +1,29 @@
+.notification-card-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+}
+
+.notification-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 56px;
+  display: flex;
+  border-radius: 5px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+  margin: 0px;
+  p {
+  margin-bottom: 5px;
+  }
+}
+
+.background-red-alert {
+  background-color: $red_alert;
+}
+
+.background-yellow-alert {
+  background-color: $yellow_alert;
+}

@@ -1,0 +1,22 @@
+<div class="notification-card-grid">
+
+<%# low_stock.each do |low_stock|  %>
+  <div class="notification-card background-red-alert">
+    <p class="middle-text bold white">Stock de <%= low_stock.name.downcase %></p>
+    <p class="small-text white">
+      <% if low_stock.total_remaining_quantity == 0 %>
+        Stock vide !
+      <% else %>
+        <%= pluralize(low_stock.total_remaining_quantity, low_stock.unit_type) %> en stock seulement !
+      <% end %>
+    </p>
+  </div>
+<%# end %>
+
+  <div class="notification-card background-yellow-alert">
+    <p class="middle-text bold white">Stock de fraise trop ancien</p>
+    <p class="small-text white">06.04.2020</p>
+  </div>
+
+
+</div>
