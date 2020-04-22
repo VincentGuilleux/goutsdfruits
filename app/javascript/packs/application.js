@@ -46,6 +46,12 @@ document.addEventListener('turbolinks:load', () => {
     return false;
   });
 
+  $(document).ready(function(){
+    $(".payment-choice").click(function(){
+      $(this).toggleClass("active");
+    });
+  });
+
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();

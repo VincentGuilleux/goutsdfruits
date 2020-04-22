@@ -55,6 +55,10 @@ class OrdersController < ApplicationController
     sum = 0
 
     @order.order_lines.each do |order_line|
+      if order_line.quantity > order_line.product.total_remaining_quantity
+        flash[:alert] = "Il n'y a pas assez de stock"
+      end
+
       order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
       sum += order_line.total_price_cents
     end
@@ -63,7 +67,7 @@ class OrdersController < ApplicationController
 
     if @order.save!
       generate_order_line_product_lots
-      redirect_to dashboard_path
+      redirect_to orders_path
     else
       render :new
     end
@@ -72,7 +76,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, order_lines_attributes: [:product_id, :quantity])
   end
 
   def generate_order_line_product_lots
