@@ -1,5 +1,11 @@
+.new-order-main-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .new-order {
-  margin-top: 72px;
+  // margin-top: 72px;
   width: 750px;
   background-color: white;
   border-radius: 5px;
@@ -69,10 +75,7 @@
 
 
   // PAYMENT SELECTION-------------------------------
-  // .order_payment_method {
-  //   margin-top: 40px;
-  //   text-align: center;
-  // }
+
   .payment-label {
     margin-top: 50px;
   }
@@ -84,10 +87,9 @@
     margin: 20px 0;
   }
   .payment-choice {
-    background: $green;
+    background: $green_light;
     padding: 20px;
     border-radius: 5px;
-    opacity: .4;
     flex: 0 0 20%;
     text-align: center;
     p {
@@ -95,26 +97,30 @@
       padding-top: 5px;
       font-size: 15px;
       font-weight: bold;
+      color: white;
     }
     & label {
       margin-bottom: 0;
     }
     & i {
       font-size: 30px;
+      color: white;
     }
     .hidden {
       display: none;
     }
     &:hover {
-      opacity: 1;
+      opacity: 0.6;
       cursor: pointer;
     }
     &.active {
-    background: $green;
+    background: $green_dark;
     color: white;
-    opacity: 1;
       p {
         color: white;
+      }
+      &:hover {
+        opacity: 1;
       }
     }
   }

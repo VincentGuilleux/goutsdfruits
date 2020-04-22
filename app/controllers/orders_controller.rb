@@ -57,6 +57,7 @@ class OrdersController < ApplicationController
     @order.order_lines.each do |order_line|
       if order_line.quantity > order_line.product.total_remaining_quantity
         flash[:alert] = "Il n'y a pas assez de stock"
+        order_line.quantity = 0
       end
 
       order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
