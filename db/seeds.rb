@@ -43,6 +43,7 @@ client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claud
 client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin")
 client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest")
 client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux")
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort")
 
 puts "       )  ( ') - client done"
 
