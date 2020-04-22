@@ -18,7 +18,6 @@ class Product < ApplicationRecord
 
   def self.types
     Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
-    raise
   end
 
   def self.categories
