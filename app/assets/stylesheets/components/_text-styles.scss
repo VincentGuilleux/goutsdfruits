@@ -4,6 +4,21 @@
   font-weight: 900;
   font-size: 24px;
 }
+.pt40 {
+  padding-top: 40px;
+}
+
+.pr40 {
+  padding-right: 40px;
+}
+
+.pr10 {
+  padding-right: 10px;
+}
+
+.pb20 {
+  padding-bottom: 20px;
+}
 
 .pl60 {
   padding-left: 60px;
@@ -13,15 +28,22 @@
   margin-right: 45px;
 }
 
-.pt40 {
-  padding-top: 40px;
+.mt20 {
+  margin-right: 45px;
 }
 
-.pb20 {
-  padding-bottom: 20px;
+.nopnom {
+  margin: 0;
+  padding: 0;
 }
+
+
 
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
+.small-text {
+  font-size: 12px;
+}
+
 .small-text-bold {
   font-size: 12px;
   font-weight: bold;
@@ -38,18 +60,26 @@
 }
 
 .middle-text {
-  font-size: 18px;
+  font-size: 16px;
 }
 
-.big-text-semi-bold {
+.big-text-semi-bold { // non coherent name to change
   font-size: 16px;
   font-weight: 600;
+}
+
+.semi-big-text {
+  font-size: 18px;
 }
 
 .big-text-bold {
   font-size: 20px;
   font-weight: 800;
   line-height: 20px;
+}
+
+.light-bold {
+font-weight: 300;
 }
 
 .semi-bold {

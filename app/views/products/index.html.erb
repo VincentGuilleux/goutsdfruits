@@ -1,35 +1,54 @@
 <div class="page-title pl60 pt40 pb20">Produits</div>
 
+<!-- FILTERS DIV -->
 <div class="container-index-filters pl60">
 
+  <!-- Fruit filter -->
+  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
+  <div id="product_fruit" class="middle-text grey-medium mr45 white">
+  <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
+  </div>
   <div class="dropdown">
-    <div class="middle-text semi-bold grey-medium mr45">Fruit</div>
+    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
     <div id="DropdownFruit" class="dropdown-content">
-    <% Product.fruits.each do |type| %>
-      <a href="#"><%= type %></a>
-    <% end %>
+      <% Product.fruits.each do |fruit| %>
+        <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
+      <% end %>
     </div>
   </div>
 
+  <!-- Category filter -->
+  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
+  <div id="product_category" class="middle-text grey-medium mr45">
+  <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
+  </div>
   <div class="dropdown">
-    <div class="middle-text semi-bold grey-medium mr45">Catégorie</div>
+    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
     <div id="DropdownCategory" class="dropdown-content">
-    <% Product.categories.each do |type| %>
-      <a href="#"><%= type %></a>
+    <% Product.categories.each do |category| %>
+      <a data-name="<%= category %>" href="#"><%= category %></a>
     <% end %>
     </div>
   </div>
 
+  <!-- Type filter -->
+  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
+  <div id="product_type" class="middle-text grey-medium mr45">
+  <%= if params[:type].present? then params[:type] else 'Type' end %>
+  </div>
   <div class="dropdown">
-    <div class="middle-text semi-bold grey-medium mr45">Type</div>
+    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
     <!-- <button class="dropbtn">Type</button> -->
     <div id="DropdownType" class="dropdown-content">
     <% Product.types.each do |type| %>
-      <a href="#"><%= type %></a>
+      <a data-name="<%= type %>" href="#"><%= type %></a>
     <% end %>
     </div>
   </div>
 
+  <!-- Reset filters -->
+
+    <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
 </div>
 
 <div class="main-container">

@@ -45,15 +45,17 @@ document.addEventListener('turbolinks:load', () => {
     obj.insertBefore(this);
     return false;
   });
+
+  $(document).ready(function(){
+    $(".payment-choice").click(function(){
+      $(this).toggleClass("active");
+    });
+  });
+
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();
   dropdownType();
-
-  // Call your functions here, e.g:
-  // initSelect2();
-
-
 });
 
 

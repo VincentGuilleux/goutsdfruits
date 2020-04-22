@@ -43,6 +43,7 @@ client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claud
 client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin")
 client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest")
 client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux")
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort")
 
 puts "       )  ( ') - client done"
 
@@ -137,7 +138,7 @@ product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product16.save!
 
 #les pâtes de fruits
-product17 = Product.new(name:"Pâte de fruits",description:"Faites plaisir à toute la famille avec des pâtes de fruits, vendues en sachets aux multiples saveurs.", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
+product17 = Product.new(name:"Pâte de fruits au cassis",description:"Faites plaisir à toute la famille avec des pâtes de fruits, vendues en sachets aux multiples saveurs.", unit_price_cents: 800 ,unit_type:"sachet",product_fruit: "cassis", product_type:"pâte de fruits", product_category:"Gourmandise")
 product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/pates-de-fruits.jpg')), filename: 'pates-de-fruits.jpg', content_type: 'image/jpg')
 product17.save!
 
@@ -243,11 +244,11 @@ product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Da
 product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,10,15), quantity: 15, remaining_quantity: 10, lot_number: "200416")
 product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,20), quantity: 10, remaining_quantity: 8, lot_number: "200417")
 product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,7,20), quantity: 10, remaining_quantity: 8, lot_number: "200418")
-product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,5,1), quantity: 600, remaining_quantity: 6, lot_number: "200419")
-product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,5,1), quantity: 700, remaining_quantity: 7, lot_number: "200420")
-product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,5,10), quantity: 800, remaining_quantity: 8, lot_number: "200421")
-product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,4,23), quantity: 10, remaining_quantity: 9, lot_number: "200422")
-product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,5,10), quantity: 8, remaining_quantity: 6, lot_number: "200423")
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,1), quantity: 6, remaining_quantity: 6, lot_number: "200419")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,1), quantity: 7, remaining_quantity: 7, lot_number: "200420")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,4,27), quantity: 8, remaining_quantity: 8, lot_number: "200421")
+product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 9, lot_number: "200422")
+product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "200423")
 
 # 7 - create "order_line_product_lots" pour les 4 premiers produits
 order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
