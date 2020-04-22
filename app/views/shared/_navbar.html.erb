@@ -18,29 +18,29 @@
 
       <li>
         <%= link_to orders_path, class: " #{'active' if controller_name == 'orders'} " do %>
-        <%= image_tag "task-list-approve.svg"%>
-        <span>COMMANDES</span>
+          <%= image_tag "task-list-approve.svg"%>
+          <span>COMMANDES</span>
         <% end %>
       </li>
 
       <li>
         <%= link_to clients_path, class: " #{'active' if controller_name == 'clients'} " do %>
-        <%= image_tag "multiple-neutral-2.svg"%>
-        <span>CLIENTS</span>
+          <%= image_tag "multiple-neutral-2.svg"%>
+          <span>CLIENTS</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to dashboard_path do %> <!-- Should change eventually -->
+          <%= image_tag "pictostat.svg"%>
+          <span>STATISTIQUES</span>
         <% end %>
       </li>
 
       <li>
         <%= link_to dashboard_path do %>
-        <%= image_tag "analytics-graph-bar.svg"%>
-        <span>STATISTIQUES</span>
-        <% end %>
-      </li>
-
-      <li>
-        <%= link_to dashboard_path do %>
-        <%= image_tag "cog.svg"%>
-        <span>PARAMÈTRES</span>
+          <%= image_tag "cog.svg"%>
+          <span>PARAMÈTRES</span>
         <% end %>
       </li>
     </ul>
@@ -48,10 +48,14 @@
     <ul class="list-inline navbar-picto">
       <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= image_tag "logout-2.svg"%>
+          <%= image_tag "logout-2.svg"%>
         <% end %>
       </li>
     </ul>
-    <div class="navbar-logo"> <%= image_tag "Logo-Hadenn-white.png"%></div>
+    <div class="navbar-logo">
+      <%= link_to root_path do %>
+        <%= image_tag "Logo-Hadenn-white.png"%>
+      <% end %>
+      </div>
   </div>
 </div>
