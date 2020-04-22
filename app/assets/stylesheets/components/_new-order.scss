@@ -1,5 +1,6 @@
 .new-order {
   margin-top: 72px;
+  width: 750px;
   .new-order-title {
     text-align: center;
     padding-top: 10px;
@@ -12,14 +13,17 @@
   .order-line {
     .form-inline {
       justify-content: left;
+      width: 750px;
       .product-input {
-        width: 500px;
+        width: 400px;
         margin-bottom: 20px;
-        margin-right: 30px;
+        margin-right: 10px;
         border-radius: 5px;
       }
 
       .quantity-input {
+        flex-grow:1;
+        width: 150px;
         margin-bottom: 20px;
         border-radius: 5px;
       }
@@ -34,7 +38,7 @@
           margin-bottom: 0;
         }
         & img {
-          margin: 0 5px 0 25px;
+          margin: 0 5px 0 15px;
           height: 18px;
           width: 18px;
         }
@@ -49,6 +53,8 @@
     border-radius: 5px;
     color: white;
     margin-top: 50px;
+    letter-spacing: 0.1em;
+    padding: 10px 0;
     &:hover {
       background-color: $green_dark;
     }

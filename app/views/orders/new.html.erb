@@ -16,8 +16,8 @@
           <% end %>
         </div>
       </div>
-      <%= ff.input :payment_method, as: :radio_buttons, collection: [ "Monnaie", "Carte bancaire", "Chèque"], label: 'Paiement :', wrapper: :vertical_collection_inline %>
-      <%= ff.submit class: 'btn btn-lg btn-block submit-btn' %>
+      <%= ff.input :payment_method, as: :radio_buttons, collection: [ "Espèces", "Carte bancaire", "Chèque"], label: 'Paiement :', wrapper: :vertical_collection_inline %>
+      <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
     <% end %>
   </div>
 </div>
