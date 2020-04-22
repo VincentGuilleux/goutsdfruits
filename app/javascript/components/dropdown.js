@@ -1,15 +1,12 @@
+// Les 3 méthodes ci-dessous écoutent les clicks sur chacun des 3 dropdown menus et renvoient la valeur cliquée
 const dropdownFruit = () => {
   const fruit = document.getElementById("DropdownFruit");
 
   fruit.addEventListener("click", (event) => {
-
-    const product_fruit_value = (event.target.dataset.name)
-    const product_fruit = document.getElementById("product_fruit");
-    product_fruit.innerText = product_fruit_value
-    url_path();
-    // const url = window.location.origin + window.location.pathname + "?fruit=" + product_fruit
-    // window.location.href = url;
-    // +  "?category=" + product_category.innerText
+    const product_fruit_value = (event.target.dataset.name) // récupère le fruit sur lequel l'utilisateur a cliqué
+    const product_fruit = document.getElementById("product_fruit"); // on target ici l'id du champ fruit
+    product_fruit.innerText = product_fruit_value // on assigne au champ ci-dessus le nom du fruit sur lequel l'utilisateur a cliqué afin de mettre à jour l'HTML
+    url_path(); // appel à la fonction plus qui construit l'URL de recherche
   });
 };
 
@@ -32,10 +29,6 @@ const dropdownType = () => {
     const product_type = document.getElementById("product_type");
     product_type.innerText = product_type_value
     url_path();
-  // type.addEventListener("click", (event) => {
-  //   const targetType = (event.target.dataset.name)
-  //   const url = window.location.origin + window.location.pathname + "?type=" + targetType
-  //   window.location.href = url;
   });
 };
 

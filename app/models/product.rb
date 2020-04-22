@@ -12,8 +12,13 @@ class Product < ApplicationRecord
     return total_remaining_quantity
   end
 
+  # les méthodes ci-dessous permettent de mapper pour chaque produit son product_type. Les doublons sont ensuite éliminés grâce au .uniq.
+  # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
+  # LEFT TO DO: GERER LE CAPITALIZE POUR AVOIR LES CHAMPS CAPITALIZES EN VISU map(&:capitalize)
+
   def self.types
     Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
+    raise
   end
 
   def self.categories
