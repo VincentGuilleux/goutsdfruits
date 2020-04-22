@@ -75,28 +75,31 @@
 .order-index-name {
   font-weight: 700;
   font-size: 16px;
-
+  color: $grey_dark
 }
-// order-card-header-bottom-part {
-//     display:flex;
-//     align-items: center;
-//     justify-content: space-between;
-//     padding: 13px 18px 13px 18px;
-//   }
-//   h1 {
-//     font-weight: 700;
-//     font-size: 16px;
-//     margin-bottom: 13px;
-//   }
-//   .price-font {
-//     color: $green;
-//   }
-//   .name-font {
-//     color: $grey_dark;
-//   }
-//   p {
-//     font-size: 10px;
-//     font-weight: bold;
-//     color: $grey_medium;
-//   }
-// }
+
+.orga-card{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:8px;
+}
+
+.bottom-right-dash {
+  justify-self:center
+}
+
+.order-lines {
+  display:grid;
+  grid-template-columns: 1fr;
+}
+
+.order-line.order-index-bottom {
+  display:grid;
+  grid-template-columns: 7fr 2fr 1fr;
+}
+
+.index-total-price{
+  font-size: 20px;
+  color: $grey_dark;
+  font-weight: 900;
+}

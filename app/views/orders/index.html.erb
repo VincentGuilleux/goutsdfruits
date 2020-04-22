@@ -99,24 +99,30 @@
 
       <div class="collapse" id="order-<%=order.id %>">
         <div class="card card-body order-card-collapsed-dashboard mg20">
-          <div class="order-lines-dashboard">
+          <div class="order-lines-dashboard orga-card">
+            <div class="order-lines">
             <% order.order_lines.each do |order_line| %>
-              <div class="order-line">
-                <p class="product-name"><%= order_line.product.name %></p>
-                <div class="price">
-                  <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
-                  <div class="separation"></div>
-                  <p class="total-price"><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </p>
+
+                <div class="order-index-bottom order-line">
+                    <p class="product-name"><%= order_line.product.name %></p>
+
+                    <div class="price">
+                      <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
+                    </div>
+                      <p class="index-total-price "><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </p>
                 </div>
-              </div>
+
+
             <% end %>
-          </div>
-          <div class="order-address-dashboard">
-            <p class="name"><%= order.client.first_name %> <%= order.client.last_name %></p>
-            <div class="line-address"></div>
-            <p class="address"><%= order.client.address %></p>
-            <p class="address"><%= order.client.post_code %> <%= order.client.city %></p>
-          </div>
+            </div>
+
+              <div class="order-address-dashboard bottom-right-dash">
+                <p class="name"><%= order.client.first_name %> <%= order.client.last_name %></p>
+                <div class="line-address"></div>
+                <p class="address"><%= order.client.address %></p>
+                <p class="address"><%= order.client.post_code %> <%= order.client.city %></p>
+              </div>
+
         </div>
       </div>
     </div>
