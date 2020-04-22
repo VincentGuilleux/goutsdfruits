@@ -41,7 +41,7 @@
 
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
 .small-text {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .small-text-bold {
@@ -63,15 +63,23 @@
   font-size: 16px;
 }
 
-.big-text-semi-bold {
+.big-text-semi-bold { // non coherent name to change
   font-size: 16px;
   font-weight: 600;
+}
+
+.semi-big-text {
+  font-size: 18px;
 }
 
 .big-text-bold {
   font-size: 20px;
   font-weight: 800;
   line-height: 20px;
+}
+
+.light-bold {
+font-weight: 300;
 }
 
 .semi-bold {
