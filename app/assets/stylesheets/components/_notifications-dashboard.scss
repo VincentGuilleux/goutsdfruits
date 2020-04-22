@@ -1,0 +1,39 @@
+.notification-card-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 10px;
+}
+
+.notification-card {
+  height: 56px;
+  display: flex;
+  border-radius: 5px;
+}
+
+.notification-card-infos {
+  display: flex;
+  flex-direction: column;
+  height:100%;
+  width:100%;
+  padding: 5px 0px 20px 20px;
+  margin: 0px;
+  p {
+  margin-bottom: 5px;
+  }
+}
+
+.background-red-alert {
+  background-color: $red_alert;
+}
+
+.background-yellow-alert {
+  background-color: $yellow_alert;
+}
+
+.alert-icons {
+  font-size: 27px;
+  margin-left: 10px;
+  align-self: center;
+  background: rgba(255, 255, 255, 0.5);
+}

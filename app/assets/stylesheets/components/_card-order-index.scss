@@ -1,0 +1,105 @@
+ // child of _card-order.scss
+
+.date-page-order-index {
+  background-color: $white_smoke;
+  display: flex;
+  align-items: center;
+  margin:30px;
+  & img {
+    height: 24px;
+    width: 24px;
+    margin-right: 18px;
+  }
+  p {
+    font-size: 14px;
+    color: $green_light;
+    margin-bottom: 0;
+  }
+}
+
+.header-order-index{
+  background-color: $white_smoke;
+  display: flex;
+  .add-order a {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 40px;
+    outline: 0;
+    p {
+      font-size: 11px;
+      font-weight: bold;
+      color: $blue;
+    }
+    & img {
+      margin-left: 4px;
+      height: 18px;
+      width: 18px;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}
+
+
+.order-index {
+  background-color: $white;
+  border-radius: 10px;
+  margin: 20px 40px 10px 40px;
+  h2{
+    margin:0;
+  }
+}
+
+.divr {
+  border: 1px red solid;
+}
+
+.mg20 {
+  margin:0 20px 20px 20px ;
+}
+
+.font-price-order-index {
+  font-size: 16px;
+  font-weight: bold;
+  color: $green;
+  margin-top: 5px;
+  margin-right: 25px;
+
+}
+
+.widthpicto {
+  width: 200px;
+}
+
+.order-index-name {
+  font-weight: 700;
+  font-size: 16px;
+  color: $grey_dark
+}
+
+.orga-card{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap:8px;
+}
+
+.bottom-right-dash {
+  justify-self:center
+}
+
+.order-lines {
+  display:grid;
+  grid-template-columns: 1fr;
+}
+
+.order-line.order-index-bottom {
+  display:grid;
+  grid-template-columns: 7fr 2fr 1fr;
+}
+
+.index-total-price{
+  font-size: 20px;
+  color: $grey_dark;
+  font-weight: 900;
+}
