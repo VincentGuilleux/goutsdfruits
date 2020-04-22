@@ -30,6 +30,7 @@ import flatpickr from "flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownCategory, dropdownType } from '../components/dropdown';
+import { InitChart } from '../components/initchart';
 
 document.addEventListener('turbolinks:load', () => {
   $("[data-form-prepend]").click(function(e) {
@@ -46,10 +47,17 @@ document.addEventListener('turbolinks:load', () => {
     return false;
   });
 
+  $(document).ready(function(){
+    $(".payment-choice").click(function(){
+      $(this).toggleClass("active");
+    });
+  });
+
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();
   dropdownType();
+  InitChart();
 });
 
 

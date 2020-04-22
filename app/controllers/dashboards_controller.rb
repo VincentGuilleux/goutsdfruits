@@ -11,7 +11,8 @@ class DashboardsController < ApplicationController
      # l'intérêt d'un scope par rapport à une méthode de Classe c'est que cela fonctionne un peu comme une méthode ActiveRecord on peut donc y chaîner d'autres requêtes SQL ou méthodes.
 
   def show
-    @orders = Order.order(date: :desc).includes(:client, :order_lines, :products)
+    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+    @top_products = Product.joins(:order_lines).select("products.*, SUM(order_lines.quantity) AS total_quantity").order(total_quantity: :desc).group("products.id").limit(3)
   end
 
   def products_total_value
@@ -44,6 +45,9 @@ class DashboardsController < ApplicationController
   # Vérifier si cette valeur est inférieure à un critère donné
   # Renvoyer la liste de tous les produits concernés
     @products = Product.all
+    @products = @products.sort_by do |product|
+        product.total_remaining_quantity
+      end
     low_stock_trigger = 6 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
     @products.each do |product|

@@ -1,3 +1,2 @@
-<%= f.association :product, placeholder: "Produit", label: false  %>
-<%= f.input :quantity, placeholder: "quantité", label: false  %>
-
+<%= f.association :product, as: :select, placeholder: "Produit", input_html: { class: 'product-input'}, label: false, prompt: "Quel produit ?" %>
+<%= f.input :quantity, label: false, input_html: { class: 'quantity-input'}, placeholder: "Combien ?" %>

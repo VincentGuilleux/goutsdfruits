@@ -1,19 +1,25 @@
-<h1 class="page-title pb-2">Statistiques</h1>
+<h1 class="page-title pb-2">Ventes</h1>
 
 <div class="stats-data-card-grid">
 
   <div class="stats-data-card">
     <div class="stats-data-infos">
-      <p class="big-text-semi-bold grey-light text-center">Produits phares</p>
-      <%= image_tag('produitsphares.png') %>
+      <% @top_products.each do |top_product| %>
+      <div class="card-best-product">
+        <%= cl_image_tag top_product.photo.key%>
+        <p class="mb-0"> <%= top_product.name %></p>
+        <span> <%= top_product.total_quantity %></span>
+       </div>
+       <% end %>
     </div>
   </div>
 
   <div class="stats-data-card" >
     <div class="stats-data-infos">
-      <p class="big-text-semi-bold grey-light text-center">Ventes</p>
-      <%= image_tag('graphsales.png') %>
+      <!-- <canvas id="vente_chart"> </canvas> -->
     </div>
   </div>
 
 </div>
+
+

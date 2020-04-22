@@ -1,6 +1,7 @@
 // Les 3 méthodes ci-dessous écoutent les clicks sur chacun des 3 dropdown menus et renvoient la valeur cliquée
 const dropdownFruit = () => {
   const fruit = document.getElementById("DropdownFruit");
+  if (!fruit) return
 
   fruit.addEventListener("click", (event) => {
     const product_fruit_value = (event.target.dataset.name) // récupère le fruit sur lequel l'utilisateur a cliqué
@@ -12,6 +13,7 @@ const dropdownFruit = () => {
 
 const dropdownCategory = () => {
   const category = document.getElementById("DropdownCategory");
+  if (!category) return
 
   category.addEventListener("click", (event) => {
     const product_category_value = (event.target.dataset.name)
@@ -23,6 +25,7 @@ const dropdownCategory = () => {
 
 const dropdownType = () => {
   const type = document.getElementById("DropdownType");
+  if (!type) return
 
   type.addEventListener("click", (event) => {
     const product_type_value = (event.target.dataset.name)

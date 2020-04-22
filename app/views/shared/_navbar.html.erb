@@ -32,23 +32,26 @@
 
       <li>
         <%= link_to dashboard_path do %>
-        <%= image_tag "analytics-pie.svg"%>
-        <span>STATISTIQUES</span></li>
+        <%= image_tag "analytics-graph-bar.svg"%>
+        <span>STATISTIQUES</span>
         <% end %>
+      </li>
 
       <li>
         <%= link_to dashboard_path do %>
         <%= image_tag "cog.svg"%>
-        <span>PARAMÈTRES</span></li>
+        <span>PARAMÈTRES</span>
         <% end %>
+      </li>
     </ul>
   <div>
     <ul class="list-inline navbar-picto">
-      <li >
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= image_tag "logout-2.svg"%></li>
+        <%= image_tag "logout-2.svg"%>
         <% end %>
+      </li>
     </ul>
-    <div class="navbar-logo"> <%= image_tag "Farm-manager-logo-white.png"%></div>
+    <div class="navbar-logo"> <%= image_tag "Logo-Hadenn-white.png"%></div>
   </div>
 </div>
