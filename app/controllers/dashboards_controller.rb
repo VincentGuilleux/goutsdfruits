@@ -12,6 +12,7 @@ class DashboardsController < ApplicationController
 
   def show
     @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+    @top_products = Product.joins(:order_lines).select("products.*, SUM(order_lines.quantity) AS total_quantity").order(total_quantity: :desc).group("products.id").limit(3)
   end
 
   def products_total_value

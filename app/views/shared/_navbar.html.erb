@@ -32,22 +32,30 @@
 
       <li>
         <%= link_to dashboard_path do %>
+<<<<<<< HEAD
         <%= image_tag "analytics-pie-2.svg"%>
         <span>STATISTIQUES</span></li>
+=======
+        <%= image_tag "analytics-pie.svg"%>
+        <span>STATISTIQUES</span>
+>>>>>>> b0c44826ce31aa5e857287477837e65d679ba015
         <% end %>
+      </li>
 
       <li>
         <%= link_to dashboard_path do %>
         <%= image_tag "cog.svg"%>
-        <span>PARAMÈTRES</span></li>
+        <span>PARAMÈTRES</span>
         <% end %>
+      </li>
     </ul>
   <div>
     <ul class="list-inline navbar-picto">
-      <li >
+      <li>
         <%= link_to destroy_user_session_path, method: :delete do %>
-        <%= image_tag "logout-2.svg"%></li>
+        <%= image_tag "logout-2.svg"%>
         <% end %>
+      </li>
     </ul>
     <div class="navbar-logo"> <%= image_tag "Farm-manager-logo-white.png"%></div>
   </div>
