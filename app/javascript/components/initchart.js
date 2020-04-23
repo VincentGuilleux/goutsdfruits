@@ -38,7 +38,7 @@ export const InitChart = () => {
           },
           {
             label: '2020',
-            borderColor: 'rgb(255, 255, 132)',
+            borderColor: 'rgb(118, 190, 208)',
             data: [0, 4, 8, 3],
             fill: false,
             lineTension: 0
