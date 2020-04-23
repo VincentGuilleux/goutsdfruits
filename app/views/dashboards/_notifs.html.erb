@@ -1,7 +1,7 @@
 <div class="notification-card-grid">
 
   <div class="notification-card background-red-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(low_stock) %>'">
-    <i class="fas fa-exclamation-circle alert-icons bold white"></i>
+    <i class="fas fa-exclamation alert-icons bold white"></i>
 
     <%# low_stock.each do |low_stock|  %>
     <!-- pour l'instant la méthode low_stock ne récupère que le 1er item de l'array (return low_stock_list.first) donc pas besoin d'itérer, une seul carte de notification pour stock bas est générée) -->
@@ -20,7 +20,7 @@
   </div>
 
   <div class="notification-card background-yellow-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(old_stock.product) %>'" >
-    <i class="fas fa-exclamation-circle alert-icons bold white"></i>
+    <i class="fas fa-exclamation alert-icons bold white"></i>
 
     <div class="notification-card-infos background-yellow-alert">
       <p class="middle-text bold white"><%= old_stock.product.name %></p>
