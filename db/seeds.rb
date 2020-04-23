@@ -229,7 +229,7 @@ puts "order_line done"
 
 # 6 - create "product_lots"
 # création d'un lot pour chaque produit en stock
-product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,8,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
+product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
 product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 15, remaining_quantity: 10, lot_number: "20042")
 product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,8,20), quantity: 10, remaining_quantity: 8, lot_number: "20043")
 product_lot3bis = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,21) ,expiry_date: Date.new(2020,8,21), quantity: 4, remaining_quantity: 4, lot_number: "20043")
@@ -238,7 +238,7 @@ product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: D
 
 #lot avec stock faible
 product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 4, lot_number: "20045")
-product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 2, lot_number: "20046")
+product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2021,2,25), quantity: 50, remaining_quantity: 8, lot_number: "20046")
 
 #lot avec date de préremption inf à 15 jrs
 product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,4,30), quantity: 50, remaining_quantity: 10, lot_number: "20047")
@@ -248,7 +248,7 @@ puts "product_lot done"
 #lot pour les produits 9 à 23
 product_lot9 = ProductLot.create!(product_id: product9.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20049")
 product_lot10 = ProductLot.create!(product_id: product10.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,9,15), quantity: 15, remaining_quantity: 10, lot_number: "200410")
-product_lot11 = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,9,20), quantity: 10, remaining_quantity: 8, lot_number: "200411")
+product_lot11 = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2019,4,30) ,expiry_date: Date.new(2020,4,30), quantity: 10, remaining_quantity: 2, lot_number: "200411")
 product_lot12 = ProductLot.create!(product_id: product12.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,6,1), quantity: 50, remaining_quantity: 45, lot_number: "200412")
 product_lot13 = ProductLot.create!(product_id: product13.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,9,15), quantity: 15, remaining_quantity: 10, lot_number: "200413")
 product_lot14 = ProductLot.create!(product_id: product14.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 8, lot_number: "200414")
@@ -256,9 +256,9 @@ product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Da
 product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,10,15), quantity: 15, remaining_quantity: 10, lot_number: "200416")
 product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,5,20), quantity: 10, remaining_quantity: 8, lot_number: "200417")
 product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,7,20), quantity: 10, remaining_quantity: 8, lot_number: "200418")
-product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,1), quantity: 6, remaining_quantity: 6, lot_number: "200419")
-product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,1), quantity: 7, remaining_quantity: 7, lot_number: "200420")
-product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,4,27), quantity: 8, remaining_quantity: 8, lot_number: "200421")
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,21), quantity: 6, remaining_quantity: 6, lot_number: "200419")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,21), quantity: 7, remaining_quantity: 7, lot_number: "200420")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,5,21), quantity: 8, remaining_quantity: 8, lot_number: "200421")
 product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 9, lot_number: "200422")
 product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "200423")
 
