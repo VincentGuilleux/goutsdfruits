@@ -242,7 +242,7 @@ product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date
 
 #lot avec date de préremption inf à 15 jrs
 product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,7,30), quantity: 50, remaining_quantity: 10, lot_number: "20048")
-product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,1,31) ,expiry_date: Date.new(2020,5,2), quantity: 50, remaining_quantity: 5, lot_number: "20049")
+product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,1,31) ,expiry_date: Date.new(2020,5,31), quantity: 50, remaining_quantity: 5, lot_number: "20049")
 puts "product_lot done"
 
 #lot pour les produits 9 à 23
