@@ -1,6 +1,6 @@
 class DashboardsController < ApplicationController
 
-  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :low_stock, :old_stock
+  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :lowest_stock, :oldest_stock
   # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
     # Par exemple pour orders_number_current_month à reclasser dans Order model
       #   scope :for_current_month, -> do
@@ -40,7 +40,7 @@ class DashboardsController < ApplicationController
 
   # Methods used for notifications
 
-  def low_stock # A refactoriser via méthode SQL, on peut faire beaucoup plus court
+  def lowest_stock # A refactoriser via méthode SQL, on peut faire beaucoup plus court
   # Pour chaque produit récupérer la remaining quantity
   # Vérifier si cette valeur est inférieure à un critère donné
   # Renvoyer la liste de tous les produits concernés
@@ -48,18 +48,18 @@ class DashboardsController < ApplicationController
     @products = @products.sort_by do |product|
         product.total_remaining_quantity
       end
-    low_stock_trigger = 6 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
+    low_stock_trigger = 3 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
     @products.each do |product|
        if product.total_remaining_quantity < low_stock_trigger
        low_stock_list << product
        end
     end
-    return low_stock_list.first # Pour l'instant on ne renvoit qu'un item de cet array
+    return low_stock_list.first # Pour l'instant on ne renvoit qu'un item pour qu'on ait une seule notif pour stock bas
   end
 
-  def old_stock
-    expiry_date_trigger = Date.today + 15 # Trigger fixe pour l'instant à J+15
+  def oldest_stock
+    expiry_date_trigger = Date.today + 10 # Trigger fixe pour l'instant à J+10
     # old_stock_list = Array.new
     old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).order(:expiry_date) # renvoit un array des product_lots répondant aux cond° ci-dessus et trié par date d'expiration
     # old_product_lots.each do |old_product_lot|
@@ -67,7 +67,7 @@ class DashboardsController < ApplicationController
     #   old_product = Product.find(old_product_lot.product_id)
     #   old_stock_list << old_product # crée un array de tous les produits satisfaisant à la cond° d'ancienneté
     # end
-    oldest_product = old_product_lots.first # Pour l'instant on ne renvoit qu'un item
+    oldest_product = old_product_lots.first # Pour l'instant ne renvoit qu'un item pour qu'on ait une seule notif pour stock ancien
   end
 
 
