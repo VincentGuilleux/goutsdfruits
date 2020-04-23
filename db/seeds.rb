@@ -238,10 +238,10 @@ product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: D
 
 #lot avec stock faible
 product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 4, lot_number: "20045")
-product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2021,2,25), quantity: 50, remaining_quantity: 8, lot_number: "20046")
+product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2021,2,25), quantity: 50, remaining_quantity: 2, lot_number: "20046")
 
 #lot avec date de préremption inf à 15 jrs
-product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,4,30), quantity: 50, remaining_quantity: 10, lot_number: "20047")
+product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,7,30), quantity: 50, remaining_quantity: 10, lot_number: "20047")
 product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,1,31) ,expiry_date: Date.new(2020,5,2), quantity: 50, remaining_quantity: 5, lot_number: "20048")
 puts "product_lot done"
 

@@ -55,7 +55,7 @@ class DashboardsController < ApplicationController
        low_stock_list << product
        end
     end
-    return low_stock_list.first # Pour l'instant on ne renvoit qu'un item de cet array
+    return low_stock_list.first # Pour l'instant on ne renvoit qu'un item pour qu'on ait une seule notif pour stock bas
   end
 
   def oldest_stock
@@ -67,7 +67,7 @@ class DashboardsController < ApplicationController
     #   old_product = Product.find(old_product_lot.product_id)
     #   old_stock_list << old_product # crée un array de tous les produits satisfaisant à la cond° d'ancienneté
     # end
-    oldest_product = old_product_lots.first # Pour l'instant on ne renvoit qu'un item
+    oldest_product = old_product_lots.first # Pour l'instant ne renvoit qu'un item pour qu'on ait une seule notif pour stock ancien
   end
 
 
