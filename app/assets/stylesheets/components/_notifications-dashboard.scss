@@ -3,6 +3,7 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-column-gap: 10px;
+  padding-top: 12px; // to be aligned with calendar on the left
 }
 
 .notification-card {
