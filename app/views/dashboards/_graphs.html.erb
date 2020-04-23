@@ -4,7 +4,7 @@
 </div>
 <div class="stats-data-card-grid">
   <div class="stats-data-card">
-    <div class="stats-data-infos">
+    <div class="stats-data-infos top-products">
       <% @top_products.each do |top_product| %>
       <div class="card-best-product">
         <%= cl_image_tag top_product.photo.key%>
@@ -16,8 +16,8 @@
   </div>
 
   <div class="stats-data-card" >
-    <div class="stats-data-infos">
-      <!-- <canvas id="vente_chart"> </canvas> -->
+    <div class="stats-data-infos graph" id="chartContainer">
+      <!-- <canvas id="vente_chart"> </canvas> --> <!-- Inserted with JS (initchart.js) -->
     </div>
   </div>
 

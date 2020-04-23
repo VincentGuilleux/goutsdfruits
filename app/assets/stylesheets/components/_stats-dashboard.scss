@@ -27,8 +27,19 @@
   justify-content: center;
   align-items: center;
   flex-direction: column; // makes the 2 items listed on a column instead of a row (default)
-  height:100%;
-  width:100%;
+
+  &.top-products {
+    height:100%;
+    width:100%;
+  }
+
+  &.graph {
+    position: relative;
+    overflow: hidden;
+    padding-right:0px;
+    width: 495px;
+    height: 382.5px;
+  }
 }
 
 .card-best-product {
