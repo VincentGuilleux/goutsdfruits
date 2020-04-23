@@ -1,20 +1,21 @@
-<div class="container">
-  <div class="card-product-show">
-    <div class="card-product-show-img">
-      <%= cl_image_tag @product.photo.key%>
-    </div>
-  <div class="card-product-show-infos">
-
-    <div class="card-product-show-header">
-      <span class="product-show-category"><%= @product.product_category.capitalize%></span>
-      <div class="card-product-show-title">
-        <h1 class="page-title"><%=@product.name.capitalize%></h1>
-        <span class="card-product-show-price">
-          <%= (@product.unit_price_cents/100).to_i %> €
-          <sup>/ <%= @product.unit_type %> </sup></span>
+<div class="main-container-show">
+  <div class="container">
+    <div class="card-product-show">
+      <div class="card-product-show-img">
+        <%= cl_image_tag @product.photo.key%>
       </div>
-      <p class="product-show-description pt-3"><%= @product.description%></p>
-    </div>
+    <div class="card-product-show-infos">
+      
+       <div class="card-product-show-header">
+        <span class="product-show-category"><%= @product.product_category.capitalize%></span>
+        <div class="card-product-show-title">
+          <h1 class="page-title"><%=@product.name.capitalize%></h1>
+          <span class="card-product-show-price">
+            <%= (@product.unit_price_cents/100).to_i %> €
+            <sup>/ <%= @product.unit_type %> </sup></span>
+        </div>
+        <p class="product-show-description pt-3"><%= @product.description%></p>
+      </div>
 
     <div class="card-product-stock">
       <table class="table">
@@ -45,11 +46,11 @@
               <td><%=l(product_lot.expiry_date, format: :long) %></td>
               <td style="padding-left: 45px;"><%= product_lot.remaining_quantity %></td>
               <td></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    </div>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 
     <div class="card-product-show-footer">
       <span class="card-product-total-stock">Stock total</span>
@@ -57,7 +58,8 @@
         <%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
     </div>
 
-  </div>
+    </div>
 
+    </div>
   </div>
 </div>

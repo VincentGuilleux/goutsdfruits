@@ -1,3 +1,9 @@
+.main-container-show {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .product-show-category {
   color: $blue;
   font-weight: 600;
@@ -22,7 +28,6 @@
   background-color: $white;
   display: flex;
   border-radius: 5px;
-  margin-top: 120px;
 }
 
 .card-product-show-img img{

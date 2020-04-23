@@ -1,60 +1,76 @@
-<div class="container new-order">
-  <div class="new-order-title page-title">
-    <p>Nouvelle commande</p>
-  </div>
-  <div class="container">
-    <%= simple_form_for @order, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |ff| %>
-      <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input' }, label: false, prompt: "Sélectionner un client" %>
-      <p class>Ajouter des produits</p>
-      <div class="order-line">
-        <div class="form-inline">
-          <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
-            <%= render 'order_line_fields', f: f %>
-            <%= link_to_add_fields ff, :order_lines do %>
-              <%= image_tag "add-circle.svg" %>
+<div class="new-order-main-container" >
+  <div class="container new-order">
+    <div class="new-order-title page-title">
+      <p>Nouvelle commande</p>
+    </div>
+    <div class="container">
+      <%= simple_form_for @order, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |ff| %>
+        <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input' }, label: false, prompt: "Sélectionner un client" %>
+        <p class>Ajouter des produits</p>
+        <div class="order-line">
+          <div class="form-inline">
+            <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
+              <%= render 'order_line_fields', f: f %>
+              <%= link_to_add_fields ff, :order_lines do %>
+                <%= image_tag "add-circle.svg" %>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-      </div>
-      <fieldset class="form-group">
-        <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
-        <input type="hidden" name="order[payment_method][]" value="">
-        <div class="payment-choices">
-          <div class="payment-choice">
-            <label for="order_payment_method_espèces">
-              <i class="fas fa-piggy-bank"></i>
-              <p>Espèces</p>
-            </label>
-            <input type="checkbox" class="hidden", value="Espèces" name="order[payment_method][]" id="order_payment_method_espèces">
-          </div>
-          <div class="payment-choice">
-            <label for="order_payment_method_carte_bancaire">
-              <i class="fab fa-cc-visa"></i>
-              <p>Carte</p>
-            </label>
-            <input class="hidden" type="checkbox" value="Carte bancaire" name="order[payment_method][]" id="order_payment_method_carte_bancaire">
-          </div>
-          <div class="payment-choice">
-            <label for="order_payment_method_paypal">
-              <i class="fab fa-paypal"></i>
-              <p>Paypal</p>
-            </label>
-            <input class="hidden" type="checkbox" value="Paypal" name="order[payment_method][]" id="order_payment_method_paypal">
-          </div>
-          <div class="payment-choice">
-            <label for="order_payment_method_chèque">
-              <i class="fas fa-money-check"></i>
-              <p>Chèque</p>
-            </label>
-            <input class="hidden" type="checkbox" value="Chèque" name="order[payment_method][]" id="order_payment_method_chèque">
           </div>
         </div>
-      </fieldset>
-      <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
-    <% end %>
+        <fieldset class="form-group radio_buttons optional order_payment_method">
+          <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
+          <input type="hidden" name="order[payment_method]" value="">
+          <div class="payment-choices">
+            <div class="payment-choice form-check">
+              <label for="order_payment_method_espèces">
+                <i class="fas fa-piggy-bank"></i>
+                <p>Espèces</p>
+              </label>
+
+              <input type="radio" class="form-check-input radio_buttons optional hidden", value="especes" name="order[payment_method]" id="order_payment_method_especes">
+
+            </div>
+            <div class="payment-choice form-check">
+              <label for="order_payment_method_carte_bancaire">
+                <i class="fab fa-cc-visa"></i>
+                <p>Carte</p>
+              </label>
+              <input class="form-check-input radio_buttons optional hidden" type="radio" value="carte" name="order[payment_method]" id="order_payment_method_carte">
+            </div>
+            <div class="payment-choice form-check">
+              <label for="order_payment_method_paypal">
+                <i class="fab fa-paypal"></i>
+                <p>Paypal</p>
+              </label>
+              <input class="form-check-input radio_buttons optional hidden" type="radio" value="paypal" name="order[payment_method]" id="order_payment_method_paypal">
+            </div>
+            <div class="payment-choice form-check">
+              <label for="order_payment_method_chèque">
+                <i class="fas fa-money-check"></i>
+                <p>Chèque</p>
+              </label>
+              <input class="form-check-input radio_buttons optional hidden" type="radio" value="cheque" name="order[payment_method]" id="order_payment_method_cheque">
+            </div>
+          </div>
+        </fieldset>
+        <%#= ff.input :payment_method, as: :radio_buttons, collection: ["cheque", "cash"]%>
+        <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
+      <% end %>
+    </div>
   </div>
 </div>
 
-<!-- <label class="checkbox">
-  <input type="checkbox" value="valueofcheckbox" checked="checked" style="opacity:0; position:absolute; left:9999px;">Option Text</label>
- -->
+<fieldset class="form-group radio_buttons optional order_payment_method">
+  <legend class="col-form-label pt-0">Payment method</legend>
+  <input type="hidden" name="order[payment_method]" value="">
+  <div class="form-check">
+    <input class="form-check-input radio_buttons optional" type="radio" value="cheque" name="order[payment_method]" id="order_payment_method_cheque">
+    <label class="form-check-label collection_radio_buttons" for="order_payment_method_cheque">cheque</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input radio_buttons optional" type="radio" value="cash" name="order[payment_method]" id="order_payment_method_cash">
+    <label class="form-check-label collection_radio_buttons" for="order_payment_method_cash">cash</label>
+  </div>
+</fieldset>
+
+
