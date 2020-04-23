@@ -19,7 +19,7 @@
   margin-right: 10px;
   height: 36px;
   width: 36px;
-  object-fit: cover;
+  object-fit: contain; // pour éviter les problèmes de rognage d'image
   align-self: center;
 }
 
