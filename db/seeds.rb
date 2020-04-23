@@ -238,7 +238,7 @@ product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: D
 
 #lot avec stock faible
 product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 4, lot_number: "20045")
-product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 0, lot_number: "20046")
+product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,5,25), quantity: 50, remaining_quantity: 28, lot_number: "20046")
 
 #lot avec date de préremption inf à 15 jrs
 product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,4,30), quantity: 50, remaining_quantity: 10, lot_number: "20047")
