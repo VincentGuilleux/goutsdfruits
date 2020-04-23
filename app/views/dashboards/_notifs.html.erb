@@ -24,7 +24,7 @@
 
     <div class="notification-card-infos background-yellow-alert">
       <p class="middle-text bold white"><%= old_stock.product.name %></p>
-      <p class="small-text light-bold white">Date d'expiration : <%= old_stock.expiry_date.strftime("%B %d, %Y") %></p>
+      <p class="small-text light-bold white">Date d'expiration : <%= l(old_stock.expiry_date, format: :long) %></p>
     </div>
 
   </div>
