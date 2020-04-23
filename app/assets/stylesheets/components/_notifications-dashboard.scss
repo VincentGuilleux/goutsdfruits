@@ -2,7 +2,7 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 10px;
+  grid-column-gap: 32px;
   padding-top: 12px; // to be aligned with calendar on the left
 }
 
@@ -20,7 +20,7 @@
   padding: 5px 0px 20px 20px;
   margin: 0px;
   p {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   }
 }
 
