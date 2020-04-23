@@ -17,6 +17,7 @@ export const InitChart = () => {
   // container.style.width  = `${container.parentElement.clientWidth}px`;
   // container.style.height = `${container.parentElement.clientHeight}px`;
   container.innerHTML = `<canvas id="vente_chart"</canvas>`;
+  const currentMonthTurnover = container.dataset.currentMonthOrder
 
   setTimeout(() => {
     const ctx = document.getElementById('vente_chart').getContext('2d');
@@ -39,7 +40,7 @@ export const InitChart = () => {
           {
             label: '2020',
             borderColor: 'rgb(118, 190, 208)',
-            data: [50, 40, 80, 30],
+            data: [50, 40, 80, currentMonthTurnover],
             fill: false,
             lineTension: 0
           }
