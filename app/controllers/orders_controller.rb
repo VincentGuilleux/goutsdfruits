@@ -4,11 +4,11 @@ class OrdersController < ApplicationController
     if @order.status == "pending"
       @order.status = "prepared"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     else
       @order.status = "pending"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     end
   end
 
@@ -17,11 +17,11 @@ class OrdersController < ApplicationController
     if @order.status == "prepared"
       @order.status = "delivered"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     else
       @order.status = "prepared"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     end
   end
 
@@ -30,11 +30,11 @@ class OrdersController < ApplicationController
     if @order.status == "delivered"
       @order.status = "paid"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     else
       @order.status = "delivered"
       @order.save!
-      redirect_to dashboard_path
+      redirect_back(fallback_location: dashboard_path)
     end
   end
 
