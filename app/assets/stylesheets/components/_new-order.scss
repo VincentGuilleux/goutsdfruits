@@ -107,7 +107,15 @@
       color: white;
     }
     .hidden {
-      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 140px;
+      height: 100px;
+      appearance: none;
+      margin: 0;
+
+
     }
     &:hover {
       opacity: 0.6;

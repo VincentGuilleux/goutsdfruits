@@ -72,6 +72,9 @@ class OrdersController < ApplicationController
 
     @order.total_price_cents = sum
 
+    if @order.payment_method != ""
+      @order.status = "paid"
+    end
 
     if @order.save!
       generate_order_line_product_lots
@@ -84,7 +87,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, :payment_method, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, :status, order_lines_attributes: [:product_id, :quantity])
   end
 
   def generate_order_line_product_lots
