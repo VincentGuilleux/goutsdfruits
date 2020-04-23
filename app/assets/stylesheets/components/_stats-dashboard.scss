@@ -2,19 +2,19 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 60px;
+  grid-column-gap: 32px;
+  height: 90%;
 
 }
 
 .stats-data-card {
-  height: 220px;
   background-color: $white;
   display: flex;
   border-radius: 8px;
 }
 
 .stats-data-card img {
-  height: 60px;
+  height: 100%;
   width: 80px;
   border-radius: 8px 0 0 8px;
   object-fit: cover;
@@ -22,7 +22,7 @@
 }
 
 .stats-data-infos {
-  margin-left: 30px;
+  padding: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -37,7 +37,8 @@
   align-items: center;
   justify-content: space-between;
   background-color: $white_smoke;
-  width: 320px;
+  width: 100%;
+  height: 30%;
   padding-right: 12px;
   margin-top: 4px;
   margin-bottom: 4px;
