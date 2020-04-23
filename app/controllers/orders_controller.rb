@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 
   def pay
     @order = Order.find(params[:id])
-    if @order.status == "prepared"
+    if @order.status != "paid"
       @order.status = "paid"
       @order.save!
       redirect_to dashboard_path
@@ -27,7 +27,7 @@ class OrdersController < ApplicationController
 
   def deliver
     @order = Order.find(params[:id])
-    if @order.status == "paid"
+    if @order.status != "delivered"
       @order.status = "delivered"
       @order.save!
       redirect_to dashboard_path
