@@ -57,6 +57,9 @@ export const InitChart = () => {
           yAxes: [{
             gridLines: {
               drawOnChartArea: false
+            },
+            ticks: {
+               display: false
             }
           }]
         }
