@@ -10,6 +10,12 @@
   height: 56px;
   display: flex;
   border-radius: 5px;
+  padding-left: 10px;
+  &:hover {
+    opacity: 0.80;
+    transition: 200ms;
+    transform: translate(0px, -2px);
+  }
 }
 
 .notification-card-infos {
@@ -24,6 +30,21 @@
   }
 }
 
+.notif-circle {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  align-self: center;
+}
+
+.alert-icons {
+  font-size: 27px;
+  margin-left: 11px;
+  padding-top: 4px; // padding additionel pour centrer par rapport au cercle
+  align-self: center;
+}
+
 .background-red-alert {
   background-color: $red_alert;
 }
@@ -32,9 +53,4 @@
   background-color: $yellow_alert;
 }
 
-.alert-icons {
-  font-size: 27px;
-  margin-left: 10px;
-  align-self: center;
-  background: rgba(255, 255, 255, 0.5);
-}
+
