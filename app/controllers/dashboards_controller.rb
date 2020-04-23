@@ -11,7 +11,7 @@ class DashboardsController < ApplicationController
      # l'intérêt d'un scope par rapport à une méthode de Classe c'est que cela fonctionne un peu comme une méthode ActiveRecord on peut donc y chaîner d'autres requêtes SQL ou méthodes.
 
   def show
-    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products).where("status != ?", "delivered")
     @top_products = Product.joins(:order_lines).select("products.*, SUM(order_lines.quantity) AS total_quantity").order(total_quantity: :desc).group("products.id").limit(3)
   end
 

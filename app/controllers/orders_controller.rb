@@ -12,10 +12,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def deliver
+  def pay
     @order = Order.find(params[:id])
-    if @order.status == "prepared"
-      @order.status = "delivered"
+    if @order.status != "paid"
+      @order.status = "paid"
       @order.save!
       redirect_to dashboard_path
     else
@@ -25,18 +25,19 @@ class OrdersController < ApplicationController
     end
   end
 
-  def pay
+  def deliver
     @order = Order.find(params[:id])
-    if @order.status == "delivered"
-      @order.status = "paid"
+    if @order.status != "delivered"
+      @order.status = "delivered"
       @order.save!
       redirect_to dashboard_path
     else
-      @order.status = "delivered"
+      @order.status = "paid"
       @order.save!
       redirect_to dashboard_path
     end
   end
+
 
   def index
     @orders = Order.all
@@ -52,18 +53,28 @@ class OrdersController < ApplicationController
 
     @order.date = Date.today
 
+    # check for each line,
+     # if the quantity is < stock quantity
+    # if not, stop  the saving
+
+
+
+      # if necessary_quantity > order_line.product.total_remaining_quantity
+      #   flash[:alert] = "Il n'y a pas assez de stock"
+      # end
+
     sum = 0
 
     @order.order_lines.each do |order_line|
-      if order_line.quantity > order_line.product.total_remaining_quantity
-        flash[:alert] = "Il n'y a pas assez de stock"
-      end
-
       order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
       sum += order_line.total_price_cents
     end
 
     @order.total_price_cents = sum
+
+    if @order.payment_method != ""
+      @order.status = "paid"
+    end
 
     if @order.save!
       generate_order_line_product_lots
@@ -76,7 +87,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, :payment_method, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, :status, order_lines_attributes: [:product_id, :quantity])
   end
 
   def generate_order_line_product_lots
