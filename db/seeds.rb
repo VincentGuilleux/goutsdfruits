@@ -182,13 +182,17 @@ puts "product done"
 
 # 4 - Create "order" 4 status / pending / prepared / delivered / paid
 #création de commandes "completed" pour calcul statistique
-order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,14) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash")
-order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,12) ,total_price_cents: 10800 ,status:"paid", payment_method:"cash")
+order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,21) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash",created_at:"2020-04-21")
+order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_price_cents: 10800 ,status:"paid", payment_method:"cash",created_at:"2020-04-20")
 #création d'une commande avec + order_lines en attente
-order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,15) ,total_price_cents: 16200 ,status:"pending")
-order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,10) ,total_price_cents: 3200 ,status:"prepared")
-order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,8) ,total_price_cents: 3200 ,status:"delivered")
-order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,10) ,total_price_cents: 1400 ,status:"pending")
+order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23")
+order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22")
+order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18")
+order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16")
+order7 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,16) ,total_price_cents: 4500 ,status:"delivered", created_at:"2020-04-16")
+order8 = Order.create!(client_id: client9.id ,date: Date.new(2020,4,16) ,total_price_cents: 3000 ,status:"delivered", created_at:"2020-04-16")
+order9 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,16) ,total_price_cents: 5400 ,status:"delivered", created_at:"2020-04-16")
+
 puts "orders done"
 
 # 5 - Create "order_lines" pour les 6 orders plus haut
@@ -212,6 +216,14 @@ order_line10 = OrderLine.create!(order_id: order5.id ,product_id: product17.id, 
 order_line11 = OrderLine.create!(order_id: order5.id ,product_id: product18.id, quantity: 2 ,total_price_cents: 1600)
 
 order_line12 = OrderLine.create!(order_id: order6.id ,product_id: product10.id, quantity: 2 ,total_price_cents: 1400)
+
+order_line13 = OrderLine.create!(order_id: order7.id ,product_id: product10.id, quantity: 64,total_price_cents: 1400)
+order_line14 = OrderLine.create!(order_id: order8.id ,product_id: product6.id, quantity: 43,total_price_cents: 1400)
+order_line15 = OrderLine.create!(order_id: order9.id ,product_id: product15.id, quantity: 52,total_price_cents: 1400)
+
+
+
+
 puts "order_line done"
 
 
