@@ -1,15 +1,14 @@
-<div class="page-title pl60 pt40 pb20">Produits</div>
+<div class="page-title pl60 pt40 pb25">Produits</div>
 
 <!-- FILTERS DIV -->
 <div class="container-index-filters pl60">
 
   <!-- Fruit filter -->
-  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
-  <div id="product_fruit" class="middle-text grey-medium mr45 white">
+  <div id="product_fruit" class="middle-text grey-medium mr5 white">
   <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
   </div>
   <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
+    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
     <div id="DropdownFruit" class="dropdown-content">
       <% Product.fruits.each do |fruit| %>
         <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
@@ -18,12 +17,11 @@
   </div>
 
   <!-- Category filter -->
-  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
-  <div id="product_category" class="middle-text grey-medium mr45">
+  <div id="product_category" class="middle-text grey-medium mr5">
   <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
   </div>
   <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
+    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
     <div id="DropdownCategory" class="dropdown-content">
     <% Product.categories.each do |category| %>
       <a data-name="<%= category %>" href="#"><%= category %></a>
@@ -32,12 +30,11 @@
   </div>
 
   <!-- Type filter -->
-  <!-- <i class="fas fa-circle middle-text grey-medium pr10"></i> -->
-  <div id="product_type" class="middle-text grey-medium mr45">
+  <div id="product_type" class="middle-text grey-medium mr5">
   <%= if params[:type].present? then params[:type] else 'Type' end %>
   </div>
   <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr40"></i>
+    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
     <!-- <button class="dropbtn">Type</button> -->
     <div id="DropdownType" class="dropdown-content">
     <% Product.types.each do |type| %>
@@ -71,7 +68,7 @@
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
                 <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
             </p>
-            <%= link_to image_tag('pencil-write-2-grey-light.svg'), product_path(product) %>
+            <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
           </div>
         </div>
       </div>

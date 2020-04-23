@@ -2,13 +2,20 @@
   flex: 1;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 10px;
+  grid-column-gap: 32px;
+  padding-top: 12px; // to be aligned with calendar on the left
 }
 
 .notification-card {
   height: 56px;
   display: flex;
   border-radius: 5px;
+  padding-left: 10px;
+  &:hover {
+    opacity: 0.80;
+    transition: 200ms;
+    transform: translate(0px, -2px);
+  }
 }
 
 .notification-card-infos {
@@ -19,8 +26,23 @@
   padding: 5px 0px 20px 20px;
   margin: 0px;
   p {
-  margin-bottom: 5px;
+  margin-bottom: 0px;
   }
+}
+
+.notif-circle {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.5);
+  align-self: center;
+}
+
+.alert-icons {
+  font-size: 27px;
+  margin-left: 11px;
+  padding-top: 4px; // padding additionel pour centrer par rapport au cercle
+  align-self: center;
 }
 
 .background-red-alert {
@@ -31,9 +53,4 @@
   background-color: $yellow_alert;
 }
 
-.alert-icons {
-  font-size: 27px;
-  margin-left: 10px;
-  align-self: center;
-  background: rgba(255, 255, 255, 0.5);
-}
+

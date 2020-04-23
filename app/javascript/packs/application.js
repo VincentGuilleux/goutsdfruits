@@ -56,8 +56,7 @@ document.addEventListener('turbolinks:load', () => {
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();
-  dropdownType();
-  InitChart();
+  dropdownType();InitChart();
 });
 
 

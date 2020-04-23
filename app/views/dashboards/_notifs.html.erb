@@ -1,13 +1,14 @@
 <div class="notification-card-grid">
 
   <div class="notification-card background-red-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(low_stock) %>'">
-    <i class="fas fa-exclamation-circle alert-icons bold white"></i>
-
+    <div class="notif-circle">
+      <i class="fas fa-exclamation alert-icons bold white"></i>
+    </div>
     <%# low_stock.each do |low_stock|  %>
     <!-- pour l'instant la méthode low_stock ne récupère que le 1er item de l'array (return low_stock_list.first) donc pas besoin d'itérer, une seul carte de notification pour stock bas est générée) -->
     <div class="notification-card-infos">
       <p class="middle-text bold white"><%= low_stock.name %></p>
-      <p class="small-text light-bold white">
+      <p class="semi-small-text light-bold white">
         <% if low_stock.total_remaining_quantity == 0 %>
           Stock vide !
         <% else %>
@@ -20,11 +21,12 @@
   </div>
 
   <div class="notification-card background-yellow-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(old_stock.product) %>'" >
-    <i class="fas fa-exclamation-circle alert-icons bold white"></i>
-
+    <div class="notif-circle">
+      <i class="fas fa-exclamation alert-icons bold white"></i>
+    </div>
     <div class="notification-card-infos background-yellow-alert">
       <p class="middle-text bold white"><%= old_stock.product.name %></p>
-      <p class="small-text light-bold white">Date d'expiration : <%= old_stock.expiry_date.strftime("%B %d, %Y") %></p>
+      <p class="semi-small-text light-bold white">Date d'expiration : <%= l(old_stock.expiry_date, format: :long) %></p>
     </div>
 
   </div>

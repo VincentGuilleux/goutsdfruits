@@ -31,33 +31,32 @@
           <tbody class="scroll-tbody-y table-body">
             <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
             <tr>
-
-              <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'} %></td>
-              <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'production_date'} %></td>
-              <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'expiry_date'} %></td>
-              <td> <%= f.input :quantity, label: false, :input_html => {:maxlength =>6,:style=> 'width: 50px'}  %></td>
-              <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
-            <% end %>
-            </tr>
-            <% @product.product_lots.each do |product_lot|%>
-              <tr>
-                <th scope="row"><%=product_lot.lot_number%></th>
-                <td><%=product_lot.production_date%></td>
-                <td><%=product_lot.expiry_date %></td>
-                <td><%= product_lot.remaining_quantity %></td>
-                <td></td>
+              
+            <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 80px'} %></td>
+            <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'production_date'} %></td>
+            <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 180px', class: 'expiry_date'} %></td>
+            <td> <%= f.input :quantity, label: false, as: :string, :input_html => {:maxlength =>6,:style=> 'width: 70px'}  %></td>
+            <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
+          <% end %>
+          </tr>
+          <% @product.product_lots.each do |product_lot|%>
+            <tr>
+              <th scope="row"><%=product_lot.lot_number%></th>
+              <td><%=l(product_lot.production_date, format: :long)%></td>
+              <td><%=l(product_lot.expiry_date, format: :long) %></td>
+              <td><%= product_lot.remaining_quantity %></td>
+              <td></td>
               </tr>
             <% end %>
           </tbody>
         </table>
       </div>
 
-      <div class="card-product-show-footer">
-        <span class="card-product-total-stock">Stock total</span>
-        <span class="card-product-total-stock">
-          <%= @product.total_remaining_quantity %>
-          <%= @product.unit_type.pluralize(@product.total_remaining_quantity) %></span>
-      </div>
+    <div class="card-product-show-footer">
+      <span class="card-product-total-stock">Stock total</span>
+      <span class="card-product-total-stock">
+        <%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
+    </div>
 
     </div>
 

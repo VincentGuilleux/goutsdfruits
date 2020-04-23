@@ -1,10 +1,10 @@
 
-
-<div class="date-page-order-index">
+<!-- calendrier -->
+<!-- <div class="date-page-order-index">
     <%= image_tag 'calendar-3-light-green.svg' %>
     <p><%= Date.today %> </p>
 </div>
-
+ -->
 
 <div class="header-order-index">
   <h1 class="ml-5 page-title d-flex align-items-center"> Commandes</h1>
@@ -21,8 +21,8 @@
     <div>
       <div class="d-flex justify-content-between order-index ">
         <div class="d-flex align-items-center">
-            <span class="small-text-bold green-light mx-3">#Order n°<%= order.id %></span>
-            <span class="small-text-bold grey-dark mx-4 "> <%= order.date %></span>
+            <span class="middle-text-bold  green-light mx-3">#GF<%= order.id %></span>
+            <span class="middle-text grey-dark mx-4 "> <%= order.date %></span>
             <h2 class="order-index-name mx-4"><%= order.client.first_name %> <%= order.client.last_name %> </h2>
         </div>
         <div class="d-flex align-items-center ">
@@ -36,7 +36,7 @@
             <% if order.status=="pending" %>
 
               <div class="action-picto waiting-action">
-                <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
               </div>
               <div class="action-picto">
                 <i class="fas fa-truck"></i>
@@ -89,9 +89,7 @@
               <i class="fas fa" aria-hidden="true"></i>
             </button>
           </div>
-
         </div>
-
     </div>
 
 
@@ -109,7 +107,7 @@
                     <div class="price">
                       <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
                     </div>
-                      <p class="index-total-price "><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </p>
+                      <h1 class="index-total-price "><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
                 </div>
 
 
