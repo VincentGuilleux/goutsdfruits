@@ -29,8 +29,10 @@
   flex-direction: column; // makes the 2 items listed on a column instead of a row (default)
   height:100%;
   width:100%;
+  padding-top: 23px;
+  padding-bottom: 23px;
+  p {
+    margin: 0;
+  }
 }
 
-.monthly-data-infos  .page-title { // creates a margin on top of the number so that it is nearer the text in grey (for ex.: 'Nouveaux Clients')
-  margin: 16px 0 0 0;
-}
