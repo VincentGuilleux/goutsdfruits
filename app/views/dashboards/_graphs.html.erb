@@ -8,8 +8,9 @@
       <% @top_products.each do |top_product| %>
       <div class="card-best-product">
         <%= cl_image_tag top_product.photo.key%>
-        <p class="mb-0"> <%= top_product.name %></p>
+        <div class ="d-flex justify-content-between flex-direction-column w-100"><p class="mb-0 pl-4"> <%= top_product.name %></p>
         <span> <%= top_product.total_quantity %>&nbsp;<%= top_product.unit_type.pluralize(top_product.total_remaining_quantity) %></span>
+        </div>
       </div>
        <% end %>
     </div>
