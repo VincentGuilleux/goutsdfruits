@@ -1,25 +1,27 @@
  // child of _card-order.scss
 
-.date-page-order-index {
-  background-color: $white_smoke;
-  display: flex;
-  align-items: center;
-  margin:30px;
-  & img {
-    height: 24px;
-    width: 24px;
-    margin-right: 18px;
-  }
-  p {
-    font-size: 14px;
-    color: $green_light;
-    margin-bottom: 0;
-  }
-}
+// calendrier
+// .date-page-order-index {
+//   background-color: $white_smoke;
+//   display: flex;
+//   align-items: center;
+//   margin:30px;
+//   & img {
+//     height: 24px;
+//     width: 24px;
+//     margin-right: 18px;
+//   }
+//   p {
+//     font-size: 14px;
+//     color: $green_light;
+//     margin-bottom: 0;
+//   }
+// }
 
 .header-order-index{
   background-color: $white_smoke;
   display: flex;
+  margin-top: 50px;
   .add-order a {
     display: flex;
     padding-top: 10px;
