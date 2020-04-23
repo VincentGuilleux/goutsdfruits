@@ -41,8 +41,8 @@
           <% @product.product_lots.each do |product_lot|%>
             <tr>
               <th scope="row"><%=product_lot.lot_number%></th>
-              <td><%=product_lot.production_date%></td>
-              <td><%=product_lot.expiry_date %></td>
+              <td><%=l(product_lot.production_date, format: :long)%></td>
+              <td><%=l(product_lot.expiry_date, format: :long) %></td>
               <td><%= product_lot.remaining_quantity %></td>
               <td></td>
             </tr>
@@ -54,8 +54,7 @@
     <div class="card-product-show-footer">
       <span class="card-product-total-stock">Stock total</span>
       <span class="card-product-total-stock">
-        <%= @product.total_remaining_quantity %>
-        <%= @product.unit_type.pluralize(@product.total_remaining_quantity) %></span>
+        <%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
     </div>
 
   </div>
