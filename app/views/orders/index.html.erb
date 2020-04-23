@@ -1,15 +1,7 @@
-
-<!-- calendrier -->
-<!-- <div class="date-page-order-index">
-    <%= image_tag 'calendar-3-light-green.svg' %>
-    <p><%= Date.today %> </p>
-</div>
- -->
-
 <div class="header-order-index">
   <h1 class="ml-5 page-title d-flex align-items-center"> Commandes</h1>
   <div class="add-order ">
-    <%= link_to "#" do %>
+    <%= link_to new_order_path do %>
       <p class="ml-5">Ajouter une commande</p>
       <%= image_tag "add-circle.svg" %>
     <% end %>
