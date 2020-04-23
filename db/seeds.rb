@@ -1,4 +1,4 @@
- srequire "open-uri"
+require "open-uri"
 
 OrderLineProductLot.destroy_all
 ProductLot.destroy_all
