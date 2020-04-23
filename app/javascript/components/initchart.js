@@ -33,14 +33,14 @@ export const InitChart = () => {
           {
             label: '2019',
             borderColor: 'rgb(255, 99, 132)',
-            data: [200, 300, 500, 700],
+            data: [200, 300, 420, 448],
             fill: false,
             lineTension: 0
           },
           {
             label: '2020',
             borderColor: 'rgb(118, 190, 208)',
-            data: [180, 320, 600, currentMonthTurnover],
+            data: [180, 320, 500, currentMonthTurnover],
             fill: false,
             lineTension: 0
           }
