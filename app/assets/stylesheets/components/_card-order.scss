@@ -238,12 +238,10 @@
   width: 40px;
   font-size: 18px;
   background-color: $green;
-  a {
-    outline: 0;
-    color: white;
-    &:hover {
-      text-decoration: none;
-      color: white;
+  &:hover {
+    background-color: $green;
+    a {
+      color: $white;
     }
   }
   .fa-check {
