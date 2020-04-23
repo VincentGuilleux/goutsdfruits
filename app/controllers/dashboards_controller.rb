@@ -48,7 +48,7 @@ class DashboardsController < ApplicationController
     @products = @products.sort_by do |product|
         product.total_remaining_quantity
       end
-    low_stock_trigger = 3 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
+    low_stock_trigger = 6 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
     @products.each do |product|
        if product.total_remaining_quantity < low_stock_trigger
