@@ -28,6 +28,17 @@
     }
     &:hover {
       text-decoration: none;
+
+      p {
+        transition: 0.3s;
+        font-size: 13px;
+      }
+      & img {
+        transition: 0.3s;
+        margin-left: 4px;
+        height: 20px;
+        width: 20px;
+      }
     }
   }
 }
