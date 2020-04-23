@@ -10,7 +10,7 @@
         <%= cl_image_tag top_product.photo.key%>
         <p class="mb-0"> <%= top_product.name %></p>
         <span> <%= top_product.total_quantity %>&nbsp;<%= top_product.unit_type.pluralize(top_product.total_remaining_quantity) %></span>
-       </div>
+      </div>
        <% end %>
     </div>
   </div>

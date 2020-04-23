@@ -15,7 +15,7 @@
 
 .stats-data-card img {
   height: 100%;
-  width: 80px;
+  width: 160px;
   border-radius: 8px 0 0 8px;
   object-fit: cover;
   align-self: center;
@@ -37,8 +37,8 @@
     position: relative;
     overflow: hidden;
     padding-right:0px;
-    width: 495px;
-    height: 382.5px;
+    width: 480px;
+    height: 400px;
   }
 }
 
@@ -46,13 +46,14 @@
   border-radius: 0px 8px 8px 0px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; // à modifier
   background-color: $white_smoke;
   width: 100%;
   height: 30%;
   padding-right: 12px;
   margin-top: 4px;
   margin-bottom: 4px;
+
 }
 
 .card-best-product p {
