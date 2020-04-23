@@ -182,8 +182,21 @@
   font-size: 16px;
   color: white;
   text-align: center;
+  a {
+    outline: 0;
+    color: $white;
+  }
+  &:hover {
+    background-color: $green_light;
+    transition: 0.3s ease;
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+  }
   .fa-truck {
-    margin: 9px auto;
+    margin: 9px 7px;
   }
   .fa-receipt {
     margin: 9px auto;
@@ -209,14 +222,14 @@
     }
   }
   .fa-clock {
-    font-size: 20px;
+    font-size: 19px;
     margin: 5px auto;
   }
   .fa-truck {
     margin: 7px auto;
   }
   .fa-receipt {
-    margin: 7px auto;
+    margin: 7px 9px;
   }
 }
 
@@ -240,8 +253,9 @@
   .fa-shipping-fast {
     margin: 11px auto;
   }
-  .fa-receipt {
-    margin: 11px auto;
+  .fa-euro-sign {
+    margin: 9px 15px 9px 11px;
+    font-size: 23px;
   }
 }
 
