@@ -59,7 +59,7 @@ class DashboardsController < ApplicationController
   end
 
   def oldest_stock
-    expiry_date_trigger = Date.today + 15 # Trigger fixe pour l'instant à J+15
+    expiry_date_trigger = Date.today + 10 # Trigger fixe pour l'instant à J+10
     # old_stock_list = Array.new
     old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).order(:expiry_date) # renvoit un array des product_lots répondant aux cond° ci-dessus et trié par date d'expiration
     # old_product_lots.each do |old_product_lot|
