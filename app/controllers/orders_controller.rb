@@ -40,7 +40,7 @@ class OrdersController < ApplicationController
 
 
   def index
-    @orders = Order.all
+    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products).where("status != ?", "delivered")
   end
 
   def new
