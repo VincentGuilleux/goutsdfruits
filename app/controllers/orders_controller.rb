@@ -52,19 +52,25 @@ class OrdersController < ApplicationController
 
     @order.date = Date.today
 
+    # check for each line,
+     # if the quantity is < stock quantity
+    # if not, stop  the saving
+
+
+
+      # if necessary_quantity > order_line.product.total_remaining_quantity
+      #   flash[:alert] = "Il n'y a pas assez de stock"
+      # end
+
     sum = 0
 
     @order.order_lines.each do |order_line|
-      if order_line.quantity > order_line.product.total_remaining_quantity
-        flash[:alert] = "Il n'y a pas assez de stock"
-        order_line.quantity = 0
-      end
-
       order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
       sum += order_line.total_price_cents
     end
 
     @order.total_price_cents = sum
+
 
     if @order.save!
       generate_order_line_product_lots
