@@ -189,11 +189,31 @@ order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_p
 order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22")
 order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18")
 order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16")
-order7 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,18) ,total_price_cents: 4500 ,status:"delivered", created_at:"2020-04-16")
-order8 = Order.create!(client_id: client9.id ,date: Date.new(2020,4,14) ,total_price_cents: 3000 ,status:"delivered", created_at:"2020-04-16")
-order9 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,13) ,total_price_cents: 2800 ,status:"delivered", created_at:"2020-04-16")
-order10 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,10) ,total_price_cents: 2400 ,status:"delivered", created_at:"2020-04-16")
-order11 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 3500 ,status:"delivered", created_at:"2020-04-16")
+order7 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,18) ,total_price_cents: 4500 ,status:"delivered", created_at:"2020-04-18")
+order8 = Order.create!(client_id: client9.id ,date: Date.new(2020,4,14) ,total_price_cents: 3000 ,status:"delivered", created_at:"2020-04-14")
+order9 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,13) ,total_price_cents: 2800 ,status:"delivered", created_at:"2020-04-13")
+order10 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,10) ,total_price_cents: 2400 ,status:"delivered", created_at:"2020-04-10")
+order11 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,10) ,total_price_cents: 3500 ,status:"delivered", created_at:"2020-04-10")
+order12 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order12 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order13 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order14 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order15 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order16 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order17 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order18 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order19 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order20 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order21 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order22 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order23 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order24 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order25 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order26 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order27 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+order28 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
+
+
 
 puts "orders done"
 
@@ -206,7 +226,7 @@ order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, qu
 order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 1600)
 order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 1200)
 
-#création d'1 order avec 4 order_line
+#création d'1 order avec 4 order_lines
 order_line5 = OrderLine.create!(order_id: order3.id ,product_id: product22.id, quantity: 1 ,total_price_cents: 4500) #petit plant
 order_line6 = OrderLine.create!(order_id: order3.id ,product_id: product23.id, quantity: 1 ,total_price_cents: 9000) #grand plant
 order_line7 = OrderLine.create!(order_id: order3.id ,product_id: product13.id, quantity: 1 ,total_price_cents: 700) # financiers
@@ -224,6 +244,24 @@ order_line14 = OrderLine.create!(order_id: order8.id ,product_id: product6.id, q
 order_line15 = OrderLine.create!(order_id: order9.id ,product_id: product15.id, quantity: 52,total_price_cents: 2800)
 order_line14 = OrderLine.create!(order_id: order10.id ,product_id: product6.id, quantity: 4,total_price_cents: 2400)
 order_line15 = OrderLine.create!(order_id: order11.id ,product_id: product15.id, quantity: 8,total_price_cents: 3500)
+
+order_line12a = OrderLine.create!(order_id: order12.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line13a = OrderLine.create!(order_id: order13.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line14a = OrderLine.create!(order_id: order14.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line15a = OrderLine.create!(order_id: order15.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line16a = OrderLine.create!(order_id: order16.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line17a = OrderLine.create!(order_id: order17.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line18a = OrderLine.create!(order_id: order18.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line19a = OrderLine.create!(order_id: order19.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line20a = OrderLine.create!(order_id: order20.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line21a = OrderLine.create!(order_id: order21.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line22a = OrderLine.create!(order_id: order22.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line23a = OrderLine.create!(order_id: order23.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line24a = OrderLine.create!(order_id: order24.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line25a = OrderLine.create!(order_id: order25.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line26a = OrderLine.create!(order_id: order26.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line27a = OrderLine.create!(order_id: order27.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
+order_line28a = OrderLine.create!(order_id: order28.id ,product_id: product14.id, quantity: 1,total_price_cents: 100)
 
 
 
