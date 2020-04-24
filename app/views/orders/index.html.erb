@@ -19,12 +19,12 @@
         </div>
         <div class="d-flex align-items-center ">
           <!-- prix -->
+              <div class="underline-index-orders"></div>
           <div>
             <h1 class="font-price-order-index ml-5 "><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
           </div>
           <!-- picto -->
           <div class="order-card-picto py-2 widthpicto">
-            <div class="underline"></div>
 
             <% if order.status=="pending" %>
 
