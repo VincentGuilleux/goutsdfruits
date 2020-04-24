@@ -14,12 +14,13 @@
       <div class="d-flex justify-content-between order-index ">
         <div class="d-flex align-items-center">
             <span class="middle-text-bold  green-light mx-3">#GF<%= order.id %></span>
-            <span class="middle-text grey-dark mx-4 "> <%= order.date %></span>
+            <span class="middle-text grey-medium mx-4 "> <%= order.date %></span>
             <h2 class="order-index-name mx-4"><%= order.client.first_name %> <%= order.client.last_name %> </h2>
         </div>
         <div class="d-flex align-items-center ">
           <!-- prix -->
-          <div>
+          <div class="underline-index-orders"></div>
+          <div class="total-price-order-index">
             <h1 class="font-price-order-index ml-5 "><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
           </div>
           <!-- picto -->
@@ -90,24 +91,36 @@
 
       <div class="collapse" id="order-<%=order.id %>">
         <div class="card card-body order-card-collapsed-dashboard mg20">
-          <div class="order-lines-dashboard orga-card">
-            <div class="order-lines">
-            <% order.order_lines.each do |order_line| %>
+          <div class="order-lines-index orga-card">
+            <div class="order-lines-index">
+              <% order.order_lines.each do |order_line| %>
+                <div class="order-line">
+                  <p class="product-name"><%= order_line.product.name %></p>
+                  <div class="price">
+                    <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> <sup class="sup-price"> € </sup></p>
+                    <div class="separation"></div>
+                    <p class="total-price"><%= order_line.total_price_cents.to_i / 100 %> <sup class="sup-price"> € </sup> </p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+            <!-- <div class="order-lines">
+            <%# order.order_lines.each do |order_line| %>
 
                 <div class="order-index-bottom order-line">
-                    <p class="product-name"><%= order_line.product.name %></p>
+                    <p class="product-name"><%#= order_line.product.name %></p>
 
                     <div class="price">
-                      <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> €</p>
+                      <p><%#= order_line.quantity %> x <%#= order_line.product.unit_price_cents / 100 %> €</p>
                     </div>
-                      <h1 class="index-total-price "><%= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
+                      <h1 class="index-total-price "><%#= order_line.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
                 </div>
 
 
-            <% end %>
-            </div>
+            <%# end %>
+            </div> -->
 
-              <div class="order-address-dashboard bottom-right-dash">
+              <div class="order-address-index bottom-right-dash">
                 <p class="name"><%= order.client.first_name %> <%= order.client.last_name %></p>
                 <div class="line-address"></div>
                 <p class="address"><%= order.client.address %></p>
