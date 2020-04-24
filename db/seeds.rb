@@ -205,6 +205,7 @@ order18 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_
 order19 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
 order20 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
 order21 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
+order22 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
 order23 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
 order24 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
 order25 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-16")
