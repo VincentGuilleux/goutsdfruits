@@ -40,33 +40,18 @@ class DashboardsController < ApplicationController
 
   # Methods used for notifications
 
-  def lowest_stock # A refactoriser via méthode SQL, on peut faire beaucoup plus court
-  # Pour chaque produit récupérer la remaining quantity
-  # Vérifier si cette valeur est inférieure à un critère donné
-  # Renvoyer la liste de tous les produits concernés
-    @products = Product.all
-    @products = @products.sort_by do |product|
-        product.total_remaining_quantity
-      end
+  def lowest_stock
     low_stock_trigger = 3 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
-    @products.each do |product|
-       if product.total_remaining_quantity < low_stock_trigger
-       low_stock_list << product
-       end
+    Product.all.each do |product|
+       low_stock_list << product if product.total_remaining_quantity < low_stock_trigger
     end
-    return low_stock_list.first # Pour l'instant on ne renvoit qu'un item pour qu'on ait une seule notif pour stock bas
+    low_stock_list.first # Pour l'instant on ne renvoit qu'un item pour qu'on ait une seule notif pour stock bas
   end
 
   def oldest_stock
     expiry_date_trigger = Date.today + 10 # Trigger fixe pour l'instant à J+10
-    # old_stock_list = Array.new
     old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).order(:expiry_date) # renvoit un array des product_lots répondant aux cond° ci-dessus et trié par date d'expiration
-    # old_product_lots.each do |old_product_lot|
-    #   old_product_lot = Product.find(old_product_lot.product_id)
-    #   old_product = Product.find(old_product_lot.product_id)
-    #   old_stock_list << old_product # crée un array de tous les produits satisfaisant à la cond° d'ancienneté
-    # end
     oldest_product = old_product_lots.first # Pour l'instant ne renvoit qu'un item pour qu'on ait une seule notif pour stock ancien
   end
 
