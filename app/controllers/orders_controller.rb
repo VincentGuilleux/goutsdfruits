@@ -1,4 +1,9 @@
 class OrdersController < ApplicationController
+
+  def index
+    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+  end
+
   def prepare
     @order = Order.find(params[:id])
     if @order.status == "pending"
@@ -38,11 +43,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
-  def index
-    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
-  end
-
   def new
     @order = Order.new
     @order.order_lines.build
@@ -50,31 +50,22 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-
     @order.date = Date.today
-
-    # check for each line,
-     # if the quantity is < stock quantity
-    # if not, stop  the saving
-
-
-
-      # if necessary_quantity > order_line.product.total_remaining_quantity
-      #   flash[:alert] = "Il n'y a pas assez de stock"
-      # end
-
     sum = 0
-
     @order.order_lines.each do |order_line|
-      order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
-      sum += order_line.total_price_cents
+      if order_line.quantity < order_line.product.total_remaining_quantity
+        order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
+        sum += order_line.total_price_cents
+      else
+        flash[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - La commande ne peut pas être passée"
+        render :new
+        return
+      end
     end
 
     @order.total_price_cents = sum
 
-    if @order.payment_method != ""
-      @order.status = "paid"
-    end
+    create_order_payment_status
 
     if @order.save!
       generate_order_line_product_lots
@@ -88,6 +79,12 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:client_id, :payment_method, :status, order_lines_attributes: [:product_id, :quantity])
+  end
+
+  def create_order_payment_status
+    if @order.payment_method != ""
+      @order.status = "paid"
+    end
   end
 
   def generate_order_line_product_lots
@@ -112,4 +109,5 @@ class OrdersController < ApplicationController
       end
     end
   end
+
 end
