@@ -53,7 +53,7 @@ class OrdersController < ApplicationController
     @order.date = Date.today
     sum = 0
     @order.order_lines.each do |order_line|
-      if order_line.quantity < order_line.product.total_remaining_quantity
+      if order_line.quantity <= order_line.product.total_remaining_quantity
         order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
         sum += order_line.total_price_cents
       else

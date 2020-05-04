@@ -268,10 +268,12 @@ order_line28a = OrderLine.create!(order_id: order28.id ,product_id: product14.id
 puts "order_line done"
 
 
-# 6 - create "product_lots"
-# création d'un lot pour chaque produit en stock
+# 6 - create "product_lots" - création d'un lot au minimum pour chaque produit en stock
+
 product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
 product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 15, remaining_quantity: 10, lot_number: "20042")
+
+# création de 2 lots pour les produits 3 & 4
 product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,8,20), quantity: 10, remaining_quantity: 8, lot_number: "20043")
 product_lot3bis = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,21) ,expiry_date: Date.new(2020,8,21), quantity: 4, remaining_quantity: 4, lot_number: "20043")
 product_lot4 = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,25) ,expiry_date: Date.new(2020,5,25), quantity: 15, remaining_quantity: 13, lot_number: "20044")
