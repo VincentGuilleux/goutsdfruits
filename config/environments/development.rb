@@ -64,6 +64,6 @@ Rails.application.configure do
   config.after_initialize do
   Bullet.enable = true
   Bullet.rails_logger = true
-  Bullet.slack = { webhook_url: 'http://lewagon-alumni.slack.com', channel: '#goutdfruits_no-teachers', username: 'notifier' }
+ # Bullet.slack = { webhook_url: 'http://lewagon-alumni.slack.com', channel: '#goutdfruits_no-teachers', username: 'notifier' }
 end
 end
