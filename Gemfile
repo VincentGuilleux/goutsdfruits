@@ -37,6 +37,7 @@ gem 'simple_form'
 gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'rack-mini-profiler'
+gem 'slack-notifier'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
