@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
 
   def index
-      @products = Product.all
+      @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
     if params[:fruit].present?
       @products = @products.where(product_fruit: params[:fruit])
     end
