@@ -1,4 +1,12 @@
-<div class="page-title pl60 pt40 pb25">Produits</div>
+<div class="page-title products-title">Produits
+  <div class="add-product">
+    <%= link_to new_product_path do %>
+      <p>Ajouter un produit</p>
+      <%= image_tag "add-circle.svg" %>
+    <% end %>
+  </div>
+
+</div>
 
 <!-- FILTERS DIV -->
 <div class="container-index-filters pl60">
@@ -44,8 +52,8 @@
   </div>
 
   <!-- Reset filters -->
+  <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
 
-    <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
 </div>
 
 <div class="main-container">
