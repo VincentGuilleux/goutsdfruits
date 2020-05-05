@@ -60,7 +60,9 @@
   <div class="container-index-products">
     <% @products.each do |product| %>
       <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
+        <% if product.photo.attached? %>
         <%= cl_image_tag product.photo.key, alt: "image produit" %>
+        <% end %>
         <div class="card-product-infos">
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>

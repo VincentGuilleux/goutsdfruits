@@ -1,0 +1,23 @@
+<div class="new-order-main-container" >
+  <div class="container new-order">
+    <div class="new-order-title page-title">
+      <p>Nouveau produit</p>
+    </div>
+    <div class="container">
+      <%= simple_form_for @product do |f| %>
+        <%= f.input :name, label: 'Nom' %>
+        <%= f.input :description, label: 'Description' %>
+        <%= f.input :unit_price_cents, label: 'Prix en centimes' %>
+        <%= f.input :unit_type, label: 'Unité de mesure', collection: Product.units %>
+        <%= f.input :product_fruit, label: 'Fruit', collection: Product.fruits %>
+        <%= f.input :product_type, label: 'Type', collection: Product.types %>
+        <%= f.input :product_category, label: 'Catégorie', collection: Product.categories %>
+        <%= f.input :photo, label: "Ajouter une photo", as: :file %>
+        <%= f.submit 'Créer le produit', class: 'btn btn-lg btn-block submit-btn' %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
