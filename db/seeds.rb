@@ -31,11 +31,17 @@ user_admin.save!
 
 puts "      |    /|     - user done"
 
+# 0 - Create "AMAPS"
+amap1 = Amap.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", phone: "0549727940", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant")
+amap2 = Amap.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay")
+amap3 = Amap.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: " D175" ,post_code: "79300", city: "Bressuire")
+amap4 = Amap.create!(name: "Court Circuiteurs", email: "amapthouarsaise@netcourrier.com", address: "ancienne école des Maligrette" ,post_code: "79100", city: "Thouars")
+
 # 1 - Create "client"
-client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier")
-client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier")
-client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier")
-client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"particulier")
+client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", amap_id: amap1.id)
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", amap_id: amap2.id)
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", amap_id: amap3.id)
+client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"particulier", amap_id: amap4.id)
 client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23", segment:"particulier")
 client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier")
 client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier")
@@ -177,6 +183,7 @@ product22.save!
 product23 = Product.new(name:"Pommier",description:"Pour assouvir votre gourmandise et votre envie de nature, Goûts d’Fruits développe une pépinière et propose de vous accompagner dans l’aménagement de votre jardin.", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
 product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/grand-plant.jpg')), filename: 'grand-plant.jpg', content_type: 'image/jpg')
 product23.save!
+
 puts "product done"
 
 
@@ -211,8 +218,6 @@ order25 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,9) ,total_p
 order26 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
 order27 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
 order28 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-
-
 
 puts "orders done"
 
@@ -309,11 +314,11 @@ product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Da
 product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "20423")
 
 # 7 - create "order_line_product_lots" pour les 4 premiers produits
-order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
-order_line_product_lot2 = OrderLineProductLot.create!(order_line_id: order_line2.id ,product_lot_id: product_lot2.id ,quantity: 5)
-order_line_product_lot3 = OrderLineProductLot.create!(order_line_id: order_line3.id ,product_lot_id: product_lot3.id ,quantity: 2)
-order_line_product_lot4 = OrderLineProductLot.create!(order_line_id: order_line4.id ,product_lot_id: product_lot4.id ,quantity: 2)
-puts "order_line_product_done"
+# order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
+# order_line_product_lot2 = OrderLineProductLot.create!(order_line_id: order_line2.id ,product_lot_id: product_lot2.id ,quantity: 5)
+# order_line_product_lot3 = OrderLineProductLot.create!(order_line_id: order_line3.id ,product_lot_id: product_lot3.id ,quantity: 2)
+# order_line_product_lot4 = OrderLineProductLot.create!(order_line_id: order_line4.id ,product_lot_id: product_lot4.id ,quantity: 2)
+# puts "order_line_product_done"
 puts""
 puts"made with love by the cat's team"
 puts""
