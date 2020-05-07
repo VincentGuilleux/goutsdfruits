@@ -17,10 +17,10 @@ class OrdersController < ApplicationController
     end
   end
 
-  def pay
+  def deliver
     @order = Order.find(params[:id])
-    if @order.status != "paid"
-      @order.status = "paid"
+    if @order.status != "delivered"
+      @order.status = "delivered"
       @order.save!
       redirect_back(fallback_location: dashboard_path)
     else
@@ -30,14 +30,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  def deliver
+  def pay
     @order = Order.find(params[:id])
-    if @order.status != "delivered"
-      @order.status = "delivered"
+    if @order.status != "paid"
+      @order.status = "paid"
       @order.save!
       redirect_back(fallback_location: dashboard_path)
     else
-      @order.status = "paid"
+      @order.status = "delivered"
       @order.save!
       redirect_back(fallback_location: dashboard_path)
     end
