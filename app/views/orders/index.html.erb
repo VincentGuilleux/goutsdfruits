@@ -32,11 +32,11 @@
               <div class="action-picto waiting-action" title="Marquer comme prête">
                 <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
               </div>
-              <div class="action-picto" title="Marquer comme payée">
-                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-              </div>
               <div class="action-picto" title="Marquer comme livrée">
                 <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+              </div>
+              <div class="action-picto" title="Marquer comme payée">
+                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
               </div>
 
             <% elsif order.status =="prepared" %>
@@ -44,11 +44,11 @@
               <div class="action-picto done-action" title="Prête">
                 <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
               </div>
-              <div class="action-picto waiting-action" title="Marquer comme payée">
-                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-              </div>
               <div class="action-picto" title="Marquer comme livrée">
                 <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+              </div>
+              <div class="action-picto waiting-action" title="Marquer comme payée">
+                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
               </div>
 
             <% elsif order.status =="paid"%>
@@ -56,11 +56,11 @@
               <div class="action-picto done-action" title="Prête">
                 <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
               </div>
-              <div class="action-picto done-action" title="Payée">
-                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
-              </div>
               <div class="action-picto waiting-action" title="Marquer comme livrée">
                 <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+              </div>
+              <div class="action-picto done-action" title="Payée">
+                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
               </div>
 
             <% else %>
@@ -68,11 +68,11 @@
               <div class="action-picto done-action" title="Prête">
                 <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
               </div>
-              <div class="action-picto done-action" title="Payée">
-                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
-              </div>
               <div class="action-picto done-action" title="Livrée">
                 <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+              </div>
+              <div class="action-picto done-action" title="Payée">
+                <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
               </div>
 
             <% end %>
