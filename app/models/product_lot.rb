@@ -5,5 +5,5 @@ class ProductLot < ApplicationRecord
   validates :lot_number, presence: true
   validates :production_date, presence: true
   validates :expiry_date, presence: true
-  validates :quantity, presence: true
+  validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 end
