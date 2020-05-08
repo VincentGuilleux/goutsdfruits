@@ -18,30 +18,30 @@
 //   }
 // }
 
-.header-order-index{
-  background-color: $white_smoke;
-  display: flex;
-  margin-top: 50px;
-  .add-order a {
-    display: flex;
-    padding-top: 10px;
-    padding-left: 40px;
-    outline: 0;
-    p {
-      font-size: 13px;
-      font-weight: bold;
-      color: $blue;
-    }
-    & img {
-      margin-left: 4px;
-      height: 18px;
-      width: 18px;
-    }
-    &:hover {
-      text-decoration: none;
-    }
-  }
-}
+// .header-order-index{
+//   background-color: $white_smoke;
+//   display: flex;
+//   margin-top: 50px;
+//   .add-order a {
+//     display: flex;
+//     padding-top: 10px;
+//     padding-left: 40px;
+//     outline: 0;
+//     p {
+//       font-size: 13px;
+//       font-weight: bold;
+//       color: $blue;
+//     }
+//     & img {
+//       margin-left: 4px;
+//       height: 18px;
+//       width: 18px;
+//     }
+//     &:hover {
+//       text-decoration: none;
+//     }
+//   }
+// }
 
 
 .order-index {
