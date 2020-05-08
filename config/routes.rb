@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resource :dashboard, only: :show
 
-  resources :clients, only: [:index] #Not nested because not linked to a client show (the client will be input in the form)
+  resources :clients, only: [:index, :new, :create, :update, :edit, :destroy] #Not nested because not linked to a client show (the client will be input in the form)
 
   resources :products, only: [:index, :show, :new, :create] do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
