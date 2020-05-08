@@ -25,7 +25,7 @@ User.destroy_all
 # product_lot
 # user
 
-user_admin = User.create!(email: 'marie@gmail.com', password: 'azerty') #name: 'Marie' , address: "L'Orgerie, 79140 Le Pin" n'est pas déclaré dans le schéma de D
+user_admin = User.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'marie@gmail.com', address: "L'Orgerie", post_code: "79140", city: "Le Pin", password: 'azerty')
 user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
 user_admin.save!
 
