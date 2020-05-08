@@ -11,11 +11,7 @@ User.destroy_all
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 # ==> model name
 # client
 # order
@@ -25,25 +21,31 @@ User.destroy_all
 # product_lot
 # user
 
-user_admin = User.create!(email: 'marie@gmail.com', password: 'azerty') #name: 'Marie' , address: "L'Orgerie, 79140 Le Pin" n'est pas déclaré dans le schéma de D
+user_admin = User.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'marie@gmail.com', address: "L'Orgerie", post_code: "79140", city: "Le Pin", password: 'azerty')
 user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
 user_admin.save!
 
 puts "      |    /|     - user done"
 
+# 0 - Create "AMAPS"
+amap1 = Amap.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", phone: "0549727940", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant")
+amap2 = Amap.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay")
+amap3 = Amap.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: " D175" ,post_code: "79300", city: "Bressuire")
+amap4 = Amap.create!(name: "Court Circuiteurs", email: "amapthouarsaise@netcourrier.com", address: "ancienne école des Maligrette" ,post_code: "79100", city: "Thouars")
+
 # 1 - Create "client"
-client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23")
-client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23")
-client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23")
-client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23")
-client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23")
-client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur")
-client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille")
-client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas")
-client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin")
-client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest")
-client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux")
-client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort")
+client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap1.id)
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap2.id)
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap3.id)
+client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap4.id)
+client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23", segment:"particulier", password: 'azerty')
+client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier", password: 'azerty')
+client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier", password: 'azerty')
+client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas", segment:"particulier", password: 'azerty')
+client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier", password: 'azerty')
+client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier", password: 'azerty')
+client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier", password: 'azerty')
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"particulier", password: 'azerty')
 
 puts "       )  ( ') - client done"
 
@@ -177,6 +179,7 @@ product22.save!
 product23 = Product.new(name:"Pommier",description:"Pour assouvir votre gourmandise et votre envie de nature, Goûts d’Fruits développe une pépinière et propose de vous accompagner dans l’aménagement de votre jardin.", unit_price_cents: 9000,unit_type:"plant",product_fruit: "pomme", product_type:"végétal", product_category:"Pépinière")
 product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/grand-plant.jpg')), filename: 'grand-plant.jpg', content_type: 'image/jpg')
 product23.save!
+
 puts "product done"
 
 
@@ -190,29 +193,27 @@ order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_p
 order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18")
 order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16")
 order7 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,18) ,total_price_cents: 4500 ,status:"delivered", created_at:"2020-04-18")
-order8 = Order.create!(client_id: client9.id ,date: Date.new(2020,4,14) ,total_price_cents: 3000 ,status:"delivered", created_at:"2020-04-14")
-order9 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,13) ,total_price_cents: 2800 ,status:"delivered", created_at:"2020-04-13")
-order10 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,12) ,total_price_cents: 2400 ,status:"delivered", created_at:"2020-04-12")
-order11 = Order.create!(client_id: client12.id ,date: Date.new(2020,4,11) ,total_price_cents: 3500 ,status:"delivered", created_at:"2020-04-11")
-order12 = Order.create!(client_id: client1.id ,date: Date.new(2020,4,10) ,total_price_cents: 3400 ,status:"delivered", created_at:"2020-04-10")
-order13 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,10) ,total_price_cents: 5600 ,status:"delivered", created_at:"2020-04-10")
-order14 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order15 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order16 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order17 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order18 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order19 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order20 = Order.create!(client_id: client1.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order21 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order22 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order23 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order24 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order25 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order26 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order27 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-order28 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"delivered", created_at:"2020-04-09")
-
-
+order8 = Order.create!(client_id: client9.id ,date: Date.new(2020,4,14) ,total_price_cents: 3000 ,status:"paid", created_at:"2020-04-14")
+order9 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,13) ,total_price_cents: 2800 ,status:"paid", created_at:"2020-04-13")
+order10 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,12) ,total_price_cents: 2400 ,status:"paid", created_at:"2020-04-12")
+order11 = Order.create!(client_id: client12.id ,date: Date.new(2020,4,11) ,total_price_cents: 3500 ,status:"paid", created_at:"2020-04-11")
+order12 = Order.create!(client_id: client1.id ,date: Date.new(2020,4,10) ,total_price_cents: 3400 ,status:"paid", created_at:"2020-04-10")
+order13 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,10) ,total_price_cents: 5600 ,status:"paid", created_at:"2020-04-10")
+order14 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order15 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order16 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order17 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order18 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order19 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order20 = Order.create!(client_id: client1.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order21 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order22 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order23 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order24 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order25 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order26 = Order.create!(client_id: client8.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order27 = Order.create!(client_id: client10.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
+order28 = Order.create!(client_id: client11.id ,date: Date.new(2020,4,9) ,total_price_cents: 100 ,status:"paid", created_at:"2020-04-09")
 
 puts "orders done"
 
@@ -309,11 +310,11 @@ product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Da
 product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "20423")
 
 # 7 - create "order_line_product_lots" pour les 4 premiers produits
-order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
-order_line_product_lot2 = OrderLineProductLot.create!(order_line_id: order_line2.id ,product_lot_id: product_lot2.id ,quantity: 5)
-order_line_product_lot3 = OrderLineProductLot.create!(order_line_id: order_line3.id ,product_lot_id: product_lot3.id ,quantity: 2)
-order_line_product_lot4 = OrderLineProductLot.create!(order_line_id: order_line4.id ,product_lot_id: product_lot4.id ,quantity: 2)
-puts "order_line_product_done"
+# order_line_product_lot1 = OrderLineProductLot.create!(order_line_id: order_line1.id ,product_lot_id: product_lot1.id ,quantity: 5)
+# order_line_product_lot2 = OrderLineProductLot.create!(order_line_id: order_line2.id ,product_lot_id: product_lot2.id ,quantity: 5)
+# order_line_product_lot3 = OrderLineProductLot.create!(order_line_id: order_line3.id ,product_lot_id: product_lot3.id ,quantity: 2)
+# order_line_product_lot4 = OrderLineProductLot.create!(order_line_id: order_line4.id ,product_lot_id: product_lot4.id ,quantity: 2)
+# puts "order_line_product_done"
 puts""
 puts"made with love by the cat's team"
 puts""
