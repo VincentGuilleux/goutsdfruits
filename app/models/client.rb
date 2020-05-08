@@ -1,6 +1,9 @@
 class Client < ApplicationRecord
   has_many :orders
   # belongs_to :AMAP
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+
   validates :last_name, presence: true
   validates :address, presence: true
   validates :post_code, presence: true
