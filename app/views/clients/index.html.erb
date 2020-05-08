@@ -6,3 +6,21 @@
     <% end %>
   </div>
 </div>
+<% @clients.each do |client| %>
+  <div class="client-card">
+    <div class="client-logo">
+      <% if client.segment == "particulier" %>
+
+      <% elsif client.segment == "amap" %>
+      <% elsif client.segment == "marché" %>
+      <% elsif client.segment == "magasin" %>
+      <% elsif client.segment == "CE" %>
+      <% end %>
+    </div>
+    <div class="client-info">
+      <%= client.name %>
+      <%= client.city %> <%= client.phone %>
+      <%= client.email %>
+    </div>
+  </div>
+<% end %>
