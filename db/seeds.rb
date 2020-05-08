@@ -11,11 +11,7 @@ User.destroy_all
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
 # ==> model name
 # client
 # order
@@ -49,7 +45,7 @@ client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claud
 client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier", password: 'azerty')
 client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier", password: 'azerty')
 client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier", password: 'azerty')
-client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"particulier", password: 'azerty')
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"particulier", password: 'azerty')
 
 puts "       )  ( ') - client done"
 
