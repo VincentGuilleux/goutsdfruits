@@ -53,6 +53,10 @@ height: 100vh;
   padding: 0 32px;
   overflow: hidden;
   overflow-y: scroll;
+  .page-title {
+    padding: 0px 0px 30px 5px;
+    justify-content: space-between;
+  }
 }
 
 .dash-div-stats {
