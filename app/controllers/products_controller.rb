@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < UsersController
 
   def index
       @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all

@@ -1,4 +1,4 @@
-class OrdersController < ApplicationController
+class OrdersController < UsersController
 
   def index
     @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
