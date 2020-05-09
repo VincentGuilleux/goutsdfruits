@@ -13,17 +13,49 @@
 }
 
 .client-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 130px;
   border-radius: 8px 0 0 8px;
+  color: white;
+  font-size: 80px;
+}
+
+.client-logo .particulier {
+  background-color : $green_light;
+}
+
+.client-logo .amap {
   background-color : $green_dark;
 
 }
 
+.fa-tractor {
+  margin: -20px;
+  font-size: 10px;
+}
+
+.client-logo .marche {
+  background-color : $orange;
+}
+
+.client-logo .magasin {
+  background-color : $yellow;
+}
+
+.client-logo .ce {
+  background-color : $blue;
+}
+
 .client-info {
-  padding: 20px;
+  padding: 28px;
   p {
-    margin-bottom: 0;
+    margin-bottom: 5px;
+  }
+  .client-name {
+    padding-bottom: 5px;
   }
 
 }
@@ -34,3 +66,5 @@
   grid-gap: 50px;
   margin: 0 60px 60px 60px;
 }
+
+

@@ -12,18 +12,23 @@
   <% @clients.each do |client| %>
     <div class="client-card">
       <div class="client-logo">
-        <% if client.segment == "particulier" %>
-
-        <%# elsif client.segment == "amap" %>
+        <% if client.segment == "particulieqr" %>
+          <i class="client-logo particulier fas fa-user-alt"></i>
+        <% elsif client.segment == "particulier" %>
+          <i class="client-logo amap fas fas fa-user-alt"></i><i class="fas fa-tractor"></i>
         <% elsif client.segment == "marché" %>
+          <i class="client-logo marche fas fa-store"></i>
         <% elsif client.segment == "magasin" %>
+          <i class="client-logo magasin fas fa-store-alt"></i>
         <% elsif client.segment == "CE" %>
+          <i class="client-logo ce fas fa-building"></i>
         <% end %>
       </div>
       <div class="client-info">
-        <p class="big-text-bold grey-dark"><%= client.full_name %></p>
-        <p><%= client.city %> - <%= client.phone.unpack('A2A2A2A2A2').join(" ") %></p>
-        <p><%= client.email %></p>
+        <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
+        <p class="semi-small-text-bold"><%= client.city %></p>
+        <p class="semi-small-text grey-medium"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
+        <!-- <p class="semi-small-text grey-medium"><%= client.email %></p> -->
       </div>
     </div>
   <% end %>
