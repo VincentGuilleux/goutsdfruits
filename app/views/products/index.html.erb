@@ -1,59 +1,61 @@
-<div class="page-title products-title">Produits
-  <div class="add-new">
-    <%= link_to new_product_path do %>
-      <p>Ajouter un produit</p>
-      <%= image_tag "add-circle.svg" %>
-    <% end %>
-  </div>
-
-</div>
-
-<!-- FILTERS DIV -->
-<div class="container-index-filters pl60">
-
-  <!-- Fruit filter -->
-  <div id="product_fruit" class="middle-text grey-medium mr5 white">
-  <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
-  </div>
-  <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-    <div id="DropdownFruit" class="dropdown-content">
-      <% Product.fruits.each do |fruit| %>
-        <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
+<div class="title-container">
+  <div class="page-title">Produits
+    <div class="add-new">
+      <%= link_to new_product_path do %>
+        <p>Ajouter un produit</p>
+        <%= image_tag "add-circle.svg" %>
       <% end %>
     </div>
+
   </div>
 
-  <!-- Category filter -->
-  <div id="product_category" class="middle-text grey-medium mr5">
-  <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
-  </div>
-  <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-    <div id="DropdownCategory" class="dropdown-content">
-    <% Product.categories.each do |category| %>
-      <a data-name="<%= category %>" href="#"><%= category %></a>
-    <% end %>
+  <!-- FILTERS DIV -->
+  <div class="container-index-filters pl60">
+
+    <!-- Fruit filter -->
+    <div id="product_fruit" class="middle-text grey-medium mr5 white">
+    <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
     </div>
-  </div>
-
-  <!-- Type filter -->
-  <div id="product_type" class="middle-text grey-medium mr5">
-  <%= if params[:type].present? then params[:type] else 'Type' end %>
-  </div>
-  <div class="dropdown">
-    <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-    <!-- <button class="dropbtn">Type</button> -->
-    <div id="DropdownType" class="dropdown-content">
-    <% Product.types.each do |type| %>
-      <a data-name="<%= type %>" href="#"><%= type %></a>
-    <% end %>
+    <div class="dropdown">
+      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+      <div id="DropdownFruit" class="dropdown-content">
+        <% Product.fruits.each do |fruit| %>
+          <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
+        <% end %>
+      </div>
     </div>
+
+    <!-- Category filter -->
+    <div id="product_category" class="middle-text grey-medium mr5">
+    <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
+    </div>
+    <div class="dropdown">
+      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+      <div id="DropdownCategory" class="dropdown-content">
+      <% Product.categories.each do |category| %>
+        <a data-name="<%= category %>" href="#"><%= category %></a>
+      <% end %>
+      </div>
+    </div>
+
+    <!-- Type filter -->
+    <div id="product_type" class="middle-text grey-medium mr5">
+    <%= if params[:type].present? then params[:type] else 'Type' end %>
+    </div>
+    <div class="dropdown">
+      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+      <!-- <button class="dropbtn">Type</button> -->
+      <div id="DropdownType" class="dropdown-content">
+      <% Product.types.each do |type| %>
+        <a data-name="<%= type %>" href="#"><%= type %></a>
+      <% end %>
+      </div>
+    </div>
+
+    <!-- Reset filters -->
+    <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+
   </div>
-
-  <!-- Reset filters -->
-  <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
-
 </div>
 
 <div class="main-container">

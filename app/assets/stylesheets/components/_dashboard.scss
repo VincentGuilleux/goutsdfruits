@@ -51,11 +51,12 @@ height: 100vh;
   grid-area: 2 / 1 / 9 / 2;
   background-color: $white;
   padding: 0 32px;
-  overflow: hidden;
   overflow-y: scroll;
   .page-title {
+    z-index: 100;
     padding: 0px 0px 30px 5px;
     justify-content: space-between;
+    background-color: white;
   }
 }
 

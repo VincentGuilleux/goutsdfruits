@@ -1,26 +1,30 @@
-<div class="page-title">Clients
-  <div class="add-new">
-    <%= link_to new_client_path do %>
-      <p>Ajouter un nouveau client</p>
-      <%= image_tag "add-circle.svg" %>
-    <% end %>
-  </div>
-</div>
-<% @clients.each do |client| %>
-  <div class="client-card">
-    <div class="client-logo">
-      <% if client.segment == "particulier" %>
-
-      <% elsif client.segment == "amap" %>
-      <% elsif client.segment == "marché" %>
-      <% elsif client.segment == "magasin" %>
-      <% elsif client.segment == "CE" %>
+<div class="title-container">
+  <div class="page-title">Clients
+    <div class="add-new">
+      <%= link_to new_client_path do %>
+        <p>Ajouter un nouveau client</p>
+        <%= image_tag "add-circle.svg" %>
       <% end %>
     </div>
-    <div class="client-info">
-      <%= client.name %>
-      <%= client.city %> <%= client.phone %>
-      <%= client.email %>
-    </div>
   </div>
-<% end %>
+</div>
+<div class="client-cards">
+  <% @clients.each do |client| %>
+    <div class="client-card">
+      <div class="client-logo">
+        <% if client.segment == "particulier" %>
+
+        <%# elsif client.segment == "amap" %>
+        <% elsif client.segment == "marché" %>
+        <% elsif client.segment == "magasin" %>
+        <% elsif client.segment == "CE" %>
+        <% end %>
+      </div>
+      <div class="client-info">
+        <p class="big-text-bold grey-dark"><%= client.full_name %></p>
+        <p><%= client.city %> - <%= client.phone.unpack('A2A2A2A2A2').join(" ") %></p>
+        <p><%= client.email %></p>
+      </div>
+    </div>
+  <% end %>
+</div>

@@ -1,12 +1,11 @@
 // for all page titles + monthly data results + ajouter nouveau ...
 .page-title {
   color: $grey_dark;
+  z-index: 100;
   font-weight: 900;
   font-size: 24px;
   display: flex;
   align-items: center;
-  position: sticky;
-  top: 0;
   padding: 40px 0px 40px 60px;
   p {
   margin-bottom: 0;
