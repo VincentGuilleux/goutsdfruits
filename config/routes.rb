@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users'
-  devise_for :clients, path: 'clients'
+  devise_for :users, path: 'users', controllers: {sessions: 'users/sessions'}
+  devise_for :clients, path: 'clients', controllers: {sessions: 'clients/sessions'}
+
+  # UNLOGGED PAGES
   root to: 'pages#home'
+  get "/pages/:page" => "pages#show"
+
+  # USER ROUTES
 
   resource :dashboard, only: :show
 
@@ -19,6 +24,10 @@ Rails.application.routes.draw do
     end
   end
   # resources :order_lines, only: [:create] #created by Anne for new order form
+
+  # CLIENT ROUTES
+
+  resource :dashboard_client, only: :show
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

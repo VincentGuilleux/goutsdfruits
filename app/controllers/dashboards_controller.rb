@@ -1,4 +1,4 @@
-class DashboardsController < ApplicationController
+class DashboardsController < UsersController
 
   helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :lowest_stock, :oldest_stock
   # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
