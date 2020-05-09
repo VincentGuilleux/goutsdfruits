@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
   end
 
-  resources :orders, only: [:index, :new, :create] do # No show because collapse (no specific URL)
+  resources :orders, only: [:index, :new, :create] do # No show because info collapsed from dashboard/index (no dedicated page for one order)
     member do
       patch :prepare
       patch :deliver
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
 
   # CLIENT ROUTES
 
-  resource :dashboard_client, only: :show
+  resource :dashboard_client, only: :show #for test, to be deleted later
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
