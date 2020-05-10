@@ -29,12 +29,16 @@
 
 .client-logo .amap {
   background-color : $green_dark;
-
+  .fa-user-alt {
+    padding: 40px;
+  }
 }
 
 .fa-tractor {
-  margin: -20px;
-  font-size: 10px;
+  margin-left: -17px;
+  margin-bottom: -55px;
+  font-size: 17px;
+  color: $green_dark;
 }
 
 .client-logo .marche {
