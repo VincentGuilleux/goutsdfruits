@@ -34,10 +34,10 @@ amap3 = Amap.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address
 amap4 = Amap.create!(name: "Court Circuiteurs", email: "amapthouarsaise@netcourrier.com", address: "ancienne école des Maligrette" ,post_code: "79100", city: "Thouars")
 
 # 1 - Create "client"
-client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap1.id)
-client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap2.id)
-client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap3.id)
-client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"particulier", password: 'azerty', amap_id: amap4.id)
+client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap_id: amap1.id)
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap_id: amap2.id)
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap_id: amap3.id)
+client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap_id: amap4.id)
 client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23", segment:"particulier", password: 'azerty')
 client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier", password: 'azerty')
 client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier", password: 'azerty')
@@ -45,7 +45,9 @@ client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claud
 client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier", password: 'azerty')
 client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier", password: 'azerty')
 client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier", password: 'azerty')
-client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"particulier", password: 'azerty')
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"marché", password: 'azerty')
+client13 = Client.create!(first_name: "Magasin", last_name:"Biocoop", email:"magasin@gmail.com", phone:"", address:"rue Gambetta",post_code:"44000", city:"Nantes", segment:"magasin", password: 'azerty')
+client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"intermarche@gmail.com", phone:"", address:"rue du portail",post_code:"44000", city:"Nantes", segment:"CE", password: 'azerty')
 
 puts "       )  ( ') - client done"
 

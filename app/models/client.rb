@@ -1,6 +1,6 @@
 class Client < ApplicationRecord
   has_many :orders
-  # belongs_to :AMAP
+  # belongs_to :amap
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -8,7 +8,7 @@ class Client < ApplicationRecord
   validates :address, presence: true
   validates :post_code, presence: true
   validates :city, presence: true
-  validates :segment, presence: true, inclusion: { in: %w(particulier magasin marché CE drive),
+  validates :segment, presence: true, inclusion: { in: %w(particulier magasin marché CE drive amap),
     message: "%{value} n'est pas un type de client valable" }
 
   def full_name
