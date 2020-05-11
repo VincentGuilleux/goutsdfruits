@@ -6,6 +6,7 @@
 .container-index-filters {
   display: flex;
   flex-direction: row;
+  padding-bottom: 15px;
 }
 .container-index-products {
   flex: 1;
@@ -23,4 +24,11 @@
   justify-content: space-between;
   grid-template-columns: 1fr 1fr;
   grid-gap: 35px;
+}
+
+.title-container {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: $white_smoke;
 }
