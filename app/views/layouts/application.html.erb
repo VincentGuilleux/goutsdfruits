@@ -34,11 +34,19 @@
   <body>
     <%= render 'shared/flashes' %>
     <div class="d-flex">
-      <div class="navbar-layout-wrapper">
-        <%= unless controller.action_name == "home"
+      <div>
+        <!-- class navbar-layout-wrapper dans la div supprimée car non définie -->
+        <%#= unless controller.action_name == "home" %>
+        <%= if user_signed_in?
          render 'shared/navbar'
          end %>
       </div>
+      <div>
+        <%= unless user_signed_in?
+         render 'shared/navbar-top'
+         end %>
+      </div>
+
       <div class="page-layout-wrapper">
         <%= yield %>
       </div>
