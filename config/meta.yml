@@ -1,6 +1,5 @@
-meta_product_name: "Hadenn"
-meta_title: "Hadenn - Faciliter la vie du maraîcher !"
-meta_description: "Gérez vos stocks et vos commandes
-en quelques clics !"
+meta_product_name: "GoutsdFruits"
+meta_title: "GoutsdFruits - La ferme fruitière bio à côté de Cerizay"
+meta_description: "Commandez vos produits fruitiers à la ferme de Marie Gazeau !"
 meta_image: "cover.png" # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
