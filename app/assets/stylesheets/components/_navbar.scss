@@ -57,7 +57,7 @@
   &:hover {
     color:$white;
     opacity: 0.80;
-    transition: 100ms
+    transition: 100ms;
   }
   &.active {
   opacity: 1;
@@ -83,13 +83,3 @@
   height: 24px;
   padding-bottom: 25px;
 }
-
-
-
-// .navbar-goutsdfruits .navbar-collapse {
-//   flex-grow: 0;
-// }
-
-// .navbar-goutsdfruits .navbar-brand img {
-//   width: 40px;
-// }
