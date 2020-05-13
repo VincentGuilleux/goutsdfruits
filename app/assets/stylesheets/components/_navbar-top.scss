@@ -1,0 +1,41 @@
+.navbartop {
+  justify-content: space-between;
+  background: $green;
+  height: 120px;
+  width: 100vw;
+  display: flex;
+}
+
+.navbar-collapse {
+  flex-grow: 0;
+  justify-content: space-between;
+  display: flex;
+}
+
+.navbartop img {
+  width: 185px;
+  padding: 8px 20px 8px 20px;
+}
+
+.lien-navbar {
+  color: $white;
+  text-decoration: none;
+  font-size: 24px;
+  padding-left: 50px;
+  padding-right: 50px;
+  &:hover {
+    opacity: 0.80;
+    transition: 100ms;
+    text-decoration: none;
+  }
+}
+
+.lien-navbar {
+  a {
+    color: $white;
+    &:hover {
+      opacity: 0.80;
+      transition: 100ms;
+    }
+  }
+}

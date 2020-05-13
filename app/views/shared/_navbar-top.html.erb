@@ -1,3 +1,27 @@
-<%= link_to root_path, class: "" do %>
-    <%= image_tag "gouts-d-fruits-logo.jpg" %>
-<% end %>
+<div class="navbar navbar-expand-sm navbar-light navbartop">
+
+  <%= image_tag "logo-goutsdfruits.jpg" %>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item lien-navbar">
+        <%= link_to 'Accueil', root_path, class: "lien-navbar"%>
+      </li>
+      <li class="nav-item lien-navbar">
+        <%= link_to 'La ferme', root_path, class: "lien-navbar"%>
+      </li>
+      <li class="Produits">
+        <%= link_to 'Accueil', root_path, class: "lien-navbar"%>
+      </li>
+      <li class="nav-item lien-navbar">
+        <%= link_to 'Contact', root_path, class: "lien-navbar"%>
+      </li>
+      <li class="nav-item lien-navbar">
+        <%= link_to 'Connexion', root_path, class: "lien-navbar"%>
+      </li>
+    </ul>
+  </div>
+
+  <%= image_tag "logo-agbio.jpg" %>
+
+</div>
