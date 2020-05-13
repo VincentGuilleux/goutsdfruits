@@ -1,9 +1,11 @@
 .navbartop {
   justify-content: space-between;
   background: $green;
-  height: 120px;
+  height: 10vh;
   width: 100vw;
   display: flex;
+  position: sticky;
+  top: 0;
 }
 
 .navbar-collapse {

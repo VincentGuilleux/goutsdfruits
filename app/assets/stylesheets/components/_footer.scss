@@ -1,0 +1,26 @@
+.footer {
+  background: $white;
+  color: $grey_dark;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  height: 10vh;
+}
+
+.lien-footer {
+  a {
+    color: $grey_dark;
+    text-decoration: none;
+    &:hover {
+      opacity: 0.50;
+      transition: 100ms;
+    }
+  }
+}
+
+
+
+

@@ -33,18 +33,32 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <div class="d-flex">
-      <div class="navbar-layout-wrapper">
+
+    <% if user_signed_in? %>
+      <div class="d-flex">
+    <% end %>
+    <% unless user_signed_in? %>
+      <div class="d-flex flex-column">
+    <% end %>
+
+    <% if user_signed_in? %>
+        <div>
         <%#= unless controller.action_name == "home" %>
-        <% if user_signed_in? %>
           <%= render 'shared/navbar' %>
-        <% else %>
+        </div>
+    <% end %>
+    <% unless user_signed_in? %>
+        <div>
           <%= render 'shared/navbar-top' %>
-        <% end %>
-      </div>
+        </div>
+    <% end %>
+
       <div class="page-layout-wrapper">
         <%= yield %>
       </div>
-    </div>
+    </div>  <!-- div qui ferme le d-flex ou le le d-flex flex-column -->
+    <% unless user_signed_in? %>
+      <%= render 'shared/footer' %>
+    <% end %>
   </body>
 </html>
