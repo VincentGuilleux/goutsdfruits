@@ -5,6 +5,7 @@ class Product < ApplicationRecord
   has_one_attached :photo
   validates :name, uniqueness: true
   validates :unit_price_cents, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :unit_price_cents_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_type, presence: true
   validates :product_type, presence: true
   validates :product_fruit, presence: true
@@ -17,6 +18,24 @@ class Product < ApplicationRecord
     end
     return total_remaining_quantity
   end
+
+  def unit_price_cents_VAT
+    (unit_price_cents / (1 + VATRATE) * VATRATE).round(0)
+  end
+
+  def unit_price_cents_shop_VAT
+    (unit_price_cents_shop / (1 + VATRATE) * VATRATE).round(0)
+  end
+
+  def unit_price_cents_ET
+    unit_price_cents - unit_price_cents_VAT
+  end
+
+  def unit_price_cents_shop_ET
+    unit_price_cents_shop - unit_price_cents_shop_VAT
+  end
+
+
 
   # les méthodes ci-dessous permettent de mapper pour chaque produit type/category/fruit. Les doublons sont ensuite éliminés grâce au .uniq.
   # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product

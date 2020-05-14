@@ -15,23 +15,23 @@ class DashboardsController < UsersController
     @top_products = Product.joins(:order_lines).select("products.*, SUM(order_lines.quantity) AS total_quantity").order(total_quantity: :desc).group("products.id").limit(3)
   end
 
+  # Methods used to calculated monthly_data stats
+
   def products_total_value
     @products = Product.all
     products_total_value = 0
     @products.each do |product|
-      products_total_value += product.unit_price_cents * product.total_remaining_quantity
+      products_total_value += product.unit_price_cents_ET * product.total_remaining_quantity
     end
     return products_total_value/100
   end
-
-  # Methods used to calculated monthly_data stats
 
   def orders_number_current_month
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).count
   end
 
   def orders_total_current_month
-    Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents)/100
+    ((Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100) / (1 + VATRATE)).round(0)
   end
 
   def new_clients_current_month
