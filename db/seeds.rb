@@ -30,8 +30,8 @@ puts "      |    /|     - user done"
 # 0 - Create "AMAPS"
 amap1 = Amap.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", phone: "0549727940", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant")
 amap2 = Amap.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay")
-amap3 = Amap.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: " D175" ,post_code: "79300", city: "Bressuire")
-amap4 = Amap.create!(name: "Court Circuiteurs", email: "amapthouarsaise@netcourrier.com", address: "ancienne école des Maligrette" ,post_code: "79100", city: "Thouars")
+amap3 = Amap.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: "63 rue du Péré" ,post_code: "79300", city: "Bressuire")
+amap4 = Amap.create!(name: "Court Circuiteurs", email: "courts-circuiteurs@netcourrier.com", address: "les Maligrettes" ,post_code: "79100", city: "Thouars")
 
 # 1 - Create "client"
 client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap_id: amap1.id)
