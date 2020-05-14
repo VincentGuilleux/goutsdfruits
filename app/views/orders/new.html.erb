@@ -17,6 +17,9 @@
             <% end %>
           </div>
         </div>
+          <p class="mt50">Date de préparation souhaitée</p>
+          <%= ff.input :pickup_date, label: false %>
+
         <fieldset class="form-group radio_buttons optional order_payment_method">
           <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
           <input type="hidden" name="order[payment_method]" value="">
