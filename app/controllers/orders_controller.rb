@@ -78,7 +78,7 @@ class OrdersController < UsersController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, :payment_method, :status, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, order_lines_attributes: [:product_id, :quantity])
   end
 
   def create_order_payment_status
