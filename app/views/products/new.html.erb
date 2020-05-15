@@ -7,8 +7,10 @@
       <%= simple_form_for @product, defaults: { input_html: { class: 'new-product-input' } } do |f| %>
         <%= f.input :name, placeholder: 'Nom', label: false %>
         <%= f.input :description, placeholder: 'Description', label: false %>
-        <%= f.input :unit_price_cents, placeholder: 'Prix en centimes', label: false %>
-        <%= f.input :unit_type, prompt: 'Unité de mesure', label: false, collection: Product.units %>
+        <%= f.input :unit_price_cents, placeholder: 'Prix en centimes - particuliers', label: false %>
+        <%= f.input :unit_price_cents_shop, placeholder: 'Prix en centimes - magasin', label: false %>
+        <%= f.input :unit_type, prompt: 'Contenant et quantité - particuliers', label: false, collection: Product.units %>
+        <%= f.input :unit_type_shop, prompt: 'Contenant et quantité - magasin (uniquement si différent du contenant particulier)', label: false, collection: Product.units_shop %>
         <%= f.input :product_fruit, prompt: 'Fruit', label: false, collection: Product.fruits %>
         <%= f.input :product_type, prompt: 'Type', label: false, collection: Product.types %>
         <%= f.input :product_category, prompt: 'Catégorie', label: false, collection: Product.categories %>

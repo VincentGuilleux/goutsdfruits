@@ -207,11 +207,11 @@ product35 = Product.new(name:"Pommes Clochardes",description:"La pomme clocharde
 product35.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product35.save!
 
-product36 = Product.new(name:"Pommes",description:"", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet de 1 kg", unit_type_shop:"sachet de 5 kg",product_fruit: "pomme", product_type:"fruit", product_category:"Fruit frais")
+product36 = Product.new(name:"Pommes",description:"Pommes", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet de 1 kg", unit_type_shop:"sachet de 5 kg",product_fruit: "pomme", product_type:"fruit", product_category:"Fruit frais")
 product36.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product36.save!
 
-product37 = Product.new(name:"Poires",description:"", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet de 1 kg", unit_type_shop:"sachet de 5 kg",product_fruit: "poire", product_type:"fruit", product_category:"Fruit frais")
+product37 = Product.new(name:"Poires",description:"Poires", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet de 1 kg", unit_type_shop:"sachet de 5 kg",product_fruit: "poire", product_type:"fruit", product_category:"Fruit frais")
 product37.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product37.save!
 
