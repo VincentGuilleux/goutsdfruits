@@ -8,13 +8,6 @@
   }
 }
 
-.divr {
-  border: 1px red solid;
-}
-
-.mg20 {
-  margin:0 20px 20px 20px ;
-}
 
 .font-price-order-index {
   font-size: 18px;
@@ -22,7 +15,6 @@
   color: $green;
   margin-top: 5px;
   margin-right: 25px;
-
 }
 
 .widthpicto {
@@ -41,14 +33,6 @@
   grid-gap: 8px;
 }
 
-// .bottom-right-dash {
-//   justify-self:center
-// }
-
-// .order-lines {
-//   display:grid;
-//   grid-template-columns: 1fr;
-// }
 
 .order-line.order-index-bottom {
   display:grid;
@@ -146,3 +130,19 @@
 .total-price-order-index {
   margin-right: 20px;
 }
+
+// .divr {
+//   border: 1px red solid;
+// }
+
+// .mg20 {
+//   margin:0 20px 20px 20px ;
+// }
+// .bottom-right-dash {
+//   justify-self:center
+// }
+
+// .order-lines {
+//   display:grid;
+//   grid-template-columns: 1fr;
+// }
