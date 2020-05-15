@@ -31,7 +31,7 @@ class DashboardsController < UsersController
   end
 
   def orders_total_current_month
-    Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100)
+    Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100
   end
 
   def new_clients_current_month
