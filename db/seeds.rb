@@ -184,15 +184,15 @@ product29.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherr
 product29.save!
 
 product30 = Product.new(name:"Framboises",description:"Rouges et blanches, les barquettes de framboises vous en feront voir de toutes les couleurs.", unit_price_cents: 200, unit_price_cents_shop: 200, unit_type:"barquette de 125 g",product_fruit: "framboise", product_type:"fruit", product_category:"Fruit frais")
-product30.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
+product30.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/framboises_125g.jpg')), filename: 'framboises_125g.jpg', content_type: 'image/jpg')
 product30.save!
 
 product31 = Product.new(name:"Prunes Reine Claude",description:"Reines Claudes", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet de 500 g", unit_type_shop:"sachet de 5 kg", product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
-product31.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
+product31.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'prunes.jpg', content_type: 'image/jpg')
 product31.save!
 
 product32 = Product.new(name:"Prunes Mirabelle",description:"Prunes Mirabelle", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet de 500 g", unit_type_shop:"sachet de 5 kg",product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
-product32.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'fraises.jpg', content_type: 'image/jpg')
+product32.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'prunes.jpg', content_type: 'image/jpg')
 product32.save!
 
 product33 = Product.new(name:"Pêches de vigne",description:"Les petites pêches de vignes au goûts acidulé.", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet de 500 g", unit_type_shop:"sachet de 5 kg",product_fruit: "pêche", product_type:"fruit", product_category:"Fruit frais")
