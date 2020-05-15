@@ -21,7 +21,7 @@ class DashboardsController < UsersController
     @products = Product.all
     products_total_value = 0
     @products.each do |product|
-      products_total_value += product.unit_price_cents_ET * product.total_remaining_quantity
+      products_total_value += product.unit_price_cents * product.total_remaining_quantity
     end
     return products_total_value/100
   end
@@ -31,7 +31,7 @@ class DashboardsController < UsersController
   end
 
   def orders_total_current_month
-    ((Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100) / (1 + VATRATE)).round(0)
+    Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100)
   end
 
   def new_clients_current_month
