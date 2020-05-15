@@ -43,7 +43,7 @@ class ProductsController < UsersController
      private
 
   def product_params
-    params.require(:product).permit(:name, :description, :unit_price_cents, :unit_type, :product_fruit, :product_type, :product_category, :photo)
+    params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_type_shop, :product_fruit, :product_type, :product_category, :photo)
   end
 
 end

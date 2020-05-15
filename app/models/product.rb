@@ -3,7 +3,9 @@ class Product < ApplicationRecord
   has_many :order_lines
   has_many :orders, through: :order_lines #allows to find all orders for a given product
   has_one_attached :photo
-  validates :name, uniqueness: true
+  validates :photo, presence: true
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true
   validates :unit_price_cents, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_price_cents_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_type, presence: true
@@ -43,6 +45,11 @@ class Product < ApplicationRecord
 
   def self.units
     Product.all.map(&:unit_type).uniq.sort_by { |word| word.downcase }
+  end
+
+  def self.units_shop
+    Product.all.map(&:unit_type_shop).uniq.reject(&:nil?).sort_by { |word| word.downcase }
+
   end
 
   def self.types
