@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_08_083240) do
+ActiveRecord::Schema.define(version: 2020_05_15_094919) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,17 +36,6 @@ ActiveRecord::Schema.define(version: 2020_05_08_083240) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "amaps", force: :cascade do |t|
-    t.string "name"
-    t.string "email"
-    t.string "phone"
-    t.string "address"
-    t.string "post_code"
-    t.string "city"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "clients", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -56,16 +45,26 @@ ActiveRecord::Schema.define(version: 2020_05_08_083240) do
     t.string "post_code"
     t.string "city"
     t.string "segment"
-    t.bigint "amap_id"
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["amap_id"], name: "index_clients_on_amap_id"
+    t.string "amap"
     t.index ["email"], name: "index_clients_on_email", unique: true
     t.index ["reset_password_token"], name: "index_clients_on_reset_password_token", unique: true
+  end
+
+  create_table "delivery_places", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.string "address"
+    t.string "post_code"
+    t.string "city"
+    t.string "timeslot"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "order_line_product_lots", force: :cascade do |t|
@@ -98,7 +97,9 @@ ActiveRecord::Schema.define(version: 2020_05_08_083240) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.date "pickup_date"
+    t.bigint "delivery_place_id", null: false
     t.index ["client_id"], name: "index_orders_on_client_id"
+    t.index ["delivery_place_id"], name: "index_orders_on_delivery_place_id"
   end
 
   create_table "product_lots", force: :cascade do |t|
@@ -145,11 +146,11 @@ ActiveRecord::Schema.define(version: 2020_05_08_083240) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "clients", "amaps"
   add_foreign_key "order_line_product_lots", "order_lines"
   add_foreign_key "order_line_product_lots", "product_lots"
   add_foreign_key "order_lines", "orders"
   add_foreign_key "order_lines", "products"
   add_foreign_key "orders", "clients"
+  add_foreign_key "orders", "delivery_places"
   add_foreign_key "product_lots", "products"
 end
