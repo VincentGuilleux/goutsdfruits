@@ -6,8 +6,12 @@
         <%= image_tag "add-circle.svg" %>
       <% end %>
     </div>
-
   </div>
+
+  <!-- TOGGLE PRICE DIRECT / SHOP -->
+   <div id="price_toggle" class="middle-text grey-medium right-header pr65">
+      Prix particulier
+    </div>
 
   <!-- FILTERS DIV -->
   <div class="container-index-filters pl60">
@@ -55,7 +59,12 @@
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
 
+    <!-- Price Direct/Shop toggle -->
+
   </div>
+
+
+
 </div>
 
 <div class="main-container">
