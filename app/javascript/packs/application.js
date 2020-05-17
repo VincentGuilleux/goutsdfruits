@@ -30,6 +30,7 @@ import flatpickr from "flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownCategory, dropdownType } from '../components/dropdown';
+import { togglePrice } from '../components/toggle';
 import { InitChart } from '../components/initchart';
 
 document.addEventListener('turbolinks:load', () => {
@@ -56,7 +57,9 @@ document.addEventListener('turbolinks:load', () => {
   flatpickrInit();
   dropdownFruit();
   dropdownCategory();
-  dropdownType();InitChart();
+  dropdownType();
+  togglePrice();
+  InitChart();
 });
 
 
