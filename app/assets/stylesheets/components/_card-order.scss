@@ -45,6 +45,17 @@
   border: none;
   border-radius: 5px;
   padding-top: 0;
+  // height: 140px;
+
+  // &:hover {
+  //   text-decoration: none;
+  //   .fa-chevron-down {
+  //     font-size: 30px;
+  //     color: $grey_light;
+  //     transition: 0.3s;
+  //   }
+  // }
+
   .order-card-header {
     padding: 15px 18px 0 18px;
   }
@@ -73,6 +84,7 @@
     font-weight: bold;
     color: $grey_medium;
   }
+
 }
 
 .order-lines-dashboard {
@@ -126,6 +138,7 @@
   background-color: $white;
   border-radius: 5px;
   padding: 20px;
+  // text-align: left;
   p {
     margin-bottom: 0;
   }
@@ -253,7 +266,20 @@
   width: 130px;
   background-color: $grey_very_light;
   position: absolute;
-  top: 97px;
+  top: 105px;
+}
+
+// DELIVERY ---------------------------------
+
+.delivery-dashboard {
+  text-align: right;
+  width: 200px;
+  height: 36px;
+  margin: 10px 0;
+  p {
+    margin-bottom: 0;
+    font-size: 12px;
+  }
 }
 
 // COLLAPSE BUTTON --------------------------
@@ -261,6 +287,8 @@
 .collapse-btn {
   .btn-link {
     outline: 0;
+
+
   }
   .fas {
     color: $grey_light;
@@ -275,3 +303,4 @@
 [data-toggle="collapse"].collapsed .fa:before {
   content: "\f078";
 }
+
