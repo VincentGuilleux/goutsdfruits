@@ -11,7 +11,7 @@
 </div>
 <div class="dashboard-orders">
   <% @orders.each do |order| %>
-    <div class="card order-card-dashboard-main order-card-collapsed-dashboard">
+    <div class="card order-card-dashboard-main order-card-collapsed-dashboard btn btn-link collapsed" data-toggle="collapse" data-target="#order-<%=order.id %>" aria-expanded="true" aria-controls="order-<%=order.id %>" title="voir les détails">
       <!-- ID + DATE + PICKUP_DATE + NAME -->
       <div class="order-card-header">
         <div class="d-flex justify-content-between">
@@ -94,11 +94,15 @@
 
           </div>
         </div>
-        <div class="order-card-picto collapse-btn">
+        <div class="delivery">
+          <p class="middle-text grey-medium font-italic" title="Date de livraison"> <%= order.pickup_date %></p>
+          <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %></p>
+        </div>
+<!--         <div class="order-card-picto collapse-btn">
           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#order-<%=order.id %>" aria-expanded="true" aria-controls="order-<%=order.id %>">
             <i class="fas fa" aria-hidden="true"></i>
           </button>
-        </div>
+        </div> -->
       </div>
 
   <!-- ORDER LINES + ADDRESS -->

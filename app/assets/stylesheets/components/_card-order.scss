@@ -45,6 +45,11 @@
   border: none;
   border-radius: 5px;
   padding-top: 0;
+
+  &:hover {
+    text-decoration: none;
+  }
+
   .order-card-header {
     padding: 15px 18px 0 18px;
   }
@@ -126,6 +131,7 @@
   background-color: $white;
   border-radius: 5px;
   padding: 20px;
+  // text-align: left;
   p {
     margin-bottom: 0;
   }
@@ -261,6 +267,8 @@
 .collapse-btn {
   .btn-link {
     outline: 0;
+
+
   }
   .fas {
     color: $grey_light;
