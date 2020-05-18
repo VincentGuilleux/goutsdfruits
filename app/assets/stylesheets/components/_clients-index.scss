@@ -12,6 +12,8 @@
   }
 }
 
+
+
 .client-logo {
   display: flex;
   align-items: center;
@@ -54,14 +56,16 @@
 }
 
 .client-info {
-  padding: 28px;
+  padding: 18px 25px;
   p {
     margin-bottom: 5px;
   }
   .client-name {
     padding-bottom: 5px;
   }
-
+  .client-index-details{
+    margin-bottom: 0;
+  }
 }
 
 .client-cards {
