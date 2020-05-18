@@ -10,48 +10,22 @@
     <!-- FILTERS DIV -->
   <div class="container-index-filters pl60">
 
-    <!-- Fruit filter -->
-    <div id="product_fruit" class="middle-text grey-medium mr5 white">
-    <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
+    <!-- Category filter -->
+    <div id="product_category" class="middle-text grey-medium mr5">
+      <%= if params[:segment].present? then params[:segment] else 'Segment' end %>
     </div>
     <div class="dropdown">
       <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <div id="DropdownFruit" class="dropdown-content">
-        <% Product.fruits.each do |fruit| %>
-          <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
+      <div id="DropdownSegment" class="dropdown-content">
+        <% Client.segments.each do |segment| %>
+        <a data-name="<%= segment %>" href="#"><%= segment %></a>
         <% end %>
       </div>
     </div>
 
-    <!-- Category filter -->
-    <div id="product_category" class="middle-text grey-medium mr5">
-    <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
-    </div>
-    <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <div id="DropdownCategory" class="dropdown-content">
-      <% Product.categories.each do |category| %>
-        <a data-name="<%= category %>" href="#"><%= category %></a>
-      <% end %>
-      </div>
-    </div>
-
-    <!-- Type filter -->
-    <div id="product_type" class="middle-text grey-medium mr5">
-    <%= if params[:type].present? then params[:type] else 'Type' end %>
-    </div>
-    <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <!-- <button class="dropbtn">Type</button> -->
-      <div id="DropdownType" class="dropdown-content">
-      <% Product.types.each do |type| %>
-        <a data-name="<%= type %>" href="#"><%= type %></a>
-      <% end %>
-      </div>
-    </div>
-
     <!-- Reset filters -->
-    <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+    <%= link_to "Effacer le filtre", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+  </div>
 </div>
 <div class="client-cards">
   <% @clients.each do |client| %>
