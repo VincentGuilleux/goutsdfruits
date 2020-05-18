@@ -10,25 +10,36 @@
   </div>
 </div>
 
-<div>
-<!-- <div class="order-index"> -->
+<div class="orders-index">
+
   <% @orders.each do |order| %>
 
-    <div class="d-flex justify-content-between order-index">
-      <!-- ID + Date + Name -->
-      <div class="d-flex align-items-center">
+    <div class="order-card-index">
+
+      <!-- left part -->
+      <div class="order-card-index-collapsed-left-part">
         <span class="middle-text-bold green-light mx-3">#GF<%= order.id %></span>
         <span class="middle-text grey-medium mx-4" title="Date de commande"> <%= order.date %></span>
-        <h2 class="order-index-name mx-4"><%= order.client.first_name %> <%= order.client.last_name %> </h2>
+        <span class="order-index-name mx-4"><%= order.client.full_name %></span>
       </div>
-      <!-- prix -->
-      <div class="d-flex align-items-center">
-        <div class="underline-index-orders"></div>
-        <div class="total-price-order-index">
-          <h1 class="font-price-order-index ml-5 "><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </h1>
+
+      <!-- right part -->
+      <div class="order-card-index-collapsed-right-part">
+        <div class="underline-picto-index-orders"></div>
+
+        <!-- delivery -->
+        <div class="delivery">
+          <p class="middle-text grey-medium font-italic" title="Date de livraison"> <%= order.pickup_date %></p>
+          <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %></p>
         </div>
+
+        <!-- price -->
+        <div class="total-price-order-index">
+          <span><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </span>
+        </div>
+
         <!-- picto -->
-        <div class="order-card-picto py-2 widthpicto">
+        <div class="order-card-picto-index">
 
           <% if order.status=="pending" %>
 
@@ -81,11 +92,10 @@
 
           <% end %>
         </div>
-        <div class="delivery">
-          <span class="middle-text grey-medium mx-4 font-italic" title="Date de préparation souhaitée"> <%= order.pickup_date %></span>
-        </div>
 
-        <div class="order-card-picto collapse-btn mx-4">
+
+        <!-- collapse button -->
+        <div class="collapse-btn">
           <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#order-<%=order.id %>" aria-expanded="true" aria-controls="order-<%=order.id %>">
             <i class="fas fa" aria-hidden="true"></i>
           </button>
@@ -94,8 +104,7 @@
     </div>
 
 
-  <!-- ORDER LINES + ADDRESS -->
-
+    <!-- ORDER LINES + ADDRESS -->
     <div class="collapse" id="order-<%=order.id %>">
       <div class="card card-body order-card-collapsed-dashboard mg20">
         <div class="order-lines-index orga-card">

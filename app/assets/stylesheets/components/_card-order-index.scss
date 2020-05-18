@@ -1,5 +1,12 @@
+// collapsed part
 
-.order-index {
+.orders-index {
+
+}
+
+.order-card-index {
+  display: flex;
+  justify-content: space-between;
   background-color: $white;
   border-radius: 10px;
   margin: 20px 40px 10px 40px;
@@ -8,17 +15,9 @@
   }
 }
 
-
-.font-price-order-index {
-  font-size: 18px;
-  font-weight: bold;
-  color: $green;
-  margin-top: 5px;
-  margin-right: 25px;
-}
-
-.widthpicto {
-  width: 200px;
+.order-card-index-collapsed-left-part {
+  display: flex;
+  align-items: center;
 }
 
 .order-index-name {
@@ -26,6 +25,46 @@
   font-size: 18px;
   color: $grey_dark
 }
+
+.order-card-index-collapsed-right-part {
+  display: flex;
+  align-items: center;
+}
+
+.delivery {
+  text-align: right;
+  width: 200px;
+  margin: 10px 0;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.total-price-order-index {
+  font-size: 18px;
+  font-weight: bold;
+  color: $green;
+  margin: 0 60px;
+  width: 50px;
+  text-align: center;
+}
+
+.order-card-picto-index {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  height: 60px;
+}
+
+.underline-picto-index-orders {
+  height: 2px;
+  width: 130px;
+  background-color: $grey_very_light;
+  position: absolute;
+  right: 150px;
+}
+
+// full card (order lines + address)
 
 .orga-card{
   display:grid;
@@ -45,13 +84,6 @@
   font-weight: 900;
 }
 
-.underline-index-orders {
-  height: 2px;
-  width: 130px;
-  background-color: $grey_very_light;
-  position: relative;
-  left: 270px;
-}
 
 .order-address-index {
   background-color: $white;
@@ -127,9 +159,6 @@
   }
 }
 
-.total-price-order-index {
-  margin-right: 20px;
-}
 
 // .divr {
 //   border: 1px red solid;
