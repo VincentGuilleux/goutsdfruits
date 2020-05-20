@@ -10,15 +10,15 @@
     <!-- FILTERS DIV -->
   <div class="container-index-filters pl60">
 
-    <!-- Category filter -->
-    <div id="product_category" class="middle-text grey-medium mr5">
+    <!-- Segment filter -->
+    <div id="client_segment" class="middle-text grey-medium mr5">
       <%= if params[:segment].present? then params[:segment] else 'Segment' end %>
     </div>
     <div class="dropdown">
       <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
       <div id="DropdownSegment" class="dropdown-content">
         <% Client.segments.each do |segment| %>
-        <a data-name="<%= segment %>" href="#"><%= segment %></a>
+          <a data-name="<%= segment %>" href="#"><%= segment %></a>
         <% end %>
       </div>
     </div>

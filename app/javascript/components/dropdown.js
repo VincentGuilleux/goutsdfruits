@@ -81,3 +81,33 @@ export { dropdownType } ;
     // returns the HTML element (=Node) that triggered the event = A (a href...)
     // console.log(event.currentTarget.nodeName);
     // returns the HTML element (=Node) whose event listener triggered the event = DIV
+
+// dropdown filter client
+const dropdownSegment = () => {
+  const segment = document.getElementById("DropdownSegment");
+  if (!segment) return
+
+  segment.addEventListener("click", (event) => {
+    console.log(event);
+    const segment_value = (event.target.dataset.name)
+    const segment = document.getElementById("client_segment");
+    segment.innerText = segment_value
+    url_client_path();
+  });
+};
+
+const url_client_path = () => {
+const url = window.location.origin + window.location.pathname + "?" + segmentRequest();
+window.location.href = url;
+};
+
+const segmentRequest = () => {
+let segmentQuery ="";
+const segment = document.getElementById("client_segment");
+    if (segment.innerText !== 'Segment') {
+      segmentQuery = "&segment=" + segment.innerText
+    };
+return segmentQuery;
+};
+
+export { dropdownSegment } ;
