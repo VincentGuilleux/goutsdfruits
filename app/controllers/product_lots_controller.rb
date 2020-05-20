@@ -1,4 +1,4 @@
-class ProductLotsController < UsersController
+class ProductLotsController < ApplicationController
   def create
     @product_lot = ProductLot.new(product_lot_params)
     @product = Product.find(params[:product_id])

@@ -1,4 +1,4 @@
-class DashboardClientsController < CustomersController
+class DashboardClientsController < ApplicationController
 
   def show
   end

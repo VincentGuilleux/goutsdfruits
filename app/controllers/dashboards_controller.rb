@@ -1,4 +1,5 @@
-class DashboardsController < UsersController
+class DashboardsController < ApplicationController
+  before_action :require_admin
 
   helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :lowest_stock, :oldest_stock
   # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
@@ -64,6 +65,15 @@ class DashboardsController < UsersController
 
   def year_now
     Date.today.year
+  end
+
+  private
+
+  def require_admin
+    unless current_client.role == "admin"
+      flash[:error] = "Cette page n'est accessible qu'avec un profil administrateur"
+      redirect_to root_path
+    end
   end
 
 end

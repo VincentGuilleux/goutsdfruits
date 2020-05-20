@@ -33,31 +33,27 @@
 
   <body>
     <%= render 'shared/flashes' %>
-
-    <% if user_signed_in? %>
+    <% if client_signed_in? && current_client.role == "admin" %>
       <div class="d-flex">
-    <% end %>
-    <% unless user_signed_in? %>
+    <% else %>
       <div class="d-flex flex-column">
     <% end %>
 
-    <% if user_signed_in? %>
-        <div>
-        <%#= unless controller.action_name == "home" %>
-          <%= render 'shared/navbar' %>
-        </div>
-    <% end %>
-    <% unless user_signed_in? %>
-        <div>
-          <%= render 'shared/navbar-top' %>
-        </div>
+    <% if client_signed_in? && current_client.role == "admin" %>
+      <div>
+        <%= render 'shared/navbar' unless controller.action_name == "home" %>
+      </div>
+    <% else %>
+      <div>
+        <%= render 'shared/navbar-top' %>
+      </div>
     <% end %>
 
       <div class="page-layout-wrapper">
         <%= yield %>
       </div>
     </div>  <!-- div qui ferme le d-flex ou le le d-flex flex-column -->
-    <% unless user_signed_in? %>
+    <% unless client_signed_in? && current_client.role == "admin" %>
       <%= render 'shared/footer' %>
     <% end %>
   </body>

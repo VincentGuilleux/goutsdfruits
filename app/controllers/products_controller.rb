@@ -1,4 +1,6 @@
-class ProductsController < UsersController
+class ProductsController < ApplicationController
+  before_action :require_admin, :except => :index
+  skip_before_action :authenticate_client!, :only => :index
 
   def index
       @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
@@ -44,6 +46,13 @@ class ProductsController < UsersController
 
   def product_params
     params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_type_shop, :product_fruit, :product_type, :product_category, :photo)
+  end
+
+   def require_admin
+    unless current_client.role == "admin"
+      flash[:error] = "Cette page n'est accessible qu'avec un profil administrateur"
+      redirect_to root_path
+    end
   end
 
 end

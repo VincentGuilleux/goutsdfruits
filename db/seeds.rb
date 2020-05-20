@@ -6,36 +6,34 @@ OrderLine.destroy_all
 Order.destroy_all
 Client.destroy_all
 Product.destroy_all
-User.destroy_all
-
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 # 1 - Create user & clients
-user_admin = User.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'marie@gmail.com', address: "L'Orgerie", post_code: "79140", city: "Le Pin", password: 'azerty')
+user_admin = Client.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'marie@gmail.com', phone:'0608047585', address: "L'Orgerie", post_code: "79140", city: "Le Pin", segment:"particulier", role:"admin", password: 'azerty')
 user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
 user_admin.save!
 
-client1 = Client.create!(first_name: "Amanda", last_name:"Griffin", email:"sebastien@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap:"Ine Boune Penerie")
-client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap:"Bocageot")
-client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap:"Asphodèle")
-client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"amap", password: 'azerty', amap: 'Court Circuiteurs')
-client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23", segment:"particulier", password: 'azerty')
-client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier", password: 'azerty')
-client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier", password: 'azerty')
-client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas", segment:"particulier", password: 'azerty')
-client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier", password: 'azerty')
-client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier", password: 'azerty')
-client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier", password: 'azerty')
-client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"marché", password: 'azerty')
-client13 = Client.create!(first_name: "Magasin", last_name:"Biocoop", email:"magasin@gmail.com", phone:"", address:"rue Gambetta",post_code:"44000", city:"Nantes", segment:"magasin", password: 'azerty')
-client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"intermarche@gmail.com", phone:"", address:"rue du portail",post_code:"44000", city:"Nantes", segment:"CE", password: 'azerty')
+client1 = Client.create!(first_name: "Vincent", last_name:"Guilleux", email:"vincent.guilleux11@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", role:"client", password: 'azerty', amap:"Ine Boune Penerie")
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap", role:"client", password: 'azerty', amap:"Bocageot")
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"amap",  role:"client", password: 'azerty', amap:"Asphodèle")
+client4 = Client.create!(first_name: "Tanguy", last_name:" Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"amap",  role:"client", password: 'azerty', amap: 'Court Circuiteurs')
+client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoît@gmail.com", phone:"0635874598", address:"47 allées des Mimosas",post_code:"79700", city:"Saint-Amand-sur-Sèvre",created_at:"2020-03-23", segment:"particulier",  role:"client", password: 'azerty')
+client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier",  role:"client", password: 'azerty')
+client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier",  role:"client", password: 'azerty')
+client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas", segment:"particulier",  role:"client", password: 'azerty')
+client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier",  role:"client", password: 'azerty')
+client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"mélanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier",  role:"client", password: 'azerty')
+client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier",  role:"client", password: 'azerty')
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"marché",  role:"client", password: 'azerty')
+client13 = Client.create!(first_name: "Magasin", last_name:"Biocoop", email:"magasin@gmail.com", phone:"", address:"rue Gambetta",post_code:"44000", city:"Nantes", segment:"magasin",  role:"client", password: 'azerty')
+client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"intermarche@gmail.com", phone:"", address:"rue du portail",post_code:"44000", city:"Nantes", segment:"CE", role:"client", password: 'azerty')
 
 puts "      |    /|     - user & clients done"
 
 # 2 - Create "Delivery Places"
-ferme = DeliveryPlace.create!(name: "ferme", email: "mariegazeau@gmail.com", address: "l'Orgerie" ,post_code: "79140", city: "Le Pin", timeslot: "du lundi au samedi à partir de 10h")
+ferme = DeliveryPlace.create!(name: "Ferme", email: "mariegazeau@gmail.com", address: "l'Orgerie" ,post_code: "79140", city: "Le Pin", timeslot: "du lundi au samedi à partir de 10h")
 gaec = DeliveryPlace.create!(name: "GAEC", address: "La Billardière" ,post_code: "79140", city: "Cerizay", timeslot: "le vendredi de 17h30 à 19h30")
 amap1 = DeliveryPlace.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant", timeslot: "le jeudi de 17h30 à 18h45")
 amap2 = DeliveryPlace.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay", timeslot: "le jeudi de 18h30 à 19h30")
@@ -242,7 +240,7 @@ order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_p
 order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23" ,pickup_date: Date.new(2020,4,25), delivery_place_id: amap1.id)
 order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22" ,pickup_date: Date.new(2020,4,26), delivery_place_id: amap4.id)
 order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18",pickup_date: Date.new(2020,4,20), delivery_place_id: marche1.id)
-order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,4,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16",pickup_date: Date.new(2020,4,18), delivery_place_id: marche1.id)
+order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,5,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16",pickup_date: Date.new(2020,5,18), delivery_place_id: marche1.id)
 
 puts "orders done"
 
