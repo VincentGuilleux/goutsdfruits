@@ -50,7 +50,7 @@ class ProductsController < ApplicationController
 
    def require_admin
     unless current_client.role == "admin"
-      flash[:error] = "Cette page n'est accessible qu'avec un profil administrateur"
+      flash[:alert] = "Cette page n'est accessible qu'avec un profil administrateur"
       redirect_to root_path
     end
   end
