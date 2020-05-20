@@ -14,4 +14,8 @@ class Client < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def self.segments
+    Client.all.map(&:segment).uniq.sort_by { |word| word.downcase }
+  end
 end
