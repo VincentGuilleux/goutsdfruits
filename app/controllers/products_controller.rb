@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
      private
 
   def product_params
-    params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_type_shop, :product_fruit, :product_type, :product_category, :photo)
+    params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_measure, :unit_measure_quantity, :unit_measure_quantity_shop, :product_fruit, :product_type, :product_category, :photo)
   end
 
    def require_admin

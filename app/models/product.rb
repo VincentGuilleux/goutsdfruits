@@ -9,6 +9,8 @@ class Product < ApplicationRecord
   validates :unit_price_cents, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_price_cents_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_type, presence: true
+  validates :unit_measure, presence: true
+  validates :unit_measure_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :product_type, presence: true
   validates :product_fruit, presence: true
   validates :product_category, presence: true
@@ -47,9 +49,8 @@ class Product < ApplicationRecord
     Product.all.map(&:unit_type).uniq.sort_by { |word| word.downcase }
   end
 
-  def self.units_shop
-    Product.all.map(&:unit_type_shop).uniq.reject(&:nil?).sort_by { |word| word.downcase }
-
+  def self.unit_measures
+    Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }
   end
 
   def self.types
