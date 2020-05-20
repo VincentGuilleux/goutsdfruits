@@ -1,7 +1,11 @@
 class OrdersController < ApplicationController
 
   def index
-    @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+    if current_client.role == "admin"
+      @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+    else
+      @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products)
+    end
   end
 
   def prepare
