@@ -1,11 +1,13 @@
 <div class="title-container">
   <div class="page-title">Produits
-    <div class="add-new">
-      <%= link_to new_product_path do %>
-        <p>Ajouter un produit</p>
-        <%= image_tag "add-circle.svg" %>
-      <% end %>
-    </div>
+    <% if client_signed_in? && current_client.role == "admin" %>
+      <div class="add-new">
+        <%= link_to new_product_path do %>
+          <p>Ajouter un produit</p>
+          <%= image_tag "add-circle.svg" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
 
   <!-- TOGGLE PRICE DIRECT / SHOP -->
@@ -88,6 +90,9 @@
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
                 <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+                de
+                <%= product.unit_measure_quantity %>
+                <%= product.unit_measure %>
             </p>
             <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
           </div>
