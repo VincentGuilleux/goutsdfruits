@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, path: 'users', controllers: {sessions: 'users/sessions'}
-  devise_for :clients, path: 'clients', controllers: {sessions: 'clients/sessions'}
+  devise_for :clients
 
   # UNLOGGED PAGES
   root to: 'pages#home'

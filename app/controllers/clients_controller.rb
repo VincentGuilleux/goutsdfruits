@@ -1,4 +1,5 @@
-class ClientsController < UsersController
+class ClientsController < ApplicationController
+  before_action :require_admin
 
   def index
     @clients = Client.all
@@ -21,7 +22,15 @@ class ClientsController < UsersController
 
   private
 
+  def require_admin
+    unless current_client.role == "admin"
+      flash[:error] = "Cette page n'est accessible qu'avec un profil administrateur"
+      redirect_to root_path
+    end
+  end
+
   def client_params
     params.require(:client).permit(:segment)
   end
+
 end

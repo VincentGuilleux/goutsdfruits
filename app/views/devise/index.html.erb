@@ -1,0 +1,35 @@
+<div class="title-container">
+  <div class="page-title">Clients
+    <div class="add-new">
+      <%= link_to new_client_path do %>
+        <p>Ajouter un nouveau client</p>
+        <%= image_tag "add-circle.svg" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="client-cards">
+  <% @clients.each do |client| %>
+    <div class="client-card">
+      <div class="client-logo">
+        <% if client.segment == "particulier" %>
+          <i class="client-logo particulier fas fa-user-alt"></i>
+        <% elsif client.segment == "amap" %>
+          <i class="client-logo amap fas fas fa-user-alt"><p class="fas fa-tractor"></p></i>
+        <% elsif client.segment == "marché" %>
+          <i class="client-logo marche fas fa-store"></i>
+        <% elsif client.segment == "magasin" %>
+          <i class="client-logo magasin fas fa-store-alt"></i>
+        <% elsif client.segment == "CE" %>
+          <i class="client-logo ce fas fa-building"></i>
+        <% end %>
+      </div>
+      <div class="client-info">
+        <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
+        <p class="semi-small-text-bold"><%= client.city %></p>
+        <p class="semi-small-text grey-medium"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
+        <!-- <p class="semi-small-text grey-medium"><%= client.email %></p> -->
+      </div>
+    </div>
+  <% end %>
+</div>

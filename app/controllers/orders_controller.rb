@@ -1,4 +1,4 @@
-class OrdersController < UsersController
+class OrdersController < ApplicationController
 
   def index
     @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
@@ -65,7 +65,12 @@ class OrdersController < UsersController
 
     @order.total_price_cents = sum
 
-    create_order_payment_status
+    create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
+
+    # Si pas de delivery place sélectionnée, on affecte par défaut à la ferme
+    if @order.delivery_place_id.nil?
+      @order.delivery_place = DeliveryPlace.first
+    end
 
     if @order.save!
       generate_order_line_product_lots

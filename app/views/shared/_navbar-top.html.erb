@@ -19,7 +19,10 @@
         <%#= link_to 'Contact', root_path, class: "lien-navbar"%>
       </li>
       <li class="nav-item lien-navbar">
-        <%= link_to 'Connexion', new_client_session_path, class: "lien-navbar"%>
+        <%= link_to 'Connexion', new_client_session_path, class: "lien-navbar" unless client_signed_in? %>
+      </li>
+      <li class="nav-item lien-navbar">
+        <%= link_to 'Déconnexion', destroy_client_session_path, method: :delete, class: "lien-navbar" if client_signed_in? %>
       </li>
     </ul>
   </div>
