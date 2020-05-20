@@ -7,6 +7,25 @@
       <% end %>
     </div>
   </div>
+    <!-- FILTERS DIV -->
+  <div class="container-index-filters pl60">
+
+    <!-- Segment filter -->
+    <div id="client_segment" class="middle-text grey-medium mr5">
+      <%= if params[:segment].present? then params[:segment] else 'Segment' end %>
+    </div>
+    <div class="dropdown">
+      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+      <div id="DropdownSegment" class="dropdown-content">
+        <% Client.segments.each do |segment| %>
+          <a data-name="<%= segment %>" href="#"><%= segment %></a>
+        <% end %>
+      </div>
+    </div>
+
+    <!-- Reset filters -->
+    <%= link_to "Effacer le filtre", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+  </div>
 </div>
 <div class="client-cards">
   <% @clients.each do |client| %>
@@ -27,8 +46,8 @@
       <div class="client-info">
         <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
         <p class="semi-small-text-bold"><%= client.city %></p>
-        <p class="semi-small-text grey-medium"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
-        <!-- <p class="semi-small-text grey-medium"><%= client.email %></p> -->
+        <p class="small-text grey-medium client-index-details"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
+        <p class="small-text grey-medium client-index-details"><%= client.email %></p>
       </div>
     </div>
   <% end %>
