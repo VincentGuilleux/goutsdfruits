@@ -30,8 +30,9 @@ import flatpickr from "flatpickr";
 // import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownCategory, dropdownType, dropdownSegment } from '../components/dropdown';
-import { togglePrice } from '../components/toggle';
 import { InitChart } from '../components/initchart';
+import { togglePrice } from '../components/toggle';
+import { updateForm } from '../components/neworder';
 
 document.addEventListener('turbolinks:load', () => {
   $("[data-form-prepend]").click(function(e) {
@@ -59,9 +60,7 @@ document.addEventListener('turbolinks:load', () => {
   dropdownCategory();
   dropdownType();
   dropdownSegment();
-  togglePrice();
   InitChart();
+  togglePrice();
+  updateForm();
 });
-
-
-

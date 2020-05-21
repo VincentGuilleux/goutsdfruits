@@ -35,7 +35,7 @@
 
         <!-- price -->
         <div class="total-price-order-index">
-          <span><%= order.total_price_cents / 100 %> <sup class="sup-price"> € </sup> </span>
+          <span><%= (order.total_price_cents.to_f / 100) %> <sup class="sup-price"> € </sup> </span>
         </div>
 
         <!-- picto -->
@@ -113,9 +113,9 @@
               <div class="order-line">
                 <p class="product-name"><%= order_line.product.name %></p>
                 <div class="price">
-                  <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents / 100 %> <sup class="sup-price"> € </sup></p>
+                  <p class="unit-price"><%= order_line.quantity %> x <%= order_line.product.unit_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup></p>
                   <div class="separation"></div>
-                  <p class="total-price"><%= order_line.total_price_cents.to_i / 100 %> <sup class="sup-price"> € </sup> </p>
+                  <p class="total-price"><%= order_line.total_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup> </p>
                 </div>
               </div>
             <% end %>

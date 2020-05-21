@@ -12,11 +12,12 @@
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render 'order_line_fields', f: f %>
               <%= link_to_add_fields ff, :order_lines do %>
-                <%= image_tag "add-circle.svg" %>
+                <%= image_tag "add-circle.svg", :class => "img_preview" %>
               <% end %>
             <% end %>
           </div>
         </div>
+          <p class="red-alert">Prix pour test</p>
           <p class="mt50">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
 
@@ -62,18 +63,4 @@
     </div>
   </div>
 </div>
-
-<fieldset class="form-group radio_buttons optional order_payment_method">
-  <legend class="col-form-label pt-0">Payment method</legend>
-  <input type="hidden" name="order[payment_method]" value="">
-  <div class="form-check">
-    <input class="form-check-input radio_buttons optional" type="radio" value="cheque" name="order[payment_method]" id="order_payment_method_cheque">
-    <label class="form-check-label collection_radio_buttons" for="order_payment_method_cheque">cheque</label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input radio_buttons optional" type="radio" value="cash" name="order[payment_method]" id="order_payment_method_cash">
-    <label class="form-check-label collection_radio_buttons" for="order_payment_method_cash">cash</label>
-  </div>
-</fieldset>
-
 
