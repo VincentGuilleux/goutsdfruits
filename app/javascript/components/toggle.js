@@ -3,7 +3,7 @@ const togglePrice = () => {
 
   togglePrice.addEventListener("click", (event) => {
     const togglePriceValue = event.currentTarget.innerText
-    togglePriceValue == "Prix particulier"? togglePrice.innerText = "Prix magasin" : togglePrice.innerText = "Prix particulier"
+    togglePriceValue == "Particulier"? togglePrice.innerText = "Magasin" : togglePrice.innerText = "Particulier"
   });
 };
 
