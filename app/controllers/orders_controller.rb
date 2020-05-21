@@ -76,6 +76,7 @@ class OrdersController < ApplicationController
       @order.delivery_place = DeliveryPlace.first
     end
 
+    # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
       generate_order_line_product_lots
       redirect_to orders_path
