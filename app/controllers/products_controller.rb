@@ -14,6 +14,7 @@ class ProductsController < ApplicationController
       @products = @products.where(product_type: params[:type])
     end
 
+    # Hormis pour admin, on n'affiche que les produits avec quantités > 0
     if current_client.nil? || current_client.role != "admin"
       @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
     end
@@ -22,10 +23,11 @@ class ProductsController < ApplicationController
     # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
     # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
     @products = @products.sort_by do |product|
-      product.total_remaining_quantity
+      product.name
     end
-    
-   # @type_price = params[:type_price] || "nonshop" VU AVEC FLORENT POURRAIT ETRE UTILISE EN CAS DE DROPDOWN MENU PRIX PARTICULIER/MAGASIN
+
+   # @type_price = params[:type_price] || "nonshop"
+   # Vu avec Flo, pourrait être utilisé en cas de dropdown prix particulier/magasin
 
   end
 
