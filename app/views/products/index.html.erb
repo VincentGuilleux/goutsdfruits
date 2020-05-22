@@ -11,13 +11,12 @@
   </div>
 
   <!-- TOGGLE PRICE DIRECT / SHOP -->
-   <div id="price_toggle" class="middle-text grey-medium right-header pr65">
-      Particulier
-    </div>
+  <div id="price_toggle" class="middle-text grey-medium right-header pr65">
+    Particulier
+  </div>
 
   <!-- FILTERS DIV -->
   <div class="container-index-filters pl60">
-
     <!-- Fruit filter -->
     <div id="product_fruit" class="middle-text grey-medium mr5 white">
     <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
@@ -50,7 +49,6 @@
     </div>
     <div class="dropdown">
       <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <!-- <button class="dropbtn">Type</button> -->
       <div id="DropdownType" class="dropdown-content">
       <% Product.types.each do |type| %>
         <a data-name="<%= type %>" href="#"><%= type %></a>
@@ -61,11 +59,7 @@
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
 
-    <!-- Price Direct/Shop toggle -->
-
   </div>
-
-
 
 </div>
 
@@ -80,7 +74,11 @@
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <p class="semi-small-text-bold green">
-              <%= (product.unit_price_cents)/100.to_i %> €
+              <% if @type_price == "nonshop" %>
+                <%= (product.unit_price_cents)/100.to_f %> €
+              <% else %>
+                <%= (product.unit_price_cents_shop)/100.to_f %> €
+              <% end %>
                 <sup>/ <%= product.unit_type %> </sup>
             </p>
           </div>

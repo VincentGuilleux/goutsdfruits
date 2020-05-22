@@ -16,11 +16,7 @@ class Product < ApplicationRecord
   validates :product_category, presence: true
 
   def total_remaining_quantity
-    total_remaining_quantity = 0
-    product_lots.each do |product_lot|
-      total_remaining_quantity += product_lot.remaining_quantity
-    end
-    return total_remaining_quantity
+    product_lots.sum(:remaining_quantity)
   end
 
   def unit_price_cents_VAT
@@ -39,14 +35,12 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-
-
   # les méthodes ci-dessous permettent de mapper pour chaque produit type/category/fruit. Les doublons sont ensuite éliminés grâce au .uniq.
   # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
   # LEFT TO DO: GERER LE CAPITALIZE POUR AVOIR LES CHAMPS CAPITALIZES EN VISU map(&:capitalize)
 
   def self.units
-    Product.all.map(&:unit_type).uniq.sort_by { |word| word.downcase }
+    Product.all.map(&:unit_type).uniq.sort_by { |word | word.downcase }
   end
 
   def self.unit_measures
