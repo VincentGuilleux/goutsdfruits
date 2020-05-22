@@ -25,6 +25,13 @@
   border-radius: 8px 0 0 8px;
 }
 
+.product-price p {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  color: $green;
+}
+
 .card-product p {
   margin-bottom: 0;
   margin-left: 0;

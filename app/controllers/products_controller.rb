@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_client!, :only => :index
 
   def index
-      @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
+    @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
     if params[:fruit].present?
       @products = @products.where(product_fruit: params[:fruit])
     end
@@ -13,12 +13,13 @@ class ProductsController < ApplicationController
     if params[:type].present?
       @products = @products.where(product_type: params[:type])
     end
-      # les requêtes ci-dessus permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
-      # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
-      # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
-      @products = @products.sort_by do |product|
-        product.total_remaining_quantity
-      end
+    # les requêtes ci-dessus permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
+    # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
+    # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
+    @products = @products.sort_by do |product|
+      product.total_remaining_quantity
+    end
+
 
   end
 
@@ -42,13 +43,15 @@ class ProductsController < ApplicationController
     end
   end
 
-     private
+
+
+  private
 
   def product_params
     params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_measure, :unit_measure_quantity, :unit_measure_quantity_shop, :product_fruit, :product_type, :product_category, :photo)
   end
 
-   def require_admin
+  def require_admin
     unless current_client.role == "admin"
       flash[:alert] = "Cette page n'est accessible qu'avec un profil administrateur"
       redirect_to root_path
