@@ -22,13 +22,6 @@ class ClientsController < ApplicationController
 
   private
 
-  def require_admin
-    unless current_client.role == "admin"
-      flash[:alert] = "Cette page n'est accessible qu'avec un profil administrateur"
-      redirect_to root_path
-    end
-  end
-
   def client_params
     params.require(:client).permit(:segment)
   end
