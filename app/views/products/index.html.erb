@@ -80,9 +80,17 @@
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <div class="product-price">
-              <% if current_client.segment == 'magasin' %>
+              <% if current_client.role == "admin" %>
+                <p class="semi-small-text-bold green"><%= (product.unit_price_cents)/100.to_f %> €
+                  <sup>/ <%= product.unit_type %> </sup>
+                </p>
                 <p class="semi-small-text-bold green"><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
                 <sup>/ <%= product.unit_type %> </sup>
+                </p>
+              <% elsif current_client.segment == 'magasin' %>
+                <p class="semi-small-text-bold green"><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
+                <sup>/ <%= product.unit_type %> </sup>
+                </p>
               <% else  %>
                 <p class="semi-small-text-bold green"><%= (product.unit_price_cents)/100.to_f %> €
                   <sup>/ <%= product.unit_type %> </sup>
