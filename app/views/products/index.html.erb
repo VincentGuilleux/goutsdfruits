@@ -74,18 +74,22 @@
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <div class="product-price">
-              <% if current_client.role == "admin" %>
+              <% if current_client.nil? %>
                 <p><%= (product.unit_price_cents)/100.to_f %> €
-                  <sup>/ <%= product.unit_type %> </sup>
-                </p>
-                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
-                <sup>/ <%= product.unit_type %></sup>
-                </p>
+                <sup>/ <%= product.unit_type %> </sup></p>
+              <% elsif current_client.role == "admin" %>
+                <p><%= (product.unit_price_cents)/100.to_f %> €
+                <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
+                <p><%= (product.unit_price_cents_shop)/100.to_f %> €
+                  <% if product.unit_measure_quantity_shop.nil?  %>
+                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
+                  <% else %>
+                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity_shop %> <%= product.unit_measure %></sup></p>
+                  <% end %>
               <% elsif current_client.segment == 'magasin' %>
-                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
-                <sup>/ <%= product.unit_type %> </sup>
-                </p>
-              <% else  %>
+                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> € HT
+                <sup>/ <%= product.unit_type %> </sup></p>
+              <% else %>
                 <p><%= (product.unit_price_cents)/100.to_f %> €
                   <sup>/ <%= product.unit_type %> </sup>
                 </p>
