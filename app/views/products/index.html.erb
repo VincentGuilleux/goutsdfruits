@@ -81,7 +81,7 @@
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <div class="product-price">
               <% if current_client.segment == 'magasin' %>
-                <p class="semi-small-text-bold green"><%= (product.unit_price_cents_shop)/100.to_f %> €
+                <p class="semi-small-text-bold green"><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
                 <sup>/ <%= product.unit_type %> </sup>
               <% else  %>
                 <p class="semi-small-text-bold green"><%= (product.unit_price_cents)/100.to_f %> €
