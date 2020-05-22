@@ -10,11 +10,6 @@
     <% end %>
   </div>
 
-  <!-- TOGGLE PRICE DIRECT / SHOP -->
-  <div id="price_toggle" class="middle-text grey-medium right-header pr65">
-    Particulier
-  </div>
-
   <!-- FILTERS DIV -->
   <div class="container-index-filters pl60">
     <!-- Fruit filter -->
@@ -58,9 +53,7 @@
 
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
-
   </div>
-
 </div>
 
 <div class="main-container">
@@ -73,14 +66,28 @@
         <div class="card-product-infos">
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
-            <p class="semi-small-text-bold green">
-              <% if @type_price == "nonshop" %>
-                <%= (product.unit_price_cents)/100.to_f %> €
+            <div class="product-price">
+              <% if current_client.nil? %>
+                <p><%= (product.unit_price_cents)/100.to_f %> €
+                <sup>/ <%= product.unit_type %> </sup></p>
+              <% elsif current_client.role == "admin" %>
+                <p><%= (product.unit_price_cents)/100.to_f %> €
+                <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
+                <p><%= (product.unit_price_cents_shop)/100.to_f %> €
+                  <% if product.unit_measure_quantity_shop.nil?  %>
+                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
+                  <% else %>
+                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity_shop %> <%= product.unit_measure %></sup></p>
+                  <% end %>
+              <% elsif current_client.segment == 'magasin' %>
+                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> € HT
+                <sup>/ <%= product.unit_type %> </sup></p>
               <% else %>
-                <%= (product.unit_price_cents_shop)/100.to_f %> €
+                <p><%= (product.unit_price_cents)/100.to_f %> €
+                  <sup>/ <%= product.unit_type %> </sup>
+                </p>
               <% end %>
-                <sup>/ <%= product.unit_type %> </sup>
-            </p>
+            </div>
           </div>
           <div>
             <p class="big-text-bold grey-dark"><%= product.name %> </p>

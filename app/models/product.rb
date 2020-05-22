@@ -35,6 +35,14 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
+  def price_display
+    if current_client.segment == "magasin"
+      product_price = product.unit_price_cents_shop
+    else
+      product_price = product.unit_price_cents
+    end
+  end
+
   # les méthodes ci-dessous permettent de mapper pour chaque produit type/category/fruit. Les doublons sont ensuite éliminés grâce au .uniq.
   # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
   # LEFT TO DO: GERER LE CAPITALIZE POUR AVOIR LES CHAMPS CAPITALIZES EN VISU map(&:capitalize)
