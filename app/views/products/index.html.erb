@@ -24,7 +24,6 @@
         <% end %>
       </div>
     </div>
-
     <!-- Category filter -->
     <div id="product_category" class="middle-text grey-medium mr5">
     <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
@@ -37,7 +36,6 @@
       <% end %>
       </div>
     </div>
-
     <!-- Type filter -->
     <div id="product_type" class="middle-text grey-medium mr5">
     <%= if params[:type].present? then params[:type] else 'Type' end %>
@@ -50,7 +48,19 @@
       <% end %>
       </div>
     </div>
-
+    <!-- Price filter -->
+    <%# if !current_client.nil? && current_client.role == "admin" %>
+      <div id="product_price" class="middle-text grey-medium mr5">
+      <%= if params[:price].present? then params[:price] else 'Prix' end %>
+      </div>
+      <div class="dropdown">
+        <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+        <div id="DropdownPrice" class="dropdown-content">
+          <a data-name="non-magasin" href="#">non-magasin</a>
+          <a data-name="magasin" href="#">magasin</a>
+        </div>
+      </div>
+    <%# end %>
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
   </div>
@@ -64,24 +74,26 @@
         <%= cl_image_tag product.photo.key, alt: "image produit" %>
         <% end %>
         <div class="card-product-infos">
+          <!-- Card display top-middle: category -->
           <div class="card-product-text-line">
             <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
+            <!-- Card display top-right: price -->
             <div class="product-price">
-              <% if current_client.nil? %>
-                <p><%= (product.unit_price_cents)/100.to_f %> €
-                <sup>/ <%= product.unit_type %> </sup></p>
-              <% elsif current_client.role == "admin" %>
-                <p><%= (product.unit_price_cents)/100.to_f %> €
-                <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
-                <p><%= (product.unit_price_cents_shop)/100.to_f %> €
-                  <% if product.unit_measure_quantity_shop.nil?  %>
-                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity %> <%= product.unit_measure %></sup></p>
-                  <% else %>
-                    <sup>/ <%= product.unit_type %> de <%= product.unit_measure_quantity_shop %> <%= product.unit_measure %></sup></p>
-                  <% end %>
-              <% elsif current_client.segment == 'magasin' %>
-                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> € HT
-                <sup>/ <%= product.unit_type %> </sup></p>
+               <p class="semi-small-text-bold green">
+
+              <% if !current_client.nil? && current_client.role == "admin" %>
+                <% if @type_price == "magasin" %>
+                  <p><%= (product.unit_price_cents_shop)/100.to_f %> €
+                  <sup>/ <%= product.unit_type %>
+                <% else %>
+                  <p><%= (product.unit_price_cents)/100.to_f %> €
+                  <sup>/ <%= product.unit_type %>
+                <% end %>
+
+              <% elsif !current_client.nil? && current_client.segment == 'magasin' %>
+                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
+                <sup>HT / <%= product.unit_type %> </sup></p>
+
               <% else %>
                 <p><%= (product.unit_price_cents)/100.to_f %> €
                   <sup>/ <%= product.unit_type %> </sup>
@@ -89,11 +101,24 @@
               <% end %>
             </div>
           </div>
+          <!-- Card display center-middle: name -->
           <div>
             <p class="big-text-bold grey-dark"><%= product.name %> </p>
           </div>
+          <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
+            <% if !current_client.nil? && current_client.segment == 'magasin' %>
+              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+                de
+                <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
+                  <%= product.unit_measure_quantity_shop %>
+                  <%= product.unit_measure %>
+                <% else %>
+                  <%= product.unit_measure_quantity_shop / 1000 %>
+                  kg
+                <% end %>
+            <% else %>
                 <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
@@ -103,11 +128,13 @@
                   <%= product.unit_measure_quantity / 1000 %>
                   kg
                 <% end %>
+            <% end %>
             </p>
             <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
           </div>
         </div>
       </div>
     <% end %>
+    <!-- Fin de l'itération sur les produits -->
   </div>
 </div>

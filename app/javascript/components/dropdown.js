@@ -1,4 +1,5 @@
-// Les 3 méthodes ci-dessous écoutent les clicks sur chacun des 3 dropdown menus et renvoient la valeur cliquée
+// DROPDOWNS PRODUCT INDEX
+// Les méthodes ci-dessous écoutent les clicks sur chacun des dropdown menus et renvoient la valeur cliquée
 const dropdownFruit = () => {
   const fruit = document.getElementById("DropdownFruit");
   if (!fruit) return
@@ -35,8 +36,20 @@ const dropdownType = () => {
   });
 };
 
+const dropdownPrice = () => {
+  const price = document.getElementById("DropdownPrice");
+  if (!price) return
+
+  price.addEventListener("click", (event) => {
+    const product_price_value = (event.target.dataset.name)
+    const product_price = document.getElementById("product_price");
+    product_price.innerText = product_price_value
+    url_path();
+  });
+};
+
 const url_path = () => {
-const url = window.location.origin + window.location.pathname + "?" + fruitRequest() + categoryRequest() + typeRequest() ;
+const url = window.location.origin + window.location.pathname + "?" + fruitRequest() + categoryRequest() + typeRequest() + priceRequest() ;
 window.location.href = url;
 };
 
@@ -67,22 +80,21 @@ const product_type = document.getElementById("product_type");
 return typeQuery;
 };
 
+const priceRequest = () => {
+let priceQuery ="";
+const product_price = document.getElementById("product_price");
+    if (product_price.innerText !== 'Prix') {
+      priceQuery = "&price=" + product_price.innerText
+    };
+return priceQuery;
+};
+
 export { dropdownFruit } ;
 export { dropdownCategory } ;
 export { dropdownType } ;
+export { dropdownPrice } ;
 
-    // PREVIOUS RESEARCHS NOT USED FINALLY
-    // console.log(event.toElement.text); ancienne méthode qui permettait de retriever le champ text de l'élement
-    // console.log(event.toElement);
-    // return the target element: <a href="#"><%= type %></a>
-    // console.log(event.currentTarget);
-    // returns the element whose event listener triggered the event = the whole div
-    // console.log(event.target.nodeName);
-    // returns the HTML element (=Node) that triggered the event = A (a href...)
-    // console.log(event.currentTarget.nodeName);
-    // returns the HTML element (=Node) whose event listener triggered the event = DIV
-
-// dropdown filter client
+// DROPDOWNS CLIENT INDEX
 const dropdownSegment = () => {
   const segment = document.getElementById("DropdownSegment");
   if (!segment) return

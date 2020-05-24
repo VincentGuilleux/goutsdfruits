@@ -11,6 +11,7 @@ class Product < ApplicationRecord
   validates :unit_type, presence: true
   validates :unit_measure, presence: true
   validates :unit_measure_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :unit_measure_quantity_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :product_type, presence: true
   validates :product_fruit, presence: true
   validates :product_category, presence: true
@@ -35,17 +36,16 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  def price_display
-    if current_client.segment == "magasin"
-      product_price = product.unit_price_cents_shop
-    else
-      product_price = product.unit_price_cents
-    end
-  end
+  # def measure_quantity_display
+  #   if current_client.segment == "magasin"
+  #     measure_quantity_display = unit_measure_quantity_shop
+  #   else
+  #     measure_quantity_display = unit_measure_quantity
+  #   end
+  # end
 
   # les méthodes ci-dessous permettent de mapper pour chaque produit type/category/fruit. Les doublons sont ensuite éliminés grâce au .uniq.
   # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
-  # LEFT TO DO: GERER LE CAPITALIZE POUR AVOIR LES CHAMPS CAPITALIZES EN VISU map(&:capitalize)
 
   def self.units
     Product.all.map(&:unit_type).uniq.sort_by { |word | word.downcase }
