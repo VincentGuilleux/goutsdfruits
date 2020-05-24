@@ -21,13 +21,11 @@ class ProductsController < ApplicationController
      # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
     @type_price = params[:price] || "non-magasin"
 
-
+    # TRI D'AFFICHAGE DES PRODUITS
     # Hormis pour admin, on n'affiche que les produits avec quantités > 0
-    # !!! A VOIR AVEC MARIE !!!
-    # if current_client.nil? || current_client.role != "admin"
-    #   @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
-    # end
-
+    if current_client.nil? || current_client.role != "admin"
+     @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
+    end
     # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"
       @products = @products.sort_by do |product|
