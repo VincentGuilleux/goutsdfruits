@@ -49,8 +49,8 @@
       </div>
     </div>
     <!-- Price filter -->
-    <%# if !current_client.nil? && current_client.role == "admin" %>
-      <div id="product_price" class="middle-text grey-medium mr5">
+    <div id="product_price" class="middle-text grey-medium mr5">
+    <% if !current_client.nil? && current_client.role == "admin" %>
       <%= if params[:price].present? then params[:price] else 'Prix' end %>
       </div>
       <div class="dropdown">
@@ -60,7 +60,7 @@
           <a data-name="magasin" href="#">magasin</a>
         </div>
       </div>
-    <%# end %>
+    <% end %>
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
   </div>
@@ -108,8 +108,8 @@
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-            <% if !current_client.nil? && current_client.segment == 'magasin' %>
-              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+            <% if (!current_client.nil? && current_client.segment == 'magasin') || (!current_client.nil? && current_client.role == "admin" && @type_price == "magasin") %>
+              <%= pluralize(product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop, product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
                   <%= product.unit_measure_quantity_shop %>
