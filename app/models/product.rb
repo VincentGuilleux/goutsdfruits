@@ -36,35 +36,30 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  # def measure_quantity_display
-  #   if current_client.segment == "magasin"
-  #     measure_quantity_display = unit_measure_quantity_shop
-  #   else
-  #     measure_quantity_display = unit_measure_quantity
-  #   end
+  # les méthodes ci-dessous permettaient d'itérer pour chaque produit, les doublons sont ensuite éliminés grâce au .uniq.
+  # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
+  #  def self.unit_measures
+  #   Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }
   # end
 
-  # les méthodes ci-dessous permettent de mapper pour chaque produit type/category/fruit. Les doublons sont ensuite éliminés grâce au .uniq.
-  # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
-
   def self.units
-    Product.all.map(&:unit_type).uniq.sort_by { |word | word.downcase }
+    ["barquette", "bocal", "bouteille", "pot", "sachet"]
   end
 
   def self.unit_measures
-    Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }
+    ["cl", "g", "ml"]
   end
 
   def self.types
-    Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
+    ["bonbon", "compote", "coulis", "fruit", "fruit au sirop", "gelée", "pâte à tartiner", "sirop", "sorbet"]
   end
 
   def self.categories
-    Product.all.map(&:product_category).uniq.sort_by { |word| word.downcase }
+    ["Fruit frais", "Gourmandise"]
   end
 
   def self.fruits
-    Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }
+    ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "poire", "pomme", "prune", "pêche", "sureau"]
   end
 
 end
