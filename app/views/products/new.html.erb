@@ -12,7 +12,7 @@
         <%= f.input :unit_type, prompt: 'Type de contenant', label: false, collection: Product.units %>
         <%= f.input :unit_measure, prompt: 'Unité de mesure du contenant', label: false, collection: Product.unit_measures %>
         <%= f.input :unit_measure_quantity, placeholder: 'Quantité du contenant en unité de mesure pour les particuliers', label: false %>
-        <%= f.input :unit_measure_quantity_shop, placeholder: 'Quantité du contenant pour les magasins (uniquement si différent des particuliers)', label: false %>
+        <%= f.input :unit_measure_quantity_shop, placeholder: 'Quantité du contenant pour les magasins (à renseigner même si idem que ci-dessus)', label: false %>
         <%= f.input :product_fruit, prompt: 'Fruit', label: false, collection: Product.fruits %>
         <%= f.input :product_type, prompt: 'Type', label: false, collection: Product.types %>
         <%= f.input :product_category, prompt: 'Catégorie', label: false, collection: Product.categories %>

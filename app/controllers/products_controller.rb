@@ -4,6 +4,10 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
+
+    # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
+    # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
+    # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
     if params[:fruit].present?
       @products = @products.where(product_fruit: params[:fruit])
     end
@@ -14,20 +18,26 @@ class ProductsController < ApplicationController
       @products = @products.where(product_type: params[:type])
     end
 
+     # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
+    @type_price = params[:price] || "non-magasin"
+
+
     # Hormis pour admin, on n'affiche que les produits avec quantités > 0
+    # !!! A VOIR AVEC MARIE !!!
+    # if current_client.nil? || current_client.role != "admin"
+    #   @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
+    # end
+
+    # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"
-      @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
+      @products = @products.sort_by do |product|
+        product.name
+      end
+    else
+      @products = @products.sort_by do |product|
+        product.total_remaining_quantity
+      end
     end
-
-    # les requêtes ci-dessus permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
-    # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
-    # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
-    @products = @products.sort_by do |product|
-      product.name
-    end
-
-   # @type_price = params[:type_price] || "nonshop"
-   # Vu avec Flo, pourrait être utilisé en cas de dropdown prix particulier/magasin
 
   end
 
