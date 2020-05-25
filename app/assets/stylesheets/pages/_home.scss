@@ -1,4 +1,5 @@
 // Specific CSS for your home-page
+
 .banner {
   background-size: cover;
   background-position: center;
@@ -29,6 +30,14 @@
   }
 }
 
+.responsive img {
+  display: inline-block;
+  width: 100%;
+  min-width: 12vw;
+  max-width: 50vw;
+  height: auto;
+  padding: 0px 2px 50px 2px;
+}
 
 .btn-right-home {
   color: white;
