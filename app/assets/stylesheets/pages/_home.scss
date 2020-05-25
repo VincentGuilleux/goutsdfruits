@@ -1,17 +1,15 @@
 // Specific CSS for your home-page
 
 .banner {
+  padding-top: 6em;
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(image_path('home-page.jpg'));
 }
 
 .banner h1 {
-  padding-top: 50px;
   font-size: 38px;
   color: white;
-  padding-bottom: 50px;
-
 }
 
 .banner p {

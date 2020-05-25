@@ -1,12 +1,7 @@
 .navbartop {
   justify-content: space-between;
-  background: $green;
-  height: 10vh;
-  width: 100vw;
-  display: flex;
-  position: sticky;
-  top: 0;
-  left: 0;
+  background: $white;
+  color: $green;
 }
 
 .navbar-collapse {
@@ -16,12 +11,13 @@
 }
 
 .navbartop img {
-  height: 96px;
-  padding: 8px 20px 8px 20px;
+  height: auto;
+  max-height: 8vh;
+  padding: 0% 1%;
 }
 
 .lien-navbar {
-  color: $white;
+  color: $green;
   text-decoration: none;
   font-size: 24px;
   padding-left: 30px;
@@ -35,7 +31,7 @@
 
 .lien-navbar {
   a {
-    color: $white;
+    color: $green;
     &:hover {
       opacity: 0.80;
       transition: 100ms;

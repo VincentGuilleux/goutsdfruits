@@ -1,5 +1,8 @@
-<div class="navbar navbar-expand-sm navbar-light navbartop">
-
+<nav class="navbar fixed-top navbar-expand-lg navbar-light navbartop">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <p class="green semi-small-text">MENU</p>
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <%= image_tag "logo-goutsdfruits.jpg" %>
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -9,14 +12,9 @@
       </li>
       <li class="nav-item lien-navbar">
         <a class="lien-navbar" href="/pages/laferme">La ferme</a>
-        <%#= link_to 'La ferme', root_path, class: "lien-navbar"%>
       </li>
       <li class="nav-item lien-navbar">
         <%= link_to 'Produits', products_path, class: "lien-navbar"%>
-      </li>
-      <li class="nav-item lien-navbar">
-        <a class="lien-navbar" href="/pages/contact">Contact</a>
-        <%#= link_to 'Contact', root_path, class: "lien-navbar"%>
       </li>
       <li class="nav-item lien-navbar">
         <%= link_to 'Connexion', new_client_session_path, class: "lien-navbar" unless client_signed_in? %>
@@ -29,4 +27,4 @@
 
   <%= image_tag "logo-agbio.jpg", id: 'logo-agbio' %>
 
-</div>
+</nav>
