@@ -21,42 +21,6 @@
           <p class="mt50">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
 
-        <fieldset class="form-group radio_buttons optional order_payment_method">
-          <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
-          <input type="hidden" name="order[payment_method]" value="">
-          <div class="payment-choices">
-            <div class="payment-choice form-check">
-              <label for="order_payment_method_espèces">
-                <i class="fas fa-piggy-bank"></i>
-                <p>Espèces</p>
-              </label>
-
-              <input type="radio" class="form-check-input radio_buttons optional hidden", value="especes" name="order[payment_method]" id="order_payment_method_especes">
-
-            </div>
-            <div class="payment-choice form-check">
-              <label for="order_payment_method_carte_bancaire">
-                <i class="fab fa-cc-visa"></i>
-                <p>Carte</p>
-              </label>
-              <input class="form-check-input radio_buttons optional hidden" type="radio" value="carte" name="order[payment_method]" id="order_payment_method_carte">
-            </div>
-            <div class="payment-choice form-check">
-              <label for="order_payment_method_paypal">
-                <i class="fab fa-paypal"></i>
-                <p>Paypal</p>
-              </label>
-              <input class="form-check-input radio_buttons optional hidden" type="radio" value="paypal" name="order[payment_method]" id="order_payment_method_paypal">
-            </div>
-            <div class="payment-choice form-check">
-              <label for="order_payment_method_chèque">
-                <i class="fas fa-money-check"></i>
-                <p>Chèque</p>
-              </label>
-              <input class="form-check-input radio_buttons optional hidden" type="radio" value="cheque" name="order[payment_method]" id="order_payment_method_cheque">
-            </div>
-          </div>
-        </fieldset>
         <%#= ff.input :payment_method, as: :radio_buttons, collection: ["cheque", "cash"]%>
         <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
       <% end %>
