@@ -1,7 +1,7 @@
 .navbar-goutsdfruits {
+  margin-top: -12vh; // on annule ici le padding-top générique du application.scss N/A pour les pages dashboard
   justify-content: space-between;
   background: $green;
-  // position: fixed; (c'était sticky)
   position: sticky;
   top: 0;
   left: 0;
