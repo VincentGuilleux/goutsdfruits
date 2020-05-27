@@ -1,4 +1,6 @@
 Rails.application.configure do
+  config.action_mailer.default charset: 'utf-8'
+  config.action_mailer.perform_deliveries = true
   config.action_mailer.default_url_options = { host: "http://localhost:3000" }
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -32,8 +34,17 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  # action_mailer
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address: "smtp.gmail.com",
+      port: 587,
+      domain: "gmail.com",
+      authentication: "plain",
+      user_name: ENV["GMAIL_EMAIL"],
+      password: ENV["GMAIL_PASSWORD"],
+  }
 
   config.action_mailer.perform_caching = false
 
