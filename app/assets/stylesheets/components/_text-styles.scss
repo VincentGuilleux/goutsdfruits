@@ -1,5 +1,10 @@
-// for all page titles + monthly data results
+.page-title-static {
+  color: $grey_dark;
+  font-weight: 900;
+  font-size: 24px;
+}
 
+// for all page titles dashboard + monthly data results
 .page-title {
   color: $grey_dark;
   z-index: 100;
@@ -11,6 +16,13 @@
   p {
   margin-bottom: 0;
   }
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: $blue;
+  padding:0;
 }
 
 .add-new a {
@@ -38,8 +50,9 @@
   padding-top: 40px;
 }
 
-.pr65 {
-  padding-right: 65px;
+.pxstatic {
+  padding-left: 8vw;
+  padding-right: 8vw;
 }
 
 .pr35 {

@@ -1,21 +1,21 @@
 // Specific CSS for your home-page
 
 .banner {
-  padding-top: 6em;
+  padding-top: 5em;
   background-size: cover;
   background-position: center;
   background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(image_path('home-page.jpg'));
 }
 
 .banner h1 {
-  font-size: 38px;
+  font-size: 34px;
   color: white;
 }
 
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .8;
+  opacity: .9;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   a {
     color: white;
@@ -28,13 +28,12 @@
   }
 }
 
-.responsive img {
-  display: inline-block;
+.imghome img {
   width: 100%;
-  min-width: 12vw;
+  min-width: 205px;
   max-width: 50vw;
   height: auto;
-  padding: 0px 2px 50px 2px;
+  padding: 0px 10px 100px 10px;
 }
 
 .btn-right-home {
