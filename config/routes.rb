@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # UNLOGGED PAGES
   root to: 'pages#home'
   get "/pages/:page" => "pages#show"
+  post "send_contact" => "pages#send_contact"
 
   # USER ROUTES
 
