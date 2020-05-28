@@ -20,13 +20,11 @@ class Client < ApplicationRecord
     message: "%{value} n'est pas un type de client valable" }
   validates :amap, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs'] }, :allow_nil => true
 
-
-
   def full_name
     "#{first_name} #{last_name}"
   end
 
   def self.segments
-    Client.all.map(&:segment).uniq.sort_by { |word| word.downcase }
+    ["amap", "CE", "magasin", "marché", "particulier"]
   end
 end
