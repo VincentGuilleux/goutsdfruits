@@ -1,11 +1,11 @@
 <div class="new-order-main-container" >
   <div class="container new-order">
-    <div class="new-order-title page-title">
+    <div class="new-order-title">
       <p>Nouvelle commande</p>
     </div>
     <div class="container">
       <%= simple_form_for @order, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |ff| %>
-        <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input' }, label: false, prompt: "Sélectionner un client" %>
+        <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input select2' }, label: false, prompt: "Sélectionner un client" %>
         <p class>Ajouter des produits</p>
         <div class="order-line">
           <div class="form-inline">
@@ -21,7 +21,7 @@
           <p class="mt50">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
 
-        <fieldset class="form-group radio_buttons optional order_payment_method">
+        <!-- <fieldset class="form-group radio_buttons optional order_payment_method">
           <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
           <input type="hidden" name="order[payment_method]" value="">
           <div class="payment-choices">
@@ -56,11 +56,10 @@
               <input class="form-check-input radio_buttons optional hidden" type="radio" value="cheque" name="order[payment_method]" id="order_payment_method_cheque">
             </div>
           </div>
-        </fieldset>
+        </fieldset> -->
         <%#= ff.input :payment_method, as: :radio_buttons, collection: ["cheque", "cash"]%>
         <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
       <% end %>
     </div>
   </div>
 </div>
-
