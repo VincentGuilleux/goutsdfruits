@@ -30,10 +30,11 @@
       width: 750px;
       .product-input {
         // background-color: $white_smoke;
-        width: 490px;
-        margin-bottom: 20px;
-        margin-right: 10px;
-        border-radius: 5px;
+        // width: 490px;
+        // margin-bottom: 20px;
+        // margin-right: 10px;
+        // border-radius: 5px;
+        display: none;
       }
 
       .quantity-input {
@@ -166,7 +167,12 @@
   // height: 50px;
   // border: solid 1px $grey_light;
   // transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  li:first-child {
+  // li[aria-selected="true"] {
+  //   font-style: italic;
+  //   color: $grey_medium;
+  //   background: none;
+  // }
+  li:not([id]) {
     font-style: italic;
     color: $grey_medium;
     background: none;
