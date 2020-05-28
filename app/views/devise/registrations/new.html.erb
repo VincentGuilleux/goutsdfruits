@@ -4,10 +4,39 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.input :first_name,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "prénom" }%>
+    <%= f.input :last_name,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "nom de famille (ou nom du magasin / marché)" }%>
     <%= f.input :email,
                 required: true,
                 autofocus: true ,
-                input_html: { autocomplete: "email" }%>
+    input_html: { autocomplete: "email" }%>
+    <%= f.input :phone,
+                required: false,
+                autofocus: true,
+                input_html: { autocomplete: "numéro de téléphone" }%>
+    <%= f.input :address,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "numéro et nom de la voie" }%>
+    <%= f.input :post_code,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "code postal" }%>
+    <%= f.input :city,
+                required: true,
+                autofocus: true,
+                input_html: { autocomplete: "ville" }%>
+    <%= f.input :segment,
+                required: true,
+                autofocus: true,
+                collection: Client.segments,
+                input_html: { autocomplete: "segment" }%>
     <%= f.input :password,
                 required: true,
                 hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
