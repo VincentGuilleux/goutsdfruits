@@ -7,36 +7,42 @@
     <%= f.input :first_name,
                 required: false,
                 autofocus: true,
+                label: 'Prénom',
                 input_html: { autocomplete: "prénom" }%>
     <%= f.input :last_name,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "nom de famille (ou nom du magasin / marché)" }%>
+                label: 'Nom (ou nom du magasin / marché)'%>
     <%= f.input :email,
                 required: true,
-                autofocus: true ,
-    input_html: { autocomplete: "email" }%>
+                autofocus: true,
+                label: 'Mail'%>
     <%= f.input :phone,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "numéro de téléphone" }%>
-    <%= f.input :address,
+                label: 'Numéro de téléphone'%>
+      <%= f.input :address,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "numéro et nom de la voie" }%>
+                label: 'Numéro et nom de la voie'%>
     <%= f.input :post_code,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "code postal" }%>
+                label: 'Code postal'%>
     <%= f.input :city,
                 required: true,
                 autofocus: true,
-                input_html: { autocomplete: "ville" }%>
+                label: 'Ville'%>
     <%= f.input :segment,
                 required: true,
                 autofocus: true,
-                collection: Client.segments,
-                input_html: { autocomplete: "segment" }%>
+                label: 'Type de client',
+                collection: Client.segments%>
+    <%= f.input :amap,
+                required: false,
+                autofocus: true,
+                label: "Nom de l'AMAP (laisser vide si non membre d'une des AMAP ci-dessous)",
+                collection: Client.amap%>
     <%= f.input :password,
                 required: true,
                 hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
@@ -47,7 +53,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, t(".sign_up") %>
+    <%= f.button :submit, t(".sign_up"), class: 'btn btn-lg btn-block submit-btn' %>
   </div>
 <% end %>
 

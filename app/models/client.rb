@@ -27,4 +27,9 @@ class Client < ApplicationRecord
   def self.segments
     ["amap", "CE", "magasin", "marché", "particulier"]
   end
+
+  def self.amap
+    ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs']
+  end
+
 end
