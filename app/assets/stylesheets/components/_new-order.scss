@@ -19,16 +19,17 @@
     }
   }
   .client-input {
-    background-color: $white_smoke;
-    margin-bottom: 50px;
-    border-radius: 5px;
+    // background-color: $white_smoke;
+    // margin-bottom: 50px;
+    // border-radius: 5px;
+    display: none;
   }
   .order-line {
     .form-inline {
       justify-content: left;
       width: 750px;
       .product-input {
-        background-color: $white_smoke;
+        // background-color: $white_smoke;
         width: 490px;
         margin-bottom: 20px;
         margin-right: 10px;
@@ -36,7 +37,7 @@
       }
 
       .quantity-input {
-        background-color: $white_smoke;
+        // background-color: $white_smoke;
         width: 150px;
         margin-bottom: 20px;
         border-radius: 5px;
@@ -135,11 +136,79 @@
 
 }
 
-.select2-selection__arrow {
-  width: 30px;
-  padding: 20px;
+
+// SELECT2 STYLE OVERRIDE
+.order_client {
+  margin-bottom: 30px;
+  border: 1px solid #ced4da;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 5px;
+}
+
+.select2-selection__rendered {
+  padding-left: 20px;
+}
+
+.select2-results ul {
+  // background-color: $white;
+  // border-radius: 5px;
+  // box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  list-style: none;
+  margin-bottom: 10px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-bottom: 20px;
+  // overflow: scroll;
+  // height: 50px;
+  // border: solid 1px $grey_light;
+  // transition: background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  li:first-child {
+    font-style: italic;
+    color: $grey_medium;
+    background: none;
+  }
+}
+
+
+.select2-search__field {
+  border-radius: 5px;
+}
+
+.select2-search {
+  padding: 4px;
+}
+
+.select2-container .select2-selection--single {
+  cursor: pointer;
 }
 
 .select2-container--open {
   background-color: white;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 5px 5px;
 }
+
+.select2-container--below {
+  padding-bottom: 15px;
+  background: none;
+  box-shadow: none;
+}
+
+.select2-results__option--highlighted {
+  background-color: $green;
+  color: white;
+}
+
+.select2-results__option {
+  padding-left: 20px;
+  padding-right: 20px;
+  // padding: 20px;
+  // scrollbar-color: yellow blue;
+}
+
+// .select2-result {
+//   max-height: 200px;
+//   overflow-y: auto;
+// }
