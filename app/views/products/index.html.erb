@@ -1,5 +1,5 @@
 <div class="title-container">
-  <div class="page-title">Produits
+  <div class="page-title"><!-- Produits -->
     <% if client_signed_in? && current_client.role == "admin" %>
       <div class="add-new">
         <%= link_to new_product_path do %>
@@ -11,7 +11,7 @@
   </div>
 
   <!-- FILTERS DIV -->
-  <div class="container-index-filters sticky-top pl60">
+  <div class="container-index-filters sticky-top filterstick pl60">
     <!-- Fruit filter -->
     <div id="product_fruit" class="middle-text grey-medium mr5 white">
     <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>

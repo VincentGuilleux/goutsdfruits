@@ -1,1 +1,8 @@
-  <div class="page-title">Contact</div>
+<div class="page-title">Contact</div>
+  <form action="/send_contact" method="post">
+   <input name="email" type="email" class="form-control mb-1" placeholder="Votre email">
+   <textarea name="message" class="form-control" placeholder="Votre message"></textarea>
+   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+   <button type="submit">Envoyer</button>
+  </form>
+</div>

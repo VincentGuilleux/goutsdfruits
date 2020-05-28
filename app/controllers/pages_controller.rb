@@ -8,4 +8,8 @@ class PagesController < ApplicationController
     render template: "pages/#{params[:page]}"
   end
 
+  def send_contact
+     ContactMailer.contact(params[:message]).deliver
+  end
+
 end
