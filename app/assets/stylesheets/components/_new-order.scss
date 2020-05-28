@@ -141,13 +141,15 @@
 .order_client {
   margin-bottom: 30px;
   border: 1px solid #ced4da;
-  padding-top: 10px;
-  padding-bottom: 10px;
   border-radius: 5px;
 }
 
 .select2-selection__rendered {
   padding-left: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: block;
+  width: 100%
 }
 
 .select2-results ul {
