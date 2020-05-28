@@ -39,7 +39,8 @@ gem 'devise-i18n'
 gem 'rack-mini-profiler'
 gem 'slack-notifier'
 
-group :development, :test do  gem 'pry-byebug'
+group :development, :test do
+  gem 'pry-byebug'
   gem 'pry-rails'
   gem 'dotenv-rails'
 
