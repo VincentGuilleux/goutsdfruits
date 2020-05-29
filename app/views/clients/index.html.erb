@@ -31,10 +31,10 @@
   <% @clients.each do |client| %>
     <div class="client-card">
       <div class="client-logo">
-        <% if client.segment == "particulier" %>
-          <i class="client-logo particulier fas fa-user-alt"></i>
-        <% elsif client.segment == "amap" %>
+         <% if client.amap != "Non-membre" %>
           <i class="client-logo amap fas fas fa-user-alt"><p class="fas fa-tractor"></p></i>
+        <% elsif client.segment == "particulier" %>
+          <i class="client-logo particulier fas fa-user-alt"></i>
         <% elsif client.segment == "marché" %>
           <i class="client-logo marche fas fa-store"></i>
         <% elsif client.segment == "magasin" %>
