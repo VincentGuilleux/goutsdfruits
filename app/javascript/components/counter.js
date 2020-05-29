@@ -1,21 +1,35 @@
-const Pluscounter = () => {
-//   const pluscounters = document.getElementsByClassName("pluscounter");
-//   for (var i = 0; i < pluscounters.length; i++) {
-//     pluscounters[i].addEventListener('click', (event) => {
-//       console.log("test");
-//       const counter_value = (event.target.dataset.name)
-//     });
-//   };
-// };
+const Plusminuscounter = () => {
 
-document.body.addEventListener( 'click', function ( event ) {
-  if( event.target.matches(".pluscounter")) {
-    let uuid = event.target.dataset.uuid;
-    let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
-    inputEl.value = parseInt(inputEl.value) + 1;
-  };
-});
+  // Incrémentation du prix de la ligne
+    const updatePrice = (uuid) => {
+      let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
+      let selectedProductId = productDropdownEl.options[productDropdownEl.selectedIndex].value;
+      // à partir du Dropdown global de tous les produits, sélection pour le produit cliqué de son option value
+      let productPrice = prices[selectedProductId];
+      let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
+      let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
+      priceEl.innerHTML = inputEl.value * productPrice;
+    };
+
+  document.body.addEventListener( 'click', function ( event ) {
+    if( event.target.matches(".pluscounter")) {
+      // Incrémentation de la quantité
+      let uuid = event.target.dataset.uuid;
+      let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
+      inputEl.value = parseInt(inputEl.value) + 1;
+      updatePrice(uuid);
+    };
+  });
+    // rajouter if( event.target.matches(".pluscounter")) bla bla + logique si = 0 pour éviter négatif
+
+  document.body.addEventListener( 'change', function ( event ) {
+
+    if( event.target.matches(".product-input")) {
+      let uuid = event.target.dataset.uuid;
+      console.log(event.target.selectedIndex);
+      updatePrice(uuid);
+    };
+  });
 };
 
-
-export { Pluscounter } ;
+export { Plusminuscounter } ;
