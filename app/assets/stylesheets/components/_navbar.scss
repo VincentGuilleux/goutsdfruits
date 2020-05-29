@@ -1,85 +1,87 @@
-.navbar-goutsdfruits {
+.navbartop.navbar-goutsdfruits {
   // margin-top: -12vh; // on annule ici le padding-top générique du application.scss N/A pour les pages dashboard
   justify-content: space-between;
   background: $green;
-  position: sticky;
-  top: 0;
-  left: 0;
-  height: 10vh;
-  width: 100%;
-  display: flex;
-  flex-direction: row;
+  // position: sticky;
+  // top: 0;
+  // left: 0;
+  // height: 10vh;
+  // width: 100%;
+  // display: flex;
+  // flex-direction: row;
 }
 
-.navbar-avatar {
-  margin:20px auto 0 auto;
-}
+// .navbar-avatar {
+//   // margin:20px auto 0 auto;
+// }
 
-.navbar-avatar img {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
+.navbar-goutsdfruits {
+  .navbar-avatar img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
 
-.navbar-logo {
-  margin:25px 0px 20px 0px;
-}
+  .navbar-picto {
+   color:$white;
+   font-size: 10px;
+   font-weight: 400;
+   letter-spacing: 1.5px;
+  }
 
+  .navbar-picto li span {
+   margin-top: 8px;
+  }
 
-.navbar-goutsdfruits .navbar-logo img {
-  width: 48px;
-  height: 48px;
-  object-fit: cover;
-}
-
-.navbar-picto {
- color:$white;
- font-size: 10px;
- font-weight: 400;
- letter-spacing: 1.5px;
-}
-
-.navbar-picto li span {
- margin-top: 8px;
-}
-
-.navbar-picto li a {
-  display :flex;
-  flex-direction: column;
-  align-items: center;
-  color:$white;
-  opacity: 0.4;
-  text-decoration: none;
-  outline: 0;
-  &:hover {
+  .navbar-picto li a {
+    display :flex;
+    flex-direction: row;
+    // align-items: center;
     color:$white;
-    opacity: 0.80;
-    transition: 100ms;
+    opacity: 0.4;
+    text-decoration: none;
+    outline: 0;
+    &:hover {
+      color:$white;
+      opacity: 0.80;
+      transition: 100ms;
+    }
+    &.active {
+    opacity: 1;
+    }
+    &:first-child{
+      margin-top: 30px;
+    }
   }
-  &.active {
-  opacity: 1;
+
+  .navbar-picto img{
+    color:$white;
+    width: 24px;
+    height: 24px;
   }
-  &:first-child{
-    margin-top: 30px;
+
+  svg {
+   fill:$white;
   }
-}
 
-.navbar-goutsdfruits .navbar-picto img{
-  color:$white;
-  width: 24px;
-  height: 24px;
-}
+  .navbar-logout img{
+    color:$white;
+    width: 24px;
+    height: 24px;
+    padding-bottom: 25px;
+  }
 
-.navbar-goutsdfruits svg {
- fill:$white;
-}
+  // .navbar-logo {
+  //   margin:25px 0px 20px 0px;
+  // }
 
-.navbar-goutsdfruits .navbar-logout img{
-  color:$white;
-  width: 24px;
-  height: 24px;
-  padding-bottom: 25px;
+
+  // .navbar-logo img {
+  //   width: 48px;
+  //   height: 48px;
+  //   object-fit: cover;
+  // }
 }
