@@ -1,2 +1,5 @@
 <%= f.association :product, input_html: { class: 'product-input'}, label: false, prompt: "Quel produit ?" %>
+<i class="fas fa-plus p-1" id="pluscounter"></i>
+<i class="far fa-square p-1" id="counter"></i>
+<i class="fas fa-minus p-1" id="minuscounter"></i>
 <%= f.input :quantity, label: false, input_html: { class: 'quantity-input incrementer'}, placeholder: "Combien ?" %>
