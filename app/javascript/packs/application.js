@@ -31,7 +31,7 @@ import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownCategory, dropdownType, dropdownPrice, dropdownSegment } from '../components/dropdown';
 import { InitChart } from '../components/initchart';
-import { counter } from '../components/counter';
+import { Pluscounter, Minuscounter } from '../components/counter';
 
 document.addEventListener('turbolinks:load', () => {
   $("[data-form-prepend]").click(function(e) {
@@ -62,5 +62,6 @@ document.addEventListener('turbolinks:load', () => {
   dropdownPrice();
   dropdownSegment();
   InitChart();
-  counter();
+  Pluscounter();
+  // Minuscounter();
 });
