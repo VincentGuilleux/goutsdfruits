@@ -9,7 +9,7 @@ class PagesController < ApplicationController
   end
 
   def send_contact
-     ContactMailer.contact(params[:message]).deliver
+     ContactMailer.contact(params[:message], params[:email]).deliver
   end
 
 end

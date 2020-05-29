@@ -1,2 +1,10 @@
 <%= f.association :product, input_html: { class: 'product-input'}, label: false, prompt: "Quel produit ?" %>
-<%= f.input :quantity, label: false, input_html: { class: 'quantity-input incrementer'}, placeholder: "Combien ?" %>
+<% uuid= SecureRandom.uuid %>
+<!-- Methode Ruby -->
+<i class="fas fa-plus p-1 pluscounter" data-uuid="<%= uuid %>"></i>
+<i class="fas fa-minus p-1 minuscounter" data-uuid="<%= uuid %>"></i>
+<!-- On tag les boutons +/- avec une classe et pas un id car il y en aura plusieurs sur la page -->
+<%= f.input :quantity, label: false, input_html: { class: 'quantity-input incrementer', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
+<!-- value : attribut HTML pour valeur affichée dans le champ -->
+<!-- object renvoit ici à la table du formulaire soit ici order_lines -->
+<!-- readonly : attribut HTML pour non-interaction par l'utilisateur -->
