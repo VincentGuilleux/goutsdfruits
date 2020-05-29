@@ -1,4 +1,4 @@
-const Plusminuscounter = () => {
+const counter = () => {
 
   // Incrémentation du prix de la ligne
     const updatePrice = (uuid) => {
@@ -12,7 +12,7 @@ const Plusminuscounter = () => {
     };
 
   document.body.addEventListener( 'click', function ( event ) {
-    if( event.target.matches(".pluscounter")) {
+    if( event.target.matches(".JSpluscounter")) {
       // Incrémentation de la quantité
       let uuid = event.target.dataset.uuid;
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
@@ -20,11 +20,11 @@ const Plusminuscounter = () => {
       updatePrice(uuid);
     };
   });
-    // rajouter if( event.target.matches(".pluscounter")) bla bla + logique si = 0 pour éviter négatif
+    // rajouter if( event.target.matches(".JSminuscounter")) bla bla + logique si = 0 pour éviter négatif
 
   document.body.addEventListener( 'change', function ( event ) {
 
-    if( event.target.matches(".product-input")) {
+    if( event.target.matches(".JSproductselect")) {
       let uuid = event.target.dataset.uuid;
       console.log(event.target.selectedIndex);
       updatePrice(uuid);
@@ -32,4 +32,4 @@ const Plusminuscounter = () => {
   });
 };
 
-export { Plusminuscounter } ;
+export { counter } ;
