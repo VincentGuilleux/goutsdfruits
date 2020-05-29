@@ -5,10 +5,11 @@
 <i class="fas fa-plus p-1 JSpluscounter" data-uuid="<%= uuid %>"></i>
 <i class="fas fa-minus p-1 JSminuscounter" data-uuid="<%= uuid %>"></i>
 <!-- On tag les boutons +/- avec des classes pluscounter/minuscounter car il y en aura plusieurs sur la page (un par ligne de produit générée) / on ne peut donc pas utiliser d'ID -->
-<%= f.input :quantity, label: false, input_html: { class: 'quantity-input incrementer', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
+<%= f.input :quantity, label: false, input_html: { class: 'quantity-input', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
 <!-- value : attribut HTML pour valeur affichée dans le champ qu'on fixe par défaut à 1 dans le formulaire -->
 <!-- f.object fait référence au modèle du formulaire soit ici order_lines (https://stackoverflow.com/questions/41556889/what-does-f-object-do-in-the-rails-form-builder) -->
 <!-- readonly : attribut HTML pour non-interaction par l'utilisateur (champ non saisissable) -->
-<span>Total : </span>
-<span data-uuid="<%= uuid %>"></span>
-
+<div class="pl-3 pr-3">
+  <span>Total : </span>
+  <span data-uuid="<%= uuid %>"></span>
+</div>
