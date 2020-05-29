@@ -1,12 +1,12 @@
 .dashboard-grid {
-// margin-top: -12vh; // on annule ici le padding-top générique du application.scss N/A pour les pages dashboard
-display: grid;
-// grid-template-columns: 2fr minmax(0 4fr)
-grid-template-columns: 2fr 4fr;
-grid-template-rows: repeat(8, 1fr);
-// grid-column-gap: 15px;
-// grid-row-gap: 15px;
-height: 88vh;
+  // margin-top: -12vh; // on annule ici le padding-top générique du application.scss N/A pour les pages dashboard
+  display: grid;
+  // grid-template-columns: 2fr minmax(0 4fr)
+  grid-template-columns: 2fr 4fr;
+  grid-template-rows: repeat(8, 1fr);
+  // grid-column-gap: 15px;
+  // grid-row-gap: 15px;
+  height: 90vh;
 }
 
 
@@ -54,18 +54,20 @@ height: 88vh;
 
 .dash-div-stats {
   grid-area: 2 / 2 / 9 / 3;
+  // height: 10vh;
 } // numbers + graphs
+
 
 .dash-div-numbers {
   grid-area: 2 / 2 / 5 / 3;
   // background-color: #ffe2d4;
   background-color: $white_smoke;
-  padding: 4px 32px 24px 32px;
+  padding: 20px 32px 24px 32px;
 }
 
 .dash-div-graphs {
   grid-area: 5 / 2 / 9 / 3;
   // background-color: #b5dce2;
   background-color: $white_smoke;
-  padding: 24px 32px;
+  padding: 28px 32px 0 32px;
 }
