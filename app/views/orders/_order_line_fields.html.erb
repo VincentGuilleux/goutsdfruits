@@ -1,5 +1,5 @@
-<%= f.association :product, input_html: { class: 'product-input'}, label: false, prompt: "Quel produit ?" %>
 <% uuid= SecureRandom.uuid %>
+<%= f.association :product, input_html: { class: 'product-input', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
 <!-- Methode Ruby -->
 <i class="fas fa-plus p-1 pluscounter" data-uuid="<%= uuid %>"></i>
 <i class="fas fa-minus p-1 minuscounter" data-uuid="<%= uuid %>"></i>
@@ -8,3 +8,6 @@
 <!-- value : attribut HTML pour valeur affichée dans le champ -->
 <!-- object renvoit ici à la table du formulaire soit ici order_lines -->
 <!-- readonly : attribut HTML pour non-interaction par l'utilisateur -->
+<span>Total : </span>
+<span data-uuid="<%= uuid %>"> 2 </span>
+
