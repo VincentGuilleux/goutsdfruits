@@ -37,11 +37,11 @@
                 required: true,
                 autofocus: true,
                 label: 'Type de client',
-                collection: Client.segments%>
+                collection: Client.segments_new_client%> <!-- Utiliser Client.segments pour le formulaire de création maraîcher -->
     <%= f.input :amap,
                 required: false,
                 autofocus: true,
-                label: "Nom de l'AMAP (laisser vide si non membre d'une des AMAP ci-dessous)",
+                label: "Nom de l'AMAP",
                 collection: Client.amap%>
     <%= f.input :password,
                 required: true,

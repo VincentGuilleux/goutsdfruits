@@ -10,26 +10,30 @@ class Client < ApplicationRecord
   end
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   validates :last_name, presence: true
   validates :address, presence: true
   validates :post_code, presence: true
   validates :city, presence: true
-  validates :segment, presence: true, inclusion: { in: %w(particulier magasin marché CE amap),
+  validates :segment, presence: true, inclusion: { in: %w(particulier magasin marché CE),
     message: "%{value} n'est pas un type de client valable" }
-  validates :amap, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs'] }, :allow_nil => true
+  validates :amap, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs', 'Non-membre'], message: "%{value} n'est pas un nom d'AMAP valable" }
 
   def full_name
     "#{first_name} #{last_name}"
   end
 
   def self.segments
-    ["amap", "CE", "magasin", "marché", "particulier"]
+    ["CE", "magasin", "marché", "particulier"]
+  end
+
+  def self.segments_new_client
+    ["magasin", "particulier"]
   end
 
   def self.amap
-    ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs']
+    ['Non-membre', 'Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs']
   end
 
 end
