@@ -24,6 +24,9 @@
             <% end %>
           </div>
         </div>
+          <p class="float-right bold pt-2" >
+            Prix total : <span id="totalprice">0</span> €
+          </p>
           <p class="mt50">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
 
@@ -64,7 +67,7 @@
           </div>
         </fieldset> -->
         <%#= ff.input :payment_method, as: :radio_buttons, collection: ["cheque", "cash"]%>
-        <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn' %>
+        <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn mb-4' %>
       <% end %>
     </div>
   </div>

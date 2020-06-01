@@ -1,4 +1,5 @@
 <% uuid = SecureRandom.uuid %>
+<p class="small-text" ><%= uuid %></p>
 <!-- on génère un code aléatoire qu'on stocke dans une variable uuid, on a donc une variable uuid par order_line_field générée dans le formulaire. C'est nécessaire pour pouvoir ensuite targeter distinctement chaque order line du formulaire dans le counter.js -->
 <%= f.association :product, input_html: { class: 'product-input JSproductselect', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
 <!-- Methode Ruby -->
@@ -11,5 +12,6 @@
 <!-- f.object fait référence au modèle du formulaire soit ici order_lines (https://stackoverflow.com/questions/41556889/what-does-f-object-do-in-the-rails-form-builder) -->
 <!-- readonly : attribut HTML pour non-interaction par l'utilisateur (champ non saisissable) -->
 <div class="pl-3 pr-3 pb-3">
-  <span data-uuid="<%= uuid %>">0</span> €
+  <span class="JSpriceperline" data-uuid="<%= uuid %>">0</span> €
 </div>
+
