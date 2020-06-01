@@ -17,18 +17,18 @@
             </script>
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render 'order_line_fields', f: f %>
-              <%= link_to_add_fields ff, :order_lines do %>
-              <i class="fas fa-plus"></i>
+                <%= link_to_add_fields ff, :order_lines do %>
+                  <i class="fas fa-plus"></i>
                 <%#= image_tag "add-circle.svg", :class => "img_preview" %>
-            <% end %>
+                <% end %>
             <% end %>
           </div>
         </div>
-          <p class="float-right bold pt-2" >
-            Prix total : <span id="totalprice">0</span> €
-          </p>
-          <p class="mt50">Date de préparation souhaitée</p>
+          <p class="pt-2">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
+          <p class="float-right bold pt-5 pb-4">
+            Prix total : <span id="totalprice">0</span><sup> €</sup>
+          </p>
 
         <!-- <fieldset class="form-group radio_buttons optional order_payment_method">
           <label class="control-label check_boxes optional payment-label">Méthode de paiement :</label>
