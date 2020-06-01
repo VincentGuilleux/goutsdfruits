@@ -1,13 +1,15 @@
-<% uuid= SecureRandom.uuid %>
-<%= f.association :product, input_html: { class: 'product-input', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
+<% uuid = SecureRandom.uuid %>
+<!-- on génère un code aléatoire qu'on stocke dans une variable uuid, on a donc une variable uuid par order_line_field générée dans le formulaire. C'est nécessaire pour pouvoir ensuite targeter distinctement chaque order line du formulaire dans le counter.js -->
+<%= f.association :product, input_html: { class: 'product-input JSproductselect', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
 <!-- Methode Ruby -->
-<i class="fas fa-plus p-1 pluscounter" data-uuid="<%= uuid %>"></i>
-<i class="fas fa-minus p-1 minuscounter" data-uuid="<%= uuid %>"></i>
-<!-- On tag les boutons +/- avec une classe et pas un id car il y en aura plusieurs sur la page -->
-<%= f.input :quantity, label: false, input_html: { class: 'quantity-input incrementer', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
-<!-- value : attribut HTML pour valeur affichée dans le champ -->
-<!-- object renvoit ici à la table du formulaire soit ici order_lines -->
-<!-- readonly : attribut HTML pour non-interaction par l'utilisateur -->
-<span>Total : </span>
-<span data-uuid="<%= uuid %>"> 2 </span>
+<i class="fas fa-plus pl-1 pr-1 pb-3 JSpluscounter" data-uuid="<%= uuid %>"></i>
+<%= f.input :quantity, label: false, input_html: { class: 'quantity-input', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
+<i class="fas fa-minus pl-1 pr-1 pb-3 JSminuscounter" data-uuid="<%= uuid %>"></i>
+<!-- On tag les boutons +/- avec des classes pluscounter/minuscounter car il y en aura plusieurs sur la page (un par ligne de produit générée) / on ne peut donc pas utiliser d'ID -->
 
+<!-- value : attribut HTML pour valeur affichée dans le champ qu'on fixe par défaut à 1 dans le formulaire -->
+<!-- f.object fait référence au modèle du formulaire soit ici order_lines (https://stackoverflow.com/questions/41556889/what-does-f-object-do-in-the-rails-form-builder) -->
+<!-- readonly : attribut HTML pour non-interaction par l'utilisateur (champ non saisissable) -->
+<div class="pl-3 pr-3 pb-3">
+  <span data-uuid="<%= uuid %>">0</span> €
+</div>

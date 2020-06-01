@@ -5,11 +5,10 @@
 }
 
 .new-order {
-  // margin-top: 72px;
-  width: 750px;
+  width: 800px;
   background-color: white;
   border-radius: 5px;
-  padding: 40px 15px 40px 15px;
+  padding: 80px 15px 40px 15px;
 
   .new-order-title {
     text-align: center;
@@ -30,20 +29,19 @@
   }
   .order-line {
     .form-inline {
-      justify-content: left;
-      width: 750px;
+      justify-content: space-around;
+      width: 770px;
       .product-input {
         // background-color: $white_smoke;
-        width: 490px;
+        width: 400px;
         margin-bottom: 20px;
-        margin-right: 10px;
         border-radius: 5px;
         // display: none;
       }
 
       .quantity-input {
         // background-color: $white_smoke;
-        width: 150px;
+        width: 50px;
         margin-bottom: 20px;
         border-radius: 5px;
       }

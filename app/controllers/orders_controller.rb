@@ -76,6 +76,11 @@ class OrdersController < ApplicationController
       @order.delivery_place = DeliveryPlace.first
     end
 
+    # Si pas de client sélectionné, on affecte au current_client (sinon on est dans le cas de l'admin qui sélectionne le client)
+    if @order.client_id.nil?
+        @order.client_id = current_client.id
+    end
+
     # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
       generate_order_line_product_lots
