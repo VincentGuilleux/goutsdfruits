@@ -5,24 +5,25 @@
     </div>
     <div class="container">
       <%= simple_form_for @order, wrapper: :floating_labels_form, wrapper_mappings: { select: :floating_labels_select } do |ff| %>
+      <% if current_client.role == 'admin' %>
         <%= ff.association :client, label_method: :full_name, input_html: { class: 'client-input select2' }, label: false, prompt: "Sélectionner un client" %>
+      <% end %>
         <p class>Ajouter des produits</p>
         <div class="order-line">
           <div class="form-inline">
-            <script>
+            <script> <!-- script génère du code JS en HTML  -->
               let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
               // on construit un array d'arrays en Ruby avec Pluck qu'on convertit en hash puis en JSON. Ensuite, ce JSON est renvoyé à JS qui le convertit en hash JS grâce au JSON.parse
             </script>
-            <!-- script génère du code JS en HTML  -->
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render 'order_line_fields', f: f %>
               <%= link_to_add_fields ff, :order_lines do %>
-                <%= image_tag "add-circle.svg", :class => "img_preview" %>
-              <% end %>
+              <i class="fas fa-plus"></i>
+                <%#= image_tag "add-circle.svg", :class => "img_preview" %>
+            <% end %>
             <% end %>
           </div>
         </div>
-          <p class="red-alert">Prix pour test</p>
           <p class="mt50">Date de préparation souhaitée</p>
           <%= ff.input :pickup_date, label: false %>
 
