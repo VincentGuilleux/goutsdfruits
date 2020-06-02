@@ -84,6 +84,7 @@ class OrdersController < ApplicationController
     # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
       generate_order_line_product_lots
+      send_mail_new_order
       redirect_to orders_path
     else
       render :new
@@ -123,6 +124,10 @@ class OrdersController < ApplicationController
         necessary_quantity -= quantity
       end
     end
+  end
+
+  def send_mail_new_order
+    OrderMailer.new_order_email(current_client).deliver
   end
 
 end
