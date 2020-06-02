@@ -50,12 +50,12 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
-    if @product.save!
+    if @product.save
       redirect_to products_path
     else
-      # flash[:alert] = "Tous les champs doivent être saisis"
+      flash.now[:alert] = "Les champs en rouge doivent être saisis"
       render :new
-      # return
+      return
     end
   end
 

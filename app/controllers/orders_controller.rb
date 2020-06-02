@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
         order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
         sum += order_line.total_price_cents
       else
-        flash[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - La commande ne peut pas être passée"
+        flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - La commande ne peut pas être passée"
         render :new
         return
       end

@@ -1,5 +1,5 @@
 <% uuid = SecureRandom.uuid %>
-<p class="small-text" ><%= uuid %></p>
+<!-- <p class="small-text" ><%= uuid %></p> -->
 <!-- on génère un code aléatoire qu'on stocke dans une variable uuid, on a donc une variable uuid par order_line_field générée dans le formulaire. C'est nécessaire pour pouvoir ensuite targeter distinctement chaque order line du formulaire dans le counter.js -->
 <%= f.association :product, input_html: { class: 'product-input JSproductselect', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
 <!-- Methode Ruby -->
