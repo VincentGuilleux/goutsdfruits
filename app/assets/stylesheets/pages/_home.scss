@@ -4,7 +4,8 @@
   padding-top: 5em;
   background-size: cover;
   background-position: center;
-  background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(image_path('home-page.jpg'));
+  background-image: url(image_path('home-page.jpg'));
+  // background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(image_path('home-page.jpg'));
 }
 
 .banner h1 {
@@ -15,8 +16,8 @@
 .banner p {
   font-size: 20px;
   color: white;
-  opacity: .9;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  opacity: .85;
+  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   a {
     color: white;
     font-weight: 700;

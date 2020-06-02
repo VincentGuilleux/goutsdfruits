@@ -2,6 +2,7 @@
   justify-content: space-between;
   background: $white;
   color: $green;
+  height: 12vh;
 }
 
 .navbar-collapse {
@@ -10,10 +11,15 @@
   display: flex;
 }
 
-.navbartop img {
-  height: auto;
-  max-height: 10vh;
+#logo-goutsdfruits {
+  height: 13vh;
   padding: 0% 1%;
+}
+
+#logo-agbio {
+  height: 10vh;
+  padding: 0% 1%;
+
 }
 
 .lien-navbar {

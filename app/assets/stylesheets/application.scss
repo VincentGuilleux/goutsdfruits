@@ -18,10 +18,10 @@
 
 // https://stackoverflow.com/questions/26402156/put-div-below-navigation-bar-and-dont-overlap-content
 body {
-  padding-top: 10vh; /*10vh for the height of the navbar + 2vh for the offset*/
+  padding-top: 12vh; /*10vh for the height of the navbar + 2vh for the offset*/
 }
-.navbar-offset {
-  top: 2vh; /*Offsets the top navbar from the top of the viewport*/
-}
+// .navbar-offset {
+//   top: 2vh; /*Offsets the top navbar from the top of the viewport*/
+// }
 
 
