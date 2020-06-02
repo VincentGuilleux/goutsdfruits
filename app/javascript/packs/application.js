@@ -33,6 +33,7 @@ import { dropdownFruit, dropdownCategory, dropdownType, dropdownPrice, dropdownS
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
 
+// en lien avec application_helper lignes 29 et suivantes (création d'order_lines_id temporaires)
 document.addEventListener('turbolinks:load', () => {
   $("[data-form-prepend]").click(function(e) {
     var obj = $($(this).attr("data-form-prepend"));

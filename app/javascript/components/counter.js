@@ -16,16 +16,16 @@ const counter = () => {
       // console.log(inputEl.value);
       // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
       priceEl.innerHTML = (inputEl.value * productPrice) / 100;
-      console.log(priceEl.innerHTML);
+      // console.log(priceEl.innerHTML);
       // Le prix à afficher pour l'order_line est désormais égal à la quantité  * prix du produit sélectionné
 
       let totalPrice = 0;
       let allPricesEl = document.querySelectorAll('.JSpriceperline');
       for (let i = 0; i < allPricesEl.length; i++) {
-        console.log('allPricesEl: ', allPricesEl[i].innerText);
-        totalPrice = totalPrice + parseFloat(allPricesEl[i].innerText)
+        // console.log('allPricesEl: ', allPricesEl[i].innerText);
+        totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
       }
-      console.log(totalPrice);
+      console.log(typeof totalPrice);
       let totalpriceEl = document.getElementById("totalprice");
       totalpriceEl.innerHTML = totalPrice;
     };
