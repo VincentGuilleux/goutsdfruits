@@ -1,12 +1,12 @@
 .main-container {
   display: flex;
-  padding: 30px 60px 30px 60px;
+  padding: 2rem;
 }
 
 .container-index-filters {
   display: flex;
   flex-direction: row;
-  padding-bottom: 15px;
+  padding-bottom: 1rem;
 }
 
 .container-index-products {
@@ -14,18 +14,27 @@
   display: grid;
   flex-direction: row;
   justify-content: space-between;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 35px;
+  // grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 2rem;
 }
 
-.container-show-product {
-  flex: 1;
-  display: grid;
-  flex-direction: row;
-  justify-content: space-between;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 35px;
+@media (min-width: 601px) {
+  .container-index-products { grid-template-columns: 1fr 1fr; }
 }
+
+@media (min-width: 961px) {
+  .container-index-products { grid-template-columns: 1fr 1fr 1fr; }
+}
+
+// .container-show-product {
+//   flex: 1;
+//   display: grid;
+//   flex-direction: row;
+//   justify-content: space-between;
+//   grid-template-columns: 1fr 1fr;
+//   grid-gap: 2rem;
+// }
+// Commented because not used anywhere
 
 .title-container {
   position: sticky;
