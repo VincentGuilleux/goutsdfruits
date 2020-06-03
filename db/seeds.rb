@@ -177,7 +177,7 @@ puts "       |(__)|   - product 3/4"
 
 #les fruits frais
 
-product29 = Product.new(name:"Cerises",description:"Des rouges vives aux bicolores, picorez un mélange de variétés de cerises bigarreau. Pouir vous assurer des fruits cueillis à maturité, les variétés vendues évoluent au fil de la saison.", unit_price_cents: 350, unit_price_cents_shop: 3000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
+product29 = Product.new(name:"Cerises",description:"Des rouges vives aux bicolores, picorez un mélange de variétés de cerises bigarreau. Pour vous assurer des fruits cueillis à maturité, les variétés vendues évoluent au fil de la saison.", unit_price_cents: 350, unit_price_cents_shop: 3000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
 product29.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product29.save!
 

@@ -69,17 +69,19 @@
 <div class="main-container">
   <div class="container-index-products">
     <% @products.each do |product| %>
-      <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
+      <!-- <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> -->
+        <!-- Faisait un lien vers la product_show quand on cliquait n'importe où sur la carte -->
+      <div class="card-product">
         <% if product.photo.attached? %>
-        <%= cl_image_tag product.photo.key, alt: "image produit" %>
+          <%= cl_image_tag product.photo.key, alt: "image produit" %>
         <% end %>
         <div class="card-product-infos">
-          <!-- Card display top-middle: category -->
+          <!-- Card display NA/top-middle: category -->
           <div class="card-product-text-line">
             <% if !current_client.nil? && current_client.role == "admin" %>
               <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <% end %>
-            <!-- Card display top-right: price -->
+            <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
 
@@ -104,8 +106,8 @@
             </div>
           </div>
           <!-- Card display center-middle: name -->
-          <div>
-            <p class="big-text-bold-resp grey-dark"
+          <div class="card-product-text-line">
+            <p class="big-text-bold-resp grey-dark">
             <span title="<%= product.description %>"> <%= product.name %> </span>
             </p>
           </div>
@@ -154,9 +156,18 @@
                 <% end %>
             <% end %>
             </p>
-            <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
+            <% if (!current_client.nil? && current_client.role == "admin") %>
+              <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
+            <% end %>
           </div>
         </div>
+        <% if (!current_client.nil? && current_client.role != "admin") %>
+          <div class="card-product-order-input">
+            <i class="fas fa-minus blue JSminuscounter"></i>
+            <i class="far fa-square blue"></i>
+            <i class="fas fa-plus blue JSpluscounter"></i>
+          </div>
+        <% end %>
       </div>
     <% end %>
     <!-- Fin de l'itération sur les produits -->

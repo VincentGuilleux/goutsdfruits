@@ -5,12 +5,13 @@
   align-items: center;
   border-radius: 8px;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
-  &:hover {
-    opacity: 0.80;
-    transition: 200ms;
-    transform: translate(0px, -2px);
-    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
-  }
+  // &:hover {
+  //   opacity: 0.80;
+  //   transition: 200ms;
+  //   transform: translate(0px, -2px);
+  //   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
+  // }
+  // plus de hover car plus de lien sur toute la carte
   &:hover .card-product-text-line a img {
   opacity: 1;
   transition: 200ms;
@@ -25,13 +26,6 @@
   border-radius: 8px 0 0 8px;
 }
 
-.product-price p {
-  text-align: right;
-  font-size: 14px;
-  font-weight: bold;
-  color: $green;
-}
-
 .card-product p {
   margin-bottom: 0;
   margin-left: 0;
@@ -43,7 +37,7 @@
   justify-content: space-between;
   width:100%;
   height:100%;
-  padding: 12px 16px;
+  padding: 12px;
 }
 
 // for category & price / for remaning stock & link to product_show
@@ -59,4 +53,20 @@
   height: 20px;
   fill: $grey_medium;
   opacity: 0;
+}
+
+.product-price p {
+  text-align: right;
+  font-size: 14px;
+  font-weight: bold;
+  color: $green;
+}
+
+// for ordering (not for role admin)
+.card-product-order-input {
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-right: 10px;
 }

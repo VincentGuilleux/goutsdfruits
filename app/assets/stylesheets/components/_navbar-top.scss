@@ -1,8 +1,8 @@
 
-@media (max-width: 768px){
+@media (max-width: 600px){
   #navbarSupportedContent{
     position: absolute;
-    top: 70px;
+    // top: 70px;
   }
 }
 // https://stackoverflow.com/questions/48037100/bootstrap-4-navbar-collapse-issue
@@ -27,7 +27,7 @@
 }
 
 #logo-goutsdfruits {
-  height: 11vh;
+  height: 10vh;
   padding: 0% 1%;
 }
 
