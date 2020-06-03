@@ -1,31 +1,42 @@
+.container.container-orders {
+  padding: 0;
+}
+
+.index-orders {
+  margin: 0 30px;
+  .card {
+    background-color: white;
+  }
+}
+
 // CARDS --------------------------
 
 .order-card-index-main {
   margin-bottom: 20px;
+  // padding: 20px;
 }
 
 .order-card-collapsed-index {
-  background-color: $white_smoke;
+  // background-color: $white;
   border: none;
   border-radius: 5px;
   padding-top: 0;
+  // padding-bottom: 0;
+  // margin: 20px;
 
   .order-card-header-index {
-    padding: 0 18px;
+    padding: 20px;
   }
-  .order-card-name-price-index {
-    margin-top: -14px;
-  }
+
   .order-card-header-bottom-part-index {
-    display:flex;
+    display: flex;
     align-items: center;
     justify-content: space-between;
-    // padding: 13px 18px 13px 18px;
+    padding: 20px;
   }
   h1 {
     font-weight: 700;
     font-size: 16px;
-    // margin-bottom: 13px;
   }
   .price-font-index {
     color: $green;
@@ -44,17 +55,18 @@
 }
 
 .order-lines-index {
-  background-color: $white;
+  background-color: $white_smoke;
   border-radius: 5px;
-  // padding: 0 20px;
+  padding: 0 20px;
   // margin-bottom: 16px;
   .order-line {
     display: flex;
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid $white_smoke;
-    // padding-top: 16px;
-    // padding-bottom: 14px;
+    padding-top: 16px;
+    padding-bottom: 14px;
+
     p {
       margin-bottom: 0;
     }
@@ -64,15 +76,18 @@
       color: $grey_dark;
     }
     .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       .separation {
         background-color: $grey_very_light;
         height: 17px;
         width: 1px;
-        margin: 0 16px;
-        position: absolute;
-        right: 70px;
+        margin: 0 10px;
+        // position: absolute;
+        // right: 70px;
       }
-      .total-price {
+      .total-price p {
         font-size: 14px;
         color: $grey_medium;
         font-weight: 900;
@@ -81,19 +96,14 @@
         top: -.3em;
         font-weight: 500;
       }
-      .unit-price {
-        position: absolute;
-        right: 110px;
-        // padding-top: 3px;
-      }
     }
   }
 }
 
 .order-address-index {
-  background-color: $white;
+  background-color: $white_smoke;
   border-radius: 5px;
-  // padding: 20px;
+  padding: 20px;
   p {
     margin-bottom: 0;
   }
@@ -105,12 +115,12 @@
   .line-address {
     height: 1px;
     background-color: $white_smoke;
-    // margin: 13px 0 13px 0;
+    margin: 13px 0 13px 0;
   }
   .address {
     font-size: 14px;
     color: $grey_dark;
-    // padding-bottom: 6px;
+    padding-bottom: 6px;
   }
 }
 
@@ -239,7 +249,7 @@
 // COLLAPSE BUTTON --------------------------
 
 .collapse-btn-index {
-  padding: 0 20px;
+  padding-left: 20px;
   .btn-link {
     outline: 0;
 
