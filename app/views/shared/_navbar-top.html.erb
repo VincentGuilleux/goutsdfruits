@@ -27,7 +27,12 @@
         <%= link_to 'Mon profil', edit_client_path(current_client.id), class: "lien-navbar" if client_signed_in? %>
       </li>
       <li class="nav-item lien-navbar">
-        <%= link_to 'Déconnexion', destroy_client_session_path, method: :delete, class: "lien-navbar" if client_signed_in? %>
+        <%#= link_to 'Déconnexion', destroy_client_session_path, method: :delete, class: "lien-navbar" if client_signed_in? %>
+        <% if client_signed_in? %>
+          <%= link_to destroy_client_session_path, method: :delete do %>
+            <%= image_tag "logout-2-green.svg", id: 'logout-navbartop'%>
+          <% end %>
+        <% end %>
       </li>
     </ul>
   </div>

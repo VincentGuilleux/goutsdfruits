@@ -11,6 +11,12 @@
   display: flex;
 }
 
+#logout-navbartop {
+  height: 3vh;
+  padding: 0% 1%;
+}
+
+
 #logo-goutsdfruits {
   height: 13vh;
   padding: 0% 1%;
@@ -26,8 +32,8 @@
   color: $green;
   text-decoration: none;
   font-size: 24px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
   &:hover {
     opacity: 0.80;
     transition: 100ms;
