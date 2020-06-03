@@ -1,3 +1,13 @@
+
+@media (max-width: 768px){
+  #navbarSupportedContent{
+    position: absolute;
+    top: 70px;
+  }
+}
+// https://stackoverflow.com/questions/48037100/bootstrap-4-navbar-collapse-issue
+// => prevents the bug of the bio logo to be displayed below the dropdown menu when on mobile
+
 .navbartop {
   justify-content: space-between;
   background: $white;
@@ -18,12 +28,12 @@
 
 
 #logo-goutsdfruits {
-  height: 13vh;
+  height: 11vh;
   padding: 0% 1%;
 }
 
 #logo-agbio {
-  height: 10vh;
+  height: 9vh;
   padding: 0% 1%;
 
 }
@@ -31,7 +41,7 @@
 .lien-navbar {
   color: $green;
   text-decoration: none;
-  font-size: 24px;
+  font-size: 1.5rem;
   padding-left: 2vw;
   padding-right: 2vw;
   &:hover {
