@@ -71,8 +71,8 @@ h2 {
   padding-bottom: 25px;
 }
 
-.pl60 {
-  padding-left: 60px;
+.pl4rem {
+  padding-left: 4rem;
 }
 
 .mr5 {
@@ -111,6 +111,10 @@ h2 {
 
 .middle-text {
   font-size: 16px;
+}
+
+.middle-text-resp {
+  font-size:calc(12px + 0.5vw);
 }
 
 .middle-text-bold {

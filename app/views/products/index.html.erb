@@ -11,58 +11,60 @@
   </div>
 
   <!-- FILTERS DIV -->
-  <div class="container-index-filters sticky-top filterstick pl60">
-    <!-- Fruit filter -->
-    <div id="product_fruit" class="middle-text grey-medium mr5 white">
-    <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
-    </div>
-    <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <div id="DropdownFruit" class="dropdown-content">
-        <% Product.fruits.each do |fruit| %>
-          <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
-        <% end %>
-      </div>
-    </div>
-    <!-- Category filter -->
-    <div id="product_category" class="middle-text grey-medium mr5">
-    <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
-    </div>
-    <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <div id="DropdownCategory" class="dropdown-content">
-      <% Product.categories.each do |category| %>
-        <a data-name="<%= category %>" href="#"><%= category %></a>
-      <% end %>
-      </div>
-    </div>
-    <!-- Type filter -->
-    <div id="product_type" class="middle-text grey-medium mr5">
-    <%= if params[:type].present? then params[:type] else 'Type' end %>
-    </div>
-    <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-      <div id="DropdownType" class="dropdown-content">
-      <% Product.types.each do |type| %>
-        <a data-name="<%= type %>" href="#"><%= type %></a>
-      <% end %>
-      </div>
-    </div>
-    <!-- Price filter -->
-    <div id="product_price" class="middle-text grey-medium mr5">
-    <% if !current_client.nil? && current_client.role == "admin" %>
-      <%= if params[:price].present? then params[:price] else 'Prix' end %>
+  <div class="container-index-filters sticky-top filterstick pl4rem">
+    <div class="row"></div>
+      <!-- Fruit filter -->
+      <div id="product_fruit" class="middle-text-resp grey-medium mr5 white">
+      <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
       </div>
       <div class="dropdown">
-        <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
-        <div id="DropdownPrice" class="dropdown-content">
-          <a data-name="non-magasin" href="#">non-magasin</a>
-          <a data-name="magasin" href="#">magasin</a>
+        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <div id="DropdownFruit" class="dropdown-content">
+          <% Product.fruits.each do |fruit| %>
+            <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
+          <% end %>
         </div>
       </div>
-    <% end %>
-    <!-- Reset filters -->
-    <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+      <!-- Category filter -->
+      <div id="product_category" class="middle-text-resp grey-medium mr5">
+      <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
+      </div>
+      <div class="dropdown">
+        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <div id="DropdownCategory" class="dropdown-content">
+        <% Product.categories.each do |category| %>
+          <a data-name="<%= category %>" href="#"><%= category %></a>
+        <% end %>
+        </div>
+      </div>
+      <!-- Type filter -->
+      <div id="product_type" class="middle-text-resp grey-medium mr5">
+      <%= if params[:type].present? then params[:type] else 'Type' end %>
+      </div>
+      <div class="dropdown">
+        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <div id="DropdownType" class="dropdown-content">
+        <% Product.types.each do |type| %>
+          <a data-name="<%= type %>" href="#"><%= type %></a>
+        <% end %>
+        </div>
+      </div>
+      <!-- Price filter -->
+      <div id="product_price" class="middle-text-resp grey-medium mr5">
+      <% if !current_client.nil? && current_client.role == "admin" %>
+        <%= if params[:price].present? then params[:price] else 'Prix' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+          <div id="DropdownPrice" class="dropdown-content">
+            <a data-name="non-magasin" href="#">non-magasin</a>
+            <a data-name="magasin" href="#">magasin</a>
+          </div>
+        </div>
+      <% end %>
+      <!-- Reset filters -->
+      <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
+    </div>
   </div>
 </div>
 
