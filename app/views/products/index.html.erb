@@ -11,14 +11,13 @@
   </div>
 
   <!-- FILTERS DIV -->
-  <div class="container-index-filters sticky-top filterstick pl4rem">
-    <div class="row"></div>
+  <div class="container-index-filters sticky-top filterstick pl2rem">
       <!-- Fruit filter -->
       <div id="product_fruit" class="middle-text-resp grey-medium mr5 white">
       <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
       </div>
       <div class="dropdown">
-        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
         <div id="DropdownFruit" class="dropdown-content">
           <% Product.fruits.each do |fruit| %>
             <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
@@ -30,7 +29,7 @@
       <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
       </div>
       <div class="dropdown">
-        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
         <div id="DropdownCategory" class="dropdown-content">
         <% Product.categories.each do |category| %>
           <a data-name="<%= category %>" href="#"><%= category %></a>
@@ -42,7 +41,7 @@
       <%= if params[:type].present? then params[:type] else 'Type' end %>
       </div>
       <div class="dropdown">
-        <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+        <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
         <div id="DropdownType" class="dropdown-content">
         <% Product.types.each do |type| %>
           <a data-name="<%= type %>" href="#"><%= type %></a>
@@ -55,7 +54,7 @@
         <%= if params[:price].present? then params[:price] else 'Prix' end %>
         </div>
         <div class="dropdown">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium pr35"></i>
+          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownPrice" class="dropdown-content">
             <a data-name="non-magasin" href="#">non-magasin</a>
             <a data-name="magasin" href="#">magasin</a>
@@ -65,7 +64,6 @@
       <!-- Reset filters -->
       <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
     </div>
-  </div>
 </div>
 
 <div class="main-container">
@@ -78,7 +76,9 @@
         <div class="card-product-infos">
           <!-- Card display top-middle: category -->
           <div class="card-product-text-line">
-            <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
+            <% if !current_client.nil? && current_client.role == "admin" %>
+              <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
+            <% end %>
             <!-- Card display top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
@@ -105,14 +105,14 @@
           </div>
           <!-- Card display center-middle: name -->
           <div>
-            <p class="big-text-bold grey-dark"
+            <p class="big-text-bold-resp grey-dark"
             <span title="<%= product.description %>"> <%= product.name %> </span>
             </p>
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-            <% if (!current_client.nil? && current_client.segment == 'magasin') || (!current_client.nil? && current_client.role == "admin" && @type_price == "magasin") %>
+            <% if (!current_client.nil? && current_client.role == "admin" && @type_price == "magasin") %>
               <%= pluralize(product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop, product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
@@ -122,8 +122,28 @@
                   <%= product.unit_measure_quantity_shop / 1000 %>
                   kg
                 <% end %>
+            <% elsif (!current_client.nil? && current_client.role == "admin") %>
+              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+                de
+                <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
+                  <%= product.unit_measure_quantity %>
+                  <%= product.unit_measure %>
+                <% else %>
+                  <%= product.unit_measure_quantity / 1000 %>
+                  kg
+                <% end %>
+            <% elsif (!current_client.nil? && current_client.segment == 'magasin') %>
+              <%= product.unit_type %>
+                de
+              <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
+                <%= product.unit_measure_quantity_shop %>
+                <%= product.unit_measure %>
+              <% else %>
+                <%= product.unit_measure_quantity_shop / 1000 %>
+                kg
+              <% end %>
             <% else %>
-                <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+                <%= product.unit_type %>
                 de
                 <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
                   <%= product.unit_measure_quantity %>
