@@ -42,11 +42,11 @@
 .dash-div-orders {
   grid-area: 1 / 1 / 9 / 2;
   background-color: $white;
-  padding: 24px 32px;
+  padding: 0px 32px;
   overflow-y: scroll;
   .page-title {
     // z-index: 100;
-    padding: 0px 0px 30px 5px;
+    padding: 24px 0px 30px 5px;
     justify-content: space-between;
     background-color: white;
   }
