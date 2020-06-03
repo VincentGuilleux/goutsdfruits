@@ -32,15 +32,14 @@ h2 {
 .add-new a {
   display: flex;
   padding-top: 5px;
-  padding-left: 30px;
   opacity: 0.6;
   p {
-    font-size: 11px;
+    font-size: 16px;
     font-weight: bold;
     color: $blue;
   }
   & img {
-    margin-left: 4px;
+    margin-left: 10px;
     height: 18px;
     width: 18px;
   }
@@ -59,8 +58,8 @@ h2 {
   padding-right: 8vw;
 }
 
-.pr35 {
-  padding-right: 35px;
+.prfilters {
+  padding-right: 1vw;
 }
 
 .pr10 {
@@ -71,8 +70,8 @@ h2 {
   padding-bottom: 25px;
 }
 
-.pl4rem {
-  padding-left: 4rem;
+.pl2rem {
+  padding-left: 3vw;
 }
 
 .mr5 {
@@ -109,12 +108,17 @@ h2 {
   font-weight: 400;
 }
 
+.semi-small-text-resp {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .middle-text {
   font-size: 16px;
 }
 
 .middle-text-resp {
-  font-size:calc(12px + 0.5vw);
+  font-size:calc(12px + 0.2vw);
 }
 
 .middle-text-bold {
@@ -135,6 +139,12 @@ h2 {
   font-size: 20px;
   font-weight: 800;
   line-height: 20px;
+}
+
+.big-text-bold-resp {
+  font-size: calc(16px + 0.2vw);
+  font-weight: 800;
+  line-height: calc(16px + 0.2vw);
 }
 
 .light-bold {

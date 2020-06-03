@@ -2,20 +2,20 @@
   <div class="page-title"><!-- Clients -->
     <div class="add-new">
       <%= link_to new_client_path do %>
-        <p>Ajouter un nouveau client</p>
+        <p>Ajouter un client</p>
         <%= image_tag "add-circle.svg" %>
       <% end %>
     </div>
   </div>
     <!-- FILTERS DIV -->
-  <div class="container-index-filters sticky-top filterstick pl4rem">
+  <div class="container-index-filters sticky-top filterstick pl2rem">
 
     <!-- Segment filter -->
     <div id="client_segment" class="middle-text grey-medium mr5">
       <%= if params[:segment].present? then params[:segment] else 'Segment' end %>
     </div>
     <div class="dropdown">
-      <i class="fas fa-chevron-down middle-text grey-medium pr35"></i>
+      <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
       <div id="DropdownSegment" class="dropdown-content">
         <% Client.segments.each do |segment| %>
           <a data-name="<%= segment %>" href="#"><%= segment %></a>
