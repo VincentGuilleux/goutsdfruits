@@ -25,6 +25,8 @@
 @media (min-width: 961px) {
   .container-index-products { grid-template-columns: 1fr 1fr 1fr; }
 }
+// On affiche 3 produits par ligne sur les desktops, 2 sur les tablettes (et donc 1 si device width < 600px)
+
 
 // .container-show-product {
 //   flex: 1;
