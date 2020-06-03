@@ -1,6 +1,5 @@
 <div class="title-container">
   <div class="page-title">
-    <p>Commandes</p>
     <div class="add-new">
       <%= link_to new_order_path do %>
         <p>Ajouter une commande</p>
@@ -10,104 +9,118 @@
   </div>
 </div>
 
-<div class="orders-index">
-
+<div class="index-orders">
   <% @orders.each do |order| %>
+  <div class="card order-card-index-main order-card-collapsed-index">
+    <div class="row">
 
-    <div class="order-card-index">
-
-      <!-- left part -->
-      <div class="order-card-index-collapsed-left-part">
-        <span class="middle-text-bold green-light mx-3">#GF<%= order.id %></span>
-        <span class="middle-text grey-medium mx-4" title="Date de commande"> <%= order.date %></span>
-        <span class="order-index-name mx-4"><%= order.client.full_name %></span>
+      <div class="col-12 col-lg-9">
+        <div class="order-card-header-index">
+          <div class="d-flex justify-content-between">
+            <div>
+              <p class="small-text-bold grey-medium">#GF<%= order.id %></p>
+            </div>
+          </div>
+          <div class="d-flex justify-content-between order-card-name-price-index">
+            <h1 class="name-font-index"><%= order.client.first_name %> <%= order.client.last_name %> </h1>
+            <h1 class="price-font-index"><%= order.total_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup> </h1>
+          </div>
+        </div>
       </div>
 
-      <!-- right part -->
-      <div class="order-card-index-collapsed-right-part">
-        <div class="underline-picto-index-orders"></div>
+      <div class="col-12 col-lg-3">
+        <div class="d-flex justify-content-between align-items-center">
+          <div class="justify-content-between">
+            <div class="order-card-picto-index">
 
-        <!-- delivery -->
-        <div class="delivery-index">
-          <p class="middle-text grey-medium font-italic" title="Date de livraison"> <%= order.pickup_date %></p>
-          <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %></p>
-        </div>
-
-        <!-- price -->
-        <div class="total-price-order-index">
-          <span><%= (order.total_price_cents.to_f / 100) %> <sup class="sup-price"> € </sup> </span>
-        </div>
-
-        <!-- picto -->
-        <div class="order-card-picto-index">
-
-          <% if order.status=="pending" %>
+              <% if order.status=="pending" %>
 
 
-            <div class="action-picto waiting-action" title="Marquer comme prête">
-              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
+                <div class="action-picto-index waiting-action-index" title="Marquer comme prête">
+                  <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index" title="Marquer comme livrée">
+                  <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index" title="Marquer comme payée">
+                  <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                </div>
+
+              <% elsif order.status =="prepared" %>
+
+                <div class="action-picto-index done-action-index" title="Prête">
+                  <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index waiting-action-index" title="Marquer comme livrée">
+                  <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index" title="Marquer comme payée">
+                  <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                </div>
+
+              <% elsif order.status =="delivered"%>
+
+                <div class="action-picto-index done-action-index" title="Prête">
+                  <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index done-action-index" title="Livrée">
+                  <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index waiting-action-index" title="Marquer comme payée">
+                  <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                </div>
+
+              <% else %>
+
+                <div class="action-picto-index done-action-index" title="Prête">
+                  <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index done-action-index" title="Livrée">
+                  <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+                </div>
+                <div class="underline-index"></div>
+                <div class="action-picto-index done-action-index" title="Payée">
+                  <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
+                </div>
+
+              <% end %>
+
             </div>
-            <div class="action-picto" title="Marquer comme livrée">
-              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
-            </div>
-            <div class="action-picto" title="Marquer comme payée">
-              <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-            </div>
+          </div>
+          <div class="delivery-index">
+            <p class="middle-text grey-medium font-italic" title="Date de livraison"> <%= order.pickup_date %></p>
+            <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %></p>
+          </div>
 
-          <% elsif order.status =="prepared" %>
-
-            <div class="action-picto done-action" title="Prête">
-              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-            </div>
-            <div class="action-picto waiting-action" title="Marquer comme livrée">
-              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
-            </div>
-            <div class="action-picto" title="Marquer comme payée">
-              <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-            </div>
-
-          <% elsif order.status =="delivered"%>
-
-            <div class="action-picto done-action" title="Prête">
-              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-            </div>
-            <div class="action-picto done-action" title="Livrée">
-              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
-            </div>
-            <div class="action-picto waiting-action" title="Marquer comme payée">
-              <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-            </div>
-
-          <% else %>
-
-            <div class="action-picto done-action" title="Prête">
-              <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-            </div>
-            <div class="action-picto done-action" title="Livrée">
-              <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
-            </div>
-            <div class="action-picto done-action" title="Payée">
-              <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
-            </div>
-
-          <% end %>
-        </div>
-
-
-        <!-- collapse button -->
-        <div class="collapse-btn">
-          <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#order-<%=order.id %>" aria-expanded="true" aria-controls="order-<%=order.id %>">
-            <i class="fas fa" aria-hidden="true"></i>
-          </button>
+          <div class="order-card-picto-index collapse-btn-index">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#order-<%=order.id %>" aria-expanded="true" aria-controls="order-<%=order.id %>">
+              <i class="fas fa" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>
 
 
-    <!-- ORDER LINES + ADDRESS -->
-    <div class="collapse" id="order-<%=order.id %>">
-      <div class="card card-body order-card-collapsed-dashboard mg20">
-        <div class="order-lines-index orga-card">
+    <div class="card order-card-index-main order-card-collapsed-index">
+      <!-- ID + DATE + PICKUP_DATE + NAME -->
+
+      <div class="line-order-card-index"></div>
+
+  <!-- PICTOS -->
+
+
+  <!-- ORDER LINES + ADDRESS -->
+
+      <div class="collapse" id="order-<%=order.id %>">
+        <div class="card card-body order-card-collapsed-index">
           <div class="order-lines-index">
             <% order.order_lines.each do |order_line| %>
               <div class="order-line">
@@ -120,7 +133,7 @@
               </div>
             <% end %>
           </div>
-          <div class="order-address-index bottom-right-dash">
+          <div class="order-address-index">
             <p class="name"><%= order.client.first_name %> <%= order.client.last_name %></p>
             <div class="line-address"></div>
             <p class="address"><%= order.client.address %></p>
@@ -129,5 +142,8 @@
         </div>
       </div>
     </div>
+  </div>
   <% end %>
 </div>
+
+
