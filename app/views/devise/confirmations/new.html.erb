@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-4 mb-4">
   <h2><%= t(".resend_confirmation_instructions") %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, t(".resend_confirmation_instructions") %>
+      <%= f.button :submit, t(".resend_confirmation_instructions"), class: 'btn btn-lg btn-block submit-btn-green mb-4' %>
     </div>
   <% end %>
 
