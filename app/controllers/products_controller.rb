@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
-  before_action :require_admin, :except => :index
-  skip_before_action :authenticate_client!, :only => :index
+  before_action :require_admin, :except => [:index, :show]
+  skip_before_action :authenticate_client!, :only => [:index, :show]
 
   # flash.now[:notice] = "Veuillez créer un compte pour pouvoir commander depuis cette page" if current_client.nil?
 

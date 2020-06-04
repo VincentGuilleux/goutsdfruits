@@ -109,6 +109,13 @@
           <div class="card-product-text-line">
             <p class="big-text-bold-resp grey-dark">
             <span title="<%= product.description %>"> <%= product.name %> </span>
+            <%= link_to product_path(product) do %>
+              <% if (!current_client.nil? && current_client.role == "admin") %>
+                <sup><i class="far fa-edit grey-medium semi-small-text pl5"></i>
+              <% else %>
+                <sup><i class="fas fa-question grey-medium small-text pl5"></i></sup>
+              <% end %>
+            <% end %>
             </p>
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
@@ -156,16 +163,16 @@
                 <% end %>
             <% end %>
             </p>
-            <% if (!current_client.nil? && current_client.role == "admin") %>
-              <%= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
-            <% end %>
+            <%# if (!current_client.nil? && current_client.role == "admin") %>
+               <%#= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
+            <%# end %>
           </div>
         </div>
         <% if (!current_client.nil? && current_client.role != "admin") %>
           <div class="card-product-order-input">
-            <i class="fas fa-plus blue JSpluscounter"></i>
-            <i class="far fa-square blue"></i>
-            <i class="fas fa-minus blue JSminuscounter"></i>
+            <i class="fas fa-plus green JSpluscounter"></i>
+            <i class="far fa-square green"></i>
+            <i class="fas fa-minus green JSminuscounter"></i>
           </div>
         <% end %>
       </div>

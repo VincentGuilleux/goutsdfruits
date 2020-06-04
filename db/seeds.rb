@@ -318,6 +318,8 @@ product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Da
 product_lot29 = ProductLot.create!(product_id: product29.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 10, remaining_quantity: 10, lot_number: "20425")
 product_lot30 = ProductLot.create!(product_id: product30.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20426")
 product_lot31 = ProductLot.create!(product_id: product31.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20427")
+product_lot39 = ProductLot.create!(product_id: product39.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20427")
+product_lot40 = ProductLot.create!(product_id: product40.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 17, remaining_quantity: 17, lot_number: "20427")
 
 puts""
 puts"made with love by the cat's team"
