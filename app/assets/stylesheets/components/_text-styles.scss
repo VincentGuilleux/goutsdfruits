@@ -31,8 +31,8 @@ h2 {
 
 .add-new a {
   display: flex;
-  padding: 15px 0;
-  opacity: 0.6;
+  padding: 20px 0;
+  opacity: 1;
   align-items: center;
   p {
     font-size: 16px;
@@ -47,7 +47,7 @@ h2 {
   }
   &:hover {
     text-decoration: none;
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
