@@ -12,10 +12,10 @@
   //   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
   // }
   // plus de hover car plus de lien sur toute la carte
-  &:hover .card-product-text-line a img {
-  opacity: 1;
-  transition: 200ms;
-  }
+  // &:hover .card-product-text-line a img {
+  // opacity: 1;
+  // transition: 200ms;
+  // }
 }
 
 .card-product img {
@@ -51,8 +51,9 @@
   width: 20px;
   min-width:20px;
   height: 20px;
+  margin-left: 5px;
   fill: $grey_medium;
-  opacity: 0;
+  opacity: 1;
 }
 
 .product-price p {
