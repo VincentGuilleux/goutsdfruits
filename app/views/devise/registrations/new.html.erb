@@ -1,60 +1,62 @@
-<h2><%= t(".sign_up") %></h2>
+<div class="container">
+  <h2><%= t(".sign_up") %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :first_name,
-                required: false,
-                autofocus: true,
-                label: 'Prénom',
-                input_html: { autocomplete: "prénom" }%>
-    <%= f.input :last_name,
-                required: true,
-                autofocus: true,
-                label: 'Nom (ou nom du magasin / marché)'%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                label: 'Mail'%>
-    <%= f.input :phone,
-                required: false,
-                autofocus: true,
-                label: 'Numéro de téléphone'%>
-      <%= f.input :address,
-                required: true,
-                autofocus: true,
-                label: 'Numéro et nom de la voie'%>
-    <%= f.input :post_code,
-                required: true,
-                autofocus: true,
-                label: 'Code postal'%>
-    <%= f.input :city,
-                required: true,
-                autofocus: true,
-                label: 'Ville'%>
-    <%= f.input :segment,
-                required: true,
-                autofocus: true,
-                label: 'Type de client',
-                collection: Client.segments_new_client%> <!-- Utiliser Client.segments pour le formulaire de création maraîcher -->
-    <%= f.input :amap,
-                required: false,
-                autofocus: true,
-                label: "Nom de l'AMAP",
-                collection: Client.amap%>
-    <%= f.input :password,
-                required: true,
-                hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-  </div>
+    <div class="form-inputs">
+      <%= f.input :first_name,
+                  required: false,
+                  autofocus: true,
+                  label: 'Prénom',
+                  input_html: { autocomplete: "prénom" }%>
+      <%= f.input :last_name,
+                  required: true,
+                  autofocus: true,
+                  label: 'Nom (ou nom du magasin / marché)'%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  label: 'Mail'%>
+      <%= f.input :phone,
+                  required: false,
+                  autofocus: true,
+                  label: 'Numéro de téléphone'%>
+        <%= f.input :address,
+                  required: true,
+                  autofocus: true,
+                  label: 'Numéro et nom de la voie'%>
+      <%= f.input :post_code,
+                  required: true,
+                  autofocus: true,
+                  label: 'Code postal'%>
+      <%= f.input :city,
+                  required: true,
+                  autofocus: true,
+                  label: 'Ville'%>
+      <%= f.input :segment,
+                  required: true,
+                  autofocus: true,
+                  label: 'Type de client',
+                  collection: Client.segments_new_client%> <!-- Utiliser Client.segments pour le formulaire de création maraîcher -->
+      <%= f.input :amap,
+                  required: false,
+                  autofocus: true,
+                  label: "Nom de l'AMAP",
+                  collection: Client.amap%>
+      <%= f.input :password,
+                  required: true,
+                  hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+    </div>
 
-  <div class="form-actions">
-    <%= f.button :submit, t(".sign_up"), class: 'btn btn-lg btn-block submit-btn' %>
-  </div>
-<% end %>
+    <div class="form-actions">
+      <%= f.button :submit, t(".sign_up"), class: 'btn btn-lg btn-block submit-btn' %>
+    </div>
+  <% end %>
 
-<%= render "devise/shared/links" %>
+  <%= render "devise/shared/links" %>
+</div>
