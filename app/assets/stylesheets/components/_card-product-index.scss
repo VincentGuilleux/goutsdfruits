@@ -1,3 +1,24 @@
+.page-title-index {
+  color: $grey_dark;
+  z-index: 100;
+  font-weight: 900;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  padding-top: 40px;
+}
+
+.product-index-new-order {
+  margin: auto;
+  width: 20%;
+  background-color: white;
+  border-radius: 5px;
+  text-align: center;
+  padding: 5px;
+  position: sticky;
+  top: 0;
+}
+
 .card-product {
   height: 120px;
   background-color: white;

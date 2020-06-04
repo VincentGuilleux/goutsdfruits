@@ -17,7 +17,7 @@
         <%= f.input :product_type, prompt: 'Type', label: false, collection: Product.types %>
         <%= f.input :product_category, prompt: 'Catégorie', label: false, collection: Product.categories %>
         <%= f.input :photo, prompt: 'Ajouter une photo', as: :file, label: false %>
-        <%= f.submit 'Créer le produit', class: 'btn btn-lg btn-block submit-btn' %>
+        <%= f.submit 'Créer le produit', class: 'btn btn-lg submit-btn' %>
       <% end %>
     </div>
   </div>
