@@ -1,121 +1,64 @@
-// collapsed part
-
-.orders-index {
-
+.container.container-orders {
+  padding: 0;
 }
 
-.order-card-index {
-  display: flex;
-  justify-content: space-between;
-  background-color: $white;
-  border-radius: 10px;
-  margin: 20px 40px 10px 40px;
-  h2{
-    margin:0;
+.index-orders {
+  margin: 0 30px;
+  .card {
+    background-color: white;
   }
 }
 
-.order-card-index-collapsed-left-part {
-  display: flex;
-  align-items: center;
+// CARDS --------------------------
+
+.order-card-index-main {
+  margin-bottom: 20px;
+  // padding: 20px;
 }
 
-.order-index-name {
-  font-weight: 700;
-  font-size: 18px;
-  color: $grey_dark
-}
-
-.order-card-index-collapsed-right-part {
-  display: flex;
-  align-items: center;
-}
-
-.delivery-index {
-  text-align: right;
-  width: 200px;
-  margin: 10px 0;
-  p {
-    margin-bottom: 0;
-  }
-}
-
-.total-price-order-index {
-  font-size: 18px;
-  font-weight: bold;
-  color: $green;
-  margin: 0 60px;
-  width: 60px;
-  text-align: center;
-}
-
-.order-card-picto-index {
-  display: flex;
-  align-items: center;
-  width: 200px;
-  height: 60px;
-}
-
-.underline-picto-index-orders {
-  height: 2px;
-  width: 130px;
-  background-color: $grey_very_light;
-  position: absolute;
-  right: 150px;
-}
-
-// full card (order lines + address)
-
-.orga-card{
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 8px;
-}
-
-
-.order-line.order-index-bottom {
-  display:grid;
-  grid-template-columns: 7fr 2fr 1fr;
-}
-
-.index-total-price{
-  font-size: 20px;
-  color: $grey_dark;
-  font-weight: 900;
-}
-
-
-.order-address-index {
-  background-color: $white;
+.order-card-collapsed-index {
+  // background-color: $white;
+  border: none;
   border-radius: 5px;
-  padding: 40px;
-  margin-left: 300px;
-  p {
+  padding-top: 0;
+  // padding-bottom: 0;
+  // margin: 20px;
+
+  .order-card-header-index {
+    padding: 20px;
+  }
+
+  .order-card-header-bottom-part-index {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  h1 {
+    font-weight: 700;
+    font-size: 16px;
+  }
+  .price-font-index {
+    color: $green;
     margin-bottom: 0;
   }
-  .name {
-    font-size: 16px;
+  .name-font-index {
+    color: $grey_dark;
+    margin-bottom: 0;
+  }
+  p {
+    font-size: 10px;
     font-weight: bold;
     color: $grey_medium;
   }
-  .line-address {
-    height: 1px;
-    width: 300px;
-    background-color: $white_smoke;
-    margin: 13px 0 13px -5px;
-  }
-  .address {
-    font-size: 16px;
-    color: $grey_dark;
-    padding-bottom: 6px;
-  }
+
 }
 
 .order-lines-index {
-  background-color: $white;
+  background-color: $white_smoke;
   border-radius: 5px;
-  padding: 10px 30px;
-  margin-bottom: 16px;
+  padding: 0 20px;
+  // margin-bottom: 16px;
   .order-line {
     display: flex;
     justify-content: space-between;
@@ -123,26 +66,29 @@
     border-bottom: 1px solid $white_smoke;
     padding-top: 16px;
     padding-bottom: 14px;
+
     p {
       margin-bottom: 0;
-      font-size: 14px;
     }
     .product-name {
-      font-size: 16px;
+      font-size: 14px;
       font-weight: bold;
       color: $grey_dark;
     }
     .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       .separation {
         background-color: $grey_very_light;
-        height: 20px;
+        height: 17px;
         width: 1px;
-        margin: 0 16px;
-        position: absolute;
-        right: 930px;
+        margin: 0 10px;
+        // position: absolute;
+        // right: 70px;
       }
-      .total-price {
-        font-size: 16px;
+      .total-price p {
+        font-size: 14px;
         color: $grey_medium;
         font-weight: 900;
       }
@@ -150,28 +96,172 @@
         top: -.3em;
         font-weight: 500;
       }
-      .unit-price {
-        position: absolute;
-        right: 1000px;
-        padding-top: 3px;
-      }
     }
   }
 }
 
+.order-address-index {
+  background-color: $white_smoke;
+  border-radius: 5px;
+  padding: 20px;
+  p {
+    margin-bottom: 0;
+  }
+  .name {
+    font-size: 14px;
+    font-weight: bold;
+    color: $grey_medium;
+  }
+  .line-address {
+    height: 1px;
+    background-color: $white_smoke;
+    margin: 13px 0 13px 0;
+  }
+  .address {
+    font-size: 14px;
+    color: $grey_dark;
+    padding-bottom: 6px;
+  }
+}
 
-// .divr {
-//   border: 1px red solid;
-// }
+// LINE----------------------------------------
 
-// .mg20 {
-//   margin:0 20px 20px 20px ;
-// }
-// .bottom-right-dash {
-//   justify-self:center
-// }
+.line-order-card-index {
+  height: 1px;
+  background-color: $grey_light;
+  // margin: 0 20px 0 20px;
+}
 
-// .order-lines {
-//   display:grid;
-//   grid-template-columns: 1fr;
-// }
+
+// PICTOS -------------------------------------
+
+.order-card-picto-index {
+  display: flex;
+  align-items: center;
+}
+
+.action-picto-index {
+  height: 34px;
+  width: 34px;
+  border-radius: 50%;
+  background-color: $grey_very_light;
+  // margin-right: 24px;
+  z-index: +1;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  a {
+    outline: 0;
+    color: $white;
+  }
+  &:hover {
+    background-color: $green_light;
+    transition: 0.3s ease;
+    a {
+      color: $white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+  }
+  .fa-truck {
+    margin: 9px 7px;
+  }
+  .fa-receipt {
+    margin: 9px auto;
+  }
+}
+
+.waiting-action-index {
+  height: 38px;
+  width: 38px;
+  background-color: $white_smoke;
+  border: 4px solid $green_light;
+  a {
+    outline: 0;
+    color: $green_light;
+  }
+  &:hover {
+    background-color: $green_light;
+    transition: 0.3s ease;
+    a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+  }
+  .fa-clock {
+    font-size: 19px;
+    margin: 5px auto;
+  }
+  .fa-truck {
+    margin: 7px auto;
+  }
+  .fa-receipt {
+    margin: 7px 9px;
+  }
+}
+
+.done-action-index {
+  height: 40px;
+  width: 40px;
+  font-size: 18px;
+  background-color: $green;
+  &:hover {
+    background-color: $green;
+    a {
+      color: $white;
+    }
+  }
+  .fa-check {
+    margin: 9px auto;
+    font-size: 22px;
+  }
+  .fa-shipping-fast {
+    margin: 11px auto;
+  }
+  .fa-euro-sign {
+    margin: 9px 15px 9px 11px;
+    font-size: 23px;
+  }
+}
+
+.underline-index {
+  height: 2px;
+  width: 24px;
+  background-color: $grey_very_light;
+  // position: absolute;
+  // top: 105px;
+}
+
+// DELIVERY ---------------------------------
+
+.delivery-index {
+  text-align: right;
+  width: 200px;
+  height: 36px;
+  // margin: 10px 0;
+  p {
+    margin-bottom: 0;
+    font-size: 12px;
+  }
+}
+
+// COLLAPSE BUTTON --------------------------
+
+.collapse-btn-index {
+  padding-left: 20px;
+  .btn-link {
+    outline: 0;
+
+
+  }
+  .fas {
+    color: $grey_light;
+    font-size: 20px;
+  }
+  button {
+    padding: 0;
+  }
+}
+
+
