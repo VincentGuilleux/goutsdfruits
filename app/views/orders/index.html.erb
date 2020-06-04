@@ -1,10 +1,12 @@
 <div class="container container-orders">
-  <div class="add-new add-new-order">
-    <%= link_to new_order_path do %>
-      <p>Ajouter une commande</p>
-      <%= image_tag "add-circle.svg" %>
-    <% end %>
-  </div>
+  <% if client_signed_in? && current_client.role == "admin" %>
+    <div class="add-new add-new-order">
+      <%= link_to new_order_path do %>
+        <p>Ajouter une commande</p>
+        <%= image_tag "add-circle.svg" %>
+      <% end %>
+    </div>
+  <% end %>
   <div class="index-orders">
     <% @orders.each do |order| %>
       <div class="card order-card-index-main order-card-collapsed-index">
