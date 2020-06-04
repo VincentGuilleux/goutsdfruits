@@ -34,65 +34,127 @@
               <div class="justify-content-between">
                 <div class="order-card-picto-index">
 
-                  <% if order.status=="pending" %>
+                  <% if client_signed_in? && current_client.role == "admin" %>
+                    <% if order.status=="pending" %>
 
 
-                    <div class="action-picto-index waiting-action-index" title="Marquer comme prête">
-                      <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index" title="Marquer comme livrée">
-                      <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index" title="Marquer comme payée">
-                      <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-                    </div>
+                      <div class="action-picto-index waiting-action-index" title="Marquer comme prête">
+                        <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-clock"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index" title="Marquer comme livrée">
+                        <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index" title="Marquer comme payée">
+                        <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                      </div>
 
-                  <% elsif order.status =="prepared" %>
+                    <% elsif order.status =="prepared" %>
 
-                    <div class="action-picto-index done-action-index" title="Prête">
-                      <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index waiting-action-index" title="Marquer comme livrée">
-                      <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index" title="Marquer comme payée">
-                      <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-                    </div>
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index waiting-action-index" title="Marquer comme livrée">
+                        <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-truck"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index" title="Marquer comme payée">
+                        <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                      </div>
 
-                  <% elsif order.status =="delivered"%>
+                    <% elsif order.status =="delivered"%>
 
-                    <div class="action-picto-index done-action-index" title="Prête">
-                      <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index done-action-index" title="Livrée">
-                      <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index waiting-action-index" title="Marquer comme payée">
-                      <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
-                    </div>
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Livrée">
+                        <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index waiting-action-index" title="Marquer comme payée">
+                        <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-receipt"%>
+                      </div>
+
+                    <% else %>
+
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Livrée">
+                        <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Payée">
+                        <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
+                      </div>
+
+                    <% end %>
 
                   <% else %>
 
-                    <div class="action-picto-index done-action-index" title="Prête">
-                      <%= link_to "", prepare_order_path(order.id), method: :patch, class: "fas fa-check"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index done-action-index" title="Livrée">
-                      <%= link_to "", deliver_order_path(order.id), method: :patch, class: "fas fa-shipping-fast"%>
-                    </div>
-                    <div class="underline-index"></div>
-                    <div class="action-picto-index done-action-index" title="Payée">
-                      <%= link_to "", pay_order_path(order.id), method: :patch, class: "fas fa-euro-sign"%>
-                    </div>
+                    <% if order.status=="pending" %>
 
+
+                      <div class="action-picto-index waiting-action-index" title="En préparation">
+                        <%= link_to "", "", class: "fas fa-clock"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index">
+                        <%= link_to "", "", class: "fas fa-truck"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index">
+                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      </div>
+
+                    <% elsif order.status =="prepared" %>
+
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", "", class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index waiting-action-index" title="En cours de livraison">
+                        <%= link_to "", "", class: "fas fa-truck"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index">
+                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      </div>
+
+                    <% elsif order.status =="delivered"%>
+
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", "", class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Livrée">
+                        <%= link_to "", "", class: "fas fa-shipping-fast"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index waiting-action-index" title="Commande à payer">
+                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      </div>
+
+                    <% else %>
+
+                      <div class="action-picto-index done-action-index" title="Prête">
+                        <%= link_to "", "", class: "fas fa-check"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Livrée">
+                        <%= link_to "", "", class: "fas fa-shipping-fast"%>
+                      </div>
+                      <div class="underline-index"></div>
+                      <div class="action-picto-index done-action-index" title="Payée">
+                        <%= link_to "", "", class: "fas fa-euro-sign"%>
+                      </div>
+
+                    <% end %>
                   <% end %>
-
                 </div>
               </div>
 
