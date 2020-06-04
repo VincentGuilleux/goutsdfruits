@@ -2,6 +2,18 @@
  top: 12vh;
 }
 
+.submit-btn-green {
+    background-color: $green;
+    border-radius: 5px;
+    width: 100px;
+    color: white;
+    letter-spacing: 0.1em;
+    margin-top: 20px;
+    &:hover {
+      background-color: $green_dark;
+    }
+  }
+
 .page-title-static {
   color: $grey_dark;
   font-weight: 900;
@@ -93,6 +105,10 @@ h2 {
 
 
 // used in dashboard (Ex. : Meilleures ventes gourmandises)
+.very-small-text {
+  font-size: 10px;
+}
+
 .small-text {
   font-size: 12px;
 }
