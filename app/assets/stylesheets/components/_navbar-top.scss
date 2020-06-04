@@ -1,3 +1,10 @@
+@media (max-width: 600px) {
+  .navbar-collapse
+    {
+        background-color:$white;
+    }
+}
+// https://stackoverflow.com/questions/32147082/changing-collapsed-navbar-list-background-color
 
 @media (max-width: 600px){
   #navbarSupportedContent{
@@ -40,7 +47,7 @@
 .lien-navbar {
   color: $green;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: calc(16px + 0.3vw);
   padding-left: 2vw;
   padding-right: 2vw;
   &:hover {
