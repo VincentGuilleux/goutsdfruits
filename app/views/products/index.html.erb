@@ -1,14 +1,5 @@
 <div class="title-container">
 
-  <% if client_signed_in? && current_client.role == "admin" %>
-    <div class="add-new">
-      <%= link_to new_product_path do %>
-        <p>Ajouter un produit</p>
-        <%= image_tag "add-circle.svg" %>
-      <% end %>
-    </div>
-  <% end %>
-
 
   <!-- FILTERS DIV -->
   <div class="container-index-filters sticky-top filterstick pl2rem">
@@ -64,6 +55,16 @@
     <!-- Reset filters -->
     <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
   </div>
+
+  <% if client_signed_in? && current_client.role == "admin" %>
+    <div class="add-new">
+      <%= link_to new_product_path do %>
+        <p>Ajouter un produit</p>
+        <%= image_tag "add-circle.svg" %>
+      <% end %>
+    </div>
+  <% end %>
+
 </div>
 
 <div class="main-container">
