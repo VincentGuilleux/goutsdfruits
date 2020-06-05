@@ -4,7 +4,7 @@
     <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
       <%= simple_form_for @order do |ff| %>
         <p class="bold">
-            Prix total : <span id="totalprice">0</span><sup> €</sup>
+            Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
           <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
       <% end %>
@@ -193,12 +193,10 @@
         </div>
         <% if (!current_client.nil? && current_client.role != "admin") %>
           <div class="card-product-order-input">
-            <%#= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
-              <i class="fas fa-plus green JSpluscounterproduct" data-uuid="<%= uuid %>"></i>
-              <span class="green" id=<%= uuid %>>0</span>
-              <%#= f.input :quantity, label: false, input_html: { class: 'quantity-input', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
-              <i class="fas fa-minus green JSminuscounterproduct" data-uuid="<%= uuid %>"></i>
-            <%# end %>
+              <i class="fas fa-plus green JSpluscounterproductindex" data-uuid="<%= uuid %>"></i>
+              <span class="green-light" id=<%= uuid %>>0</span> <!-- quantité commandée -->
+              <i class="fas fa-minus green JSminuscounterproductindex" data-uuid="<%= uuid %>"></i>
+              <span class="JSpriceperlineproductindex green-light very-small-text" data-uuid="<%= uuid %>">0</span>
           </div>
         <% end %>
       </div>

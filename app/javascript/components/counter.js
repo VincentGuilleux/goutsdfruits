@@ -1,17 +1,15 @@
 const counter = () => {
 
-  // Sous-fonction pour mise à jour du prix de la ligne
+  // Sous-fonction pour mise à jour du prix de la ligne (commande admin)
     const updatePrice = (uuid) => {
       let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
       let selectedProductId = productDropdownEl.options[productDropdownEl.selectedIndex].value;
       // à partir du Dropdown global de tous les produits, sélection pour le produit cliqué de son option value
       let productPrice = prices[selectedProductId];
       let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
-      // console.log(priceEl.innerHTML);
-      // priceEl correspond à l'attribut HTML span qui contient le prix pour la ligne
+      // priceEl correspond à l'attribut HTML span qui contient le prix pour la ligne dans son innerHMTL
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
-      // console.log(inputEl.value);
-      // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
+      // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours dans inputEl.value
       priceEl.innerHTML = (inputEl.value * productPrice) / 100;
       // console.log(priceEl.innerHTML);
       // Le prix à afficher pour l'order_line est désormais égal à la quantité  * prix du produit sélectionné
@@ -23,6 +21,28 @@ const counter = () => {
         totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
       }
       let totalpriceEl = document.getElementById("totalprice");
+      totalpriceEl.innerHTML = totalPrice;
+    };
+
+     // Sous-fonction pour mise à jour du prix de la ligne (commande client)
+    const updatePriceProductIndex = (uuid) => {
+      let productPrice = prices[uuid];
+      console.log(productPrice);
+      let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
+      console.log(priceEl.innerHTML);
+      let inputEl = document.getElementById(uuid);
+      console.log(inputEl.innerText);
+      // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
+      priceEl.innerHTML = (inputEl.innerText * productPrice) / 100;
+      // console.log(priceEl.innerHTML);
+      // Le prix à afficher pour l'order_line est désormais égal à la quantité  * prix du produit sélectionné
+
+      let totalPrice = 0;
+      let allPricesEl = document.querySelectorAll('.JSpriceperlineproductindex');
+      for (let i = 0; i < allPricesEl.length; i++) {
+        totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
+      }
+      let totalpriceEl = document.getElementById("totalpriceproductindex");
       totalpriceEl.innerHTML = totalPrice;
     };
 
@@ -55,28 +75,26 @@ const counter = () => {
       };
     };
 
-    if( event.target.matches(".JSpluscounterproduct")) {
+    if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
       // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
       let productRemainingQuantity = remainingQuantities[uuid];
-      console.log(productRemainingQuantity);
       if (productRemainingQuantity > inputEl.innerText) {
         inputEl.innerText = parseInt(inputEl.innerText) + 1;
-        updatePrice(uuid);
+        updatePriceProductIndex(uuid);
         }
     };
 
-    if( event.target.matches(".JSminuscounterproduct")) {
+    if( event.target.matches(".JSminuscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
       // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
       if (inputEl.innerText > 0) {
         inputEl.innerText = parseInt(inputEl.innerText) - 1;
-        updatePrice(uuid);
+        updatePriceProductIndex(uuid);
       };
     };
-
 
   });
 
@@ -87,6 +105,7 @@ const counter = () => {
       updatePrice(uuid);
     };
   });
+
 };
 
 export { counter } ;
