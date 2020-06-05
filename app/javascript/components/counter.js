@@ -1,11 +1,7 @@
 const counter = () => {
 
-  // const totalPriceCal = () => {
-  //         };
-
   // Sous-fonction pour mise à jour du prix de la ligne
     const updatePrice = (uuid) => {
-      console.log(remainingQuantities);
       let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
       let selectedProductId = productDropdownEl.options[productDropdownEl.selectedIndex].value;
       // à partir du Dropdown global de tous les produits, sélection pour le produit cliqué de son option value
@@ -26,20 +22,31 @@ const counter = () => {
         // console.log('allPricesEl: ', allPricesEl[i].innerText);
         totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
       }
-      console.log(typeof totalPrice);
       let totalpriceEl = document.getElementById("totalprice");
       totalpriceEl.innerHTML = totalPrice;
     };
 
   document.body.addEventListener( 'click', function ( event ) {
+
     if( event.target.matches(".JSpluscounter")) {
       // Si on clique sur plus
       let uuid = event.target.dataset.uuid;
       // On récupère l'uuid de la order_line correspondante
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
-      inputEl.value = parseInt(inputEl.value) + 1;
-      updatePrice(uuid);
+      // On stocke dans inputEl.value la quantité sélectionnée jusque là
+
+      // Bloc ci-dessous pour checker qu'on ne commande pas plus que la remaining quantity
+      let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
+      let selectedProductId = productDropdownEl.options[productDropdownEl.selectedIndex].value;
+      let productRemainingQuantity = remainingQuantities[selectedProductId];
+      // on stocke dans productRemainingQuantity la quantité restante du produit sélectionné depuis le Dropdown
+      if (productRemainingQuantity > inputEl.value) {
+        console.log("toto");
+        inputEl.value = parseInt(inputEl.value) + 1;
+        updatePrice(uuid);
+        }
     };
+
     if( event.target.matches(".JSminuscounter")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
@@ -47,6 +54,7 @@ const counter = () => {
         inputEl.value = parseInt(inputEl.value) - 1;
         updatePrice(uuid);
       };
+
     };
   });
 
@@ -54,7 +62,6 @@ const counter = () => {
 
     if( event.target.matches(".JSproductselect")) {
       let uuid = event.target.dataset.uuid;
-      // console.log(event.target.selectedIndex);
       updatePrice(uuid);
     };
   });
