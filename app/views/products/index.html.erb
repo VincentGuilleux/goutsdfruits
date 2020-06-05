@@ -11,6 +11,7 @@
     </div>
 
   <% end %>
+
   <div class="col-12 col-lg-12">
     <div class="title-container">
       <!-- FILTERS DIV -->
@@ -85,7 +86,6 @@
   let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
   let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities.to_h.to_json %>');
 </script>
-
 
 <div class="main-container">
   <div class="container-index-products">

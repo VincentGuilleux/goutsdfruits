@@ -83,9 +83,11 @@ return typeQuery;
 const priceRequest = () => {
 let priceQuery ="";
 const product_price = document.getElementById("product_price");
+  if (product_price !== null) { // condition nécessaire car pour les non-admin le priceRequest n'apparait pas
     if (product_price.innerText !== 'Prix') {
       priceQuery = "&price=" + product_price.innerText
     };
+  };
 return priceQuery;
 };
 
