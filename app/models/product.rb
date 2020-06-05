@@ -36,7 +36,19 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  # les méthodes ci-dessous permettaient d'itérer pour chaque produit, les doublons sont ensuite éliminés grâce au .uniq.
+  def self.remaining_quantities
+    @products = Product.all
+    remaining_quantities = []
+    @products.each do |product|
+      remaining_quantity = []
+      remaining_quantity << product.id
+      remaining_quantity << product.total_remaining_quantity
+      remaining_quantities << remaining_quantity
+    end
+    return remaining_quantities
+  end
+
+   # les méthodes ci-dessous permettaient d'itérer pour chaque produit, les doublons sont ensuite éliminés grâce au .uniq.
   # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
   #  def self.unit_measures
   #   Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }

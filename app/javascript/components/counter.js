@@ -5,6 +5,7 @@ const counter = () => {
 
   // Sous-fonction pour mise à jour du prix de la ligne
     const updatePrice = (uuid) => {
+      console.log(remaining_quantities);
       let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
       let selectedProductId = productDropdownEl.options[productDropdownEl.selectedIndex].value;
       // à partir du Dropdown global de tous les produits, sélection pour le produit cliqué de son option value
