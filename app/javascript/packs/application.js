@@ -45,6 +45,10 @@ document.addEventListener('turbolinks:load', () => {
           .replace("new_record", time);
       });
     });
+    obj.find("[data-uuid]").each(function() {
+      $(this).attr("data-uuid", time);
+    });
+    // obj = formulaire car lié à data-form-prepend (cf. lignes 38 & 39)
     obj.insertBefore(this);
     return false;
   });
