@@ -49,6 +49,7 @@ document.addEventListener('turbolinks:load', () => {
       $(this).attr("data-uuid", time);
     });
     // obj = formulaire car lié à data-form-prepend (cf. lignes 38 & 39)
+    // Les 3 lignes ci-dessus permettent de substituer au data-uuid la
     obj.insertBefore(this);
     return false;
   });

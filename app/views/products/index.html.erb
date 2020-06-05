@@ -4,8 +4,13 @@
     <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
       <%= simple_form_for @order do |ff| %>
         <p class="bold">
-            Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
+          Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
+          <div style="display:none;">
+            <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
+              <%= render '/orders/order_line_fields', f: f %>
+            <% end %>
+          </div>
           <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
       <% end %>
     </div>
