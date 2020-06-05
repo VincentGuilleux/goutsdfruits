@@ -7,9 +7,6 @@ class ProductsController < ApplicationController
   def index
     @order = Order.new #Création de commande depuis l'index client donc il faut instancier un nouvel order
     @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
-    @products.each do |product|
-      @order.order_lines.build product_id: product.id, quantity: 0
-    end
 
     # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
     # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
@@ -22,6 +19,10 @@ class ProductsController < ApplicationController
     end
     if params[:type].present?
       @products = @products.where(product_type: params[:type])
+    end
+
+    @products.each do |product|
+      @order.order_lines.build product_id: product.id, quantity: 0
     end
 
      # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
