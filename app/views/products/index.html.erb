@@ -113,24 +113,13 @@
             <div class="product-price">
                <p class="semi-small-text-bold green">
 
-              <% if !current_client.nil? && current_client.role == "admin" %>
-                <% if @type_price == "magasin" %>
-                  <p><%= (product.unit_price_cents_shop)/100.to_f %> €
-                  <sup>/ <%= product.unit_type %>
-                <% else %>
-                  <p><%= (product.unit_price_cents)/100.to_f %> €
-                  <sup>/ <%= product.unit_type %>
-                <% end %>
+                <p><%= product.display_price(current_client, @type_price) %> €
+                <sup>
+                  <% if !current_client.nil? && current_client.segment == 'magasin' %> HT <% end %>
+                  /
+                  <%= product.unit_type %>
+                </sup>
 
-              <% elsif !current_client.nil? && current_client.segment == 'magasin' %>
-                <p><%= (product.unit_price_cents_shop_ET)/100.to_f %> €
-                <sup>HT / <%= product.unit_type %> </sup></p>
-
-              <% else %>
-                <p><%= (product.unit_price_cents)/100.to_f %> €
-                  <sup>/ <%= product.unit_type %> </sup>
-                </p>
-              <% end %>
             </div>
           </div>
           <!-- Card display center-middle: name -->

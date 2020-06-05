@@ -74,4 +74,21 @@ class Product < ApplicationRecord
     ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "poire", "pomme", "prune", "pêche", "rhubarbe", "sureau"]
   end
 
+  def display_price(user, type_price)
+    price = # raccourci Ruby pour stocker le résultat des conditions ci-dessous dans une variable price
+      if user && user.role == "admin"
+        if type_price == "magasin"
+          unit_price_cents_shop
+        else
+          unit_price_cents
+        end
+      elsif user && user.segment == 'magasin'
+        unit_price_cents_shop_ET
+      else
+        unit_price_cents
+      end
+    price/100.to_f
+  end
+  # logique d'affichage uniquement donc pourrait être mis dans un helper plutôt
+
 end
