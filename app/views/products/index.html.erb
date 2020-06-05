@@ -1,7 +1,7 @@
 <div class="client-new-order">
   <% if (!current_client.nil? && current_client.role != "admin") %>
 
-    <div class="col-12 col-lg-6 product-index-new-order"> <!-- sticky-top filterstick -->
+    <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
       <%= simple_form_for @order do |f| %>
         <p class="bold">
             Prix total : <span id="totalprice">0</span><sup> €</sup>
