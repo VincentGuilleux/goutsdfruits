@@ -41,7 +41,6 @@ const counter = () => {
       let productRemainingQuantity = remainingQuantities[selectedProductId];
       // on stocke dans productRemainingQuantity la quantité restante du produit sélectionné depuis le Dropdown
       if (productRemainingQuantity > inputEl.value) {
-        console.log("toto");
         inputEl.value = parseInt(inputEl.value) + 1;
         updatePrice(uuid);
         }
@@ -54,8 +53,31 @@ const counter = () => {
         inputEl.value = parseInt(inputEl.value) - 1;
         updatePrice(uuid);
       };
-
     };
+
+    if( event.target.matches(".JSpluscounterproduct")) {
+      let uuid = event.target.dataset.uuid;
+      let inputEl = document.getElementById(uuid);
+      // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
+      let productRemainingQuantity = remainingQuantities[uuid];
+      console.log(productRemainingQuantity);
+      if (productRemainingQuantity > inputEl.innerText) {
+        inputEl.innerText = parseInt(inputEl.innerText) + 1;
+        updatePrice(uuid);
+        }
+    };
+
+    if( event.target.matches(".JSminuscounterproduct")) {
+      let uuid = event.target.dataset.uuid;
+      let inputEl = document.getElementById(uuid);
+      // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
+      if (inputEl.innerText > 0) {
+        inputEl.innerText = parseInt(inputEl.innerText) - 1;
+        updatePrice(uuid);
+      };
+    };
+
+
   });
 
   document.body.addEventListener( 'change', function ( event ) {
