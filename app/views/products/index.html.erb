@@ -2,15 +2,16 @@
   <% if (!current_client.nil? && current_client.role != "admin") %>
 
     <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
-      <%= simple_form_for @order do |f| %>
+      <%= simple_form_for @order do |ff| %>
         <p class="bold">
             Prix total : <span id="totalprice">0</span><sup> €</sup>
         </p>
-          <%= f.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
+          <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
       <% end %>
     </div>
 
   <% end %>
+
   <div class="col-12 col-lg-12">
     <div class="title-container">
       <!-- FILTERS DIV -->
@@ -80,11 +81,19 @@
     </div>
   </div>
 </div>
+
+<script> <!-- script génère du code JS en HTML  -->
+  let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
+  let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities.to_h.to_json %>');
+</script>
+
 <div class="main-container">
   <div class="container-index-products">
     <% @products.each do |product| %>
-      <!-- <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> -->
-        <!-- Faisait un lien vers la product_show quand on cliquait n'importe où sur la carte -->
+
+      <% uuid = product.id %>
+
+      <!-- <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> --> <!-- Faisait un lien vers la product_show quand on cliquait n'importe où sur la carte -->
       <div class="card-product">
         <% if product.photo.attached? %>
           <%= cl_image_tag product.photo.key, alt: "image produit" %>
@@ -184,13 +193,15 @@
         </div>
         <% if (!current_client.nil? && current_client.role != "admin") %>
           <div class="card-product-order-input">
-            <i class="fas fa-plus green JSpluscounter"></i>
-            <i class="far fa-square green"></i>
-            <i class="fas fa-minus green JSminuscounter"></i>
+            <%#= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
+              <i class="fas fa-plus green JSpluscounterproduct" data-uuid="<%= uuid %>"></i>
+              <span class="green" id=<%= uuid %>>0</span>
+              <%#= f.input :quantity, label: false, input_html: { class: 'quantity-input', value: f.object.quantity || '1', "data-uuid" => uuid }, readonly: true %>
+              <i class="fas fa-minus green JSminuscounterproduct" data-uuid="<%= uuid %>"></i>
+            <%# end %>
           </div>
         <% end %>
       </div>
-    <% end %>
-    <!-- Fin de l'itération sur les produits -->
+    <% end %> <!-- Fin de l'itération sur les produits -->
   </div>
 </div>
