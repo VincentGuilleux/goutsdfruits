@@ -1,14 +1,11 @@
-<div class="title-container">
-  <div class="page-title"><!-- Clients -->
-    <div class="add-new">
-      <%= link_to new_client_path do %>
-        <p>Ajouter un client</p>
-        <%= image_tag "add-circle.svg" %>
-      <% end %>
-    </div>
-  </div>
-    <!-- FILTERS DIV -->
-  <div class="container-index-filters sticky-top filterstick pl2rem">
+<div class="title-container title-client">
+
+
+
+<!--   <div class="col-12 col-lg-12"> -->
+
+  <!-- FILTERS DIV -->
+  <div class="container-index-filters">
 
     <!-- Segment filter -->
     <div id="client_segment" class="middle-text grey-medium mr5">
@@ -26,6 +23,13 @@
     <!-- Reset filters -->
     <%= link_to "Effacer le filtre", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
   </div>
+<!--   <div class="add-new">
+    <%#= link_to new_client_path do %>
+      <p>Ajouter un client</p>
+      <%#= image_tag "add-circle.svg" %>
+    <%# end %>
+  </div> -->
+
 </div>
 <div class="client-cards">
   <% @clients.each do |client| %>

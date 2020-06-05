@@ -1,20 +1,20 @@
 <div class="client-new-order">
-    <% if (!current_client.nil? && current_client.role != "admin") %>
+  <% if (!current_client.nil? && current_client.role != "admin") %>
 
-      <div class="col-12 col-lg-6 product-index-new-order"> <!-- sticky-top filterstick -->
-        <%= simple_form_for @order do |f| %>
-          <p class="bold">
-              Prix total : <span id="totalprice">0</span><sup> €</sup>
-          </p>
-            <%= f.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
-        <% end %>
-      </div>
+    <div class="col-12 col-lg-6 product-index-new-order"> <!-- sticky-top filterstick -->
+      <%= simple_form_for @order do |f| %>
+        <p class="bold">
+            Prix total : <span id="totalprice">0</span><sup> €</sup>
+        </p>
+          <%= f.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
+      <% end %>
+    </div>
 
-    <% end %>
-  <div class="col-12 col-lg-6">
+  <% end %>
+  <div class="col-12 col-lg-12">
     <div class="title-container">
       <!-- FILTERS DIV -->
-      <div class="container-index-filters sticky-top filterstick pt-2 pl2rem">
+      <div class="container-index-filters">
           <!-- Fruit filter -->
         <div id="product_fruit" class="middle-text-resp grey-medium mr5 white">
         <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
