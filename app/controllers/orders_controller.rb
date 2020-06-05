@@ -49,13 +49,16 @@ class OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @order.order_lines.build
+    @order.order_lines.build # crée un order_line à vide
   end
 
   def create
     @order = Order.new(order_params)
     @order.date = Date.today
     sum = 0
+    @order.order_lines = @order.order_lines.to_a.reject {|order_line| order_line.quantity.zero?}
+    # supprime tous les order_lines à quantité nulle
+
     @order.order_lines.each do |order_line|
       if order_line.quantity <= order_line.product.total_remaining_quantity
         order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity

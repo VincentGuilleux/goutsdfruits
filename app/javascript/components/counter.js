@@ -78,10 +78,13 @@ const counter = () => {
     if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
+      let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0];
+      // querySelectorAll renvoit toujours un array c'est pour ça qu'on met [Ø] pour qu'il renvoit l'élément sans qu'il soit un array
       // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
       let productRemainingQuantity = remainingQuantities[uuid];
       if (productRemainingQuantity > inputEl.innerText) {
         inputEl.innerText = parseInt(inputEl.innerText) + 1;
+        inputFormEl.value = parseInt(inputFormEl.value) + 1;
         updatePriceProductIndex(uuid);
         }
     };
