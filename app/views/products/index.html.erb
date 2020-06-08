@@ -1,5 +1,5 @@
 <div class="client-new-order">
-  <% if (!current_client.nil? && current_client.role != "admin") %>
+  <% if (current_client && current_client.role != "admin") %>
 
     <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
       <%= simple_form_for @order do |ff| %>
@@ -58,7 +58,7 @@
           </div>
         </div>
         <!-- Price filter -->
-        <% if !current_client.nil? && current_client.role == "admin" %>
+        <% if current_client && current_client.role == "admin" %>
           <div id="product_price" class="middle-text-resp grey-medium mr5">
             <%= if params[:price].present? then params[:price] else 'Prix' end %>
           </div>
@@ -106,7 +106,7 @@
         <div class="card-product-infos">
           <!-- Card display NA/top-middle: category -->
           <div class="card-product-text-line">
-            <% if !current_client.nil? && current_client.role == "admin" %>
+            <% if current_client && current_client.role == "admin" %>
               <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <% end %>
             <!-- Card display top-middle/top-right: price -->
@@ -115,7 +115,7 @@
 
                 <p><%= product.display_price(current_client, @type_price) %> €
                 <sup>
-                  <% if !current_client.nil? && current_client.segment == 'magasin' %> HT <% end %>
+                  <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
                   /
                   <%= product.unit_type %>
                 </sup>
@@ -127,7 +127,7 @@
             <p class="big-text-bold-resp grey-dark">
             <span title="<%= product.description %>"> <%= product.name %> </span>
             <%= link_to product_path(product) do %>
-              <% if (!current_client.nil? && current_client.role == "admin") %>
+              <% if (current_client && current_client.role == "admin") %>
                 <sup><i class="far fa-edit grey-medium semi-small-text pl5"></i>
               <% else %>
                 <sup><i class="fas fa-question grey-medium very-small-text pl5"></i></sup>
@@ -138,7 +138,7 @@
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-            <% if (!current_client.nil? && current_client.role == "admin" && @type_price == "magasin") %>
+            <% if (current_client && current_client.role == "admin" && @type_price == "magasin") %>
               <%= pluralize(product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop, product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
@@ -148,7 +148,7 @@
                   <%= product.unit_measure_quantity_shop / 1000 %>
                   kg
                 <% end %>
-            <% elsif (!current_client.nil? && current_client.role == "admin") %>
+            <% elsif (current_client && current_client.role == "admin") %>
               <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
@@ -158,7 +158,7 @@
                   <%= product.unit_measure_quantity / 1000 %>
                   kg
                 <% end %>
-            <% elsif (!current_client.nil? && current_client.segment == 'magasin') %>
+            <% elsif (current_client && current_client.segment == 'magasin') %>
               <%= product.unit_type %>
                 de
               <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
@@ -180,12 +180,12 @@
                 <% end %>
             <% end %>
             </p>
-            <%# if (!current_client.nil? && current_client.role == "admin") %>
+            <%# if (current_client && current_client.role == "admin") %>
                <%#= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
             <%# end %>
           </div>
         </div>
-        <% if (!current_client.nil? && current_client.role != "admin") %>
+        <% if (current_client && current_client.role != "admin") %>
           <div class="card-product-order-input">
               <i class="fas fa-plus green JSpluscounterproductindex" data-uuid="<%= uuid %>"></i>
               <span class="green-light" id=<%= uuid %>>0</span> <!-- quantité commandée -->

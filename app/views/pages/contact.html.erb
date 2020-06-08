@@ -1,10 +1,20 @@
-<div class="page-title">Contact</div>
+<div class="container">
+  <div class="page-title-static text-center pt-5 pb-5">Contact</div>
+  <p>Pour répondre à toutes vos questions, je me tiens à votre disposition tous les vendredis soir à la ferme de 17h à 19h à L'Orgerie 79 140 Le Pin.
+  <p>Le verger se situe à 2 km de Cerizay en direction de Combrand.</p>
+  <p>Vous pouvez aussi me joindre au 06 08 04 75 85 ou m'envoyer un mail à l'aide du formulaire ci-dessous.</p>
+  <p class="pb-2">A bientôt !</p>
+
+
   <form action="/send_contact" method="post">
-   <input name="email" type="email" class="form-control mb-1" placeholder="Votre email">
-   <textarea name="message" class="form-control" placeholder="Votre message"></textarea>
-   <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-   <button type="submit">Envoyer</button>
+    <input name="email" type="email" class="form-control mb-1" placeholder="Votre email">
+    <textarea name="message" class="form-control" placeholder="Votre message"></textarea>
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <div class="form-actions">
+      <button class="btn btn-lg submit-btn-green mb-4 middle-text" type="submit">Envoyer</button>
+    </div>
   </form>
+</div>
 </div>
 
 
