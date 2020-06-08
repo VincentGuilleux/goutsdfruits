@@ -2,10 +2,18 @@ class OrdersController < ApplicationController
 
   def index
     if current_client.role == "admin"
-      @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products)
+      @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products, :delivery_place)
     else
       @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products)
     end
+
+    # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
+    # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
+    # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
+    if params[:segment_order].present?
+      @orders = @orders.select {|order| order.client.segment == "#{params[:segment_order]}"}
+    end
+
   end
 
   def prepare
@@ -94,7 +102,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, :delivery_place, order_lines_attributes: [:product_id, :quantity])
   end
 
   def create_order_payment_status

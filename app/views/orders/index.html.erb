@@ -1,74 +1,36 @@
 <!-- classes used below are from product index -->
-<div class="client-new-order">
-  <div class="col-12 col-lg-12">
-    <div class="title-container">
-      <!-- FILTERS DIV -->
+
+<% if client_signed_in? && current_client.role == "admin" %>
+  <div class="container">
+    <div class="col-12 col-lg-12 title-container order-title-container">
+        <!-- FILTERS DIV -->
       <div class="container-index-filters">
-          <!-- Fruit filter -->
-        <div id="product_fruit" class="middle-text-resp grey-medium mr5 white">
-        <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
+        <!-- Segment filter -->
+        <div id="order_client_segment" class="middle-text grey-medium mr5">
+          <%= if params[:segment_order].present? then params[:segment_order] else 'Segment' end %>
         </div>
         <div class="dropdown">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownFruit" class="dropdown-content">
-            <% Product.fruits.each do |fruit| %>
-              <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
-            <% end %>
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownSegmentOrders" class="dropdown-content">
+            <a data-name="particulier" href="#">particulier</a>
+            <a data-name="marché" href="#">marché</a>
+            <a data-name="magasin" href="#">magasin</a>
+            <a data-name="CE" href="#">CE</a>
           </div>
         </div>
-        <!-- Category filter -->
-        <div id="product_category" class="middle-text-resp grey-medium mr5">
-        <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
-        </div>
-        <div class="dropdown">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownCategory" class="dropdown-content">
-          <% Product.categories.each do |category| %>
-            <a data-name="<%= category %>" href="#"><%= category %></a>
-          <% end %>
-          </div>
-        </div>
-        <!-- Type filter -->
-        <div id="product_type" class="middle-text-resp grey-medium mr5">
-        <%= if params[:type].present? then params[:type] else 'Type' end %>
-        </div>
-        <div class="dropdown">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownType" class="dropdown-content">
-          <% Product.types.each do |type| %>
-            <a data-name="<%= type %>" href="#"><%= type %></a>
-          <% end %>
-          </div>
-        </div>
-        <!-- Price filter -->
-        <% if !current_client.nil? && current_client.role == "admin" %>
-          <div id="product_price" class="middle-text-resp grey-medium mr5">
-            <%= if params[:price].present? then params[:price] else 'Prix' end %>
-          </div>
-          <div class="dropdown">
-            <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-            <div id="DropdownPrice" class="dropdown-content">
-              <a data-name="non-magasin" href="#">non-magasin</a>
-              <a data-name="magasin" href="#">magasin</a>
-            </div>
-          </div>
-        <% end %>
         <!-- Reset filters -->
         <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
-
-      <% if client_signed_in? && current_client.role == "admin" %>
-        <div class="add-new">
-          <%= link_to new_order_path do %>
-            <p>Ajouter une commande</p>
-            <%= image_tag "add-circle.svg" %>
-          <% end %>
-        </div>
-      <% end %>
-
+      <div class="add-new">
+        <%= link_to new_order_path do %>
+          <p>Ajouter une commande</p>
+          <%= image_tag "add-circle.svg" %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
+<% end %>
+
 
 
 <div class="container container-orders">

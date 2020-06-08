@@ -94,6 +94,8 @@ export { dropdownCategory } ;
 export { dropdownType } ;
 export { dropdownPrice } ;
 
+// --------------------------------------------------------------------------------
+
 // DROPDOWNS CLIENT INDEX
 const dropdownSegment = () => {
   const segment = document.getElementById("DropdownSegment");
@@ -123,3 +125,37 @@ return segmentQuery;
 };
 
 export { dropdownSegment } ;
+
+
+// --------------------------------------------------------------------------------
+
+// DROPDOWNS ORDER INDEX
+
+const dropdownSegmentOrders = () => {
+  const segmentOrders = document.getElementById("dropdownSegmentOrders");
+  if (!segmentOrders) return
+
+  segmentOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const segment_orders_value = (event.target.dataset.name)
+    const segmentOrders = document.getElementById("order_client_segment");
+    segmentOrders.innerText = segment_orders_value
+    url_order_path();
+  });
+};
+
+const url_order_path = () => {
+const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest();
+window.location.href = url;
+};
+
+const orderSegmentRequest = () => {
+let orderSegmentQuery ="";
+const segmentOrders = document.getElementById("order_client_segment");
+    if (segmentOrders.innerText !== 'Segment') {
+      orderSegmentQuery = "&segment_order=" + segmentOrders.innerText
+    };
+return orderSegmentQuery;
+};
+
+export { dropdownSegmentOrders } ;
