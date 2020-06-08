@@ -1,12 +1,66 @@
-<div class="container container-orders">
-  <% if client_signed_in? && current_client.role == "admin" %>
-    <div class="add-new add-new-order">
-      <%= link_to new_order_path do %>
-        <p>Ajouter une commande</p>
-        <%= image_tag "add-circle.svg" %>
-      <% end %>
+<!-- classes used below are from product index -->
+
+<% if client_signed_in? && current_client.role == "admin" %>
+  <div class="container">
+    <div class="col-12 col-lg-12 title-container order-title-container">
+        <!-- FILTERS DIV -->
+      <div class="container-index-filters">
+        <!-- Segment filter -->
+        <div id="order_client_segment" class="middle-text grey-medium mr5">
+          <%= if params[:segment_order].present? then params[:segment_order] else 'Segment' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownSegmentOrders" class="dropdown-content">
+            <a data-name="particulier" href="#">particulier</a>
+            <a data-name="AMAP" href="#">AMAP</a>
+            <a data-name="marché" href="#">marché</a>
+            <a data-name="magasin" href="#">magasin</a>
+            <a data-name="CE" href="#">CE</a>
+          </div>
+        </div>
+        <!-- Status filter -->
+        <div id="order_status" class="middle-text grey-medium mr5">
+          <%= if params[:status].present? then params[:status] else 'Statut' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownStatusOrders" class="dropdown-content dropdown-status">
+            <a data-name="A préparer" href="#">A préparer</a>
+            <a data-name="Prêtes / A livrer" href="#">Prêtes / A livrer</a>
+            <a data-name="Livrées / Non-payées" href="#">Livrées / Non-payées</a>
+            <a data-name="Payées" href="#">Payées</a>
+          </div>
+        </div>
+        <!-- Delivery place filter -->
+        <div id="order_delivery_place" class="middle-text grey-medium mr5">
+          <%= if params[:delivery_place].present? then params[:delivery_place] else 'Lieu de livraison' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownDeliveryOrders" class="dropdown-content dropdown-status">
+            <% DeliveryPlace.all.each do |delivery| %>
+              <a data-name="<%= delivery.name %>" href="#"><%= delivery.name %></a>
+            <% end %>
+          </div>
+        </div>
+        <!-- Reset filters -->
+        <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
+      </div>
+      <div class="add-new">
+        <%= link_to new_order_path do %>
+          <p>Ajouter une commande</p>
+          <%= image_tag "add-circle.svg" %>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
+
+
+
+<div class="container container-orders">
+
   <div class="index-orders">
     <% @orders.each do |order| %>
       <div class="card order-card-index-main order-card-collapsed-index">

@@ -96,6 +96,8 @@ export { dropdownCategory } ;
 export { dropdownType } ;
 export { dropdownPrice } ;
 
+// --------------------------------------------------------------------------------
+
 // DROPDOWNS CLIENT INDEX
 const dropdownSegment = () => {
   const segment = document.getElementById("DropdownSegment");
@@ -125,3 +127,85 @@ return segmentQuery;
 };
 
 export { dropdownSegment } ;
+
+
+// --------------------------------------------------------------------------------
+
+// DROPDOWNS ORDER INDEX
+
+// filtre segment
+
+const dropdownSegmentOrders = () => {
+  const segmentOrders = document.getElementById("dropdownSegmentOrders");
+  if (!segmentOrders) return
+
+  segmentOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const segment_orders_value = (event.target.dataset.name)
+    const segmentOrders = document.getElementById("order_client_segment");
+    segmentOrders.innerText = segment_orders_value
+    url_order_path();
+  });
+};
+
+const dropdownStatusOrders = () => {
+  const statusOrders = document.getElementById("dropdownStatusOrders");
+  if (!statusOrders) return
+
+  statusOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const status_value = (event.target.dataset.name)
+    const statusOrders = document.getElementById("order_status");
+    statusOrders.innerText = status_value
+    url_order_path();
+  });
+};
+
+const dropdownDeliveryOrders = () => {
+  const deliveryOrders = document.getElementById("dropdownDeliveryOrders");
+  if (!deliveryOrders) return
+
+  deliveryOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const delivery_value = (event.target.dataset.name)
+    const deliveryOrders = document.getElementById("order_delivery_place");
+    deliveryOrders.innerText = delivery_value
+    url_order_path();
+  });
+};
+
+const url_order_path = () => {
+const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest() + orderDeliveryRequest();
+window.location.href = url;
+};
+
+const orderSegmentRequest = () => {
+let orderSegmentQuery ="";
+const segmentOrders = document.getElementById("order_client_segment");
+    if (segmentOrders.innerText !== 'Segment') {
+      orderSegmentQuery = "&segment_order=" + segmentOrders.innerText
+    };
+return orderSegmentQuery;
+};
+
+const orderStatusRequest = () => {
+let orderStatusQuery ="";
+const statusOrders = document.getElementById("order_status");
+    if (statusOrders.innerText !== 'Statut') {
+      orderStatusQuery = "&status=" + statusOrders.innerText
+    };
+return orderStatusQuery;
+};
+
+const orderDeliveryRequest = () => {
+let orderDeliveryQuery ="";
+const deliveryOrders = document.getElementById("order_delivery_place");
+    if (deliveryOrders.innerText !== 'Lieu de livraison') {
+      orderDeliveryQuery = "&delivery_place=" + deliveryOrders.innerText
+    };
+return orderDeliveryQuery;
+};
+
+export { dropdownSegmentOrders } ;
+export { dropdownStatusOrders } ;
+export { dropdownDeliveryOrders } ;
