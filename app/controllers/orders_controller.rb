@@ -30,6 +30,10 @@ class OrdersController < ApplicationController
       end
     end
 
+    if params[:delivery_place].present?
+      @orders = @orders.select {|order| order.delivery_place.name == "#{params[:delivery_place]}"}
+    end
+
   end
 
   def prepare

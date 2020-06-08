@@ -32,6 +32,18 @@
             <a data-name="Payées" href="#">Payées</a>
           </div>
         </div>
+        <!-- Delivery place filter -->
+        <div id="order_delivery_place" class="middle-text grey-medium mr5">
+          <%= if params[:delivery_place].present? then params[:delivery_place] else 'Lieu de livraison' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownDeliveryOrders" class="dropdown-content dropdown-status">
+            <% DeliveryPlace.all.each do |delivery| %>
+              <a data-name="<%= delivery.name %>" href="#"><%= delivery.name %></a>
+            <% end %>
+          </div>
+        </div>
         <!-- Reset filters -->
         <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>

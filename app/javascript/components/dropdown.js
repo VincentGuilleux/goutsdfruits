@@ -159,8 +159,21 @@ const dropdownStatusOrders = () => {
   });
 };
 
+const dropdownDeliveryOrders = () => {
+  const deliveryOrders = document.getElementById("dropdownDeliveryOrders");
+  if (!deliveryOrders) return
+
+  deliveryOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const delivery_value = (event.target.dataset.name)
+    const deliveryOrders = document.getElementById("order_delivery_place");
+    deliveryOrders.innerText = delivery_value
+    url_order_path();
+  });
+};
+
 const url_order_path = () => {
-const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest();
+const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest() + orderDeliveryRequest();
 window.location.href = url;
 };
 
@@ -182,5 +195,15 @@ const statusOrders = document.getElementById("order_status");
 return orderStatusQuery;
 };
 
+const orderDeliveryRequest = () => {
+let orderDeliveryQuery ="";
+const deliveryOrders = document.getElementById("order_delivery_place");
+    if (deliveryOrders.innerText !== 'Lieu de livraison') {
+      orderDeliveryQuery = "&delivery_place=" + deliveryOrders.innerText
+    };
+return orderDeliveryQuery;
+};
+
 export { dropdownSegmentOrders } ;
 export { dropdownStatusOrders } ;
+export { dropdownDeliveryOrders } ;
