@@ -25,9 +25,6 @@ Rails.application.routes.draw do
   end
   # resources :order_lines, only: [:create] #created by Anne for new order form
 
-  # CLIENT ROUTES
-
-  resource :dashboard_client, only: :show #for test, to be deleted later
 end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

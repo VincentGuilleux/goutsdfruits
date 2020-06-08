@@ -17,7 +17,7 @@
         <p class="product-show-description pt-3"><%= @product.description%></p>
         </div>
 
-        <% if (!current_client.nil? && current_client.role == "admin") %>
+        <% if (current_client && current_client.role == "admin") %>
           <div class="card-product-stock">
             <table class="table">
               <thead class="scroll-thead">

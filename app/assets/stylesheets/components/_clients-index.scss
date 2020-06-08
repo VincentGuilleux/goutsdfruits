@@ -17,8 +17,6 @@
   }
 }
 
-
-
 .client-logo {
   display: flex;
   align-items: center;
@@ -80,4 +78,10 @@
   margin: 0 3rem 60px 3rem;
 }
 
-
+// used in edit my account
+.form-edit-account {
+  background-color: $white;
+  color: grey;
+  margin-bottom: 2rem;
+  border-radius: 5px;
+}
