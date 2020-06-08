@@ -13,13 +13,14 @@
           <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
           <div id="dropdownSegmentOrders" class="dropdown-content">
             <a data-name="particulier" href="#">particulier</a>
+            <a data-name="AMAP" href="#">AMAP</a>
             <a data-name="marché" href="#">marché</a>
             <a data-name="magasin" href="#">magasin</a>
             <a data-name="CE" href="#">CE</a>
           </div>
         </div>
         <!-- Reset filters -->
-        <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
+        <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
       <div class="add-new">
         <%= link_to new_order_path do %>

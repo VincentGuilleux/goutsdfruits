@@ -11,7 +11,11 @@ class OrdersController < ApplicationController
     # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
     # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
     if params[:segment_order].present?
-      @orders = @orders.select {|order| order.client.segment == "#{params[:segment_order]}"}
+      if "#{params[:segment_order]}" == "AMAP"
+        @orders = @orders.select {|order| order.client.amap != "Non-membre"}
+      else
+        @orders = @orders.select {|order| order.client.segment == "#{params[:segment_order]}"}
+      end
     end
 
   end
