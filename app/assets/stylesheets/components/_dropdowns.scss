@@ -27,6 +27,10 @@
   z-index: 1;
 }
 
+.dropdown-content.dropdown-status {
+  min-width: 180px;
+}
+
 /* Links inside the dropdown */
 .dropdown-content a {
   font-size: 14px;
