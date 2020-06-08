@@ -18,6 +18,18 @@ class OrdersController < ApplicationController
       end
     end
 
+    if params[:status].present?
+      if "#{params[:status]}" == "A préparer"
+        @orders = @orders.select {|order| order.status == 'pending'}
+      elsif "#{params[:status]}" == "Prête / A livrer"
+        @orders = @orders.select {|order| order.status == 'prepared'}
+      elsif "#{params[:status]}" == "Livrées / Non-payées"
+        @orders = @orders.select {|order| order.status == 'delivered'}
+      elsif "#{params[:status]}" == "Payées"
+        @orders = @orders.select {|order| order.status == 'paid'}
+      end
+    end
+
   end
 
   def prepare

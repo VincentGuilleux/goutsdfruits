@@ -19,6 +19,19 @@
             <a data-name="CE" href="#">CE</a>
           </div>
         </div>
+        <!-- Status filter -->
+        <div id="order_status" class="middle-text grey-medium mr5">
+          <%= if params[:status].present? then params[:status] else 'Statut' end %>
+        </div>
+        <div class="dropdown">
+          <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+          <div id="dropdownStatusOrders" class="dropdown-content">
+            <a data-name="A préparer" href="#">A préparer</a>
+            <a data-name="Prête / A livrer" href="#">Prête / A livrer</a>
+            <a data-name="Livrées / Non-payées" href="#">Livrées / Non-payées</a>
+            <a data-name="Payées" href="#">Payées</a>
+          </div>
+        </div>
         <!-- Reset filters -->
         <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>

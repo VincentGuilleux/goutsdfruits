@@ -29,7 +29,7 @@ import flatpickr from "flatpickr";
 // Internal imports, e.g:
 import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
-import { dropdownFruit, dropdownCategory, dropdownType, dropdownPrice, dropdownSegment, dropdownSegmentOrders} from '../components/dropdown';
+import { dropdownFruit, dropdownCategory, dropdownType, dropdownPrice, dropdownSegment, dropdownSegmentOrders, dropdownStatusOrders} from '../components/dropdown';
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
 
@@ -63,6 +63,7 @@ document.addEventListener('turbolinks:load', () => {
   dropdownPrice();
   dropdownSegment();
   dropdownSegmentOrders();
+  dropdownStatusOrders();
   InitChart();
   counter();
 });

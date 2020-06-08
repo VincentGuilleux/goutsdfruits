@@ -131,6 +131,8 @@ export { dropdownSegment } ;
 
 // DROPDOWNS ORDER INDEX
 
+// filtre segment
+
 const dropdownSegmentOrders = () => {
   const segmentOrders = document.getElementById("dropdownSegmentOrders");
   if (!segmentOrders) return
@@ -144,8 +146,21 @@ const dropdownSegmentOrders = () => {
   });
 };
 
+const dropdownStatusOrders = () => {
+  const statusOrders = document.getElementById("dropdownStatusOrders");
+  if (!statusOrders) return
+
+  statusOrders.addEventListener("click", (event) => {
+    console.log(event);
+    const status_value = (event.target.dataset.name)
+    const statusOrders = document.getElementById("order_status");
+    statusOrders.innerText = status_value
+    url_order_path();
+  });
+};
+
 const url_order_path = () => {
-const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest();
+const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest();
 window.location.href = url;
 };
 
@@ -158,4 +173,14 @@ const segmentOrders = document.getElementById("order_client_segment");
 return orderSegmentQuery;
 };
 
+const orderStatusRequest = () => {
+let orderStatusQuery ="";
+const statusOrders = document.getElementById("order_status");
+    if (statusOrders.innerText !== 'Statut') {
+      orderStatusQuery = "&status=" + statusOrders.innerText
+    };
+return orderStatusQuery;
+};
+
 export { dropdownSegmentOrders } ;
+export { dropdownStatusOrders } ;
