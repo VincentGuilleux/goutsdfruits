@@ -1,0 +1,14 @@
+<div class="container new-order mt-4 mb-4">
+    <%= simple_form_for @client, defaults: { input_html: { class: 'edit-client-profile' } } do |f| %>
+      <%= f.input :first_name, placeholder: 'Prénom', label: false %>
+      <%= f.input :last_name, placeholder: 'Nom de famille', label: false %>
+      <%= f.input :phone, placeholder: 'Téléphone', label: false %>
+      <%= f.input :address, placeholder: 'Addresse', label: false %>
+      <%= f.input :post_code, placeholder: 'Code postal', label: false %>
+      <%= f.input :city, placeholder: 'Ville', label: false %>
+      <%= f.input :amap, prompt: 'AMAP', label: false, collection: Client.amap %>
+    <%= f.submit 'Mettre à jour mon profil', class: 'btn btn-lg btn-block submit-btn-green mb-4' %>
+    <% end %>
+
+    <%= link_to "Modifiez votre mot de passe", edit_client_registration_path %>
+</div>

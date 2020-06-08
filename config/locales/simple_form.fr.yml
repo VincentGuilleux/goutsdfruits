@@ -19,7 +19,9 @@ fr:
         country: "Pays"
         address: 'Adresse'
         desc: 'Description'
-        password: 'Mot de passe'
+        password: 'Nouveau mot de passe'
+        current_password: 'Mot de passe actuel'
+        password_confirmation: "Confirmation du nouveau mot de passe"
     hints:
       place:
         name: 'Votre nom doit contenir 5 à 45 caractères'

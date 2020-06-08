@@ -24,7 +24,7 @@
         <%= link_to 'Mes commandes', orders_path, class: "lien-navbar" if client_signed_in? %>
       </li>
       <li class="nav-item lien-navbar">
-        <%= link_to 'Mon profil', edit_client_path(current_client.id), class: "lien-navbar" if client_signed_in? %>
+        <%= link_to 'Mon compte', edit_client_registration_path, class: "lien-navbar" if client_signed_in? %>
       </li>
       <li class="nav-item lien-navbar">
         <%#= link_to 'Déconnexion', destroy_client_session_path, method: :delete, class: "lien-navbar" if client_signed_in? %>

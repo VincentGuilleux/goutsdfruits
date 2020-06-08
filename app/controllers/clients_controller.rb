@@ -1,5 +1,5 @@
 class ClientsController < ApplicationController
-  before_action :require_admin
+  before_action :require_admin, :except => [:edit, :update]
 
   def index
     @clients = Client.all
@@ -21,7 +21,7 @@ class ClientsController < ApplicationController
   private
 
   def client_params
-    params.require(:client).permit(:segment)
+    params.require(:client).permit(:first_name, :last_name, :phone, :address, :post_code, :city, :amap, :segment)
   end
 
 end
