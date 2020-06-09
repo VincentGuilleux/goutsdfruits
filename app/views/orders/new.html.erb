@@ -11,11 +11,8 @@
         <p class>Ajouter des produits</p>
         <div class="order-line">
           <div class="form-inline">
-            <script> <!-- script génère du code JS en HTML  -->
+            <script>
               let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
-              // let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
-              // !!! A IMPLEMENTER SI ON SELECTIONNE UN CLIENT MAGASIN !!!
-              // on construit un array d'arrays en Ruby avec Pluck qu'on convertit en hash puis en JSON. Ensuite, ce JSON est renvoyé à JS qui le convertit en hash JS grâce au JSON.parse
               let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities.to_h.to_json %>');
             </script>
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>

@@ -30,7 +30,10 @@ class ProductsController < ApplicationController
 
     # TRI D'AFFICHAGE DES PRODUITS
 
-    # Hormis pour admin, on n'affiche que les produits avec quantités > 0
+    # on n'affiche que les produits avec quantités > 0 (hormis pour profil admin)
+    if current_client && current_client.segment == 'magasin'
+      @products = @products.to_a.select { |product| product.total_remaining_quantity_shop > 0}
+    end
     if current_client.nil? || current_client.role != "admin"
      @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
     end

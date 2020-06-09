@@ -217,11 +217,11 @@ product38 = Product.new(name:"Coings",description:"Pour accompagner les volaille
 product38.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product38.save!
 
-product39 = Product.new(name:"Fraises",description:"Fraises cueillies à maturité pour vous régaler.", unit_price_cents: 300, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125",product_fruit: "fraise", product_type:"fruit", product_category:"Fruit frais")
+product39 = Product.new(name:"Fraises",description:"Fraises cueillies à maturité pour vous régaler.", unit_price_cents: 300, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "fraise", product_type:"fruit", product_category:"Fruit frais")
 product39.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product39.save!
 
-product40 = Product.new(name:"Rhubarbe",description:"Pour vos tartes, crumble ou en compote, la rhubarbe se marie à merveille avec les fraises ou les pommes...", unit_price_cents: 200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", product_fruit: "rhubarbe", product_type:"fruit", product_category:"Fruit frais")
+product40 = Product.new(name:"Rhubarbe",description:"Pour vos tartes, crumble ou en compote, la rhubarbe se marie à merveille avec les fraises ou les pommes...", unit_price_cents: 200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"500", product_fruit: "rhubarbe", product_type:"fruit", product_category:"Fruit frais")
 product40.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product40.save!
 
@@ -315,11 +315,11 @@ product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Da
 product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,7,21), quantity: 8, remaining_quantity: 8, lot_number: "20421")
 product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 9, lot_number: "20422")
 product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "20423")
-product_lot29 = ProductLot.create!(product_id: product29.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 10, remaining_quantity: 10, lot_number: "20425")
-product_lot30 = ProductLot.create!(product_id: product30.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20426")
+product_lot29 = ProductLot.create!(product_id: product29.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 10, remaining_quantity: 10, lot_number: "20429")
+product_lot30 = ProductLot.create!(product_id: product30.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20430")
 product_lot31 = ProductLot.create!(product_id: product31.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20431")
 product_lot32 = ProductLot.create!(product_id: product32.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 19, remaining_quantity: 16, lot_number: "20432")
-product_lot34 = ProductLot.create!(product_id: product34.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 9, remaining_quantity: 16, lot_number: "20434")
+product_lot34 = ProductLot.create!(product_id: product34.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 9, remaining_quantity: 6, lot_number: "20434")
 product_lot35 = ProductLot.create!(product_id: product35.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20435")
 product_lot39 = ProductLot.create!(product_id: product39.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20439")
 product_lot40 = ProductLot.create!(product_id: product40.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 17, remaining_quantity: 17, lot_number: "20440")
