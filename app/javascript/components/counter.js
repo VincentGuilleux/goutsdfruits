@@ -27,13 +27,15 @@ const counter = () => {
      // Sous-fonction pour mise à jour du prix de la ligne (commande client)
     const updatePriceProductIndex = (uuid) => {
       let productPrice = prices[uuid];
-      console.log(productPrice);
-      let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
-      console.log(priceEl.innerHTML);
+      // console.log(productPrice);
       let inputEl = document.getElementById(uuid);
-      console.log(inputEl.innerText);
+      inputEl.removeAttribute("hidden");
+      if (inputEl.innerText == 0) inputEl.setAttribute("hidden", true);
       // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
+      let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
       priceEl.innerHTML = (inputEl.innerText * productPrice) / 100;
+      priceEl.removeAttribute("hidden");
+      if (priceEl.innerHTML == 0) priceEl.setAttribute("hidden", true);
       // console.log(priceEl.innerHTML);
       // Le prix à afficher pour l'order_line est désormais égal à la quantité  * prix du produit sélectionné
 
@@ -47,7 +49,7 @@ const counter = () => {
     };
 
   document.body.addEventListener( 'click', function ( event ) {
-
+    // commande admin
     if( event.target.matches(".JSpluscounter")) {
       // Si on clique sur plus
       let uuid = event.target.dataset.uuid;
@@ -65,7 +67,7 @@ const counter = () => {
         updatePrice(uuid);
         }
     };
-
+    // commande admin
     if( event.target.matches(".JSminuscounter")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
@@ -74,7 +76,7 @@ const counter = () => {
         updatePrice(uuid);
       };
     };
-
+    // commande client
     if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
@@ -88,7 +90,7 @@ const counter = () => {
         updatePriceProductIndex(uuid);
         }
     };
-
+    // commande client
     if( event.target.matches(".JSminuscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
