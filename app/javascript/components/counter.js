@@ -33,7 +33,7 @@ const counter = () => {
       if (inputEl.innerText == 0) inputEl.setAttribute("hidden", true);
       // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
       let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
-      priceEl.innerHTML = (inputEl.innerText * productPrice) / 100;
+      priceEl.innerHTML = (inputEl.innerText * productPrice / 100 / 1.055).toFixed(2);
       priceEl.removeAttribute("hidden");
       if (priceEl.innerHTML == 0) priceEl.setAttribute("hidden", true);
       // console.log(priceEl.innerHTML);
