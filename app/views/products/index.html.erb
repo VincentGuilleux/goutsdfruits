@@ -138,47 +138,10 @@
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-            <% if (current_client && current_client.role == "admin" && @type_price == "magasin") %>
               <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
                 de
-                <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
-                  <%= product.unit_measure_quantity_shop %>
-                  <%= product.unit_measure %>
-                <% else %>
-                  <%= product.unit_measure_quantity_shop / 1000 %>
-                  kg
-                <% end %>
-            <% elsif (current_client && current_client.role == "admin") %>
-              <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
-                de
-                <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
-                  <%= product.unit_measure_quantity %>
-                  <%= product.unit_measure %>
-                <% else %>
-                  <%= product.unit_measure_quantity / 1000 %>
-                  kg
-                <% end %>
-            <% elsif (current_client && current_client.segment == 'magasin') %>
-              <%= product.unit_type %>
-                de
-              <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
-                <%= product.unit_measure_quantity_shop %>
-                <%= product.unit_measure %>
-              <% else %>
-                <%= product.unit_measure_quantity_shop / 1000 %>
-                kg
-              <% end %>
-            <% else %>
-                <%= product.unit_type %>
-                de
-                <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
-                  <%= product.unit_measure_quantity %>
-                  <%= product.unit_measure %>
-                <% else %>
-                  <%= product.unit_measure_quantity / 1000 %>
-                  kg
-                <% end %>
-            <% end %>
+                  <%= product.display_unit_measure_quantity(current_client, @type_price, product) %>
+                  <%= product.display_unit_measure(current_client, @type_price, product) %>
             </p>
             <%# if (current_client && current_client.role == "admin") %>
                <%#= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>

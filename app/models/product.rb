@@ -8,11 +8,11 @@ class Product < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :description, presence: true
   validates :unit_price_cents, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :unit_price_cents_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :unit_price_cents_shop, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :unit_type, presence: true
   validates :unit_measure, presence: true
   validates :unit_measure_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :unit_measure_quantity_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :unit_measure_quantity_shop, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
   validates :product_type, presence: true
   validates :product_fruit, presence: true
   validates :product_category, presence: true
@@ -100,26 +100,41 @@ class Product < ApplicationRecord
         else
           product.total_remaining_quantity
         end
-      # pas d'affichage des quantités en role client
+      else
+        ""
       end
   end
 
-  def display_unit_measure_quantity_shop(user, type_price, product)
-    display_unit_measure_quantity_shop =
-    unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
-      product.unit_measure_quantity_shop
+  def display_unit_measure_quantity(user, type_price, product)
+    display_unit_measure_quantity =
+    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
+      unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
+        product.unit_measure_quantity_shop
+      else
+        product.unit_measure_quantity_shop / 1000
+      end
     else
-      product.unit_measure_quantity_shop / 1000
+      unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g"
+        product.unit_measure_quantity
+      else
+        product.unit_measure_quantity / 1000
+      end
     end
   end
 
   def display_unit_measure(user, type_price, product)
     display_unit_measure =
-    if (user && user.role == "admin") || (user && user.segment == 'magasin')
+    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
       unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
         product.unit_measure
       else
-        kg
+        "kg"
+      end
+    else
+      unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g"
+        product.unit_measure
+      else
+        "kg"
       end
     end
   end

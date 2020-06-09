@@ -29,10 +29,17 @@ class ProductsController < ApplicationController
     @type_price = params[:price] || "non-magasin"
 
     # TRI D'AFFICHAGE DES PRODUITS
+
     # Hormis pour admin, on n'affiche que les produits avec quantités > 0
     if current_client.nil? || current_client.role != "admin"
      @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
     end
+
+    # En vision magasin, on n'affiche pas les produits non vendus aux magasins
+    if (current_client && current_client.role == "admin" && @type_price == "magasin") || (current_client && current_client.segment == 'magasin')
+      @products = @products.to_a.reject {|product| product.unit_price_cents_shop.nil?}
+    end
+
     # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"
       @products = @products.sort_by do |product|
