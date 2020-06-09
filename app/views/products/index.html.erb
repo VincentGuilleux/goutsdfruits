@@ -6,7 +6,7 @@
         <p class="bold">
           Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
-          <div>
+          <div style="display:none;">
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
