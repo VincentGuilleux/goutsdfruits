@@ -1,12 +1,12 @@
 <div class="client-new-order">
   <% if (current_client && current_client.role != "admin") %>
 
-    <div class="col-6 col-lg-3 product-index-new-order"> <!-- sticky-top filterstick -->
+    <div class="col-6 col-lg-3 product-index-new-order">
       <%= simple_form_for @order do |ff| %>
         <p class="bold">
           Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
-          <div style="display:none;">
+          <div>
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
@@ -87,13 +87,17 @@
   </div>
 </div>
 
-<script> <!-- script génère du code JS en HTML  -->
-  <% unless (current_client && current_client.segment == 'magasin') %>
-    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
-  <% else %>
+<% if (current_client && current_client.segment == 'magasin') %>
+  <script>
     let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
-  <% end %>
-  let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities.to_h.to_json %>');
+  </script>
+<% else %>
+  <script>
+    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
+  </script>
+<% end %>
+<script>
+    let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
 </script>
 
 <div class="main-container">

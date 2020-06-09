@@ -33,7 +33,8 @@ const counter = () => {
       if (inputEl.innerText == 0) inputEl.setAttribute("hidden", true);
       // inputEl correspond à l'attribut HTML input qui contient la quantité commandée pour la order_line en cours
       let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
-      priceEl.innerHTML = (inputEl.innerText * productPrice / 100 / 1.055).toFixed(2);
+      priceEl.innerHTML = (inputEl.innerText * productPrice / 100).toFixed(2);
+      // priceEl.innerHTML = (inputEl.innerText * productPrice / 100 / 1.055).toFixed(2);
       priceEl.removeAttribute("hidden");
       if (priceEl.innerHTML == 0) priceEl.setAttribute("hidden", true);
       // console.log(priceEl.innerHTML);
@@ -94,9 +95,12 @@ const counter = () => {
     if( event.target.matches(".JSminuscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.getElementById(uuid);
+      let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0];
       // On stocke dans inputEl.innerText la quantité sélectionnée jusque là
+      console.log(inputEl.innerText);
       if (inputEl.innerText > 0) {
         inputEl.innerText = parseInt(inputEl.innerText) - 1;
+        inputFormEl.value = parseInt(inputFormEl.value) - 1;
         updatePriceProductIndex(uuid);
       };
     };

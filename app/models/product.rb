@@ -12,13 +12,18 @@ class Product < ApplicationRecord
   validates :unit_type, presence: true
   validates :unit_measure, presence: true
   validates :unit_measure_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :unit_measure_quantity_shop, numericality: { only_integer: true, greater_than: 0 }, allow_nil: true
+  validates :unit_measure_quantity_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  # champ ci-dessus obligatoire pour les besoins de la méthode total_remaining_quantity_shop
   validates :product_type, presence: true
   validates :product_fruit, presence: true
   validates :product_category, presence: true
 
   def total_remaining_quantity
     product_lots.sum(:remaining_quantity)
+  end
+
+  def total_remaining_quantity_shop
+    product_lots.sum(:remaining_quantity) * unit_measure_quantity / unit_measure_quantity_shop
   end
 
   def unit_price_cents_VAT
@@ -37,13 +42,17 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  def self.remaining_quantities
+  def self.remaining_quantities(user)
     @products = Product.all
     remaining_quantities = []
     @products.each do |product|
       remaining_quantity = []
       remaining_quantity << product.id
-      remaining_quantity << product.total_remaining_quantity
+      if (user && user.segment == 'magasin')
+        remaining_quantity << product.total_remaining_quantity_shop
+      else
+        remaining_quantity << product.total_remaining_quantity
+      end
       remaining_quantities << remaining_quantity
     end
     return remaining_quantities
