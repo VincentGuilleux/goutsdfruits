@@ -139,7 +139,7 @@
           <div class="card-product-text-line">
             <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
             <% if (current_client && current_client.role == "admin" && @type_price == "magasin") %>
-              <%= pluralize(product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop, product.unit_type) %>
+              <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g" %>
                   <%= product.unit_measure_quantity_shop %>
@@ -149,7 +149,7 @@
                   kg
                 <% end %>
             <% elsif (current_client && current_client.role == "admin") %>
-              <%= pluralize(product.total_remaining_quantity, product.unit_type) %>
+              <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
                 de
                 <% unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g" %>
                   <%= product.unit_measure_quantity %>

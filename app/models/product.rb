@@ -1,4 +1,5 @@
 class Product < ApplicationRecord
+
   has_many :product_lots
   has_many :order_lines
   has_many :orders, through: :order_lines #allows to find all orders for a given product
@@ -74,6 +75,7 @@ class Product < ApplicationRecord
     ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "poire", "pomme", "prune", "pêche", "rhubarbe", "sureau"]
   end
 
+  # les méthodes ci-dessous répondent à une logique d'affichage uniquement donc pourraient être mises dans un helper plutôt
   def display_price(user, type_price)
     price = # raccourci Ruby pour stocker le résultat des conditions ci-dessous dans une variable price
       if user && user.role == "admin"
@@ -89,6 +91,38 @@ class Product < ApplicationRecord
       end
     price/100.to_f
   end
-  # logique d'affichage uniquement donc pourrait être mis dans un helper plutôt
+
+  def display_quantity(user, type_price, product)
+    display_quantity =
+      if user && user.role == "admin"
+        if type_price == "magasin"
+          product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop
+        else
+          product.total_remaining_quantity
+        end
+      # pas d'affichage des quantités en role client
+      end
+  end
+
+  def display_unit_measure_quantity_shop(user, type_price, product)
+    display_unit_measure_quantity_shop =
+    unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
+      product.unit_measure_quantity_shop
+    else
+      product.unit_measure_quantity_shop / 1000
+    end
+  end
+
+  def display_unit_measure(user, type_price, product)
+    display_unit_measure =
+    if (user && user.role == "admin") || (user && user.segment == 'magasin')
+      unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
+        product.unit_measure
+      else
+        kg
+      end
+    end
+  end
+
 
 end
