@@ -89,7 +89,11 @@ class OrdersController < ApplicationController
 
     @order.order_lines.each do |order_line|
       if order_line.quantity <= order_line.product.total_remaining_quantity
-        order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
+        if current_client && current_client.segment == "magasin"
+          order_line.total_price_cents = order_line.product.unit_price_cents_shop * order_line.quantity
+        else
+          order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
+        end
         sum += order_line.total_price_cents
       else
         flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - La commande ne peut pas être passée"
@@ -129,7 +133,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order_payment_status
-    if @order.payment_method != ""
+    unless @order.payment_method.nil?
       @order.status = "paid"
     end
   end

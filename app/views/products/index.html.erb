@@ -88,7 +88,11 @@
 </div>
 
 <script> <!-- script génère du code JS en HTML  -->
-  let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
+  <% unless (current_client && current_client.segment == 'magasin') %>
+    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
+  <% else %>
+    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
+  <% end %>
   let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities.to_h.to_json %>');
 </script>
 
