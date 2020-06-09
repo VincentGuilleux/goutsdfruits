@@ -11,7 +11,7 @@
         <div class="card-product-show-title">
           <h1 class="page-title"><%=@product.name.capitalize%></h1>
           <span class="card-product-show-price">
-          <%= (@product.unit_price_cents/100).to_i %> €
+          <%= @product.display_price(current_client, @type_price) %> €
           <sup>/ <%= @product.unit_type %> </sup></span>
         </div>
         <p class="product-show-description pt-3"><%= @product.description%></p>
