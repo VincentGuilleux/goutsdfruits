@@ -106,7 +106,7 @@ class OrdersController < ApplicationController
 
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
 
-    # Si pas de delivery place sélectionnée, on affecte par défaut à la ferme
+    # Si pas de delivery place sélectionnée, on affecte par défaut à non affecté
     if @order.delivery_place_id.nil?
       @order.delivery_place = DeliveryPlace.first
     end
@@ -129,7 +129,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, :delivery_place, order_lines_attributes: [:product_id, :quantity])
+    params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, :delivery_place_id, order_lines_attributes: [:product_id, :quantity])
   end
 
   def create_order_payment_status
