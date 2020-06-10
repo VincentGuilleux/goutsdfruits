@@ -7,6 +7,7 @@
           Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
           <div style="display:none;">
+          <!-- <div style="display:none;"> -->
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
@@ -98,6 +99,7 @@
 <% end %>
 <script>
     let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
+    let ratiosQuantities = JSON.parse('<%= raw Product.ratios_quantities(current_client).to_h.to_json %>');
 </script>
 
 <div class="main-container">

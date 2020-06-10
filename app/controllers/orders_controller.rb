@@ -90,7 +90,7 @@ class OrdersController < ApplicationController
     @order.order_lines.each do |order_line|
       if order_line.quantity <= order_line.product.total_remaining_quantity
         if current_client && current_client.segment == "magasin"
-          order_line.total_price_cents = order_line.product.unit_price_cents_shop * order_line.quantity
+          order_line.total_price_cents = order_line.product.unit_price_cents_shop / order_line.product.ratio * order_line.quantity
         else
           order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
         end
