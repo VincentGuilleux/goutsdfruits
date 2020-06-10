@@ -6,6 +6,7 @@ OrderLine.destroy_all
 Order.destroy_all
 Client.destroy_all
 Product.destroy_all
+DeliveryPlace.destroy_all
 
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
@@ -33,7 +34,8 @@ client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"int
 puts "      |    /|     - user & clients done"
 
 # 2 - Create "Delivery Places"
-adefinir = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
+
+nondefini = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 ferme = DeliveryPlace.create!(name: "Ferme", email: "mariegazeau@gmail.com", address: "l'Orgerie" ,post_code: "79140", city: "Le Pin", timeslot: "du lundi au samedi à partir de 10h")
 gaec = DeliveryPlace.create!(name: "GAEC", address: "La Billardière" ,post_code: "79140", city: "Cerizay", timeslot: "le vendredi de 17h30 à 19h30")
 amap1 = DeliveryPlace.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant", timeslot: "le jeudi de 17h30 à 18h45")
