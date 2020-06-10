@@ -34,7 +34,6 @@ client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"int
 puts "      |    /|     - user & clients done"
 
 # 2 - Create "Delivery Places"
-
 nondefini = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 ferme = DeliveryPlace.create!(name: "Ferme", email: "mariegazeau@gmail.com", address: "l'Orgerie" ,post_code: "79140", city: "Le Pin", timeslot: "du lundi au samedi à partir de 10h")
 gaec = DeliveryPlace.create!(name: "GAEC", address: "La Billardière" ,post_code: "79140", city: "Cerizay", timeslot: "le vendredi de 17h30 à 19h30")
