@@ -46,23 +46,19 @@
 
 .lien-navbar {
   color: $green;
-  text-decoration: none;
   font-size: calc(16px + 0.3vw);
   padding-left: 2vw;
   padding-right: 2vw;
-  &:hover {
-    opacity: 0.80;
-    transition: 100ms;
-    text-decoration: none;
-  }
-}
-
-.lien-navbar {
   a {
     color: $green;
+    text-decoration: none;
     &:hover {
       opacity: 0.80;
       transition: 100ms;
+    }
+    &.active {
+      color: $green-dark;
+      font-weight: semi-bold;
     }
   }
 }
