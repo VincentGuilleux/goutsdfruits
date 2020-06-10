@@ -236,7 +236,7 @@
                       <div class="price">
                         <div class="unit-price">
                           <% if current_client && current_client.segment == "magasin" %>
-                            <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents_shop.to_f / 100 %> <sup class="sup-price"> € </sup></p>
+                            <p><%= order_line.quantity / order_line.product.ratio %> x <%= order_line.product.unit_price_cents_shop.to_f / 100 %> <sup class="sup-price"> € </sup></p>
                           <% else %>
                             <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup></p>
                           <% end %>

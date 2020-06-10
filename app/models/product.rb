@@ -18,6 +18,7 @@ class Product < ApplicationRecord
   validates :product_fruit, presence: true
   validates :product_category, presence: true
 
+  # Methodes de calcul de la quantité restante pour un produit donné
   def total_remaining_quantity
     product_lots.sum(:remaining_quantity)
   end
@@ -26,6 +27,12 @@ class Product < ApplicationRecord
     product_lots.sum(:remaining_quantity) * unit_measure_quantity / unit_measure_quantity_shop
   end
 
+  def ratio
+    unit_measure_quantity_shop / unit_measure_quantity
+  end
+
+
+  # Methodes de calcul de la TVA
   def unit_price_cents_VAT
     (unit_price_cents / (1 + VATRATE) * VATRATE).round(0)
   end
@@ -42,6 +49,7 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
+  # Méthodes de classe qui renvoient un array d'arrays d'id et de respectivement remaining_quantity / ratio_quantity shop vs client
   def self.remaining_quantities(user)
     @products = Product.all
     remaining_quantities = []
@@ -58,8 +66,25 @@ class Product < ApplicationRecord
     return remaining_quantities
   end
 
-   # les méthodes ci-dessous permettaient d'itérer pour chaque produit, les doublons sont ensuite éliminés grâce au .uniq.
-  # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
+  # Méthode de classe qui renvoit le ratio
+  def self.ratios_quantities(user)
+    @products = Product.all
+    ratios = []
+    @products.each do |product|
+      ratio = []
+      ratio << product.id
+      if (user && user.segment == 'magasin')
+        ratio << product.unit_measure_quantity_shop / product.unit_measure_quantity
+      else
+        ratio << 1
+      end
+      ratios << ratio
+    end
+    return ratios
+  end
+
+  # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE PRODUITS (unités, mesures...)
+   # la méthode commentée ci-dessous initiale permettait d'itérer pour chaque produit, les doublons sont  éliminés grâce au .uniq. &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
   #  def self.unit_measures
   #   Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }
   # end
