@@ -67,6 +67,10 @@ class ProductsController < ApplicationController
 
   def create
     @product = Product.new(product_params)
+
+    @product.unit_measure_quantity_shop = @product.unit_measure_quantity if @product.unit_measure_quantity_shop.nil?
+    # pour les besoins de la méthode total_remaining_quantity_shop qui nécessite que le champ unit_measure_quantity_shop soit renseigné
+
     if @product.save
       redirect_to products_path
     else
