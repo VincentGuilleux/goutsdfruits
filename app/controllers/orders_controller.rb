@@ -101,8 +101,16 @@ class OrdersController < ApplicationController
         return
       end
     end
+    # calcule et stocke le prix de l'order dans sum
+    # vérifie qu'il y a une quantité suffisante pour chaque order line
 
     @order.total_price_cents = sum
+
+    if @order.total_price_cents == 0
+      flash.keep[:alert] = "Vous n'avez sélectionné aucun produit - La commande ne peut pas être passée"
+      redirect_to products_path
+      return
+    end
 
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
 
