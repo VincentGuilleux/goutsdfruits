@@ -1,6 +1,6 @@
 <div class="client-new-order">
-  <% if (current_client && current_client.role != "admin") %>
 
+  <% if (current_client && current_client.role != "admin" || current_client.nil?) %>
     <div class="col-6 col-lg-3 product-index-new-order">
       <%= simple_form_for @order do |ff| %>
         <p class="bold">
@@ -12,10 +12,9 @@
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
           </div>
-          <%= ff.submit 'Valider la commande', class: 'btn btn-lg btn-block submit-btn-green' %>
+          <%= ff.submit 'Valider la commande', class: 'btn btn-block submit-btn-green middle-text-resp bold text-wrap' %>
       <% end %>
     </div>
-
   <% end %>
 
   <div class="col-12 col-lg-12">
@@ -103,12 +102,10 @@
 </script>
 
 <div class="main-container">
+
   <div class="container-index-products">
     <% @products.each do |product| %>
-
       <% uuid = product.id %>
-
-      <!-- <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> --> <!-- Faisait un lien vers la product_show quand on cliquait n'importe où sur la carte -->
       <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <% if product.photo.attached? %>
           <%= cl_image_tag product.photo.key, alt: "image produit" %>
@@ -122,14 +119,12 @@
             <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
-
                 <p><%= product.display_price(current_client, @type_price) %> €
                 <sup>
                   <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
                   /
                   <%= product.unit_type %>
                 </sup>
-
             </div>
           </div>
           <!-- Card display center-middle: name -->
@@ -150,7 +145,7 @@
                <%#= link_to image_tag('pencil-write-2-grey.svg'), product_path(product) %>
             <%# end %>
           </div>
-        </div>
+        </div> <!-- Card-product-infos -->
         <% if (current_client && current_client.role != "admin") %>
           <div class="card-product-order-input">
               <i class="fas fa-plus green JSpluscounterproductindex" data-uuid="<%= uuid %>"></i>
@@ -162,4 +157,5 @@
       </div>
     <% end %> <!-- Fin de l'itération sur les produits -->
   </div>
+
 </div>
