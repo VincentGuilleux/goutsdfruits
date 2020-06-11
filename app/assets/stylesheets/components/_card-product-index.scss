@@ -36,7 +36,6 @@
   }
 }
 
-
 .card-product {
   height: 120px;
   background-color: white;
@@ -44,17 +43,16 @@
   align-items: center;
   border-radius: 8px;
   box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.15);
-  // &:hover {
-  //   opacity: 0.80;
-  //   transition: 200ms;
-  //   transform: translate(0px, -2px);
-  //   box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
-  // }
-  // plus de hover car plus de lien sur toute la carte
-  // &:hover .card-product-text-line a img {
-  // opacity: 1;
-  // transition: 200ms;
-  // }
+  &:hover {
+    opacity: 0.80;
+    transition: 200ms;
+    transform: translate(0px, -2px);
+    box-shadow: 0px 6px 30px rgba(0, 0, 0, 0.3);
+  }
+  &:hover .card-product-text-line a img {
+  opacity: 1;
+  transition: 200ms;
+  }
 }
 
 .card-product img {

@@ -109,7 +109,7 @@
       <% uuid = product.id %>
 
       <!-- <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> --> <!-- Faisait un lien vers la product_show quand on cliquait n'importe où sur la carte -->
-      <div class="card-product">
+      <div class="card-product" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <% if product.photo.attached? %>
           <%= cl_image_tag product.photo.key, alt: "image produit" %>
         <% end %>
@@ -136,13 +136,6 @@
           <div class="card-product-text-line">
             <p class="big-text-bold-resp grey-dark">
             <span title="<%= product.description %>"> <%= product.name %> </span>
-            <%= link_to product_path(product) do %>
-              <% if (current_client && current_client.role == "admin") %>
-                <sup><i class="far fa-edit grey-medium semi-small-text pl5"></i>
-              <% else %>
-                <sup><i class="fas fa-question grey-medium very-small-text pl5"></i></sup>
-              <% end %>
-            <% end %>
             </p>
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
