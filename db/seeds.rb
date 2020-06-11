@@ -243,9 +243,9 @@ puts "products done"
 
 # 4 - Create orders (with 4 status / pending / prepared / delivered / paid)
 
-#création de commandes "completed" pour calcul statistique
+#création de commandes fictives
 order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,21) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash", created_at:"2020-04-21", delivery_place_id: ferme.id)
-order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_price_cents: 10800 ,status:"paid", payment_method:"cash",created_at:"2020-04-20", delivery_place_id: gaec.id)
+order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_price_cents: 8160 ,status:"pending", created_at:"2020-04-20", delivery_place_id: gaec.id)
 #création d'une commande avec + order_lines en attente
 order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23" ,pickup_date: Date.new(2020,4,25), delivery_place_id: amap1.id)
 order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22" ,pickup_date: Date.new(2020,4,26), delivery_place_id: amap4.id)
@@ -259,9 +259,9 @@ puts "orders done"
 order_line1 = OrderLine.create!(order_id: order1.id ,product_id: product2.id, quantity: 5 ,total_price_cents: 4000)
 
 #création d'1 order avec 3 order_line  #order2
-order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 8000)
-order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 1600)
-order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 1200)
+order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 6000)
+order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 640)
+order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 1520)
 
 #création d'1 order avec 4 order_lines
 order_line5 = OrderLine.create!(order_id: order3.id ,product_id: product22.id, quantity: 1 ,total_price_cents: 4500) #petit plant
