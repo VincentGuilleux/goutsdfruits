@@ -16,7 +16,7 @@ Rails.application.routes.draw do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
   end
 
-  resources :orders, only: [:index, :new, :create] do # No show because info collapsed from dashboard/index (no dedicated page for one order)
+  resources :orders, only: [:index, :new, :create, :destroy] do # No show because info collapsed from dashboard/index (no dedicated page for one order)
     member do
       patch :prepare
       patch :deliver
