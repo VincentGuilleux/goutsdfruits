@@ -227,8 +227,9 @@
           <% if current_client && current_client.role == "admin" %>
             <div class="col-12 col-lg-1">
               <%# raise %>
-              <%= link_to "🗑", order_path(order.id), method: :delete %>
-                <!-- <i class="far fa-trash-alt green"></i> -->
+              <%= link_to order_path(order.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer cette commande ?") }, method: :delete do %>
+                <i class="far fa-trash-alt green"></i>
+              <% end %>
             </div>
           <% end %>
         </div>
