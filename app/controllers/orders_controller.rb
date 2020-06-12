@@ -136,6 +136,11 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+    unless @order.status == "pending"
+      flash.keep[:alert] = "La commande a déjà été traitée, elle ne peut pas être supprimée"
+      redirect_to orders_path
+      return
+    end
     @order.destroy
     redirect_to orders_path
   end
