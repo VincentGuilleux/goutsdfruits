@@ -223,11 +223,11 @@
             </div>
           </div>
 
-          <!-- suppression commande (slt pour admin) -->
+          <!-- SUPPRESSION COMMANDE (slt pour admin) -->
           <% if current_client && current_client.role == "admin" %>
             <div class="col-12 col-lg-1">
-              <% raise %>
-              <%= link_to "🗑", orders_pathorder, method: :delete %>
+              <%# raise %>
+              <%= link_to "🗑", order_path(order.id), method: :delete %>
                 <!-- <i class="far fa-trash-alt green"></i> -->
             </div>
           <% end %>
