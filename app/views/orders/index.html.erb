@@ -78,11 +78,13 @@
           </div>
 
           <!-- MIDDLE : date de livraison / lieu de livraison -->
-          <div class="col-12 col-lg-3">
-            <div class="delivery-index">
-              <p class="middle-text grey-medium font-italic" title="Livraison"> <%= order.pickup_date %> - <%= order.delivery_place.name %></p>
+          <% if client_signed_in? && current_client.role == "admin" %>
+            <div class="col-12 col-lg-3">
+              <div class="delivery-index">
+                <p class="middle-text grey-medium font-italic" title="Livraison"> <%= order.pickup_date %> - <%= order.delivery_place.name %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
 
           <!-- RIGHT : PICTOS -->
           <div class="col-12 col-lg-3">
@@ -224,14 +226,13 @@
           </div>
 
           <!-- SUPPRESSION COMMANDE (slt pour admin) -->
-          <% if current_client && current_client.role == "admin" %>
             <div class="col-12 col-lg-1">
-              <%# raise %>
-              <%= link_to order_path(order.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer cette commande ?") }, method: :delete do %>
-                <i class="far fa-trash-alt green"></i>
+              <% if order.status=="pending" %>
+                <%= link_to order_path(order.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer cette commande ?") }, method: :delete do %>
+                  <i class="far fa-trash-alt green"></i>
+                <% end %>
               <% end %>
             </div>
-          <% end %>
         </div>
 
         <div class="row justify-content-center">

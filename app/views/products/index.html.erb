@@ -17,18 +17,30 @@
 
 <div class="client-new-order">
 
-  <% if (current_client && current_client.role != "admin" || current_client.nil?) %>
+  <% if (current_client && current_client.role != "admin") %>
+  <!-- affichage du prix total commande et button validation cmd -->
     <div class="col-6 col-lg-3 product-index-new-order">
-      <%= simple_form_for @order do |ff| %>
-        <p class="bold">
-          Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
-        </p>
+        <%= simple_form_for @order do |ff| %>
+          <div class="bold">
+            Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
+          </div>
           <div style="display:none;">
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
           </div>
-          <%= ff.submit 'Valider la commande', class: 'btn btn-block submit-btn-green middle-text-resp bold text-wrap' %>
+          <div>
+            <%= ff.submit 'Valider la commande', class: 'btn btn-block submit-btn-green middle-text-resp bold text-wrap' %>
+          </div>
+        <% end %>
+    </div>
+
+  <% end %>
+  <% if current_client.nil? %>
+  <!-- affichage d'un button link pour se connecter -->
+    <div class="text-center pb-2">
+      <%= link_to new_client_session_path do %>
+        <button type="button" class="btn submit-btn-green-total-width middle-text-resp bold">Veuillez vous connecter pour passer une commande</button>
       <% end %>
     </div>
   <% end %>
@@ -130,7 +142,6 @@
               <%= cl_image_tag product.photo.key, alt: "image produit" %>
             <% end %>
           <% else %>
-          <span class="JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>"></span>
             <%= cl_image_tag product.photo.key, alt: "image produit", class:"JSproductname",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
           <% end %>
         <% end %>
@@ -159,8 +170,8 @@
           </div>
           <!-- Card display center-middle: name -->
           <div class="card-product-text-line">
-            <p class="big-text-bold-resp grey-dark">
-            <span class="JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>"> <%= product.name %> </span>
+            <p class="big-text-bold-resp grey-dark JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
+              <%= product.name %>
             </p>
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
