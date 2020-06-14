@@ -49,7 +49,7 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  # Méthodes de classe qui renvoient un array d'arrays d'id et de respectivement remaining_quantity / ratio_quantity shop vs client
+  # Méthodes de classe qui renvoient un array d'arrays d'id et de respectivement remaining_quantity / description / ratio_quantity shop vs client
   def self.remaining_quantities(user)
     @products = Product.all
     remaining_quantities = []
@@ -64,6 +64,18 @@ class Product < ApplicationRecord
       remaining_quantities << remaining_quantity
     end
     return remaining_quantities
+  end
+
+  def self.descriptions
+    @products = Product.all
+    descriptions = []
+    @products.each do |product|
+      description = []
+      description << product.id
+      description << product.description.gsub(/'/,"")
+      descriptions << description
+    end
+    return descriptions
   end
 
   # Méthode de classe qui renvoit le ratio
