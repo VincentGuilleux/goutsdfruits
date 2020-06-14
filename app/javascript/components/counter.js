@@ -1,6 +1,6 @@
 const counter = () => {
 
-  // Sous-fonction pour mise à jour du prix de la ligne (commande admin)
+  // Sous-fonction pour mise à jour du prix de la ligne - admin
     const updatePrice = (uuid) => {
       let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
       // querySelectorAll renvoit toujours un array c'est pour ça qu'on met [Ø] pour qu'il renvoit l'élément sans qu'il soit un array
@@ -24,7 +24,7 @@ const counter = () => {
       totalpriceEl.innerHTML = totalPrice;
     };
 
-     // Sous-fonction pour mise à jour du prix de la ligne (commande client)
+     // Sous-fonction pour mise à jour du prix de la ligne - client
     const updatePriceProductIndex = (uuid) => {
       let productPrice = prices[uuid];
       let inputEl = document.getElementById(uuid);
@@ -50,7 +50,7 @@ const counter = () => {
     };
 
   document.body.addEventListener( 'click', function ( event ) {
-    // commande admin
+    // plus - admin
     if( event.target.matches(".JSpluscounter")) {
       // Si on clique sur plus
       let uuid = event.target.dataset.uuid;
@@ -68,7 +68,7 @@ const counter = () => {
         updatePrice(uuid);
         }
     };
-    // commande admin
+    // moins - admin
     if( event.target.matches(".JSminuscounter")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
@@ -77,7 +77,7 @@ const counter = () => {
         updatePrice(uuid);
       };
     };
-    // commande client
+    // plus - client
     if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid; // uuid = data-uuid de l'élément targeté = product.id
       let ratio = ratiosQuantities[uuid]; // ratio quantity shop vs particulier
@@ -92,7 +92,7 @@ const counter = () => {
         updatePriceProductIndex(uuid);
         }
     };
-    // commande client
+    // moins - client
     if( event.target.matches(".JSminuscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let ratio = ratiosQuantities[uuid];
@@ -105,7 +105,15 @@ const counter = () => {
       };
     };
 
-  });
+    // product description - client
+    if( event.target.matches(".JSproductname")) {
+      let uuid = event.target.dataset.uuid;
+      let inputEl = document.getElementById("product_description");
+      let productDescription = descriptions[uuid];
+      inputEl.innerText = productDescription;
+    };
+
+  }); // end of document.body.addEventListenerFunction
 
   document.body.addEventListener( 'change', function ( event ) {
 

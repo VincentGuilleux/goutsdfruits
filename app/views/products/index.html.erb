@@ -2,14 +2,14 @@
 <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+  <!--     <div class="modal-header">
         <h5 class="modal-title" id="descriptionModalLabel">Détail produit</h5>
+      </div> -->
+      <div class="modal-body">
+        <span id="product_description"></span>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-      </div>
-      <div class="modal-body">
-        ...
       </div>
     </div>
   </div>
@@ -24,7 +24,6 @@
           Total : <span id="totalpriceproductindex">0</span><sup> €</sup>
         </p>
           <div style="display:none;">
-          <!-- <div style="display:none;"> -->
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render '/orders/order_line_fields', f: f %>
             <% end %>
@@ -116,6 +115,7 @@
 <script>
     let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
     let ratiosQuantities = JSON.parse('<%= raw Product.ratios_quantities(current_client).to_h.to_json %>');
+    let descriptions = JSON.parse('<%= raw Product.descriptions.to_h.to_json %>');
 </script>
 
 <div class="main-container">
@@ -125,17 +125,17 @@
       <% uuid = product.id %>
         <div class="card-product">
         <% if product.photo.attached? %>
-          <% unless client_signed_in? && current_client.role == "admin" %>
-            <%= cl_image_tag product.photo.key, alt: "image produit", :data => { :target => "#descriptionModal" } %>
-          <% else %>
+          <% if client_signed_in? && current_client.role == "admin" %>
             <%= link_to product_path(product) do %>
-            <%= cl_image_tag product.photo.key, alt: "image produit" %>
+              <%= cl_image_tag product.photo.key, alt: "image produit" %>
             <% end %>
+          <% else %>
+            <%= cl_image_tag product.photo.key, alt: "image produit" %>
           <% end %>
         <% end %>
 
         <% unless client_signed_in? && current_client.role == "admin" %>
-          <div class="card-product-infos" data-toggle="modal" data-target="#descriptionModal">
+          <div class="card-product-infos">
         <% else %>
           <div class="card-product-infos" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
         <% end %>
@@ -159,7 +159,7 @@
           <!-- Card display center-middle: name -->
           <div class="card-product-text-line">
             <p class="big-text-bold-resp grey-dark">
-            <span title="<%= product.description %>"> <%= product.name %> </span>
+            <span class="JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>"> <%= product.name %> </span>
             </p>
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
