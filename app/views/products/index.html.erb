@@ -130,7 +130,8 @@
               <%= cl_image_tag product.photo.key, alt: "image produit" %>
             <% end %>
           <% else %>
-            <%= cl_image_tag product.photo.key, alt: "image produit" %>
+          <span class="JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>"></span>
+            <%= cl_image_tag product.photo.key, alt: "image produit", class:"JSproductname",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
           <% end %>
         <% end %>
 

@@ -93,15 +93,15 @@ puts "cat's team     - product 1/4"
 
 #les coulis
 
-product10 = Product.new(name:"Coulis de cassis",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de cassis c'est moins sucré qu’une confiture, pour un gout plus fruité !", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "cassis", product_type:"coulis", product_category:"Gourmandise")
+product10 = Product.new(name:"Coulis de cassis",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de cassis c'est moins sucré qu’une confiture, pour un goût plus fruité !", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "cassis", product_type:"coulis", product_category:"Gourmandise")
 product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis-cassis.jpg')), filename: 'coulis-cassis.jpg', content_type: 'image/jpg')
 product10.save!
 
-product11 = Product.new(name:"Coulis de framboises",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de framboises c'est moins sucré qu’une confiture, pour un gout plus fruité !", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "framboise", product_type:"coulis", product_category:"Gourmandise")
+product11 = Product.new(name:"Coulis de framboises",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de framboises c'est moins sucré qu’une confiture, pour un goût plus fruité !", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "framboise", product_type:"coulis", product_category:"Gourmandise")
 product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulisframboise.jpg')), filename: 'coulisframboise.jpg', content_type: 'image/jpg')
 product11.save!
 
-product12 = Product.new(name:"Coulis de mûres",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de mûres sauvages c'est moins sucré qu’une confiture, pour un gout plus fruité!", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "mûre", product_type:"coulis", product_category:"Gourmandise")
+product12 = Product.new(name:"Coulis de mûres",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de mûres sauvages c'est moins sucré qu’une confiture, pour un goût plus fruité!", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "mûre", product_type:"coulis", product_category:"Gourmandise")
 product12.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/coulis-mure.jpg')), filename: 'coulis.jpg', content_type: 'image/jpg')
 product12.save!
 
