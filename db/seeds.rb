@@ -85,7 +85,7 @@ product8 = Product.new(name:"Compote de pommes",description:"Pour petits et gran
 product8.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/compote.jpg')), filename: 'compote.jpg', content_type: 'image/jpg')
 product8.save!
 
-product9 = Product.new(name:"Compote de pommes et prunes",description:"Pour petits et grands ! Retrouvez la saveur des prunes alliée à la douceur des pommes. Toutes les compotes Goûts dFruits sont sans morceaux et contiennent peu de sucre ajouté.", unit_price_cents: 380, unit_price_cents_shop: 330, unit_type:"pot", unit_measure:"g", unit_measure_quantity:"450", unit_measure_quantity_shop:"450", product_fruit: "prune", product_type:"compote", product_category:"Gourmandise")
+product9 = Product.new(name:"Compote de pommes et prunes",description:"Pour petits et grands ! Retrouvez la saveur des prunes alliée à la douceur des pommes. Toutes les compotes Goûts d'Fruits sont sans morceaux et contiennent peu de sucre ajouté.", unit_price_cents: 380, unit_price_cents_shop: 330, unit_type:"pot", unit_measure:"g", unit_measure_quantity:"450", unit_measure_quantity_shop:"450", product_fruit: "prune", product_type:"compote", product_category:"Gourmandise")
 product9.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product9.save! # IMAGE A UPDATER
 
