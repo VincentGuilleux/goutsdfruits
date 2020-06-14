@@ -179,51 +179,51 @@ puts "       |(__)|   - product 3/4"
 
 #les fruits frais
 
-product29 = Product.new(name:"Cerises",description:"Des rouges vives aux bicolores, picorez un mélange de variétés de cerises bigarreau. Pour vous assurer des fruits cueillis à maturité, les variétés vendues évoluent au fil de la saison.", unit_price_cents: 350, unit_price_cents_shop: 3000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "cerise", product_type:"fruit", product_category:"Fruit frais")
+product29 = Product.new(name:"Cerises",description:"Des rouges vives aux bicolores, picorez un mélange de variétés de cerises bigarreau. Pour vous assurer des fruits cueillis à maturité, les variétés vendues évoluent au fil de la saison.", unit_price_cents: 350, unit_price_cents_shop: 3000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "cerise", product_type:"fruit frais", product_category:"Fruit frais")
 product29.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherry.jpg')), filename: 'cherry.jpg', content_type: 'image/jpg')
 product29.save!
 
-product30 = Product.new(name:"Framboises",description:"Rouges et blanches, les barquettes de framboises vous en feront voir de toutes les saveurs.", unit_price_cents: 200, unit_price_cents_shop: 200, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "framboise", product_type:"fruit", product_category:"Fruit frais")
+product30 = Product.new(name:"Framboises",description:"Rouges et blanches, les barquettes de framboises vous en feront voir de toutes les saveurs.", unit_price_cents: 200, unit_price_cents_shop: 200, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "framboise", product_type:"fruit frais", product_category:"Fruit frais")
 product30.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/framboises_125g.jpg')), filename: 'framboises_125g.jpg', content_type: 'image/jpg')
 product30.save!
 
-product31 = Product.new(name:"Prunes Reine Claude",description:"Reines Claudes", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
+product31 = Product.new(name:"Prunes Reine Claude",description:"Reines Claudes", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "prune", product_type:"fruit frais", product_category:"Fruit frais")
 product31.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'prunes.jpg', content_type: 'image/jpg')
 product31.save!
 
-product32 = Product.new(name:"Prunes Mirabelle",description:"Prunes Mirabelle cueillies à maturité.", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "prune", product_type:"fruit", product_category:"Fruit frais")
+product32 = Product.new(name:"Prunes Mirabelle",description:"Prunes Mirabelle cueillies à maturité.", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "prune", product_type:"fruit frais", product_category:"Fruit frais")
 product32.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/prunes.jpg')), filename: 'prunes.jpg', content_type: 'image/jpg')
 product32.save!
 
-product33 = Product.new(name:"Pêches de vigne",description:"Les petites pêches de vigne au goûts acidulé.", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "pêche", product_type:"fruit", product_category:"Fruit frais")
+product33 = Product.new(name:"Pêches de vigne",description:"Les petites pêches de vigne au goûts acidulé.", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "pêche", product_type:"fruit frais", product_category:"Fruit frais")
 product33.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product33.save!
 
-product34 = Product.new(name:"Pêches",description:"Le verger regorge de différentes variétés de pêches qui vous seront proposées au fil de la saison en fonction de leur maturité.", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000", product_fruit: "pêche", product_type:"fruit", product_category:"Fruit frais")
+product34 = Product.new(name:"Pêches",description:"Le verger regorge de différentes variétés de pêches qui vous seront proposées au fil de la saison en fonction de leur maturité.", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000", product_fruit: "pêche", product_type:"fruit frais", product_category:"Fruit frais")
 product34.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product34.save!
 
-product35 = Product.new(name:"Pommes Clochardes",description:"La pomme clocharde originaire de Gâtine est ferme et sucrée. Elle se conserve très bien.", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000", product_fruit: "pomme", product_type:"fruit", product_category:"Fruit frais")
+product35 = Product.new(name:"Pommes Clochardes",description:"La pomme clocharde originaire de Gâtine est ferme et sucrée. Elle se conserve très bien.", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000", product_fruit: "pomme", product_type:"fruit frais", product_category:"Fruit frais")
 product35.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product35.save!
 
-product36 = Product.new(name:"Pommes",description:"Pommes", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000",product_fruit: "pomme", product_type:"fruit", product_category:"Fruit frais")
+product36 = Product.new(name:"Pommes",description:"Pommes", unit_price_cents: 250, unit_price_cents_shop: 1200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000",product_fruit: "pomme", product_type:"fruit frais", product_category:"Fruit frais")
 product36.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product36.save!
 
-product37 = Product.new(name:"Poires",description:"Poires", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000",product_fruit: "poire", product_type:"fruit", product_category:"Fruit frais")
+product37 = Product.new(name:"Poires",description:"Poires", unit_price_cents: 350, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"5000",product_fruit: "poire", product_type:"fruit frais", product_category:"Fruit frais")
 product37.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product37.save!
 
-product38 = Product.new(name:"Coings",description:"Pour accompagner les volailles ou se lancer dans la fameuse gelée de coing.", unit_price_cents: 300, unit_price_cents_shop: 1000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"3000", product_fruit: "coing", product_type:"fruit", product_category:"Fruit frais")
+product38 = Product.new(name:"Coings",description:"Pour accompagner les volailles ou se lancer dans la fameuse gelée de coing.", unit_price_cents: 300, unit_price_cents_shop: 1000, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"1000", unit_measure_quantity_shop:"3000", product_fruit: "coing", product_type:"fruit frais", product_category:"Fruit frais")
 product38.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product38.save!
 
-product39 = Product.new(name:"Fraises",description:"Fraises cueillies à maturité pour vous régaler.", unit_price_cents: 300, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "fraise", product_type:"fruit", product_category:"Fruit frais")
+product39 = Product.new(name:"Fraises",description:"Fraises cueillies à maturité pour vous régaler.", unit_price_cents: 300, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "fraise", product_type:"fruit frais", product_category:"Fruit frais")
 product39.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product39.save!
 
-product40 = Product.new(name:"Rhubarbe",description:"Pour vos tartes, crumble ou en compote, la rhubarbe se marie à merveille avec les fraises ou les pommes...", unit_price_cents: 200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"500", product_fruit: "rhubarbe", product_type:"fruit", product_category:"Fruit frais")
+product40 = Product.new(name:"Rhubarbe",description:"Pour vos tartes, crumble ou en compote, la rhubarbe se marie à merveille avec les fraises ou les pommes...", unit_price_cents: 200, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"500", product_fruit: "rhubarbe", product_type:"fruit frais", product_category:"Fruit frais")
 product40.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
 product40.save!
 
