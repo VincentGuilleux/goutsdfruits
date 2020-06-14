@@ -98,7 +98,7 @@ class Product < ApplicationRecord
   end
 
   def self.types
-    ["bonbon", "compote", "coulis", "fruit", "fruit au sirop", "gelée", "pâte à tartiner", "sirop", "sorbet"]
+    ["bonbon", "compote", "coulis", "fruit frais", "fruit au sirop", "gelée", "pâte à tartiner", "sirop", "sorbet"]
   end
 
   def self.categories
@@ -106,7 +106,7 @@ class Product < ApplicationRecord
   end
 
   def self.fruits
-    ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "poire", "pomme", "prune", "pêche", "rhubarbe", "sureau"]
+    ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "noisette", "poire", "pomme", "prune", "pêche", "raisin", "rhubarbe", "sureau"]
   end
 
   # les méthodes ci-dessous répondent à une logique d'affichage uniquement donc pourraient être mises dans un helper plutôt
