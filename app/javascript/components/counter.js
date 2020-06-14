@@ -81,7 +81,7 @@ const counter = () => {
     if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid; // uuid = data-uuid de l'élément targeté = product.id
       let ratio = ratiosQuantities[uuid]; // ratio quantity shop vs particulier
-      let inputEl = document.getElementById(uuid); // inputEl = champ contenant la quantité commandé sur la carte produit
+      let inputEl = document.getElementById(uuid); // inputEl = champ contenant la quantité commandée sur la carte produit
       let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0]; // inputFormEl = champ du formlaire (caché) avec la quantité
       let productRemainingQuantity = remainingQuantities[uuid];
       if (productRemainingQuantity > inputEl.innerText) { // on vérifie que la quantité restante est supérieure à l'input de l'utilisateur
