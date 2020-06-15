@@ -114,10 +114,9 @@ class OrdersController < ApplicationController
 
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
 
-    # Si pas de delivery place sélectionnée, on affecte par défaut à non affecté
-    if @order.delivery_place_id.nil?
-      @order.delivery_place = DeliveryPlace.first
-    end
+    # Affectation de la delivery place
+    create_order_delivery_place
+
 
     # Si pas de client sélectionné, on affecte au current_client (sinon on est dans le cas de l'admin qui sélectionne le client)
     if @order.client_id.nil?
@@ -154,6 +153,16 @@ class OrdersController < ApplicationController
   def create_order_payment_status
     unless @order.payment_method.nil?
       @order.status = "paid"
+    end
+  end
+
+  def create_order_delivery_place
+    if @order.delivery_place_id.nil? # nécessaire car si commande admin delivery_place déjà définie
+      if @current_client.amap.nil? || @current_client.amap =="Non-membre"
+        @order.delivery_place_id = DeliveryPlace.where("name = ?", "Ferme").first.id
+      else
+        @order.delivery_place_id = DeliveryPlace.where("name = ?", @current_client.amap).first.id
+      end
     end
   end
 

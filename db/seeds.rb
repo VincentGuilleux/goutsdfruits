@@ -34,15 +34,15 @@ client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"int
 puts "      |    /|     - user & clients done"
 
 # 2 - Create "Delivery Places"
-nondefini = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 ferme = DeliveryPlace.create!(name: "Ferme", email: "mariegazeau@gmail.com", address: "l'Orgerie" ,post_code: "79140", city: "Le Pin", timeslot: "du lundi au samedi à partir de 10h")
 gaec = DeliveryPlace.create!(name: "GAEC", address: "La Billardière" ,post_code: "79140", city: "Cerizay", timeslot: "le vendredi de 17h30 à 19h30")
-amap1 = DeliveryPlace.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant", timeslot: "le jeudi de 17h30 à 18h45")
-amap2 = DeliveryPlace.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay", timeslot: "le jeudi de 18h30 à 19h30")
-amap3 = DeliveryPlace.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: "63 rue du Péré" ,post_code: "79300", city: "Bressuire", timeslot: "le jeudi de 17h30 à 18h30")
-amap4 = DeliveryPlace.create!(name: "Court Circuiteurs", email: "courts-circuiteurs@netcourrier.com", address: "les Maligrettes" ,post_code: "79100", city: "Thouars", timeslot: "à préciser")
-marche1 = DeliveryPlace.create!(name: "Légumes and Co", email: "https://fr-fr.facebook.com/legumes.and.co/", address: "La Gorère" ,post_code: "79140", city: "Combrand", timeslot: "le jeudi de 17h à 19h30")
-marche2 = DeliveryPlace.create!(name: "Marché producteurs", address: "sous les Halles" ,post_code: "79140", city: "Cerizay", timeslot: "le samedi 9h à 12h30")
+ine_boune_penerie = DeliveryPlace.create!(name: "Ine Boune Penerie", email: "inebounepenerie@gmail.com", address: "rue des Prairies" ,post_code: "79320", city: "Moncoutant", timeslot: "le jeudi de 17h30 à 18h45")
+bocageot = DeliveryPlace.create!(name: "Bocageot", email: "lebocageot@gmail.com", address: "rue du 11 novembre" ,post_code: "79140", city: "Cerizay", timeslot: "le jeudi de 18h30 à 19h30")
+asphodele = DeliveryPlace.create!(name: "Asphodèle", email: "asphodele79@gmail.com", address: "63 rue du Péré" ,post_code: "79300", city: "Bressuire", timeslot: "le jeudi de 17h30 à 18h30")
+court_circuiteurs = DeliveryPlace.create!(name: "Court Circuiteurs", email: "courts-circuiteurs@netcourrier.com", address: "les Maligrettes" ,post_code: "79100", city: "Thouars", timeslot: "à préciser")
+marche_legumes_and_co = DeliveryPlace.create!(name: "Légumes and Co", email: "https://fr-fr.facebook.com/legumes.and.co/", address: "La Gorère" ,post_code: "79140", city: "Combrand", timeslot: "le jeudi de 17h à 19h30")
+marche_producteurs = DeliveryPlace.create!(name: "Marché producteurs", address: "sous les Halles" ,post_code: "79140", city: "Cerizay", timeslot: "le samedi 9h à 12h30")
+nondefini = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 
 puts "      |    /|     - delivery places done"
 
