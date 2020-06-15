@@ -78,13 +78,11 @@
           </div>
 
           <!-- MIDDLE : date de livraison / lieu de livraison -->
-          <% if client_signed_in? && current_client.role == "admin" %>
-            <div class="col-12 col-lg-3">
-              <div class="delivery-index">
-                <p class="middle-text grey-medium font-italic" title="Livraison"> <%= order.pickup_date %> - <%= order.delivery_place.name %></p>
-              </div>
+          <div class="col-12 col-lg-3">
+            <div class="delivery-index">
+                <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %> </p>
             </div>
-          <% end %>
+          </div>
 
           <!-- RIGHT : PICTOS -->
           <div class="col-12 col-lg-3">
@@ -161,11 +159,11 @@
                         <%= link_to "", "", class: "fas fa-clock"%>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index">
+                      <div class="action-picto-index" title="Non livrée">
                         <%= link_to "", "", class: "fas fa-truck"%>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index">
+                      <div class="action-picto-index" title="Non payée">
                         <%= link_to "", "", class: "fas fa-receipt"%>
                       </div>
 
@@ -179,7 +177,7 @@
                         <%= link_to "", "", class: "fas fa-truck"%>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index">
+                      <div class="action-picto-index" title="Non payée">
                         <%= link_to "", "", class: "fas fa-receipt"%>
                       </div>
 
@@ -225,8 +223,8 @@
             </div>
           </div>
 
-          <!-- SUPPRESSION COMMANDE (slt pour admin) -->
-            <div class="col-12 col-lg-1">
+          <!-- SUPPRESSION COMMANDE -->
+            <div class="col-12 col-lg-1 text-center">
               <% if order.status=="pending" %>
                 <%= link_to order_path(order.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer cette commande ?") }, method: :delete do %>
                   <i class="far fa-trash-alt green"></i>
