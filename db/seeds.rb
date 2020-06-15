@@ -247,10 +247,10 @@ puts "products done"
 order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,21) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash", created_at:"2020-04-21", delivery_place_id: ferme.id)
 order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_price_cents: 8160 ,status:"pending", created_at:"2020-04-20", delivery_place_id: gaec.id)
 #création d'une commande avec + order_lines en attente
-order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23" ,pickup_date: Date.new(2020,4,25), delivery_place_id: amap1.id)
-order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22" ,pickup_date: Date.new(2020,4,26), delivery_place_id: amap4.id)
-order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18",pickup_date: Date.new(2020,4,20), delivery_place_id: marche1.id)
-order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,5,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16",pickup_date: Date.new(2020,5,18), delivery_place_id: marche1.id)
+order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23" ,pickup_date: Date.new(2020,4,25), delivery_place_id: ine_boune_penerie.id)
+order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22" ,pickup_date: Date.new(2020,4,26), delivery_place_id: court_circuiteurs.id)
+order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18",pickup_date: Date.new(2020,4,20), delivery_place_id: marche_legumes_and_co.id)
+order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,5,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16",pickup_date: Date.new(2020,5,18), delivery_place_id: marche_producteurs.id)
 
 puts "orders done"
 
@@ -278,10 +278,11 @@ order_line12 = OrderLine.create!(order_id: order6.id ,product_id: product10.id, 
 
 puts "order_lines done"
 
-# 6 - create "product_lots" - création d'un lot au minimum pour chaque produit en stock
+# 6 - create "product_lots"
 
 product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
-product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 15, remaining_quantity: 10, lot_number: "20042")
+product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 5, remaining_quantity: 5, lot_number: "20042")
+product_lot2b = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 8, remaining_quantity: 8, lot_number: "20042")
 
 # création de 2 lots pour les produits 3 & 4
 product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,8,20), quantity: 10, remaining_quantity: 8, lot_number: "20043")
