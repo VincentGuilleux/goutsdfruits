@@ -124,17 +124,17 @@ product16.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/gelee
 product16.save!
 
 product17 = Product.new(name:"Gelée de pommes et fleurs de sureau",description:"Allégée en sucre pour retrouver toute la saveur de la fleur de sureau et la douceur de la pomme.", unit_price_cents: 320, unit_price_cents_shop: 278, unit_type:"pot", unit_measure:"g", unit_measure_quantity:"220", unit_measure_quantity_shop:"220", product_fruit: "sureau", product_type:"gelée", product_category:"Gourmandise")
-product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Gelée sureau.jpg')), filename: 'Gelée sureau.jpg', content_type: 'image/jpg')
+product17.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Gelée-sureau.jpg')), filename: 'Gelée-sureau.jpg', content_type: 'image/jpg')
 product17.save!
 
 #les sirops
 
 product18 = Product.new(name:"Sirop de fraise",description:"Rafraîchissez vous avec ce sirop de fraises. A diluer dans 9 fois son volume d'eau, de lait ou de vin blanc !", unit_price_cents: 650, unit_price_cents_shop: 565, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"50",unit_measure_quantity_shop:"50", product_fruit: "fraise", product_type:"sirop", product_category:"Gourmandise")
-product18.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop fraises.jpg')), filename: 'Sirop fraises.jpg', content_type: 'image/jpg')
+product18.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop-fraise.jpg')), filename: 'Sirop-fraise.jpg', content_type: 'image/jpg')
 product18.save!
 
 product19 = Product.new(name:"Sirop de menthe",description:"Rafraîchissez vous avec ce sirop de menthe. A diluer dans 9 fois son volume d'eau ou de lait !", unit_price_cents: 650, unit_price_cents_shop: 565, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"50",unit_measure_quantity_shop:"50", product_fruit: "menthe", product_type:"sirop", product_category:"Gourmandise")
-product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop menthe.jpg')), filename: 'Sirop menthe.jpg', content_type: 'image/jpg')
+product19.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop-menthe.jpg')), filename: 'Sirop-menthe.jpg', content_type: 'image/jpg')
 product19.save!
 
 product20 = Product.new(name:"Sirop de pêche",description:"Rafraîchissez vous avec ce sirop de pêche. A diluer dans 9 fois son volume d'eau ou de lait !", unit_price_cents: 650, unit_price_cents_shop: 565,unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"50",unit_measure_quantity_shop:"50", product_fruit: "pêche", product_type:"sirop", product_category:"Gourmandise")
@@ -142,11 +142,11 @@ product20.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/produ
 product20.save! # IMAGE A UPDATER
 
 product21 = Product.new(name:"Sirop de poire",description:"Rafraîchissez vous avec ce sirop de poire. A diluer dans 9 fois son volume d'eau, de lait ou de vin blanc !", unit_price_cents: 650, unit_price_cents_shop: 565, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"50",unit_measure_quantity_shop:"50", product_fruit: "poire", product_type:"sirop", product_category:"Gourmandise")
-product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop poire.jpg')), filename: 'Sirop poire.jpg', content_type: 'image/jpg')
+product21.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop-poire.jpg')), filename: 'Sirop-poire.jpg', content_type: 'image/jpg')
 product21.save!
 
 product22 = Product.new(name:"Sirop de fleurs de sureau",description:"Rafraîchissez vous avec ce sirop de fleurs de sureau. A diluer dans 9 fois son volume d'eau, de lait ou de vin blanc !", unit_price_cents: 650, unit_price_cents_shop: 565, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"50",unit_measure_quantity_shop:"50", product_fruit: "sureau", product_type:"sirop", product_category:"Gourmandise")
-product22.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop sureau.jpg')), filename: 'Sirop sureau.jpg', content_type: 'image/jpg')
+product22.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sirop-sureau.jpg')), filename: 'Sirop-sureau.jpg', content_type: 'image/jpg')
 product22.save!
 
 puts "       |(__)|   - product 2/4"
@@ -184,7 +184,7 @@ product29.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/cherr
 product29.save!
 
 product30 = Product.new(name:"Framboises",description:"Rouges et blanches, les barquettes de framboises vous en feront voir de toutes les saveurs.", unit_price_cents: 200, unit_price_cents_shop: 200, unit_type:"barquette", unit_measure:"g", unit_measure_quantity:"125", unit_measure_quantity_shop:"125", product_fruit: "framboise", product_type:"fruit frais", product_category:"Fruit frais")
-product30.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/FF framboises 125g.jpg')), filename: 'FF framboises 125g.jpg', content_type: 'image/jpg')
+product30.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/FF-framboises-125g.jpg')), filename: 'FF-framboises-125g.jpg', content_type: 'image/jpg')
 product30.save!
 
 product31 = Product.new(name:"Prunes Reine Claude",description:"Reines Claudes", unit_price_cents: 200, unit_price_cents_shop: 1700, unit_type:"sachet", unit_measure:"g", unit_measure_quantity:"500", unit_measure_quantity_shop:"5000", product_fruit: "prune", product_type:"fruit frais", product_category:"Fruit frais")
