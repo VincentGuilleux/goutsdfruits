@@ -140,7 +140,8 @@ class OrdersController < ApplicationController
       redirect_to orders_path
       return
     end
-    @order.destroy
+    regenerate_order_line_product_lots
+    # @order.destroy
     redirect_to orders_path
   end
 
@@ -185,6 +186,25 @@ class OrdersController < ApplicationController
         selected_lot.save
 
         necessary_quantity -= quantity
+      end
+    end
+  end
+
+  # Private method called when order deleted to regenerate product lots
+  def regenerate_order_line_product_lots
+    @order.order_lines.each do |order_line|
+      selected_lots = order_line.product.product_lots.where("expiry_date > ? AND remaining_quantity > 0", Date.today).order(expiry_date: :desc)
+      rebuild_quantity = order_line.quantity
+
+      selected_lots.each do |selected_lot|
+        break if rebuild_quantity == 0
+
+        quantity = [rebuild_quantity, (selected_lot.quantity - selected_lot.remaining_quantity)].min
+        selected_lot.remaining_quantity += quantity
+
+        # selected_lot.save
+        rebuild_quantity -= quantity
+        raise
       end
     end
   end
