@@ -282,7 +282,7 @@ puts "order_lines done"
 
 product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
 product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 5, remaining_quantity: 5, lot_number: "20042")
-product_lot2b = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 8, remaining_quantity: 8, lot_number: "20042")
+product_lot2b = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,16) ,expiry_date: Date.new(2020,8,16), quantity: 8, remaining_quantity: 8, lot_number: "20042")
 
 # création de 2 lots pour les produits 3 & 4
 product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,8,20), quantity: 10, remaining_quantity: 8, lot_number: "20043")
