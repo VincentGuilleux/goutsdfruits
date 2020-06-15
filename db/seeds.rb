@@ -98,7 +98,7 @@ product10.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/couli
 product10.save!
 
 product11 = Product.new(name:"Coulis de framboises",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de framboises c'est moins sucré qu’une confiture, pour un goût plus fruité !", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "framboise", product_type:"coulis", product_category:"Gourmandise")
-product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Coulis framboises.jpg')), filename: 'Coulis framboises.jpg', content_type: 'image/jpg')
+product11.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Coulis-framboises.jpg')), filename: 'Coulis-framboises.jpg', content_type: 'image/jpg')
 product11.save!
 
 product12 = Product.new(name:"Coulis de mûres",description:"Dans vos yaourts, sur un gâteaux ou une glace, un coulis de mûres sauvages c'est moins sucré qu’une confiture, pour un goût plus fruité!", unit_price_cents: 590, unit_price_cents_shop: 513, unit_type:"bouteille", unit_measure:"cl", unit_measure_quantity:"25", unit_measure_quantity_shop:"25", product_fruit: "mûre", product_type:"coulis", product_category:"Gourmandise")
