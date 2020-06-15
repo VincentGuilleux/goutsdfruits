@@ -141,8 +141,9 @@ class OrdersController < ApplicationController
       return
     end
     regenerate_order_line_product_lots
-    # @order.destroy
+    @order.destroy
     redirect_to orders_path
+    flash[:notice] = "La commande a été supprimée"
   end
 
   private
@@ -193,18 +194,17 @@ class OrdersController < ApplicationController
   # Private method called when order deleted to regenerate product lots
   def regenerate_order_line_product_lots
     @order.order_lines.each do |order_line|
-      selected_lots = order_line.product.product_lots.where("expiry_date > ? AND remaining_quantity > 0", Date.today).order(expiry_date: :desc)
+      selected_lots = order_line.product.product_lots.where("expiry_date > ?", Date.today).order(:expiry_date)
       rebuild_quantity = order_line.quantity
 
       selected_lots.each do |selected_lot|
         break if rebuild_quantity == 0
-
-        quantity = [rebuild_quantity, (selected_lot.quantity - selected_lot.remaining_quantity)].min
-        selected_lot.remaining_quantity += quantity
-
-        # selected_lot.save
-        rebuild_quantity -= quantity
-        raise
+        if selected_lot.quantity > selected_lot.remaining_quantity
+          quantity = [rebuild_quantity, (selected_lot.quantity - selected_lot.remaining_quantity)].min
+          selected_lot.remaining_quantity += quantity
+          rebuild_quantity -= quantity
+          selected_lot.save
+        end
       end
     end
   end
