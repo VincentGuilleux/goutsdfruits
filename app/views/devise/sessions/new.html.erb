@@ -1,9 +1,9 @@
-<div class="container mt-4 mb-4">
+<div class="container mt-5 mb-5">
 
   <h2><%= link_to ("Inscription"), new_registration_path(resource_name) %></h2>
 
 
-  <h2 class="pt-5 pb-4"><%= t(".sign_in") %></h2>
+  <h2 class="pt-5 pb-3 grey-dark"><%= t(".sign_in") %></h2>
 
   <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="form-inputs">
