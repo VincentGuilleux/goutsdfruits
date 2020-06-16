@@ -141,14 +141,19 @@ h2 {
   font-weight: bold;
 }
 
+.semi-small-text {
+  font-size: 14px;
+  font-weight: 400;
+}
+
 .semi-small-text-bold {
   font-size: 14px;
   font-weight: bold;
 }
 
-.semi-small-text {
-  font-size: 14px;
-  font-weight: 400;
+.semi-small-text-bold-resp {
+  font-size:calc(10px + 0.2vw);
+  font-weight: bold;
 }
 
 .middle-text {

@@ -103,10 +103,12 @@
 // for ordering (not for role admin)
 .card-product-order-input {
   height: 120px;
+  width: 60px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  padding: 10px;
+  padding-top: 10px;
+  padding-right: 10px;
 }
 
 .JSproductname {
