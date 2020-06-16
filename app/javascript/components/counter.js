@@ -1,6 +1,6 @@
 const counter = () => {
 
-  // Sous-fonction pour mise à jour du prix de la ligne - admin
+  // MAJ PRIX - ADMIN
     const updatePrice = (uuid) => {
       let productDropdownEl = document.querySelectorAll('select[data-uuid="' + uuid + '"]')[0];
       // querySelectorAll renvoit toujours un array c'est pour ça qu'on met [Ø] pour qu'il renvoit l'élément sans qu'il soit un array
@@ -17,14 +17,13 @@ const counter = () => {
       let totalPrice = 0;
       let allPricesEl = document.querySelectorAll('.JSpriceperline');
       for (let i = 0; i < allPricesEl.length; i++) {
-        // console.log('allPricesEl: ', allPricesEl[i].innerText);
         totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
       }
       let totalpriceEl = document.getElementById("totalprice");
       totalpriceEl.innerHTML = totalPrice;
     };
 
-     // Sous-fonction pour mise à jour du prix de la ligne - client
+     // MAJ PRIX - CLIENT
     const updatePriceProductIndex = (uuid) => {
       let productPrice = prices[uuid];
       let inputEl = document.getElementById(uuid);
@@ -50,7 +49,7 @@ const counter = () => {
     };
 
   document.body.addEventListener( 'click', function ( event ) {
-    // plus - admin
+    // BOUTON PLUS - ADMIN
     if( event.target.matches(".JSpluscounter")) {
       // Si on clique sur plus
       let uuid = event.target.dataset.uuid;
@@ -68,7 +67,7 @@ const counter = () => {
         updatePrice(uuid);
         }
     };
-    // moins - admin
+    // BOUTON MOINS - ADMIN
     if( event.target.matches(".JSminuscounter")) {
       let uuid = event.target.dataset.uuid;
       let inputEl = document.querySelectorAll('input[data-uuid="' + uuid + '"]')[0];
@@ -77,33 +76,41 @@ const counter = () => {
         updatePrice(uuid);
       };
     };
-    // plus - client
+    // BOUTON PLUS - CLIENT
     if( event.target.matches(".JSpluscounterproductindex")) {
       let uuid = event.target.dataset.uuid; // uuid = data-uuid de l'élément targeté = product.id
       let ratio = ratiosQuantities[uuid]; // ratio quantity shop vs particulier
       let inputEl = document.getElementById(uuid); // inputEl = champ contenant la quantité commandée sur la carte produit
       let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0]; // inputFormEl = champ du formlaire (caché) avec la quantité
       let productRemainingQuantity = remainingQuantities[uuid];
-      if (productRemainingQuantity > inputEl.innerText) { // on vérifie que la quantité restante est supérieure à l'input de l'utilisateur
+
+      // on vérifie que la quantité restante est supérieure à l'input de l'utilisateur
+      if (productRemainingQuantity > inputEl.innerText) {
         inputEl.innerText = parseInt(inputEl.innerText) + 1;
         // inputEl.innerText = la quantité sélectionnée jusque là qu'on incrémente de 1
         inputFormEl.value = parseInt(inputFormEl.value) + (1 * ratio);
         // inputFormEl.value = la quantité du formulaire caché qu'on incrémente de 1 * le ratio quantity shop vs particulier
         updatePriceProductIndex(uuid);
         }
+      // on cache le bouton plus si quantité max dispo atteinte
+      if (productRemainingQuantity == inputEl.innerText) event.target.setAttribute("hidden", true);
     };
-    // moins - client
+
+    // BOUTON MOINS - CLIENT
     if( event.target.matches(".JSminuscounterproductindex")) {
       let uuid = event.target.dataset.uuid;
       let ratio = ratiosQuantities[uuid];
       let inputEl = document.getElementById(uuid);
-      let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0];;
+      let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0];
       if (inputEl.innerText > 0) {
         inputEl.innerText = parseInt(inputEl.innerText) - 1;
         inputFormEl.value = parseInt(inputFormEl.value) - (1 * ratio);
         updatePriceProductIndex(uuid);
       };
-    };
+      // on réaffiche le bouton plus (cf. plus haut il peut être caché si quantité max atteinte)
+      let plusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[0];
+      plusButtonEl.removeAttribute("hidden");
+    }
 
     // product description - client
     if( event.target.matches(".JSproductname")) {
