@@ -41,7 +41,7 @@ const counter = () => {
       for (let i = 0; i < allPricesEl.length; i++) {
         allPricesEl[i].style.visibility = "visible"; // obligé de toggler visible le prix sur la carte sinon calcul ci-dessous ne fonctionne pas
         totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
-        allPricesEl[i].style.visibility = "hidden"; // on retoggle hidden le prix de chacune des cartes produit
+        if (allPricesEl[i].innerText == 0) allPricesEl[i].style.visibility = "hidden"; //  on retoggle hidden le prix de chacune des cartes produit si nul
       }
       let totalpriceEl = document.getElementById("totalpriceproductindex");
       totalpriceEl.innerText = totalPrice;

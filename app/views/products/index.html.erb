@@ -178,7 +178,7 @@
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
-            <p class="semi-small-text-bold <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
+            <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
               <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
                 de
                   <%= product.display_unit_measure_quantity(current_client, @type_price, product) %>
