@@ -190,9 +190,9 @@
         <% if (current_client && current_client.role != "admin") %>
           <div class="card-product-order-input">
               <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
-              <span hidden class="green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
-              <i class="fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>" hidden></i>
-              <span hidden class="JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
+              <span class="hidden green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
+              <i class="hidden fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
+              <span class="hidden JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
           </div>
         <% end %>
 
