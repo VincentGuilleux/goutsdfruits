@@ -40,10 +40,12 @@
                   label: 'Type de client',
                   collection: Client.segments_new_client%> <!-- Utiliser Client.segments pour le formulaire de création maraîcher -->
       <%= f.input :amap,
-                  required: false,
+                  required: true,
                   autofocus: true,
                   label: "Nom de l'AMAP",
-                  collection: Client.amap%>
+                  collection: Client.amap,
+                  selected: "Non-membre"
+                  %>
       <%= f.input :password,
                   required: true,
                   hint: (t('devise.shared.minimum_password_length', count: @minimum_password_length) if @minimum_password_length),
