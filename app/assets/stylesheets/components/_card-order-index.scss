@@ -165,10 +165,19 @@
     outline: 0;
     color: $white;
   }
+  span {
+    outline: 0;
+    color: $white;
+  }
   &:hover {
     background-color: $green_light;
     transition: 0.3s ease;
     a {
+      color: $white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    span {
       color: $white;
       text-decoration: none;
       transition: 0.3s ease;
@@ -191,10 +200,19 @@
     outline: 0;
     color: $green_light;
   }
+  span {
+    outline: 0;
+    color: $green_light;
+  }
   &:hover {
     background-color: $green_light;
     transition: 0.3s ease;
     a {
+      color: white;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+    span {
       color: white;
       text-decoration: none;
       transition: 0.3s ease;
