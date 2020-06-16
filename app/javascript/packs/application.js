@@ -33,6 +33,17 @@ import { dropdownFruit, dropdownCategory, dropdownType, dropdownPrice, dropdownS
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
 
+// event listener sur toutes les classes more-info qui déclenchent sur un click l'affichagae du contenu de la balise title
+// utile pour mobiles => cf. https://stackoverflow.com/questions/12539006/tooltips-for-mobile-browsers
+$(".more-info").click(function () {
+    var $title = $(this).find(".title");
+    if (!$title.length) {
+        $(this).append('<span class="title">' + $(this).attr("title") + '</span>');
+    } else {
+        $title.remove();
+    }
+});
+
 // en lien avec application_helper lignes 29 et suivantes (création d'order_lines_id temporaires)
 document.addEventListener('turbolinks:load', () => {
   $("[data-form-prepend]").click(function(e) {

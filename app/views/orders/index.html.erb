@@ -79,10 +79,10 @@
             </div>
           </div>
 
-          <!-- MIDDLE : date de livraison / lieu de livraison -->
+          <!-- MIDDLE : (date de livraison /) lieu de livraison -->
           <div class="col-12 col-lg-3">
             <div class="delivery-index">
-                <p class="middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %> </p>
+                <p class="more-info middle-text grey-medium font-italic" title="Lieu de livraison"> <%= order.delivery_place.name %> </p>
             </div>
           </div>
 
@@ -157,58 +157,58 @@
 
                     <% if order.status=="pending" %>
 
-                      <div class="action-picto-index waiting-action-index" title="En préparation">
-                        <%= link_to "", "", class: "fas fa-clock"%>
+                      <div class="more-info action-picto-index waiting-action-index" title="En préparation">
+                        <span class="fas fa-clock"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index" title="Non livrée">
-                        <%= link_to "", "", class: "fas fa-truck"%>
+                      <div class="more-info action-picto-index" title="Non livrée">
+                        <span class="fas fa-truck"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index" title="Non payée">
-                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      <div class="more-info action-picto-index" title="Non payée">
+                        <span class="fas fa-receipt"></span>
                       </div>
 
                     <% elsif order.status =="prepared" %>
 
-                      <div class="action-picto-index done-action-index" title="Prête">
-                        <%= link_to "", "", class: "fas fa-check"%>
+                      <div class="more-info action-picto-index done-action-index" title="Prête">
+                        <span class="fas fa-check"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index waiting-action-index" title="En cours de livraison">
-                        <%= link_to "", "", class: "fas fa-truck"%>
+                      <div class="more-info action-picto-index waiting-action-index" title="En cours de livraison">
+                        <span class="fas fa-truck"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index" title="Non payée">
-                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      <div class="more-info action-picto-index" title="Non payée">
+                        <span class="fas fa-receipt"></span>
                       </div>
 
                     <% elsif order.status =="delivered"%>
 
-                      <div class="action-picto-index done-action-index" title="Prête">
-                        <%= link_to "", "", class: "fas fa-check"%>
+                      <div class="more-info action-picto-index done-action-index" title="Prête">
+                        <span class="fas fa-check"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index done-action-index" title="Livrée">
-                        <%= link_to "", "", class: "fas fa-shipping-fast"%>
+                      <div class="more-info action-picto-index done-action-index" title="Livrée">
+                        <span class="fas fa-shipping-fast"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index waiting-action-index" title="Commande à payer">
-                        <%= link_to "", "", class: "fas fa-receipt"%>
+                      <div class="more-info action-picto-index waiting-action-index" title="Commande à payer">
+                        <span class="fas fa-receipt"></span>
                       </div>
 
                     <% else %>
 
-                      <div class="action-picto-index done-action-index" title="Prête">
-                        <%= link_to "", "", class: "fas fa-check"%>
+                      <div class="more-info action-picto-index done-action-index" title="Prête">
+                        <span class="fas fa-check"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index done-action-index" title="Livrée">
-                        <%= link_to "", "", class: "fas fa-shipping-fast"%>
+                      <div class="more-info action-picto-index done-action-index" title="Livrée">
+                        <span class="fas fa-shipping-fast"></span>
                       </div>
                       <div class="underline-index"></div>
-                      <div class="action-picto-index done-action-index" title="Payée">
-                        <%= link_to "", "", class: "fas fa-euro-sign"%>
+                      <div class="more-info action-picto-index done-action-index" title="Payée">
+                        <span class="fas fa-euro-sign"></span>
                       </div>
 
                     <% end %>

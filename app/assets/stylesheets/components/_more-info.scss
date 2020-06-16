@@ -1,0 +1,12 @@
+.more-info {
+  position: relative;
+}
+
+.more-info .title {
+  position: absolute;
+  top: 20px;
+  background: $grey_very_light;
+  padding: 4px;
+  left: 0;
+  white-space: nowrap;
+}
