@@ -128,6 +128,7 @@ class OrdersController < ApplicationController
       generate_order_line_product_lots
       send_mail_new_order
       redirect_to orders_path
+      flash[:notice] = "Votre commande a bien été enregistrée !"
     else
       render :new
     end

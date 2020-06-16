@@ -8,6 +8,9 @@ class ProductsController < ApplicationController
     @order = Order.new #Création de commande depuis l'index client donc il faut instancier un nouvel order
     @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
     # @products = Product.includes(:product_lots, :photo_attachment).find([xxx,yyy]) utile pour test sur magasin
+
+    # FILTRAGE DES PRODUITS AFFICHES
+
     # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
     # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
     # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
@@ -25,12 +28,10 @@ class ProductsController < ApplicationController
       @order.order_lines.build product_id: product.id, quantity: 0
     end
 
-     # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
+    # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
     @type_price = params[:price] || "non-magasin"
 
-    # TRI D'AFFICHAGE DES PRODUITS
-
-    # on n'affiche que les produits avec quantités > 0 (hormis pour profil admin)
+    # Affichage des produits avec quantités > 0 (hormis pour profil admin)
     if current_client && current_client.segment == 'magasin'
       @products = @products.to_a.select { |product| product.total_remaining_quantity_shop > 0}
     end
@@ -43,6 +44,8 @@ class ProductsController < ApplicationController
       @products = @products.to_a.reject {|product| product.unit_price_cents_shop.nil?}
     end
 
+    # TRI D'AFFICHAGE DES PRODUITS
+
     # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"
       @products = @products.sort_by do |product|
@@ -52,6 +55,11 @@ class ProductsController < ApplicationController
       @products = @products.sort_by do |product|
         product.total_remaining_quantity
       end
+    end
+
+    #flash alert si pas de produits dispo
+    unless current_client && current_client.role == "admin"
+      flash.now[:notice] = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection" if @products.length == 0
     end
 
   end
