@@ -42,6 +42,7 @@ asphodele = DeliveryPlace.create!(name: "Asphodèle", email: "asphodele79@gmail.
 court_circuiteurs = DeliveryPlace.create!(name: "Court Circuiteurs", email: "courts-circuiteurs@netcourrier.com", address: "les Maligrettes" ,post_code: "79100", city: "Thouars", timeslot: "à préciser")
 marche_legumes_and_co = DeliveryPlace.create!(name: "Légumes and Co", email: "https://fr-fr.facebook.com/legumes.and.co/", address: "La Gorère" ,post_code: "79140", city: "Combrand", timeslot: "le jeudi de 17h à 19h30")
 marche_producteurs = DeliveryPlace.create!(name: "Marché producteurs", address: "sous les Halles" ,post_code: "79140", city: "Cerizay", timeslot: "le samedi 9h à 12h30")
+magasin_generique = DeliveryPlace.create!(name: "Magasin", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 nondefini = DeliveryPlace.create!(name: "A définir", email: "Non défini", address: "Non défini" ,post_code: "Non défini", city: "Non défini", timeslot: "Non défini")
 
 puts "      |    /|     - delivery places done"

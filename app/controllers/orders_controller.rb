@@ -161,7 +161,9 @@ class OrdersController < ApplicationController
 
   def create_order_delivery_place
     if @order.delivery_place_id.nil? # nécessaire car si commande admin delivery_place déjà définie
-      if @current_client.amap.nil? || @current_client.amap =="Non-membre"
+      if @current_client.segment == "magasin"
+        @order.delivery_place_id = DeliveryPlace.where("name = ?", "Magasin").first.id
+      elsif @current_client.amap.nil? || @current_client.amap == "Non-membre"
         @order.delivery_place_id = DeliveryPlace.where("name = ?", "Ferme").first.id
       else
         @order.delivery_place_id = DeliveryPlace.where("name = ?", @current_client.amap).first.id
