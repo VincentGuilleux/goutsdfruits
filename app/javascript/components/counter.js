@@ -94,6 +94,9 @@ const counter = () => {
         }
       // on cache le bouton plus si quantité max dispo atteinte
       if (productRemainingQuantity == inputEl.innerText) event.target.setAttribute("hidden", true);
+      // on affiche le bouton - dès qu'on clique sur le bouton plus
+      let minusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[1];
+      minusButtonEl.removeAttribute("hidden");
     };
 
     // BOUTON MOINS - CLIENT
@@ -102,14 +105,18 @@ const counter = () => {
       let ratio = ratiosQuantities[uuid];
       let inputEl = document.getElementById(uuid);
       let inputFormEl = document.querySelectorAll('input[data-product-id="' + uuid + '"]')[0];
+      // décrémentation
       if (inputEl.innerText > 0) {
         inputEl.innerText = parseInt(inputEl.innerText) - 1;
         inputFormEl.value = parseInt(inputFormEl.value) - (1 * ratio);
         updatePriceProductIndex(uuid);
       };
+      // on cache le bouton moins si quantité 0
+      if (inputEl.innerText == 0 ) event.target.setAttribute("hidden", true);
       // on réaffiche le bouton plus (cf. plus haut il peut être caché si quantité max atteinte)
       let plusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[0];
       plusButtonEl.removeAttribute("hidden");
+
     }
 
     // product description - client
