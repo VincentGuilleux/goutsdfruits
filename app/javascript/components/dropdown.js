@@ -1,13 +1,21 @@
 // DROPDOWNS PRODUCT INDEX
 // Les méthodes ci-dessous écoutent les clicks sur chacun des dropdown menus et renvoient la valeur cliquée
+
+const getdropdownids = () => {
+  const product_fruit = document.getElementById("product_fruit"); // target l'id du champ fruit (le "titre" du Dropdown Menu)
+  const product_category = document.getElementById("product_category");
+  const product_type = document.getElementById("product_type");
+};
+
 const dropdownFruit = () => {
   const fruit = document.getElementById("DropdownFruit");
   if (!fruit) return
 
   fruit.addEventListener("click", (event) => {
-    const product_fruit_value = (event.target.dataset.name) // récupère le fruit sur lequel l'utilisateur a cliqué
-    const product_fruit = document.getElementById("product_fruit"); // on target ici l'id du champ fruit
-    product_fruit.innerText = product_fruit_value // on assigne au champ ci-dessus le nom du fruit sur lequel l'utilisateur a cliqué afin de mettre à jour l'HTML
+    const product_fruit_value = (event.target.dataset.name) // stocke le fruit sur lequel l'utilisateur a cliqué
+    getdropdownids
+    product_fruit.innerText = product_fruit_value // on remplace dans l'HTML le titre du Dropdown menu par la valeur cliquée
+    toggling();
     url_path(); // appel à la fonction plus qui construit l'URL de recherche
   });
 };
@@ -18,7 +26,7 @@ const dropdownCategory = () => {
 
   category.addEventListener("click", (event) => {
     const product_category_value = (event.target.dataset.name)
-    const product_category = document.getElementById("product_category");
+    getdropdownids
     product_category.innerText = product_category_value
     url_path();
   });
@@ -30,7 +38,7 @@ const dropdownType = () => {
 
   type.addEventListener("click", (event) => {
     const product_type_value = (event.target.dataset.name)
-    const product_type = document.getElementById("product_type");
+    getdropdownids
     product_type.innerText = product_type_value
     url_path();
   });
@@ -48,9 +56,26 @@ const dropdownPrice = () => {
   });
 };
 
+const toggling = () => {
+  $(".card-product").each(function() {
+    console.log($(this).data("fruit"));
+    console.log(product_fruit.innerText);
+    console.log($(this));
+    this.style.backgroundColor="RED";
+    if ($(this).data("fruit") !== product_fruit.innerText) {
+      console.log("to be hidden");
+      $(this).toggleClass("hidden");
+    }
+    else { console.log("visible");
+    };
+  });
+};
+
 const url_path = () => {
 const url = window.location.origin + window.location.pathname + "?" + fruitRequest() + categoryRequest() + typeRequest() + priceRequest() ;
-window.location.href = url;
+history.pushState("TO BE UPDATED", "GoutsdFruits", url); // WHY DOES IT ADD A DIESE AT THE END OF THE URL ???
+// window.location.href = url;
+// https://stackoverflow.com/questions/47583856/window-location-href-vs-history-pushstate-which-to-use#:~:text=location.,the%20other%20hand%2C%20what%20history.&text=pushState()%20changes%20the%20referrer,after%20you%20change%20the%20state.
 };
 
 const fruitRequest = () => {
