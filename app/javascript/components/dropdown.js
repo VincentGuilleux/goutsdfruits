@@ -5,6 +5,7 @@ const getdropdownids = () => {
   const product_fruit = document.getElementById("product_fruit"); // target l'id du champ fruit (le "titre" du Dropdown Menu)
   const product_category = document.getElementById("product_category");
   const product_type = document.getElementById("product_type");
+  const product_price = document.getElementById("product_price");
 };
 
 const dropdownFruit = () => {
@@ -13,11 +14,10 @@ const dropdownFruit = () => {
 
   fruit.addEventListener("click", (event) => {
     const product_fruit_value = (event.target.dataset.name) // stocke le fruit sur lequel l'utilisateur a cliqué
-    getdropdownids
     product_fruit.innerText = product_fruit_value // on remplace dans l'HTML le titre du Dropdown menu par la valeur cliquée
+    getdropdownids
     toggling(); // fonction qui itère sur chaque carte produit pour l'afficher ou non
     event.preventDefault(); // vient prévenir le rechargement de la page par le navigateur (du au fait que le dropdown menu a une balise a avec href)
-   //  url_path(); // appel à la fonction plus qui construit l'URL de recherche
   });
 };
 
@@ -27,11 +27,10 @@ const dropdownCategory = () => {
 
   category.addEventListener("click", (event) => {
     const product_category_value = (event.target.dataset.name)
-    getdropdownids
     product_category.innerText = product_category_value
+    getdropdownids
     toggling();
     event.preventDefault();
-    // url_path();
   });
 };
 
@@ -41,11 +40,10 @@ const dropdownType = () => {
 
   type.addEventListener("click", (event) => {
     const product_type_value = (event.target.dataset.name)
-    getdropdownids
     product_type.innerText = product_type_value
+    getdropdownids
     toggling();
     event.preventDefault();
-    // url_path();
   });
 };
 
@@ -55,14 +53,24 @@ const dropdownPrice = () => {
 
   price.addEventListener("click", (event) => {
     const product_price_value = (event.target.dataset.name)
-    const product_price = document.getElementById("product_price");
+    getdropdownids
     product_price.innerText = product_price_value
-    url_path();
+    const example = document.querySelectorAll('[data-priceshop]')[0];
+    // console.log(example.innerText);
+    const shopvalue = document.querySelectorAll('[data-priceshop]')[0].dataset.priceshop;
+    // console.log(shopvalue);
+    $(".card-product").each(function() {
+      console.log($(this).data("priceshop"));
+      // if (product_price_value === "magasin") example.innerText =
+    });
+    event.preventDefault();
   });
 };
 
 const clearFilters = () => {
   const clearFilters = document.getElementById("clear_filters");
+  if (!clearFilters) return
+
   clearFilters.addEventListener("click", (event) => {
     $(".card-product").each(function() {
       this.style.display = "";

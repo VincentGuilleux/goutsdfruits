@@ -163,7 +163,7 @@
             <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
-                <p data-price-shop="<%= product.display_price(current_client, 'magasin') %>" data-price-non-shop="<%= product.display_price(current_client, 'non-magasin') %>"><%= product.display_price(current_client, @type_price) %> €
+                <p data-priceshop="<%= product.display_price(current_client, 'magasin') %>" data-pricenonshop="<%= product.display_price(current_client, 'non-magasin') %>"><%= product.display_price(current_client, @type_price) %> €
                 <sup>
                   <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
                   /
