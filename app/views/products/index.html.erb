@@ -101,7 +101,8 @@
           </div>
         <% end %>
         <!-- Reset filters -->
-        <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
+        <p id="clear_filters" class="btn middle-text-resp grey-medium nopnom">Effacer les filtres</p>
+        <%#= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
 
       <% if client_signed_in? && current_client.role == "admin" %>
@@ -162,7 +163,7 @@
             <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
-                <p><%= product.display_price(current_client, @type_price) %> €
+                <p data-price-shop="<%= product.display_price(current_client, 'magasin') %>" data-price-non-shop="<%= product.display_price(current_client, 'non-magasin') %>"><%= product.display_price(current_client, @type_price) %> €
                 <sup>
                   <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
                   /
