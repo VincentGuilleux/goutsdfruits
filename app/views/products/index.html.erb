@@ -101,7 +101,8 @@
           </div>
         <% end %>
         <!-- Reset filters -->
-        <%= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
+        <p id="clear_filters" class="btn middle-text-resp grey-medium nopnom">Effacer les filtres</p>
+        <%#= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
 
       <% if client_signed_in? && current_client.role == "admin" %>
@@ -137,7 +138,7 @@
   <div class="container-index-products">
     <% @products.each do |product| %>
       <% uuid = product.id %>
-        <div class="card-product">
+        <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
         <% if product.photo.attached? %>
           <% if client_signed_in? && current_client.role == "admin" %>
             <%= link_to product_path(product) do %>
@@ -162,7 +163,7 @@
             <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p class="semi-small-text-bold green">
-                <p><%= product.display_price(current_client, @type_price) %> €
+                <p data-price-shop="<%= product.display_price(current_client, 'magasin') %>" data-price-non-shop="<%= product.display_price(current_client, 'non-magasin') %>"><%= product.display_price(current_client, @type_price) %> €
                 <sup>
                   <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
                   /
@@ -190,9 +191,9 @@
         <% if (current_client && current_client.role != "admin") %>
           <div class="card-product-order-input">
               <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
-              <span class="hidden green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
-              <i class="hidden fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
-              <span class="hidden JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
+              <span class="hidden-initially green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
+              <i class="hidden-initially fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
+              <span class="hidden-initially JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
           </div>
         <% end %>
 

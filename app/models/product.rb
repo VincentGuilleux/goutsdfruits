@@ -135,7 +135,11 @@ class Product < ApplicationRecord
       else
         unit_price_cents
       end
-    price/100.to_f
+    if price
+      price/100.to_f
+    else
+      nil # couvre le cas où il n'y a pas de unit_price_cent_shop (cas des produits non vendus aux magasins)
+    end
   end
 
   def display_quantity(user, type_price, product)
