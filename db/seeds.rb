@@ -155,20 +155,20 @@ puts "       |(__)|   - product 2/4"
 #les sorbets
 
 product23 = Product.new(name:"Sorbet de fraises", description:"Préparé avec des fraises bien mûres, le sorbet doit être sorti du congélateur 10 minutes avant sa dégustation pour révéler sa texture onctueuse.", unit_price_cents: 700, unit_price_cents_shop: 609, unit_type:"pot", unit_measure:"cl", unit_measure_quantity:"50", unit_measure_quantity_shop:"50", product_fruit: "fraise", product_type:"sorbet", product_category:"Gourmandise")
-product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbets.jpg')), filename: 'sorbets.jpg', content_type: 'image/jpg')
+product23.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sorbet_fraises.jpg')), filename: 'Sorbet_fraises.jpg', content_type: 'image/jpg')
 product23.save!
 
-product24 = Product.new(name: "Sorbet de pêches",description: "Préparé avec des pêches bien mûres, le sorbet doit être sorti du congélateur 10 minutes avant sa dégustation pour révéler sa texture onctueuse", unit_price_cents: 700,  unit_price_cents_shop: 609, unit_type:"pot", unit_measure:"cl", unit_measure_quantity:"50", unit_measure_quantity_shop:"50", product_fruit: "pêche", product_type:"sorbet", product_category:"Gourmandise")
-product24.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg.jpg', content_type: 'image/jpg')
-product24.save! # IMAGE A UPDATER
+product24 = Product.new(name: "Sorbet de menthe",description: "Préparé avec de la menthe bien mûre, le sorbet doit être sorti du congélateur 10 minutes avant sa dégustation pour révéler sa texture onctueuse", unit_price_cents: 700,  unit_price_cents_shop: 609, unit_type:"pot", unit_measure:"cl", unit_measure_quantity:"50", unit_measure_quantity_shop:"50", product_fruit: "menthe", product_type:"sorbet", product_category:"Gourmandise")
+product24.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sorbet_menthe.jpg')), filename: 'Sorbet_menthe.jpg', content_type: 'image/jpg')
+product24.save!
 
 
 product25 = Product.new(name:"Sorbet de poires",description:"Préparé avec des poires bien mûres, le sorbet doit être sorti du congélateur 10 minutes avant sa dégustation pour révéler sa texture onctueuse.", unit_price_cents: 700, unit_price_cents_shop: 609, unit_type:"pot", unit_measure:"cl", unit_measure_quantity:"50", unit_measure_quantity_shop:"50", product_fruit: "poire", product_type:"sorbet", product_category:"Gourmandise")
-product25.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg.jpg', content_type: 'image/jpg')
-product25.save!  # IMAGE A UPDATER
+product25.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sorbet_poires.jpg')), filename: 'Sorbet_poires.jpg', content_type: 'image/jpg')
+product25.save!
 
 product26 = Product.new(name:"Sorbet de fleurs de sureau",description:"Préparé avec des fleurs de sureau, le sorbet doit être sorti du congélateur 10 minutes avant sa dégustation pour révéler sa texture onctueuse.", unit_price_cents: 700, unit_price_cents_shop: 609, unit_type:"pot", unit_measure:"cl", unit_measure_quantity:"50", unit_measure_quantity_shop:"50", product_fruit: "sureau", product_type:"sorbet", product_category:"Gourmandise")
-product26.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/sorbetmures.jpg')), filename: 'sorbetmures.jpg', content_type: 'image/jpg')
+product26.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/Sorbet_sureau.jpg')), filename: 'Sorbet_sureau.jpg', content_type: 'image/jpg')
 product26.save!  # IMAGE A UPDATER
 
 #les pâtes à tartiner
