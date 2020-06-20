@@ -113,12 +113,20 @@ class Product < ApplicationRecord
     ["bonbon", "compote", "coulis", "fruit frais", "fruit au sirop", "gelée", "pâte à tartiner", "sirop", "sorbet"]
   end
 
+  def self.types_to_display
+    Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
+  end
+
   def self.categories
     ["Fruit frais", "Gourmandise"]
   end
 
   def self.fruits
     ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "noisette", "poire", "pomme", "prune", "pêche", "raisin", "rhubarbe", "sureau"]
+  end
+
+  def self.fruits_to_display
+    Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }
   end
 
   # les méthodes ci-dessous répondent à une logique d'affichage uniquement donc pourraient être mises dans un helper plutôt

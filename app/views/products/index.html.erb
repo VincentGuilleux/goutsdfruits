@@ -58,7 +58,7 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownFruit" class="dropdown-content">
-            <% Product.fruits.each do |fruit| %>
+            <% Product.fruits_to_display.each do |fruit| %>
               <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
             <% end %>
           </div>
@@ -82,7 +82,7 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
-          <% Product.types.each do |type| %>
+          <% Product.types_to_display.each do |type| %>
             <a data-name="<%= type %>" href="#"><%= type %></a>
           <% end %>
           </div>
