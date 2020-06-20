@@ -53,15 +53,16 @@ const dropdownPrice = () => {
 
   price.addEventListener("click", (event) => {
     const product_price_value = (event.target.dataset.name)
-    getdropdownids
     product_price.innerText = product_price_value
-    const example = document.querySelectorAll('[data-priceshop]')[0];
-    // console.log(example.innerText);
-    const shopvalue = document.querySelectorAll('[data-priceshop]')[0].dataset.priceshop;
-    // console.log(shopvalue);
-    $(".card-product").each(function() {
-      console.log($(this).data("priceshop"));
-      // if (product_price_value === "magasin") example.innerText =
+    getdropdownids
+    const displayPricesEl = document.querySelectorAll('[data-priceshop]'); // node list de tous les data-price-shop
+    displayPricesEl.forEach((displayPrice) => {
+      if (product_price.innerText === "magasin") {
+        displayPrice.innerText = displayPrice.dataset.priceshop;
+      }
+      else {displayPrice.innerText = displayPrice.dataset.pricenonshop;
+      };
+
     });
     event.preventDefault();
   });
@@ -78,6 +79,12 @@ const clearFilters = () => {
     product_fruit.innerText = 'Fruit';
     product_category.innerText = 'Catégorie';
     product_type.innerText = 'Type';
+    product_price.innerText = 'Prix';
+    // on affiche les prix non-magasin (pourrait être mutualisé avec fonction dropdownPrice ci-dessus)
+    const displayPricesEl = document.querySelectorAll('[data-priceshop]');
+    displayPricesEl.forEach((displayPrice) => {
+      displayPrice.innerText = displayPrice.dataset.pricenonshop;
+    });
     event.preventDefault();
   });
 };
