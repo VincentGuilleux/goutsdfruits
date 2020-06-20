@@ -5,6 +5,7 @@ const getdropdownids = () => {
   const product_fruit = document.getElementById("product_fruit"); // target l'id du champ fruit (le "titre" du Dropdown Menu)
   const product_category = document.getElementById("product_category");
   const product_type = document.getElementById("product_type");
+  const product_price = document.getElementById("product_price");
 };
 
 const dropdownFruit = () => {
@@ -13,11 +14,10 @@ const dropdownFruit = () => {
 
   fruit.addEventListener("click", (event) => {
     const product_fruit_value = (event.target.dataset.name) // stocke le fruit sur lequel l'utilisateur a cliqué
-    getdropdownids
     product_fruit.innerText = product_fruit_value // on remplace dans l'HTML le titre du Dropdown menu par la valeur cliquée
+    getdropdownids
     toggling(); // fonction qui itère sur chaque carte produit pour l'afficher ou non
     event.preventDefault(); // vient prévenir le rechargement de la page par le navigateur (du au fait que le dropdown menu a une balise a avec href)
-   //  url_path(); // appel à la fonction plus qui construit l'URL de recherche
   });
 };
 
@@ -27,11 +27,10 @@ const dropdownCategory = () => {
 
   category.addEventListener("click", (event) => {
     const product_category_value = (event.target.dataset.name)
-    getdropdownids
     product_category.innerText = product_category_value
+    getdropdownids
     toggling();
     event.preventDefault();
-    // url_path();
   });
 };
 
@@ -41,11 +40,10 @@ const dropdownType = () => {
 
   type.addEventListener("click", (event) => {
     const product_type_value = (event.target.dataset.name)
-    getdropdownids
     product_type.innerText = product_type_value
+    getdropdownids
     toggling();
     event.preventDefault();
-    // url_path();
   });
 };
 
@@ -55,14 +53,25 @@ const dropdownPrice = () => {
 
   price.addEventListener("click", (event) => {
     const product_price_value = (event.target.dataset.name)
-    const product_price = document.getElementById("product_price");
     product_price.innerText = product_price_value
-    url_path();
+    getdropdownids
+    const displayPricesEl = document.querySelectorAll('[data-priceshop]'); // node list de tous les data-price-shop
+    displayPricesEl.forEach((displayPrice) => {
+      if (product_price.innerText === "magasin") {
+        displayPrice.innerText = displayPrice.dataset.priceshop;
+      }
+      else {displayPrice.innerText = displayPrice.dataset.pricenonshop;
+      };
+
+    });
+    event.preventDefault();
   });
 };
 
 const clearFilters = () => {
   const clearFilters = document.getElementById("clear_filters");
+  if (!clearFilters) return
+
   clearFilters.addEventListener("click", (event) => {
     $(".card-product").each(function() {
       this.style.display = "";
@@ -70,6 +79,12 @@ const clearFilters = () => {
     product_fruit.innerText = 'Fruit';
     product_category.innerText = 'Catégorie';
     product_type.innerText = 'Type';
+    product_price.innerText = 'Prix';
+    // on affiche les prix non-magasin (pourrait être mutualisé avec fonction dropdownPrice ci-dessus)
+    const displayPricesEl = document.querySelectorAll('[data-priceshop]');
+    displayPricesEl.forEach((displayPrice) => {
+      displayPrice.innerText = displayPrice.dataset.pricenonshop;
+    });
     event.preventDefault();
   });
 };
