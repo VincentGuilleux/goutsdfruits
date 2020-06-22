@@ -7,7 +7,7 @@ en:
       send_instructions: "You will receive an email with instructions for how to confirm your email address in a few minutes."
       send_paranoid_instructions: "If your email address exists in our database, you will receive an email with instructions for how to confirm your email address in a few minutes."
     failure:
-      already_authenticated: "You are already signed in."
+      already_authenticated: "You are already sigwned in."
       inactive: "Your account is not activated yet."
       invalid: "Invalid %{authentication_keys} or password."
       locked: "Your account is locked."
@@ -18,15 +18,15 @@ en:
       unconfirmed: "You have to confirm your email address before continuing."
     mailer:
       confirmation_instructions:
-        subject: "Confirmation instructions"
+        subject: "goutsdfruits.fr - Confirmation instructions"
       reset_password_instructions:
-        subject: "Reset password instructions"
+        subject: "goutsdfruits.fr - Reset password instructions"
       unlock_instructions:
-        subject: "Unlock instructions"
+        subject: "goutsdfruits.fr - Unlock instructions"
       email_changed:
-        subject: "Email Changed"
+        subject: "goutsdfruits.fr - Email Changed"
       password_change:
-        subject: "Password Changed"
+        subject: "goutsdfruits.fr - Password Changed"
     omniauth_callbacks:
       failure: "Could not authenticate you from %{kind} because \"%{reason}\"."
       success: "Successfully authenticated from %{kind} account."
