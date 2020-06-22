@@ -90,6 +90,9 @@ const clearFilters = () => {
 };
 
 const toggling = () => {
+  let productCardsHiddenCounter = 0;
+  let ProductNumber = $(".card-product").length;
+  console.log(ProductNumber);
   $(".card-product").each(function() {
     if (
       ($(this).data("fruit")    === product_fruit.innerText    || product_fruit.innerText === 'Fruit') &&
@@ -99,8 +102,11 @@ const toggling = () => {
       this.style.display = "";
     }
     else { this.style.display = "none";
+    productCardsHiddenCounter++;
     };
   });
+  const warningEmptyFilter = document.getElementById("JSwarningemptyfilter");
+  if ($(".card-product").length === productCardsHiddenCounter) warningEmptyFilter.innerText = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection."
 };
 
 export { dropdownFruit } ;

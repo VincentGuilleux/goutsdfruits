@@ -57,10 +57,10 @@ class ProductsController < ApplicationController
       end
     end
 
-    #flash alert si pas de produits dispo
-    unless current_client && current_client.role == "admin"
-      flash.now[:notice] = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection" if @products.length == 0
-    end
+    #flash alert si pas de produits dispo // ne sert plus à rien car la page n'est plus rechargée désormais mais gérée en JS sans reload
+    # unless current_client && current_client.role == "admin"
+    #   flash.now[:notice] = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection" if @products.length == 0
+    # end
 
   end
 
