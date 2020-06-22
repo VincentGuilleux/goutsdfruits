@@ -12,7 +12,7 @@ DeliveryPlace.destroy_all
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 # 1 - Create user & clients
-user_admin = Client.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'goutsdfruits@gmail.com', phone:'0608047585', address: "L'Orgerie", post_code: "79140", city: "Le Pin", segment:"particulier", role:"admin", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+user_admin = Client.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'goutsdfruits@gmail.com', phone:'0608047585', address: "L'Orgerie", post_code: "79140", city: "Le Pin", segment:"particulier", role:"admin", password: 'azerty99!', amap: "Non-membre", confirmed_at: "2020-03-23")
 user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
 user_admin.save!
 
