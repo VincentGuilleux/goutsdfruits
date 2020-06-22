@@ -18,15 +18,15 @@ fr:
       unconfirmed: "Vous devez valider votre compte pour continuer."
     mailer:
       confirmation_instructions:
-        subject: "Instructions de confirmation"
+        subject: "goutsdfruits.fr - Instructions de confirmation"
       reset_password_instructions:
-        subject: "Instructions pour changer le mot de passe"
+        subject: "goutsdfruits.fr - Instructions pour changer le mot de passe"
       unlock_instructions:
-        subject: "Instructions pour déverrouiller le compte"
+        subject: "goutsdfruits.fr - Instructions pour déverrouiller le compte"
       email_changed:
-        subject: "Votre adresse e-mail a été modifiée avec succès"
+        subject: "goutsdfruits.fr - Votre adresse e-mail a été modifiée avec succès"
       password_change:
-        subject: "Votre mot de passe a été modifié avec succès"
+        subject: "goutsdfruits.fr - Votre mot de passe a été modifié avec succès"
     omniauth_callbacks:
       failure: "Nous n'avons pas pu vous authentifier via %{kind} : '%{reason}'."
       success: "Authentifié avec succès via %{kind}."

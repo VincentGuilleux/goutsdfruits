@@ -58,10 +58,11 @@ SimpleForm.setup do |config|
     b.optional :min_max
     b.optional :readonly
     b.use :label
+    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
     b.use :input, class: 'form-control', error_class: 'is-invalid'
     # , valid_class: 'is-valid' cf https://stackoverflow.com/questions/51848531/rails-simple-form-gem-is-adding-a-green-border-to-inputs-that-are-pre-populated
     b.use :full_error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
-    b.use :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
+
   end
 
   # vertical input for boolean
