@@ -99,6 +99,8 @@
               <a data-name="magasin" href="#">magasin</a>
             </div>
           </div>
+        <% else %>
+          <div id="product_price" style="display:none;"></div> <!-- Div masquée avec product_price pour les besoins de dropdown.JS fonction clearFilters qui reset le product_price.innertext donc besoin de cet id même si non utile seulemnt en admin -->
         <% end %>
         <!-- Reset filters -->
         <p id="clear_filters" class="btn middle-text-resp grey-medium nopnom">Effacer les filtres</p>
@@ -138,7 +140,7 @@
   <div class="container-index-products">
     <% @products.each do |product| %>
       <% uuid = product.id %>
-        <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
+      <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
         <% if product.photo.attached? %>
           <% if client_signed_in? && current_client.role == "admin" %>
             <%= link_to product_path(product) do %>
@@ -198,8 +200,12 @@
           </div>
         <% end %>
 
-      </div>
+      </div> <!-- Card-product -->
     <% end %> <!-- Fin de l'itération sur les produits -->
   </div>
 
+</div>
+
+<div class="main-container">
+  <span id="JSwarningemptyfilter" class="font-italic pl-5"></span>
 </div>
