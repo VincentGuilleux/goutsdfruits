@@ -20,8 +20,21 @@
       </div>
     </div>
 
+    <!-- AMAP filter -->
+    <div id="client_amap" class="middle-text grey-medium mr5">
+      <%= if params[:amap].present? then params[:amap] else 'Amap' end %>
+    </div>
+    <div class="dropdown">
+      <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
+      <div id="DropdownAmap" class="dropdown-content">
+        <% Client.amap.each do |amap| %>
+          <a data-name="<%= amap %>" href="#"><%= amap %></a>
+        <% end %>
+      </div>
+    </div>
+
     <!-- Reset filters -->
-    <%= link_to "Effacer le filtre", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
+    <%= link_to "Effacer les filtres", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
   </div>
 <!--   <div class="add-new">
     <%#= link_to new_client_path do %>
@@ -52,6 +65,10 @@
         <p class="semi-small-text-bold"><%= client.city %></p>
         <p class="small-text grey-medium client-index-details"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
         <p class="small-text grey-medium client-index-details"><%= client.email %></p>
+        <% if client.amap != "Non-membre" %>
+          <p class="small-text grey-medium client-index-details"><%= client.amap %></p>
+        <% end %>
+
       </div>
     </div>
   <% end %>
