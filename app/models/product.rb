@@ -96,10 +96,6 @@ class Product < ApplicationRecord
   end
 
   # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE PRODUITS (unités, mesures...)
-   # la méthode commentée ci-dessous initiale permettait d'itérer pour chaque produit, les doublons sont  éliminés grâce au .uniq. &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
-  #  def self.unit_measures
-  #   Product.all.map(&:unit_measure).uniq.sort_by { |word| word.downcase }
-  # end
 
   def self.units
     ["barquette", "bocal", "bouteille", "pot", "sachet"]
@@ -116,6 +112,8 @@ class Product < ApplicationRecord
   def self.types_to_display
     Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
   end
+  #itération sur chaque produit, les doublons sont  éliminés grâce au .uniq.
+  # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
 
   def self.categories
     ["Fruit frais", "Gourmandise"]

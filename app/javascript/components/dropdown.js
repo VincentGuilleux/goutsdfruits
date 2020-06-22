@@ -91,8 +91,6 @@ const clearFilters = () => {
 
 const toggling = () => {
   let productCardsHiddenCounter = 0;
-  let ProductNumber = $(".card-product").length;
-  console.log(ProductNumber);
   $(".card-product").each(function() {
     if (
       ($(this).data("fruit")    === product_fruit.innerText    || product_fruit.innerText === 'Fruit') &&
@@ -168,7 +166,6 @@ const dropdownSegment = () => {
   if (!segment) return
 
   segment.addEventListener("click", (event) => {
-    console.log(event);
     const segment_value = (event.target.dataset.name)
     const segment = document.getElementById("client_segment");
     segment.innerText = segment_value
@@ -176,9 +173,16 @@ const dropdownSegment = () => {
   });
 };
 
-const url_client_path = () => {
-const url = window.location.origin + window.location.pathname + "?" + segmentRequest();
-window.location.href = url;
+const dropdownAmap = () => {
+  const amap = document.getElementById("DropdownAmap");
+  if (!amap) return
+
+  amap.addEventListener("click", (event) => {
+    const amap_value = (event.target.dataset.name)
+    const amap = document.getElementById("client_amap");
+    amap.innerText = amap_value
+    url_client_path();
+  });
 };
 
 const segmentRequest = () => {
@@ -190,7 +194,22 @@ const segment = document.getElementById("client_segment");
 return segmentQuery;
 };
 
+const amapRequest = () => {
+let amapQuery ="";
+const amap = document.getElementById("client_amap");
+    if (amap.innerText !== 'Amap') {
+      amapQuery = "&amap=" + amap.innerText
+    };
+return amapQuery;
+};
+
+const url_client_path = () => {
+const url = window.location.origin + window.location.pathname + "?" + segmentRequest() + amapRequest();
+window.location.href = url;
+};
+
 export { dropdownSegment } ;
+export { dropdownAmap } ;
 
 
 // --------------------------------------------------------------------------------
@@ -204,7 +223,6 @@ const dropdownSegmentOrders = () => {
   if (!segmentOrders) return
 
   segmentOrders.addEventListener("click", (event) => {
-    console.log(event);
     const segment_orders_value = (event.target.dataset.name)
     const segmentOrders = document.getElementById("order_client_segment");
     segmentOrders.innerText = segment_orders_value
@@ -217,7 +235,6 @@ const dropdownStatusOrders = () => {
   if (!statusOrders) return
 
   statusOrders.addEventListener("click", (event) => {
-    console.log(event);
     const status_value = (event.target.dataset.name)
     const statusOrders = document.getElementById("order_status");
     statusOrders.innerText = status_value
@@ -230,17 +247,11 @@ const dropdownDeliveryOrders = () => {
   if (!deliveryOrders) return
 
   deliveryOrders.addEventListener("click", (event) => {
-    console.log(event);
     const delivery_value = (event.target.dataset.name)
     const deliveryOrders = document.getElementById("order_delivery_place");
     deliveryOrders.innerText = delivery_value
     url_order_path();
   });
-};
-
-const url_order_path = () => {
-const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest() + orderDeliveryRequest();
-window.location.href = url;
 };
 
 const orderSegmentRequest = () => {
@@ -268,6 +279,11 @@ const deliveryOrders = document.getElementById("order_delivery_place");
       orderDeliveryQuery = "&delivery_place=" + deliveryOrders.innerText
     };
 return orderDeliveryQuery;
+};
+
+const url_order_path = () => {
+const url = window.location.origin + window.location.pathname + "?" + orderSegmentRequest() + orderStatusRequest() + orderDeliveryRequest();
+window.location.href = url;
 };
 
 export { dropdownSegmentOrders } ;
