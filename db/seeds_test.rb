@@ -12,11 +12,24 @@ DeliveryPlace.destroy_all
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 
 # 1 - Create user & clients
-user_admin = Client.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'goutsdfruits@gmail.com', phone:'0608047585', address: "L'Orgerie", post_code: "79140", city: "Le Pin", segment:"particulier", role:"admin", password: 'azerty99!', amap: "Non-membre", confirmed_at: "2020-03-23")
+user_admin = Client.create!(first_name: 'Marie', last_name: 'Gazeau', email: 'goutsdfruits@gmail.com', phone:'0608047585', address: "L'Orgerie", post_code: "79140", city: "Le Pin", segment:"particulier", role:"admin", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
 user_admin.avatar.attach(io: File.open(Rails.root.join('db/fixtures/users/madame-gazeau.jpg')), filename: 'madame-gazeau.jpg', content_type: 'image/jpg')
 user_admin.save!
 
-client1 = Client.create!(first_name: "Vincent", last_name:"Guilleux", email:"vincent.guilleux11@gmail.com", phone:"", address:"28 rue Robert Chevrier",post_code:"35200", city:"Rennes",created_at:"2020-06-22", segment:"particulier", role:"client", password: 'azerty', amap:"Non-membre", confirmed_at: "2020-06-22")
+client1 = Client.create!(first_name: "Vincent", last_name:"Guilleux", email:"vincent.guilleux11@gmail.com", phone:"0654789654", address:"Le Plessis",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", role:"client", password: 'azerty', amap:"Ine Boune Penerie", confirmed_at: "2020-03-23")
+client2 = Client.create!(first_name: "Anne", last_name:"Charbonneau", email:"anne@gmail.com", phone:"0656529654", address:"19 Avenue du Général Marigny",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier", role:"client", password: 'azerty', amap:"Bocageot", confirmed_at: "2020-03-23")
+client3 = Client.create!(first_name: "Clément", last_name:"Ferréol", email:"maud@gmail.com", phone:"0656526341", address:"La Vannelière",post_code:"79140", city:"Cerizay",created_at:"2020-03-23", segment:"particulier",  role:"client", password: 'azerty', amap:"Asphodèle", confirmed_at: "2020-03-23")
+client4 = Client.create!(first_name: "Tanguy", last_name:"Gabriaux", email:"vincent@gmail.com", phone:"0764215846", address:"3 rue des matous",post_code:"79140", city:"Combrand",created_at:"2020-03-23", segment:"particulier",  role:"client", password: 'azerty', amap: 'Court Circuiteurs', confirmed_at: "2020-03-23")
+client5 = Client.create!(first_name: "Benoît", last_name:"Peppin", email:"benoit@gmail.com", phone:"0635874598", address:"47 allées des Mimosas", post_code:"79700", city:"Saint-Amand-sur-Sèvre", created_at:"2020-03-23", segment:"particulier", role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client6 = Client.create!(first_name: "Romain", last_name:"Brault", email:"guillaume@gmail.com", phone:"0789642531", address:"rue des moines",post_code:"85700", city:"Les Châtelliers-Châteaumur", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client7 = Client.create!(first_name: "Magalie", last_name:"Chalifour", email:"magalie@gmail.com", phone:"0685469720", address:"rue des prés",post_code:"79140", city:"Belle-feuille", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client8 = Client.create!(first_name: "Claudine", last_name:"Magen", email:"claudine@gmail.com", phone:"0687649520", address:"boulevard montfeuil",post_code:"79220", city:"La bas", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client9 = Client.create!(first_name: "Dominique", last_name:"Charpie", email:"gad@gmail.com", phone:"0789654236", address:"rue adolphe le bail",post_code:"78500", city:"Loin", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client10 = Client.create!(first_name: "Mélanie", last_name:"Bouldu", email:"melanie@gmail.com", phone:"0685976433", address:"rue du disc-jokey",post_code:"79530", city:"Brest", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client11 = Client.create!(first_name: "Lucie", last_name:"Azquia", email:"lucie@gmail.com", phone:"0674548599", address:"rue des prés",post_code:"79100", city:"Breux", segment:"particulier",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client12 = Client.create!(first_name: "Marché", last_name:"des Halles", email:"marche@gmail.com", phone:"", address:"rue Brisson",post_code:"79000", city:"Niort", segment:"marché",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client13 = Client.create!(first_name: "Magasin", last_name:"Biocoop", email:"magasin@gmail.com", phone:"", address:"rue Gambetta",post_code:"44000", city:"Nantes", segment:"magasin",  role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
+client13 = Client.create!(first_name: "CE", last_name:"Intermarché", email:"intermarche@gmail.com", phone:"", address:"rue du portail",post_code:"44000", city:"Nantes", segment:"CE", role:"client", password: 'azerty', amap: "Non-membre", confirmed_at: "2020-03-23")
 
 puts "      |    /|     - user & clients done"
 
@@ -229,7 +242,91 @@ product40.save!
 
 puts "products done"
 
+# 4 - Create orders (with 4 status / pending / prepared / delivered / paid)
 
+#création de commandes fictives
+order1 = Order.create!(client_id: client2.id ,date: Date.new(2020,4,21) ,total_price_cents: 4000 ,status:"paid", payment_method:"cash", created_at:"2020-04-21", delivery_place_id: ferme.id)
+order2 = Order.create!(client_id: client3.id ,date: Date.new(2020,4,20) ,total_price_cents: 8160 ,status:"pending", created_at:"2020-04-20", delivery_place_id: gaec.id)
+#création d'une commande avec + order_lines en attente
+order3 = Order.create!(client_id: client4.id ,date: Date.new(2020,4,23) ,total_price_cents: 16200 ,status:"pending",created_at:"2020-04-23" ,pickup_date: Date.new(2020,4,25), delivery_place_id: ine_boune_penerie.id)
+order4 = Order.create!(client_id: client5.id ,date: Date.new(2020,4,22) ,total_price_cents: 3200 ,status:"prepared",created_at:"2020-04-22" ,pickup_date: Date.new(2020,4,26), delivery_place_id: court_circuiteurs.id)
+order5 = Order.create!(client_id: client6.id ,date: Date.new(2020,4,18) ,total_price_cents: 3200 ,status:"delivered",created_at:"2020-04-18",pickup_date: Date.new(2020,4,20), delivery_place_id: marche_legumes_and_co.id)
+order6 = Order.create!(client_id: client7.id ,date: Date.new(2020,5,16) ,total_price_cents: 4000 ,status:"delivered", created_at:"2020-04-16",pickup_date: Date.new(2020,5,18), delivery_place_id: marche_producteurs.id)
+
+puts "orders done"
+
+# 5 - Create order_lines
+#order1
+order_line1 = OrderLine.create!(order_id: order1.id ,product_id: product2.id, quantity: 5 ,total_price_cents: 4000)
+
+#création d'1 order avec 3 order_line  #order2
+order_line2 = OrderLine.create!(order_id: order2.id ,product_id: product2.id, quantity: 10 ,total_price_cents: 6000)
+order_line3 = OrderLine.create!(order_id: order2.id ,product_id: product3.id, quantity: 2 ,total_price_cents: 640)
+order_line4 = OrderLine.create!(order_id: order2.id ,product_id: product4.id, quantity: 4 ,total_price_cents: 1520)
+
+#création d'1 order avec 4 order_lines
+order_line5 = OrderLine.create!(order_id: order3.id ,product_id: product22.id, quantity: 1 ,total_price_cents: 4500) #petit plant
+order_line6 = OrderLine.create!(order_id: order3.id ,product_id: product23.id, quantity: 1 ,total_price_cents: 9000) #grand plant
+order_line7 = OrderLine.create!(order_id: order3.id ,product_id: product13.id, quantity: 1 ,total_price_cents: 700) # financiers
+order_line8 = OrderLine.create!(order_id: order3.id ,product_id: product12.id, quantity: 4 ,total_price_cents: 2000) # compote de pomme
+# création d'un order prepared
+order_line9 = OrderLine.create!(order_id: order4.id ,product_id: product1.id, quantity: 4 ,total_price_cents: 3200)
+# création d'un order delivered
+order_line10 = OrderLine.create!(order_id: order5.id ,product_id: product17.id, quantity: 2 ,total_price_cents: 1600)
+order_line11 = OrderLine.create!(order_id: order5.id ,product_id: product18.id, quantity: 2 ,total_price_cents: 1600)
+
+order_line12 = OrderLine.create!(order_id: order6.id ,product_id: product10.id, quantity: 2 ,total_price_cents: 1400)
+
+puts "order_lines done"
+
+# 6 - create "product_lots"
+
+product_lot1 = ProductLot.create!(product_id: product1.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20041")
+product_lot2 = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,8,15), quantity: 5, remaining_quantity: 5, lot_number: "20042")
+product_lot2b = ProductLot.create!(product_id: product2.id ,production_date: Date.new(2020,3,16) ,expiry_date: Date.new(2020,8,16), quantity: 8, remaining_quantity: 8, lot_number: "20042")
+
+# création de 2 lots pour les produits 3 & 4
+product_lot3 = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,8,20), quantity: 10, remaining_quantity: 8, lot_number: "20043")
+product_lot3bis = ProductLot.create!(product_id: product3.id ,production_date: Date.new(2020,3,21) ,expiry_date: Date.new(2020,8,21), quantity: 4, remaining_quantity: 4, lot_number: "20043")
+product_lot4 = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,25) ,expiry_date: Date.new(2020,7,25), quantity: 15, remaining_quantity: 13, lot_number: "20044")
+product_lot4bis = ProductLot.create!(product_id: product4.id ,production_date: Date.new(2020,3,26) ,expiry_date: Date.new(2020,7,26), quantity: 7, remaining_quantity: 7, lot_number: "20045")
+
+#lot avec stock faible
+product_lot5 = ProductLot.create!(product_id: product5.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2020,7,25), quantity: 50, remaining_quantity: 24, lot_number: "20046")
+product_lot6 = ProductLot.create!(product_id: product6.id ,production_date: Date.new(2020,2,25) ,expiry_date: Date.new(2021,7,25), quantity: 50, remaining_quantity: 2, lot_number: "20047")
+
+product_lot7 = ProductLot.create!(product_id: product7.id ,production_date: Date.new(2019,1,30) ,expiry_date: Date.new(2020,7,30), quantity: 50, remaining_quantity: 19, lot_number: "20048")
+product_lot8 = ProductLot.create!(product_id: product8.id ,production_date: Date.new(2019,1,31) ,expiry_date: Date.new(2020,7,31), quantity: 50, remaining_quantity: 31, lot_number: "20049")
+puts "product_lot done"
+
+#lot pour les produits 9 à 23
+product_lot9 = ProductLot.create!(product_id: product9.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,9,1), quantity: 50, remaining_quantity: 45, lot_number: "20424")
+product_lot10 = ProductLot.create!(product_id: product10.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,9,15), quantity: 15, remaining_quantity: 10, lot_number: "20050")
+
+#dont lot avec date de préremption inf à 15 jrs
+product_lot11 = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2019,4,30) ,expiry_date: Date.new(2020,6,24), quantity: 5, remaining_quantity: 5, lot_number: "20051")
+product_lot11b = ProductLot.create!(product_id: product11.id ,production_date: Date.new(2020,4,22) ,expiry_date: Date.new(2021,6,22), quantity: 7, remaining_quantity: 7, lot_number: "20052")
+
+product_lot12 = ProductLot.create!(product_id: product12.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,8,1), quantity: 50, remaining_quantity: 45, lot_number: "200412")
+product_lot13 = ProductLot.create!(product_id: product13.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,9,15), quantity: 15, remaining_quantity: 10, lot_number: "20413")
+product_lot14 = ProductLot.create!(product_id: product14.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 8, lot_number: "20414")
+product_lot15 = ProductLot.create!(product_id: product15.id ,production_date: Date.new(2020,3,1) ,expiry_date: Date.new(2020,10,1), quantity: 50, remaining_quantity: 45, lot_number: "20415")
+product_lot16 = ProductLot.create!(product_id: product16.id ,production_date: Date.new(2020,3,15) ,expiry_date: Date.new(2020,10,15), quantity: 15, remaining_quantity: 10, lot_number: "20416")
+product_lot17 = ProductLot.create!(product_id: product17.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,7,20), quantity: 10, remaining_quantity: 8, lot_number: "200417")
+product_lot18 = ProductLot.create!(product_id: product18.id ,production_date: Date.new(2020,3,20) ,expiry_date: Date.new(2020,7,20), quantity: 10, remaining_quantity: 8, lot_number: "20418")
+product_lot19 = ProductLot.create!(product_id: product19.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,7,21), quantity: 6, remaining_quantity: 6, lot_number: "20419")
+product_lot20 = ProductLot.create!(product_id: product20.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,7,21), quantity: 7, remaining_quantity: 7, lot_number: "20420")
+product_lot21 = ProductLot.create!(product_id: product21.id ,production_date: Date.new(2020,4,21) ,expiry_date: Date.new(2020,7,21), quantity: 8, remaining_quantity: 8, lot_number: "20421")
+product_lot22 = ProductLot.create!(product_id: product22.id ,production_date: Date.new(2020,4,20) ,expiry_date: Date.new(2020,10,20), quantity: 10, remaining_quantity: 9, lot_number: "20422")
+product_lot23 = ProductLot.create!(product_id: product23.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 8, remaining_quantity: 6, lot_number: "20423")
+product_lot29 = ProductLot.create!(product_id: product29.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 10, remaining_quantity: 10, lot_number: "20429")
+product_lot30 = ProductLot.create!(product_id: product30.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20430")
+product_lot31 = ProductLot.create!(product_id: product31.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20431")
+product_lot32 = ProductLot.create!(product_id: product32.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 19, remaining_quantity: 16, lot_number: "20432")
+product_lot34 = ProductLot.create!(product_id: product34.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 9, remaining_quantity: 6, lot_number: "20434")
+product_lot35 = ProductLot.create!(product_id: product35.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 4, remaining_quantity: 4, lot_number: "20435")
+product_lot39 = ProductLot.create!(product_id: product39.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 20, remaining_quantity: 20, lot_number: "20439")
+product_lot40 = ProductLot.create!(product_id: product40.id ,production_date: Date.new(2020,4,24) ,expiry_date: Date.new(2020,10,24), quantity: 17, remaining_quantity: 17, lot_number: "20440")
 
 puts""
 puts"made with love by the cat's team"
