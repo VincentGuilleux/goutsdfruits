@@ -1,6 +1,23 @@
- .new-product-input {
+.new-product {
+  width: 800px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+  .new-product-title {
+    text-align: center;
+    color: $grey_dark;
+    z-index: 100;
+    font-weight: 900;
+    font-size: 24px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+
+.new-product-input {
     background-color: $white_smoke;
     color: grey;
     margin-bottom: 50px;
     border-radius: 5px;
-  }
+}

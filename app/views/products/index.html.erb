@@ -145,18 +145,18 @@
         <% if product.photo.attached? %>
           <% if client_signed_in? && current_client.role == "admin" %>
             <%= link_to product_path(product) do %>
-              <%= cl_image_tag product.photo.key, alt: "image produit" %>
+              <%= cl_image_tag product.photo.key, alt: "image produit", class: "hovereffect" %>
             <% end %>
           <% else %>
-            <%= cl_image_tag product.photo.key, alt: "image produit", class:"JSproductname",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
+            <%= cl_image_tag product.photo.key, alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
           <% end %>
         <% end %>
 
-        <% unless client_signed_in? && current_client.role == "admin" %>
-          <div class="card-product-infos">
-        <% else %>
-          <div class="card-product-infos" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'">
-        <% end %>
+        <%# unless client_signed_in? && current_client.role == "admin" %>
+        <div class="card-product-infos">
+        <%# else %>
+          <!-- <div class="card-product-infos" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> -->
+        <%# end %>
 
           <!-- Card display NA/top-middle: category -->
           <div class="card-product-text-line">
@@ -176,10 +176,16 @@
             </div>
           </div>
           <!-- Card display center-middle: name -->
-          <div class="card-product-text-line">
-            <p class="big-text-bold-resp grey-dark JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
-              <%= product.name %>
-            </p>
+          <div class="card-product-text-line no-underline">
+            <% unless client_signed_in? && current_client.role == "admin" %>
+              <p class="big-text-bold-resp grey-dark hovereffect JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
+              <%= product.name %></p>
+            <% else %>
+              <%= link_to edit_product_path(product.id) do %>
+                <p class="big-text-bold-resp grey-dark hovereffect" > <%= product.name %></p>
+              <% end %>
+            <% end %>
+
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">

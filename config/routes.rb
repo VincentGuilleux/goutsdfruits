@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :clients, only: [:index, :show, :new, :create, :update, :edit, :destroy] #Not nested because not linked to a client show (the client will be input in the form)
 
-  resources :products, only: [:index, :show, :new, :create, :destroy] do
+  resources :products do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
   end
 
@@ -23,7 +23,6 @@ Rails.application.routes.draw do
       patch :pay
     end
   end
-  # resources :order_lines, only: [:create] #created by Anne for new order form
 
 end
 
