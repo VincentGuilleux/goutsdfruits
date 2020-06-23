@@ -40,9 +40,9 @@
   <% end %>
   <% if current_client.nil? %> <!-- affichage d'un button link pour se connecter -->
     <div class="row justify-content-center">
-      <div class="col-12 col-lg-4 pb-2">
+      <div class="col-12 col-lg-4 pb-2 no-underline">
         <%= link_to new_client_session_path do %>
-          <button type="button" class="btn btn-block submit-btn-green-no-width middle-text-resp bold text-wrap">Veuillez vous connecter pour passer une commande</button>
+          <button type="button" class="btn btn-block submit-btn-green-no-width semi-small-text-bold-resp bold text-wrap">Veuillez vous connecter pour passer une commande</button>
         <% end %>
       </div>
     </div>

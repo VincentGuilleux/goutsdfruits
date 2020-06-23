@@ -6,6 +6,10 @@
  top: 12vh;
 }
 
+.no-underline a:link {
+  text-decoration : none;
+}
+
 .submit-btn-green {
     background-color: $green;
     border-radius: 5px;
@@ -28,6 +32,7 @@
     &:hover {
       background-color: $green_dark;
       color: white;
+      text-decoration: none !important;
     }
   }
 
