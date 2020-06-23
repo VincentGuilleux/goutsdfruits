@@ -88,6 +88,23 @@ class ProductsController < ApplicationController
     end
   end
 
+  def destroy
+    @product = Product.find(params[:id])
+    unless @product.orders == []
+      flash[:alert] = "Le produit ne peut pas être supprimé car des commandes ont été passées sur ce produit."
+      redirect_to product_path(@product)
+      return
+    end
+    unless @product.product_lots == []
+      flash[:alert] = "Le produit ne peut pas être supprimé car des lots ont été générés"
+      redirect_to product_path(@product)
+      return
+    end
+    @product.destroy
+    redirect_to products_path
+    flash[:notice] = "Le produit a été supprimé"
+  end
+
   private
 
   def product_params

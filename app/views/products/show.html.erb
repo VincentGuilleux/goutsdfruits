@@ -1,21 +1,25 @@
 <div class="main-container-show">
-  <div class="container">
+  <div class="container pt-5">
+
     <div class="card-product-show">
       <div class="card-product-show-img">
         <%= cl_image_tag @product.photo.key%>
       </div>
-      <div class="card-product-show-infos">
 
-       <div class="card-product-show-header">
-        <span class="product-show-category"><%= @product.product_category.capitalize%></span>
-        <div class="card-product-show-title">
-          <h1 class="page-title"><%=@product.name.capitalize%></h1>
-          <span class="card-product-show-price">
-          <%= @product.display_price(current_client, @type_price) %> €
-          <sup>/ <%= @product.unit_type %> </sup></span>
+      <div class="card-product-show-infos">
+        <div class="card-product-show-flex pb-5">
+          <span class="big-text semi-bold grey-medium"><%= @product.product_category.capitalize%></span>
+          <%= link_to product_path(@product), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer ce produit ?") }, method: :delete do %>
+            <i class="far fa-trash-alt blue big-text"></i>
+          <% end %>
         </div>
-        <p class="product-show-description pt-3"><%= @product.description%></p>
-        </div>
+          <div class="card-product-show-flex">
+            <p class="card-product-show-title"><%=@product.name.capitalize%></p>
+            <span class="card-product-show-price">
+            <%= @product.display_price(current_client, @type_price) %> €
+            <sup>/ <%= @product.unit_type %> </sup></span>
+          </div>
+          <p class="product-show-description pt-4"><%= @product.description%></p>
 
         <% if (current_client && current_client.role == "admin") %>
           <div class="card-product-stock">
@@ -46,15 +50,15 @@
                     <td><%=l(product_lot.expiry_date, format: :long) %></td>
                     <td style="padding-left: 45px;"><%= product_lot.remaining_quantity %></td>
                     <td></td>
-                    </tr>
-                  <% end %>
-                </tbody>
-              </table>
-            </div>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+
           <div class="card-product-show-footer">
             <span class="card-product-total-stock">Stock total</span>
-            <span class="card-product-total-stock">
-              <%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
+            <span class="card-product-total-stock"><%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
           </div>
         <% end %>
 
