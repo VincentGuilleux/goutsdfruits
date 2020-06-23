@@ -1,7 +1,7 @@
 <div class="new-order-main-container" >
   <div class="container new-product">
     <div class="new-product-title text-center pt-5 pb-5">
-      <p>Nouveau produit</p>
+      <p>Modification du produit</p>
     </div>
     <div class="container">
       <%= simple_form_for @product, defaults: { input_html: { class: 'new-product-input' } } do |f| %>
@@ -17,7 +17,7 @@
         <%= f.input :product_type, prompt: 'Type', label: false, collection: Product.types %>
         <%= f.input :product_category, prompt: 'Catégorie', label: false, collection: Product.categories %>
         <%= f.input :photo, prompt: 'Ajouter une photo', as: :file, label: false %>
-        <%= f.submit 'Créer le produit', class: 'btn btn-lg btn-block submit-btn-green mb-4' %>
+        <%= f.submit 'Modifier le produit', class: 'btn btn-lg btn-block submit-btn-green mb-4' %>
       <% end %>
     </div>
   </div>
