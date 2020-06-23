@@ -78,9 +78,9 @@ class ProductsController < ApplicationController
 
     @product.unit_measure_quantity_shop = @product.unit_measure_quantity if @product.unit_measure_quantity_shop.nil?
     # pour les besoins de la méthode total_remaining_quantity_shop qui nécessite que le champ unit_measure_quantity_shop soit renseigné
-
     if @product.save
       redirect_to products_path
+      flash[:notice] = "Le produit a été créé"
     else
       flash.now[:alert] = "Les champs en rouge doivent être saisis"
       render :new
@@ -95,11 +95,11 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
-      flash.now[:alert] = "Le produit a été modifié"
       redirect_to products_path
+      flash[:notice] = "Le produit a été modifié"
     else
-      flash.now[:alert] = "Les champs en rouge doivent être saisis"
-      render :new
+      redirect_to edit_product_path(@product.id)
+      flash[:alert] = "Les champs en rouge doivent être saisis"
       return
     end
   end
@@ -107,13 +107,13 @@ class ProductsController < ApplicationController
   def destroy
     @product = Product.find(params[:id])
     unless @product.orders == []
-      flash[:alert] = "Le produit ne peut pas être supprimé car des commandes ont été passées sur ce produit."
       redirect_to product_path(@product)
+      flash[:alert] = "Le produit ne peut pas être supprimé car des commandes ont été passées sur ce produit."
       return
     end
     unless @product.product_lots == []
-      flash[:alert] = "Le produit ne peut pas être supprimé car des lots ont été générés"
       redirect_to product_path(@product)
+      flash[:alert] = "Le produit ne peut pas être supprimé car des lots ont été générés"
       return
     end
     @product.destroy

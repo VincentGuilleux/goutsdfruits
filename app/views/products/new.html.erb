@@ -8,7 +8,7 @@
         <%= f.input :name, placeholder: 'Nom', label: false %>
         <%= f.input :description, placeholder: 'Description', label: false %>
         <%= f.input :unit_price_cents, placeholder: 'Prix particuliers (en centimes)', label: false %>
-        <%= f.input :unit_price_cents_shop, placeholder: 'Prix magasin (en centimes)', label: false %>
+        <%= f.input :unit_price_cents_shop, placeholder: 'Prix magasin (en centimes) - Laisser vide si non vendu en magasin', label: false %>
         <%= f.input :unit_type, prompt: 'Type de contenant', label: false, collection: Product.units %>
         <%= f.input :unit_measure, prompt: 'Unité de mesure du contenant', label: false, collection: Product.unit_measures %>
         <%= f.input :unit_measure_quantity, placeholder: 'Quantité du contenant en unité de mesure pour les particuliers', label: false %>

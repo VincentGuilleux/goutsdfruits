@@ -5,17 +5,17 @@
     </div>
     <div class="container">
       <%= simple_form_for @product, defaults: { input_html: { class: 'new-product-input' } } do |f| %>
-        <%= f.input :name, placeholder: 'Nom', label: false %>
-        <%= f.input :description, placeholder: 'Description', label: false %>
-        <%= f.input :unit_price_cents, placeholder: 'Prix particuliers (en centimes)', label: false %>
-        <%= f.input :unit_price_cents_shop, placeholder: 'Prix magasin (en centimes)', label: false %>
-        <%= f.input :unit_type, prompt: 'Type de contenant', label: false, collection: Product.units %>
-        <%= f.input :unit_measure, prompt: 'Unité de mesure du contenant', label: false, collection: Product.unit_measures %>
-        <%= f.input :unit_measure_quantity, placeholder: 'Quantité du contenant en unité de mesure pour les particuliers', label: false %>
-        <%= f.input :unit_measure_quantity_shop, placeholder: 'Quantité du contenant pour les magasins', label: false %>
-        <%= f.input :product_fruit, prompt: 'Fruit', label: false, collection: Product.fruits %>
-        <%= f.input :product_type, prompt: 'Type', label: false, collection: Product.types %>
-        <%= f.input :product_category, prompt: 'Catégorie', label: false, collection: Product.categories %>
+        <%= f.input :name, label: 'Nom' %>
+        <%= f.input :description, label: 'Description' %>
+        <%= f.input :unit_price_cents, label: 'Prix particuliers (en centimes)' %>
+        <%= f.input :unit_price_cents_shop, label: 'Prix magasin (en centimes) - laisser vide si non vendu aux magasins' %>
+        <%= f.input :unit_type, label: 'Type de contenant', collection: Product.units %>
+        <%= f.input :unit_measure, prompt: 'Unité de mesure du contenant', collection: Product.unit_measures %>
+        <%= f.input :unit_measure_quantity, label: 'Quantité du contenant en unité de mesure pour les particuliers' %>
+        <%= f.input :unit_measure_quantity_shop, label: 'Quantité du contenant pour les magasins' %>
+        <%= f.input :product_fruit, label: 'Fruit', collection: Product.fruits %>
+        <%= f.input :product_type, label: 'Type', collection: Product.types %>
+        <%= f.input :product_category, label: 'Catégorie', collection: Product.categories %>
         <%= f.input :photo, prompt: 'Ajouter une photo', as: :file, label: false %>
         <%= f.submit 'Modifier le produit', class: 'btn btn-lg btn-block submit-btn-green mb-4' %>
       <% end %>
