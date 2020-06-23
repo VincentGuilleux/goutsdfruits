@@ -38,12 +38,13 @@
     </div>
 
   <% end %>
-  <% if current_client.nil? %>
-  <!-- affichage d'un button link pour se connecter -->
-    <div class="text-center pb-2">
-      <%= link_to new_client_session_path do %>
-        <button type="button" class="btn submit-btn-green-width middle-text-resp bold text-wrap">Veuillez vous connecter pour passer une commande</button>
-      <% end %>
+  <% if current_client.nil? %> <!-- affichage d'un button link pour se connecter -->
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-4 pb-2">
+        <%= link_to new_client_session_path do %>
+          <button type="button" class="btn btn-block submit-btn-green-no-width middle-text-resp bold text-wrap">Veuillez vous connecter pour passer une commande</button>
+        <% end %>
+      </div>
     </div>
   <% end %>
 
@@ -183,7 +184,11 @@
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">
             <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-              <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
+              <% unless product.unit_type == "bocal" %>
+                <%= pluralize(product.display_quantity(current_client, @type_price, product), product.unit_type) %>
+              <% else %>
+                <%= product.display_quantity(current_client, @type_price, product) %> bocaux
+              <% end %>
                 de
                   <%= product.display_unit_measure_quantity(current_client, @type_price, product) %>
                   <%= product.display_unit_measure(current_client, @type_price, product) %>
