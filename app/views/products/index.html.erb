@@ -123,17 +123,17 @@
 
 <% if (current_client && current_client.segment == 'magasin') %>
   <script>
-    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
+    var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
   </script>
 <% else %>
   <script>
-    let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
+    var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
   </script>
 <% end %>
 <script>
-    let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
-    let ratiosQuantities = JSON.parse('<%= raw Product.ratios_quantities(current_client).to_h.to_json %>');
-    let descriptions = JSON.parse('<%= raw Product.descriptions.to_h.to_json %>');
+    var remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
+    var ratiosQuantities = JSON.parse('<%= raw Product.ratios_quantities(current_client).to_h.to_json %>');
+    var descriptions = JSON.parse('<%= raw Product.descriptions.to_h.to_json %>');
 </script>
 
 <div class="main-container">
