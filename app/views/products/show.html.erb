@@ -1,10 +1,7 @@
 <div class="main-container-show">
   <div class="container pt-5">
-
     <div class="card-product-show">
-      <div class="card-product-show-img">
-        <%= cl_image_tag @product.photo.key%>
-      </div>
+      <div class="card-product-show-img"><%= cl_image_tag @product.photo.key%></div>
 
       <div class="card-product-show-infos">
         <div class="card-product-show-flex pb-5">
@@ -13,15 +10,14 @@
             <i class="far fa-trash-alt blue big-text"></i>
           <% end %>
         </div>
-          <div class="card-product-show-flex">
-            <p class="card-product-show-title"><%=@product.name.capitalize%></p>
-            <span class="card-product-show-price">
-            <%= @product.display_price(current_client, @type_price) %> €
-            <sup>/ <%= @product.unit_type %> </sup></span>
-          </div>
-          <p class="product-show-description pt-4"><%= @product.description%></p>
+        <div class="card-product-show-flex">
+          <p class="card-product-show-title"><%=@product.name.capitalize%></p>
+          <span class="card-product-show-price">
+          <%= @product.display_price(current_client, @type_price) %> €
+          <sup>/ <%= @product.unit_type %> </sup></span>
+        </div>
+        <p class="product-show-description pt-4"><%= @product.description%></p>
 
-        <% if (current_client && current_client.role == "admin") %>
           <div class="card-product-stock">
             <table class="table">
               <thead class="scroll-thead">
@@ -40,10 +36,10 @@
                   <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'production_date'} %></td>
                   <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'expiry_date'} %></td>
                   <td> <%= f.input :quantity, label: false, as: :string, :input_html => {:maxlength =>6,:style=> 'width: 70px'}  %></td>
-                  <!-- <td> <%#= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td> -->
-                    <td> <%= f.submit "", class: 'btn submit-btn-green-no-width middle-text-resp bold text-wrap' %></td>
-                <% end %>
+                  <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
                 </tr>
+                <% end %>
+
                 <% @product.product_lots.each do |product_lot|%>
                   <tr>
                     <th scope="row"><%=product_lot.lot_number%></th>
@@ -61,9 +57,9 @@
             <span class="card-product-total-stock">Stock total</span>
             <span class="card-product-total-stock"><%= pluralize(@product.total_remaining_quantity,@product.unit_type) %></span>
           </div>
-        <% end %>
 
       </div>
+
     </div>
   </div>
 </div>
