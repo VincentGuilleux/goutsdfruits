@@ -12,7 +12,7 @@
           <div class="form-inline">
             <script>
               // let prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
-              // Òlet remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
+              // let remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
             </script>
             <%= ff.simple_fields_for :order_lines, wrapper: :inline_form do |f| %>
               <%= render 'order_line_fields', f: f %>
