@@ -40,7 +40,8 @@
                   <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'production_date'} %></td>
                   <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'expiry_date'} %></td>
                   <td> <%= f.input :quantity, label: false, as: :string, :input_html => {:maxlength =>6,:style=> 'width: 70px'}  %></td>
-                  <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
+                  <!-- <td> <%#= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td> -->
+                    <td> <%= f.submit "", class: 'btn submit-btn-green-no-width middle-text-resp bold text-wrap' %></td>
                 <% end %>
                 </tr>
                 <% @product.product_lots.each do |product_lot|%>
