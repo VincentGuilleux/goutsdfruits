@@ -19,6 +19,8 @@
         <p class="product-show-description pt-4"><%= @product.description%></p>
 
           <div class="card-product-stock">
+            <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
+            <!-- l'initialisation du formulaire est réalisée en dehors du tes tag table/tbdody/tr car 'A form is not allowed to be a child element of a table, tbody or tr' cf. https://stackoverflow.com/questions/5967564/form-inside-a-table -->
             <table class="table">
               <thead class="scroll-thead">
                 <tr class="card-product-show-table">
@@ -30,14 +32,12 @@
                 </tr>
               </thead>
               <tbody class="scroll-tbody-y table-body">
-                <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
-                <tr>
+
                   <td> <%= f.input :lot_number, label: false, :input_html => {:maxlength =>6,:style=> 'width: 75px'} %></td>
                   <td> <%= f.input :production_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'production_date'} %></td>
                   <td> <%= f.input :expiry_date, label: false, as: :string, :input_html => {:maxlength =>10, :style=> 'width: 160px', class: 'expiry_date'} %></td>
                   <td> <%= f.input :quantity, label: false, as: :string, :input_html => {:maxlength =>6,:style=> 'width: 70px'}  %></td>
                   <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
-                </tr>
                 <% end %>
 
                 <% @product.product_lots.each do |product_lot|%>
