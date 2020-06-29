@@ -79,7 +79,7 @@
                 <h1 class="name-font-index mb-1"><%= order.client.first_name %> <%= order.client.last_name %> </h1>
                 <p class="small-text-bold grey-medium mb-0"><%= order.date %></p>
               </div>
-              <h1 class="price-font-index"><%= order.total_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup> </h1>
+              <h1 class="price-font-index"><%= decimal_with_comma(order.total_price_cents.to_f / 100) %> <sup class="sup-price"> € </sup> </h1>
             </div>
           </div>
 
@@ -254,14 +254,14 @@
                       <div class="price">
                         <div class="unit-price">
                           <% if order_line.order.client.segment == "magasin" %>
-                            <p><%= order_line.quantity / order_line.product.ratio %> x <%= order_line.product.unit_price_cents_shop.to_f / 100 %> <sup class="sup-price"> € </sup></p>
+                            <p><%= order_line.quantity / order_line.product.ratio %> x <%= decimal_with_comma(order_line.product.unit_price_cents_shop.to_f / 100) %> <sup class="sup-price"> € </sup></p>
                           <% else %>
-                            <p><%= order_line.quantity %> x <%= order_line.product.unit_price_cents.to_f / 100 %> <sup class="sup-price"> € </sup></p>
+                            <p><%= order_line.quantity %> x <%= decimal_with_comma(order_line.product.unit_price_cents.to_f / 100) %> <sup class="sup-price"> € </sup></p>
                           <% end %>
                         </div>
                         <div class="separation"></div>
                         <div class="total-price">
-                          <p><%= order_line.total_price_cents.to_f / 100 %><sup class="sup-price"> €</sup></p>
+                          <p><%= decimal_with_comma(order_line.total_price_cents.to_f / 100) %><sup class="sup-price"> €</sup></p>
                         </div>
                       </div>
                     </div>

@@ -33,4 +33,9 @@ module ApplicationHelper
     content_tag(:a, name, html_options, &block)
   end
 
+  def decimal_with_comma(number)
+    number_with_precision(number, precision: 2, strip_insignificant_zeros: true)
+    # retourne bien un nombre décimal avec virgule alors que non précisé dans fonction ci-dessus
+  end
+
 end
