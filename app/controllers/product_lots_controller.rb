@@ -6,7 +6,7 @@ class ProductLotsController < ApplicationController
     @product_lot.remaining_quantity = @product_lot.quantity
     @product_lot.save
     redirect_to product_path(@product)
-    flash[:notice] = "Le lot a été créé"
+    flash[:notice] = "Le lot a été créé."
   end
 
   private

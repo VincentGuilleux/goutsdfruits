@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
 
   def require_admin
     unless current_client.role == "admin"
-      flash[:alert] = "Cette page n'est accessible qu'avec un profil administrateur"
+      flash[:alert] = "Cette page n'est accessible qu'avec un profil administrateur."
       redirect_to root_path
     end
   end

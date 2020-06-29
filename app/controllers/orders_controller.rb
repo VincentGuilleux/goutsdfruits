@@ -96,7 +96,7 @@ class OrdersController < ApplicationController
         end
         sum += order_line.total_price_cents
       else
-        flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - La commande ne peut pas être passée"
+        flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - la commande ne peut pas être passée."
         render :new
         return
       end
@@ -107,7 +107,7 @@ class OrdersController < ApplicationController
     @order.total_price_cents = sum
 
     if @order.total_price_cents == 0
-      flash.keep[:alert] = "Vous n'avez sélectionné aucun produit - La commande ne peut pas être passée"
+      flash.keep[:alert] = "Vous n'avez sélectionné aucun produit - la commande ne peut pas être passée."
       redirect_to products_path
       return
     end
@@ -137,14 +137,14 @@ class OrdersController < ApplicationController
   def destroy
     @order = Order.find(params[:id])
     unless @order.status == "pending"
-      flash.keep[:alert] = "La commande a déjà été traitée, elle ne peut pas être supprimée"
+      flash.keep[:alert] = "La commande a déjà été traitée, elle ne peut pas être supprimée."
       redirect_to orders_path
       return
     end
     regenerate_order_line_product_lots
     @order.destroy
     redirect_to orders_path
-    flash[:notice] = "La commande a été supprimée"
+    flash[:notice] = "La commande a été supprimée."
   end
 
   private
