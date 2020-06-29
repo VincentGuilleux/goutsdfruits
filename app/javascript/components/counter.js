@@ -34,20 +34,20 @@ const counter = () => {
       if (inputEl.innerText == 0) inputEl.style.visibility = "hidden";
       // MAJ du priceEl qui correspond au prix affiché sur la carte produit
       let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
-      priceEl.innerText = (inputEl.innerText * productPrice / 100).toFixed(2);
+      priceEl.innerText = (inputEl.innerText * productPrice / 100).toFixed(2).replace(".", ",");
       // Calcul du prix total affiché en haut de page
       let totalPrice = 0;
       let allPricesEl = document.querySelectorAll('.JSpriceperlineproductindex');
       for (let i = 0; i < allPricesEl.length; i++) {
         allPricesEl[i].style.visibility = "visible"; // obligé de toggler visible le prix sur la carte sinon calcul ci-dessous ne fonctionne pas
-        totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText)).toFixed(2)
+        totalPrice = (parseFloat(totalPrice) + parseFloat(allPricesEl[i].innerText.replace(",", "."))).toFixed(2)
         if (allPricesEl[i].innerText == 0) allPricesEl[i].style.visibility = "hidden"; //  on retoggle hidden le prix de chacune des cartes produit si nul
       }
       let totalpriceEl = document.getElementById("totalpriceproductindex");
-      totalpriceEl.innerText = totalPrice;
+      totalpriceEl.innerText = totalPrice.replace(".", ",");
       // on affiche le prix sur la carte produit sauf si nul
       priceEl.style.visibility = "visible";
-      if (priceEl.innerText == 0) priceEl.style.visibility = "hidden";
+      if (priceEl.innerText == "0,00") priceEl.style.visibility = "hidden";
     };
 
   document.body.addEventListener( 'click', function ( event ) {
@@ -111,6 +111,7 @@ const counter = () => {
         updatePriceProductIndex(uuid);
       };
       // masquage du bouton - si quantité 0
+      console.log(inputEl.innerText);
       if (inputEl.innerText == 0 ) event.target.style.visibility = "hidden";
       // affichage du bouton + (à chaque fois qu'on clique sur le bouton -)
       let plusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[0];
