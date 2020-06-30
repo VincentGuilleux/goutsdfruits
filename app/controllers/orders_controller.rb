@@ -3,6 +3,14 @@ class OrdersController < ApplicationController
   def index
     if current_client.role == "admin"
       @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products, :delivery_place)
+      respond_to do |format| # lignes pour export Excel
+        format.xlsx {
+          response.headers[
+            'Content-Disposition'
+          ] = "attachment; filename=commandes.xlsx"
+        }
+        format.html { render :index }
+      end
     else
       @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products)
     end

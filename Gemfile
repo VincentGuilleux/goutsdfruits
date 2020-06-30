@@ -23,6 +23,9 @@ gem 'redis', '~> 4.0'
 # gem 'bcrypt', '~> 3.1.7'
 gem 'cloudinary', '~> 1.12.0'
 
+gem 'caxlsx'
+gem 'caxlsx_rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
