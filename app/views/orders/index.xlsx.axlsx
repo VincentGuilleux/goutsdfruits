@@ -1,0 +1,18 @@
+wb = xlsx_package.workbook
+
+  wb.styles do |style|
+    project_heading = style.add_style(b: true, sz: 14)
+    heading = style.add_style(b: true)
+
+  wb.add_worksheet(name: "Orders") do |sheet|
+    # Create the header row
+    sheet.add_row ["Nom du client", "Date", "Montant", "Statut", "Lieu de livraison", "Quantité", "Prix", "Produit"], style: heading
+    # Create entries for each item
+    @orders.each do |order|
+      sheet.add_row [order.client.first_name + " " + order.client.last_name, order.date, decimal_with_comma(order.total_price_cents.to_f / 100), order.status, order.delivery_place.name]
+      order.order_lines.each do |order_line|
+        sheet.add_row ["","","","","",order_line.quantity, decimal_with_comma(order_line.total_price_cents.to_f / 100), order_line.product.name]
+      end
+    end
+  end
+end
