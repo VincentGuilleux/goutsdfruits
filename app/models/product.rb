@@ -70,6 +70,7 @@ class Product < ApplicationRecord
     @products = Product.all
     descriptions = []
     @products.each do |product|
+      #descriptions << [product.id.to_i, product.description.gsub(/'/,"")]
       description = []
       description << product.id
       description << product.description.gsub(/'/,"")
