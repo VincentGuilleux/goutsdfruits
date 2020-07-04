@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def index
     if current_client.role == "admin"
       @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products, :delivery_place)
-      respond_to do |format| # lignes pour export Excel
+      respond_to do |format| # lignes pour export Excel via gem caxlsx
         format.xlsx {
           response.headers[
             'Content-Disposition'
@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
         format.html { render :index }
       end
     else
-      @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products)
+      @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products) # pour l'instant en vue client on n'affiche pas la delivery place
     end
 
     # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
@@ -91,28 +91,9 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.date = Date.today
-    sum = 0
-    @order.order_lines = @order.order_lines.to_a.reject {|order_line| order_line.quantity.zero?}
-    # supprime tous les order_lines à quantité nulle
+    @order.order_lines = @order.order_lines.to_a.reject {|order_line| order_line.quantity.zero?} # supprime tous les order_lines à quantité nulle
 
-    @order.order_lines.each do |order_line|
-      if order_line.quantity <= order_line.product.total_remaining_quantity
-        if current_client && current_client.segment == "magasin"
-          order_line.total_price_cents = order_line.product.unit_price_cents_shop / order_line.product.ratio * order_line.quantity
-        else
-          order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
-        end
-        sum += order_line.total_price_cents
-      else
-        flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - la commande ne peut pas être passée."
-        render :new
-        return
-      end
-    end
-    # calcule et stocke le prix de l'order dans sum
-    # vérifie qu'il y a une quantité suffisante pour chaque order line
-
-    @order.total_price_cents = sum
+    @order.total_price_cents = create_order_total_price
 
     if @order.total_price_cents == 0
       flash.keep[:alert] = "Vous n'avez sélectionné aucun produit - la commande ne peut pas être passée."
@@ -120,16 +101,11 @@ class OrdersController < ApplicationController
       return
     end
 
+    create_order_client
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
-
-    # Affectation de la delivery place
     create_order_delivery_place
 
 
-    # Si pas de client sélectionné, on affecte au current_client (sinon on est dans le cas de l'admin qui sélectionne le client)
-    if @order.client_id.nil?
-        @order.client_id = current_client.id
-    end
 
     # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
@@ -159,6 +135,33 @@ class OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:client_id, :payment_method, :status, :pickup_date, :delivery_place_id, order_lines_attributes: [:product_id, :quantity])
+  end
+
+  def create_order_total_price
+    sum = 0
+    @order.order_lines.each do |order_line|
+      if order_line.quantity <= order_line.product.total_remaining_quantity
+        if current_client && current_client.segment == "magasin"
+          order_line.total_price_cents = order_line.product.unit_price_cents_shop / order_line.product.ratio * order_line.quantity
+        else
+          order_line.total_price_cents = order_line.product.unit_price_cents * order_line.quantity
+        end
+        sum += order_line.total_price_cents
+      else
+        flash.now[:alert] = "Il n'y a pas assez de stock disponible pour ce produit - la commande ne peut pas être passée."
+        render :new
+        return
+      end
+    end
+    return sum
+  end
+    # calcule order_price dans sum + check qu'il y a une quantité suff° pour chaque order line
+
+  def create_order_client
+  # Si pas de client sélectionné, on affecte au current_client (sinon on est dans le cas de l'admin qui sélectionne le client)
+    if @order.client_id.nil?
+      @order.client_id = current_client.id
+    end
   end
 
   def create_order_payment_status
@@ -222,6 +225,7 @@ class OrdersController < ApplicationController
 
   def send_mail_new_order
     OrderMailer.new_order_email(current_client).deliver
+    OrderMailer.new_order_email_notification(current_client).deliver
   end
 
 end
