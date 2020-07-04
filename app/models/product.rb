@@ -20,7 +20,7 @@ class Product < ApplicationRecord
 
   # Methodes de calcul de la quantité restante pour un produit donné
   def total_remaining_quantity
-    product_lots.sum(:remaining_quantity)
+    product_lots.where("expiry_date > ?", Date.today).sum(:remaining_quantity)
   end
 
   def total_remaining_quantity_shop
