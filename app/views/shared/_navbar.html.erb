@@ -1,4 +1,5 @@
 <nav class="navbar fixed-top navbar-expand-lg navbar-light navbartop navbar-goutsdfruits">
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <p class="white semi-small-text">MENU</p>
     <span class="navbar-toggler-icon white"></span>
@@ -34,26 +35,17 @@
           <span>CLIENTS</span>
         <% end %>
       </li>
+    </ul>
+  </div>
 
-      <li class="nav-item lien-navbar logout">
+  <div  class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-picto navbar-nav mr-auto">
+      <li class="nav-item lien-navbar">
         <%= link_to destroy_client_session_path, method: :delete do %>
-          <%= image_tag "logout-2.svg" %>
+          <%= image_tag "logout-2.svg", id: 'mobile-no-display' %>
         <% end %>
       </li>
     </ul>
   </div>
+
 </nav>
-
-      <!-- <li> -->
-        <%#= link_to dashboard_path do %> <!-- Should change eventually -->
-          <%#= image_tag "pictostat.svg"%>
-          <!-- <span>STATISTIQUES</span> -->
-        <%# end %>
-      <!-- </li> -->
-
-      <!-- <li> -->
-        <%#= link_to dashboard_path do %>
-          <%#= image_tag "cog.svg"%>
-          <!-- <span>PARAMÈTRES</span> -->
-        <%# end %>
-      <!-- </li> -->
