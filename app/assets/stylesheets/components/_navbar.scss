@@ -1,15 +1,18 @@
-.navbartop.navbar-goutsdfruits {
-  // justify-content: space-between;
-  background: $green;
-  // position: sticky;
-  // top: 0;
-  // left: 0;
-  height: 12vh;
-  // width: 100%;
-  // display: flex;
-  // flex-direction: row;
+@media (max-width: 600px) {
+  img#mobile-no-display {
+    display: none;
+  }
+  .navbar-collapse.background-green
+    {
+        background-color:$green;
+    }
 }
+// https://stackoverflow.com/questions/32147082/changing-collapsed-navbar-list-background-color
 
+.navbartop.navbar-goutsdfruits {
+  background: $green;
+  height: 12vh;
+}
 
 .navbar-goutsdfruits {
 
