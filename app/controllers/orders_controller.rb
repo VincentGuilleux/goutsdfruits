@@ -3,21 +3,20 @@ class OrdersController < ApplicationController
   def index
     if current_client.role == "admin"
       @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products, :delivery_place)
-      respond_to do |format| # lignes pour export Excel via gem caxlsx
-        format.xlsx {
-          response.headers[
-            'Content-Disposition'
-          ] = "attachment; filename=commandes.xlsx"
-        }
-        format.html { render :index }
-      end
+      # respond_to do |format| # lignes pour export Excel via gem caxlsx
+      #   format.xlsx {
+      #     response.headers[
+      #       'Content-Disposition'
+      #     ] = "attachment; filename=commandes.xlsx"
+      #   }
+      #   format.html { render :index }
+      # end
+      # Supprimé car les filtres ne fonctionnent plus avec les lignes commmentées ci-dessus et a priori pas nécessaire pour générer le fichier Excel malgré la doc : https://medium.com/@JasonCodes/ruby-on-rails-exporting-data-to-excel-b3b204281085
+
     else
       @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products) # pour l'instant en vue client on n'affiche pas la delivery place
     end
 
-    # les requêtes ci-dessous permettent de filtrer selon les valeurs cliquées dans les dropdown menus (cf. JS file dropdown.js)
-    # POUR MEMOIRE : params[:xxx] correspond à la query dans l'URL, par exemple pour l'URL http://www.goutsdfruits.fr/products?&fruit=cerise, params[:fruit] = cerise
-    # on peut cumuler des requetes Active Record (cf. plus haut) car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
     if params[:segment_order].present?
       if "#{params[:segment_order]}" == "AMAP"
         @orders = @orders.select {|order| order.client.amap != "Non-membre"}
@@ -104,8 +103,6 @@ class OrdersController < ApplicationController
     create_order_client
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
     create_order_delivery_place
-
-
 
     # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
