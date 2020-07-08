@@ -121,7 +121,8 @@
   </div>
 </div>
 
-<script src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script>
+<!-- <script src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> -->
+<!-- for JSON5 -->
 <script>
 <% if (current_client && current_client.segment == 'magasin') %>
     var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
@@ -130,7 +131,7 @@
 <% end %>
     var remainingQuantities = JSON.parse('<%= raw Product.remaining_quantities(current_client).to_h.to_json %>');
     var ratiosQuantities = JSON.parse('<%= raw Product.ratios_quantities(current_client).to_h.to_json %>');
-    var descriptions = JSON5.parse('<%= raw Product.descriptions.to_h.to_json %>');
+    var descriptions = JSON.parse('<%= raw Product.descriptions.to_h.to_json %>');
 </script>
 
 <div class="main-container">
