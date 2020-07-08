@@ -52,12 +52,12 @@
         <!-- Reset filters -->
         <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
-      <div class="add-new">
+      <div class="add-new no-display-on-mobile">
         <%= link_to orders_path(format: :xlsx) do %>
           <p>Export Excel</p>
         <% end %>
       </div>
-      <div class="add-new">
+      <div class="add-new no-display-on-mobile">
         <%= link_to new_order_path do %>
           <p>Ajouter une commande</p>
           <%= image_tag "add-circle.svg" %>

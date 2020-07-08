@@ -1,3 +1,9 @@
+@media (max-width: 600px) {
+.no-display-on-mobile {
+    display: none;
+  }
+}
+
 .hidden-initially {
   visibility: hidden;
 }
