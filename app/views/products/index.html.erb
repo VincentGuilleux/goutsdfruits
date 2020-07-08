@@ -1,4 +1,4 @@
-<!-- ATTENTIO A LUTILISATION DE BALISES SPAN AVEC DATA-UUID DANS CETTE PAGE (CF. COUNTER.JS) -->
+<!-- ATTENTION A LUTILISATION DE BALISES SPAN AVEC DATA-UUID DANS CETTE PAGE (CF. COUNTER.JS) -->
 
 <!-- Modal product description -->
 <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
@@ -64,18 +64,6 @@
             <% end %>
           </div>
         </div>
-        <!-- Category filter -->
-        <div id="product_category" class="middle-text-resp grey-medium mr5">
-        <%= if params[:category].present? then params[:category] else 'Catégorie' end %>
-        </div>
-        <div class="dropdown">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownCategory" class="dropdown-content">
-          <% Product.categories.each do |category| %>
-            <a data-name="<%= category %>" href="#"><%= category %></a>
-          <% end %>
-          </div>
-        </div>
         <!-- Type filter -->
         <div id="product_type" class="middle-text-resp grey-medium mr5">
         <%= if params[:type].present? then params[:type] else 'Type' end %>
@@ -103,9 +91,6 @@
         <% else %>
           <div id="product_price" style="display:none;"></div> <!-- Div masquée avec product_price pour les besoins de dropdown.JS fonction clearFilters qui reset le product_price.innertext donc besoin de cet id même si non utile seulemnt en admin -->
         <% end %>
-        <!-- Reset filters -->
-        <p id="clear_filters" class="btn middle-text-resp grey-medium nopnom">Effacer les filtres</p>
-        <%#= link_to "Effacer les filtres", products_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
 
       <% if client_signed_in? && current_client.role == "admin" %>
