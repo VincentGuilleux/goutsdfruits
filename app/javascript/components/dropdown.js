@@ -2,7 +2,6 @@
 
 const getdropdownids = () => {
   const product_fruit = document.getElementById("product_fruit"); // target l'id du champ fruit (le "titre" du Dropdown Menu)
-  const product_category = document.getElementById("product_category");
   const product_type = document.getElementById("product_type");
   const product_price = document.getElementById("product_price");
 };
@@ -17,19 +16,6 @@ const dropdownFruit = () => {
     getdropdownids
     toggling(); // fonction qui itère sur chaque carte produit pour l'afficher ou non
     event.preventDefault(); // vient prévenir le rechargement de la page par le navigateur (du au fait que le dropdown menu a une balise a avec href)
-  });
-};
-
-const dropdownCategory = () => {
-  const category = document.getElementById("DropdownCategory");
-  if (!category) return
-
-  category.addEventListener("click", (event) => {
-    const product_category_value = (event.target.dataset.name)
-    product_category.innerText = product_category_value
-    getdropdownids
-    toggling();
-    event.preventDefault();
   });
 };
 
@@ -67,50 +53,52 @@ const dropdownPrice = () => {
   });
 };
 
-const clearFilters = () => {
-  const clearFilters = document.getElementById("clear_filters");
-  if (!clearFilters) return
-
-  clearFilters.addEventListener("click", (event) => {
-    $(".card-product").each(function() {
-      this.style.display = "";
-    });
-    product_fruit.innerText = 'Fruit';
-    product_category.innerText = 'Catégorie';
-    product_type.innerText = 'Type';
-    product_price.innerText = 'Prix';
-    // on affiche les prix non-magasin (pourrait être mutualisé avec fonction dropdownPrice ci-dessus)
-    const displayPricesEl = document.querySelectorAll('[data-priceshop]');
-    displayPricesEl.forEach((displayPrice) => {
-      displayPrice.innerText = displayPrice.dataset.pricenonshop;
-    });
-    event.preventDefault();
-  });
-};
-
 const toggling = () => {
   let productCardsHiddenCounter = 0;
   $(".card-product").each(function() {
     if (
-      ($(this).data("fruit")    === product_fruit.innerText    || product_fruit.innerText === 'Fruit') &&
-      ($(this).data("category") === product_category.innerText || product_category.innerText === 'Catégorie') &&
-      ($(this).data("type")     === product_type.innerText     || product_type.innerText === 'Type')
+      ($(this).data("fruit") === product_fruit.innerText || product_fruit.innerText === 'Fruit') &&
+      ($(this).data("type")  === product_type.innerText  || product_type.innerText === 'Type')
       )  {
       this.style.display = "";
     }
     else { this.style.display = "none";
-    productCardsHiddenCounter++;
+    productCardsHiddenCounter++; // compteur incrémenté pour chaque produit caché
     };
   });
   const warningEmptyFilter = document.getElementById("JSwarningemptyfilter");
-  if ($(".card-product").length === productCardsHiddenCounter) warningEmptyFilter.innerText = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection."
+  if ($(".card-product").length === productCardsHiddenCounter) {
+    warningEmptyFilter.style.display = ""
+    warningEmptyFilter.innerText = "Il n'y a pas de produits disponibles à la vente correspondant à votre sélection."}
+  else { warningEmptyFilter.style.display = "none"
+  };
 };
 
 export { dropdownFruit } ;
-export { dropdownCategory } ;
 export { dropdownType } ;
 export { dropdownPrice } ;
-export { clearFilters } ;
+
+// ANCIEN CODE AVEC BOUTON EFFACER LES FILTRES (PLUS NECESSAIRE)
+// const clearFilters = () => {
+//   const clearFilters = document.getElementById("clear_filters");
+//   if (!clearFilters) return
+
+//   clearFilters.addEventListener("click", (event) => {
+//     $(".card-product").each(function() {
+//       this.style.display = "";
+//     });
+//     product_fruit.innerText = 'Fruit';
+//     product_category.innerText = 'Catégorie';
+//     product_type.innerText = 'Type';
+//     product_price.innerText = 'Prix';
+//     // on affiche les prix non-magasin (pourrait être mutualisé avec fonction dropdownPrice ci-dessus)
+//     const displayPricesEl = document.querySelectorAll('[data-priceshop]');
+//     displayPricesEl.forEach((displayPrice) => {
+//       displayPrice.innerText = displayPrice.dataset.pricenonshop;
+//     });
+//     event.preventDefault();
+//   });
+// };
 
 // DROPDOWNS CLIENT INDEX
 
