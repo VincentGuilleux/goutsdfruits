@@ -124,6 +124,7 @@ class OrdersController < ApplicationController
     end
     regenerate_order_line_product_lots
     @order.destroy
+    send_mail_deleted_order
     redirect_to orders_path
     flash[:notice] = "La commande a été supprimée."
   end
@@ -223,6 +224,11 @@ class OrdersController < ApplicationController
   def send_mail_new_order
     OrderMailer.new_order_email(current_client).deliver
     OrderMailer.new_order_email_notification(current_client).deliver
+  end
+
+  def send_mail_deleted_order
+    OrderMailer.deleted_order_email(current_client).deliver
+    OrderMailer.deleted_order_email_notification(current_client).deliver
   end
 
 end
