@@ -12,12 +12,12 @@ export const InitChart = () => {
   const container = document.getElementById('chartContainer');
   if (!container) return;
 
-
-
   // container.style.width  = `${container.parentElement.clientWidth}px`;
   // container.style.height = `${container.parentElement.clientHeight}px`;
   container.innerHTML = `<canvas id="vente_chart"</canvas>`;
   const currentMonthTurnover = container.dataset.currentMonthOrder
+  const previousMonthTurnover = container.dataset.previousMonthOrder
+  const antePreviousMonthTurnover = container.dataset.antePreviousMonthOrder
 
   setTimeout(() => {
     const ctx = document.getElementById('vente_chart').getContext('2d');
@@ -28,19 +28,19 @@ export const InitChart = () => {
 
       // The data for our dataset
       data: {
-        labels: ['Janvier', 'Février', 'Mars', 'Avril'],
+        labels: ['Mai', 'Juin', 'Juillet'],
         datasets: [
-          {
-            label: '2019',
-            borderColor: 'rgb(255, 99, 132)',
-            data: [200, 300, 420, 448],
-            fill: false,
-            lineTension: 0
-          },
+          // {
+          //   label: '2019',
+          //   borderColor: 'rgb(255, 99, 132)',
+          //   data: [200, 300, 420, 448],
+          //   fill: false,
+          //   lineTension: 0
+          // },
           {
             label: '2020',
             borderColor: 'rgb(118, 190, 208)',
-            data: [180, 320, 500, currentMonthTurnover],
+            data: [antePreviousMonthTurnover, previousMonthTurnover, currentMonthTurnover],
             fill: false,
             lineTension: 0
           }
