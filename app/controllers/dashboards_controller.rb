@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   before_action :require_admin
 
-  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_current_month, :lowest_stock, :oldest_stock
+  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_previous_month, :orders_total_current_month, :lowest_stock, :oldest_stock
   # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
     # Par exemple pour orders_number_current_month à reclasser dans Order model
       #   scope :for_current_month, -> do
@@ -31,6 +31,10 @@ class DashboardsController < ApplicationController
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).count
   end
 
+  def orders_total_previous_month(x)
+    Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', previous_month(x)).sum(:total_price_cents) / 100
+  end
+
   def orders_total_current_month
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100
   end
@@ -52,7 +56,7 @@ class DashboardsController < ApplicationController
 
   def oldest_stock
     expiry_date_trigger = Date.today + 10 # Trigger fixe pour l'instant à J+10
-    old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).order(:expiry_date) # renvoit un array des product_lots répondant aux cond° ci-dessus et trié par date d'expiration
+    old_product_lots = ProductLot.where("expiry_date < ? AND remaining_quantity > 0", expiry_date_trigger).where("expiry_date > ?", Date.today).order(:expiry_date) # renvoit un array des product_lots avec date d'expiration comprise entre J et J+10 trié par date d'expiration (et dont quantité restante > 0)
     oldest_product = old_product_lots.first # Pour l'instant ne renvoit qu'un item pour qu'on ait une seule notif pour stock ancien
   end
 
@@ -61,6 +65,10 @@ class DashboardsController < ApplicationController
 
   def month_now
     Date.today.month
+  end
+
+  def previous_month(x)
+    (Time.now - x.month).month
   end
 
   def year_now
