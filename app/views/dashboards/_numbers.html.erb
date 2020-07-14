@@ -5,7 +5,7 @@
   <div class="monthly-data-card" >
     <%= image_tag('multiple-actions-add-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="data-amount"> <%= new_clients_current_month %> </p>
+      <p class="data-amount"> <%= @new_clients_current_month_count %> </p>
       <p class="middle-text-semi-bold grey-light">Nouveaux clients</p>
     </div>
   </div>
@@ -13,7 +13,7 @@
   <div class="monthly-data-card" >
     <%= image_tag('task-list-approve-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="data-amount"><%= orders_number_current_month %></p>
+      <p class="data-amount"><%= @orders_number_current_month %></p>
       <p class="middle-text-semi-bold grey-light">Commandes</p>
     </div>
   </div>
@@ -21,7 +21,7 @@
   <div class="monthly-data-card" >
     <%= image_tag('task-list-approve-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="data-amount"><%= orders_total_current_month %>
+      <p class="data-amount"><%= @orders_total_current_month %>
         <sup><span class="big-text-bold">€</span></sup>
         <!-- <sup><span class="small-text-bold">TTC</span></sup> -->
       </p>
@@ -32,7 +32,7 @@
   <div class="monthly-data-card" >
     <%= image_tag('shipment-upload-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="data-amount"><%= number_with_delimiter(products_total_value) %>
+      <p class="data-amount"><%= number_with_delimiter(Product.total_value) %>
         <sup><span class="big-text-bold">€</span></sup>
     <!--     <sup><span class="small-text-bold">TTC</span></sup> -->
       </p>
