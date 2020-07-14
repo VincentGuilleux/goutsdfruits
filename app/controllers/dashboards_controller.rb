@@ -14,6 +14,7 @@ class DashboardsController < ApplicationController
   def show
     @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products).where("status != ?", "paid")
     @top_products = Product.joins(:order_lines).select("products.*, SUM(order_lines.quantity) AS total_quantity").order(total_quantity: :desc).group("products.id").limit(3)
+    @current_month_new_clients_count = Client.new_clients_current_month.count
   end
 
   # Methods used to calculated monthly_data stats
@@ -27,10 +28,6 @@ class DashboardsController < ApplicationController
 
   def orders_total_current_month
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).sum(:total_price_cents) / 100
-  end
-
-  def new_clients_current_month
-    Client.where('extract(year from created_at) = ?', year_now).where('extract(month from created_at) = ?', month_now).count
   end
 
   private
