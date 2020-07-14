@@ -21,14 +21,14 @@
     </div>
   <% end %>
 
-  <% unless oldest_stock.nil? %>
-  <div class="notification-card background-yellow-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(oldest_stock.product) %>'" >
+  <% unless ProductLot.oldest_stock.nil? %>
+  <div class="notification-card background-yellow-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(ProductLot.oldest_stock.product) %>'" >
     <div class="notif-circle">
       <i class="fas fa-exclamation alert-icons bold white"></i>
     </div>
     <div class="notification-card-infos background-yellow-alert">
-      <p class="middle-text bold white"><%= oldest_stock.product.name %></p>
-      <p class="semi-small-text light-bold white">Date d'expiration : <%= l(oldest_stock.expiry_date, format: :long) %></p>
+      <p class="middle-text bold white"><%= ProductLot.oldest_stock.product.name %></p>
+      <p class="semi-small-text light-bold white">Date d'expiration : <%= l(ProductLot.oldest_stock.expiry_date, format: :long) %></p>
     </div>
 
   </div>

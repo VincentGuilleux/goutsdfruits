@@ -13,7 +13,7 @@ class Product < ApplicationRecord
   validates :unit_measure, presence: true
   validates :unit_measure_quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :unit_measure_quantity_shop, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  # champ ci-dessus obligatoire pour les besoins de la méthode total_remaining_quantity_shop
+  # champ ci-dessus obligatoire pour les besoins de la méthode total_remaining_quantity_shop (même si produit non vendu au magasin)
   validates :product_type, presence: true
   validates :product_fruit, presence: true
   validates :product_category, presence: true
@@ -48,14 +48,14 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  # Methodes pour les notifications du dashboard
+  # Méthode notification dashboard
   def self.lowest_stock
     low_stock_trigger = 3 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
     Product.all.each do |product|
        low_stock_list << product if product.total_remaining_quantity < low_stock_trigger
     end
-    low_stock_list.first # Pour l'instant on ne renvoit qu'un item pour qu'on ait une seule notif pour stock bas
+    low_stock_list.first # Ne renvoit qu'un item pour qu'on n'ait une seule notif pour stock bas
   end
 
   # Méthodes de classe qui renvoient un array d'arrays d'id et de respectivement remaining_quantity / description / ratio_quantity shop vs client
@@ -101,6 +101,7 @@ class Product < ApplicationRecord
     return ratios
   end
 
+   # Méthodes pour les notifications du dashboard
   def self.total_value
     @products = Product.all
     products_total_value = 0
@@ -109,6 +110,8 @@ class Product < ApplicationRecord
     end
     return products_total_value/100
   end
+
+
 
   # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE PRODUITS (unités, mesures...)
 
