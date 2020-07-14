@@ -15,32 +15,29 @@ export const InitChart = () => {
   // container.style.width  = `${container.parentElement.clientWidth}px`;
   // container.style.height = `${container.parentElement.clientHeight}px`;
   container.innerHTML = `<canvas id="vente_chart"</canvas>`;
-  const currentMonthTurnover = container.dataset.currentMonthOrder
-  const previousMonthTurnover = container.dataset.previousMonthOrder
-  const antePreviousMonthTurnover = container.dataset.antePreviousMonthOrder
 
   setTimeout(() => {
     const ctx = document.getElementById('vente_chart').getContext('2d');
-
     const chart = new Chart(ctx, {
       // The type of chart we want to create
       type: 'line',
 
       // The data for our dataset
       data: {
-        labels: ['Mai', 'Juin', 'Juillet'],
+        labels: ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'],
         datasets: [
-          // {
-          //   label: '2019',
-          //   borderColor: 'rgb(255, 99, 132)',
-          //   data: [200, 300, 420, 448],
-          //   fill: false,
-          //   lineTension: 0
-          // },
+          {
+            label: '2019',
+            borderColor: 'rgb(255, 99, 132)',
+            data: monthly_order_values_previous_year,
+            fill: false,
+            lineTension: 0
+          },
           {
             label: '2020',
             borderColor: 'rgb(118, 190, 208)',
-            data: [antePreviousMonthTurnover, previousMonthTurnover, currentMonthTurnover],
+            // data: [antePreviousMonthTurnover, previousMonthTurnover, currentMonthTurnover],
+            data: monthly_order_values,
             fill: false,
             lineTension: 0
           }

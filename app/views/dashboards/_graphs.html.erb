@@ -17,7 +17,11 @@
   </div>
 
   <div class="stats-data-card" >
-    <div class="stats-data-infos graph" id="chartContainer" data-ante-previous-month-order="<%= @orders_total_previous_month2 %>"  data-previous-month-order="<%= @orders_total_previous_month1 %>" data-current-month-order="<%= @orders_total_current_month %>">
+     <script>
+    var monthly_order_values = JSON.parse('<%= raw Order.total_value_per_month(Date.today.year).to_json %>');
+    var monthly_order_values_previous_year = JSON.parse('<%= raw Order.total_value_per_month(Date.today.year - 1).to_json %>');
+  </script>
+    <div class="stats-data-infos graph" id="chartContainer">
       <!-- <canvas id="vente_chart"> </canvas> --> <!-- Inserted with JS (initchart.js) -->
     </div>
   </div>
