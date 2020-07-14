@@ -12,7 +12,6 @@ class OrdersController < ApplicationController
       #   format.html { render :index }
       # end
       # Supprimé car les filtres ne fonctionnent plus avec les lignes commmentées ci-dessus et a priori pas nécessaire pour générer le fichier Excel malgré la doc : https://medium.com/@JasonCodes/ruby-on-rails-exporting-data-to-excel-b3b204281085
-
     else
       @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products) # pour l'instant en vue client on n'affiche pas la delivery place
     end
@@ -40,8 +39,9 @@ class OrdersController < ApplicationController
     if params[:delivery_place].present?
       @orders = @orders.select {|order| order.delivery_place.name == "#{params[:delivery_place]}"}
     end
-
   end
+
+  # METHODES STATUS COMMANDES
 
   def prepare
     @order = Order.find(params[:id])
@@ -82,6 +82,7 @@ class OrdersController < ApplicationController
     end
   end
 
+  # METHODES D'INSTANCIATION/CREATION/SUPPRESSION DE CMDS
   def new
     @order = Order.new
     @order.order_lines.build # crée un order_line à vide
@@ -104,7 +105,6 @@ class OrdersController < ApplicationController
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
     create_order_delivery_place
 
-    # Si commande passée, on appelle la méthode generate_order_line_product_lots qui vient décrémenter les stocks en fonction de la quantité commandée pour chaque order line
     if @order.save!
       generate_order_line_product_lots
       send_mail_new_order
