@@ -1,19 +1,19 @@
 <div class="notification-card-grid">
 
- <% unless lowest_stock.nil? %>
-    <div class="notification-card background-red-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(lowest_stock) %>'">
+ <% unless Product.lowest_stock.nil? %>
+    <div class="notification-card background-red-alert" style="cursor:pointer;" onclick="location.href='<%= product_path(Product.lowest_stock) %>'">
       <div class="notif-circle">
         <i class="fas fa-exclamation alert-icons bold white"></i>
       </div>
       <%# low_stock.each do |low_stock|  %>
       <!-- pour l'instant la méthode low_stock ne récupère que le 1er item de l'array (return low_stock_list.first) donc pas besoin d'itérer, une seul carte de notification pour stock bas est générée) -->
       <div class="notification-card-infos">
-        <p class="middle-text bold white"><%= lowest_stock.name %></p>
+        <p class="middle-text bold white"><%= Product.lowest_stock.name %></p>
         <p class="semi-small-text light-bold white">
-          <% if lowest_stock.total_remaining_quantity == 0 %>
+          <% if Product.lowest_stock.total_remaining_quantity == 0 %>
             Stock vide !
           <% else %>
-            <%= pluralize(lowest_stock.total_remaining_quantity, lowest_stock.unit_type) %> en stock seulement !
+            <%= pluralize(lowest_stock.total_remaining_quantity, Product.lowest_stock.unit_type) %> en stock seulement !
           <% end %>
         </p>
       </div>

@@ -32,7 +32,7 @@
   <div class="monthly-data-card" >
     <%= image_tag('shipment-upload-blue.svg') %>
     <div class="monthly-data-infos" >
-      <p class="data-amount"><%= number_with_delimiter(products_total_value) %>
+      <p class="data-amount"><%= number_with_delimiter(Product.total_value) %>
         <sup><span class="big-text-bold">€</span></sup>
     <!--     <sup><span class="small-text-bold">TTC</span></sup> -->
       </p>

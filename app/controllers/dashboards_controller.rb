@@ -1,7 +1,7 @@
 class DashboardsController < ApplicationController
   before_action :require_admin
 
-  helper_method :products_total_value, :new_clients_current_month, :orders_number_current_month, :orders_total_previous_month, :orders_total_current_month, :lowest_stock, :oldest_stock
+  helper_method :new_clients_current_month, :orders_number_current_month, :orders_total_previous_month, :orders_total_current_month, :oldest_stock
   # Pas très propre on ne devrait pas définir les méthodes ci-dessous en helper mais les méthodes ci-dessous devraient être reclassées dans les modèles des classes correspondantes et pour celles qui sont des requêtes SQL utiliser scope:
     # Par exemple pour orders_number_current_month à reclasser dans Order model
       #   scope :for_current_month, -> do
@@ -18,14 +18,7 @@ class DashboardsController < ApplicationController
 
   # Methods used to calculated monthly_data stats
 
-  def products_total_value
-    @products = Product.all
-    products_total_value = 0
-    @products.each do |product|
-      products_total_value += product.unit_price_cents * product.total_remaining_quantity
-    end
-    return products_total_value/100
-  end
+
 
   def orders_number_current_month
     Order.where('extract(year from date) = ?', year_now).where('extract(month from date) = ?', month_now).count
