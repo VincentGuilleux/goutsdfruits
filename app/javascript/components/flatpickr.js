@@ -3,8 +3,4 @@ const flatpickrInit = () => {
   flatpickr(".expiry_date");
 }
 
-
-
-
-
 export { flatpickrInit } ;
