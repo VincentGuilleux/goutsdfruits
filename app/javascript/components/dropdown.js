@@ -8,7 +8,7 @@ const getdropdownids = () => {
 
 const dropdownFruit = () => {
   const fruit = document.getElementById("DropdownFruit");
-  if (!fruit) return
+  if (!fruit) return // met fin à la fonction si fruit est null
 
   fruit.addEventListener("click", (event) => {
     const product_fruit_value = (event.target.dataset.name) // stocke le fruit sur lequel l'utilisateur a cliqué
