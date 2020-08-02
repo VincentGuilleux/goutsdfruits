@@ -2,6 +2,12 @@
   margin: 0 24px;
 }
 
+.client-cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 50px;
+  padding: 0 3rem 60px 3rem;
+}
 
 .client-card {
   display: flex;
@@ -59,6 +65,7 @@
 }
 
 .client-info {
+  width: 100%;
   padding: 18px 25px;
   p {
     margin-bottom: 5px;
@@ -71,14 +78,12 @@
   }
 }
 
-.client-cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 50px;
-  margin: 0 3rem 60px 3rem;
+.client-name-delete {
+  display: flex;
+  justify-content: space-between; // nom à gauche, icône suppression à droite
 }
 
-// used in edit my account
+// used in edit my account (app/views/devise/registrations/edit.html.erb)
 .form-edit-account {
   background-color: $white;
   color: grey;
