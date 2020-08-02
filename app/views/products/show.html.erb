@@ -40,7 +40,7 @@
                   <td> <%= f.submit "", :type => :image, :src => image_path("add-circle.svg"), class: 'picto-add' %></td>
                 <% end %>
 
-                <% @product.product_lots.each do |product_lot|%>
+                <% @product.product_lots.unexpired.each do |product_lot|%>
                   <tr>
                     <th scope="row"><%=product_lot.lot_number%></th>
                     <td><%=l(product_lot.production_date, format: :long)%></td>

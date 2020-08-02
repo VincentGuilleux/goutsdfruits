@@ -8,6 +8,9 @@ class ProductLot < ApplicationRecord
   validates :expiry_date, presence: true
   validates :quantity, presence: true, numericality: { only_integer: true, greater_than: 0 }
 
+  def self.unexpired
+    ProductLot.where("expiry_date > ?", Date.today)
+  end
 
 # Méthode notification dashboard
   def self.oldest_stock

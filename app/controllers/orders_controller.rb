@@ -206,7 +206,7 @@ class OrdersController < ApplicationController
   # Private method called when order deleted to regenerate product lots
   def regenerate_order_line_product_lots
     @order.order_lines.each do |order_line|
-      selected_lots = order_line.product.product_lots.where("expiry_date > ?", Date.today).order(:expiry_date)
+      selected_lots = order_line.product.product_lots.unexpired.order(:expiry_date)
       rebuild_quantity = order_line.quantity
 
       selected_lots.each do |selected_lot|
