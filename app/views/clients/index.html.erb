@@ -1,9 +1,5 @@
 <div class="title-container title-client">
 
-
-
-<!--   <div class="col-12 col-lg-12"> -->
-
   <!-- FILTERS DIV -->
   <div class="container-index-filters">
 
@@ -14,7 +10,7 @@
     <div class="dropdown">
       <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
       <div id="DropdownSegment" class="dropdown-content">
-        <% Client.segments.each do |segment| %>
+        <% Client.segments_to_display.each do |segment| %>
           <a data-name="<%= segment %>" href="#"><%= segment %></a>
         <% end %>
       </div>
@@ -27,14 +23,12 @@
     <div class="dropdown">
       <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
       <div id="DropdownAmap" class="dropdown-content">
-        <% Client.amap.each do |amap| %>
+        <% Client.amap_to_display.each do |amap| %>
           <a data-name="<%= amap %>" href="#"><%= amap %></a>
         <% end %>
       </div>
     </div>
 
-    <!-- Reset filters -->
-    <%= link_to "Effacer les filtres", clients_path, id: "clearing_filter_link", class: "btn middle-text grey-medium nopnom" %>
   </div>
 <!--   <div class="add-new">
     <%#= link_to new_client_path do %>
@@ -72,4 +66,5 @@
       </div>
     </div>
   <% end %>
+
 </div>

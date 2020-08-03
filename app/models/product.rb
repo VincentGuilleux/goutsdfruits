@@ -18,7 +18,7 @@ class Product < ApplicationRecord
   validates :product_fruit, presence: true
   validates :product_category, presence: true
 
-  # Methodes de calcul de la quantité restante pour un produit donné
+  # METHODES CALCUL QUANTITE RESTANTE POUR UN PRODUIT DONNE (NON-SHOP/SHOP)
   def total_remaining_quantity
     product_lots.where("expiry_date > ?", Date.today).sum(:remaining_quantity)
   end
@@ -27,11 +27,14 @@ class Product < ApplicationRecord
     product_lots.sum(:remaining_quantity) * unit_measure_quantity / unit_measure_quantity_shop
   end
 
+  # METHODE CALCUL RATIO UNIT MEASURE QTY SHOP VS NON-SHOP
+  #utilisé dans le controlleur orders dans la création du total order price
+  #utilisé dans index products orders pour l'affichage du prix pour un client magasin )
   def ratio
     unit_measure_quantity_shop / unit_measure_quantity
   end
 
-  # Methodes de calcul de la TVA
+  # METHODES CALCUL TVA
   def unit_price_cents_VAT
     (unit_price_cents / (1 + VATRATE) * VATRATE).round(0)
   end
@@ -48,7 +51,7 @@ class Product < ApplicationRecord
     unit_price_cents_shop - unit_price_cents_shop_VAT
   end
 
-  # Méthode notification dashboard
+  # METHODE NOTIF DASHBOARD STOCK BAS
   def self.lowest_stock
     low_stock_trigger = 3 # Plancher de quantité qui trigger l'alimentation de la liste des low_stocks
     low_stock_list = Array.new
@@ -58,7 +61,7 @@ class Product < ApplicationRecord
     low_stock_list.first # Ne renvoit qu'un item pour qu'on n'ait une seule notif pour stock bas
   end
 
-  # Méthodes de classe qui renvoient un array d'arrays d'id et de respectivement remaining_quantity / description / ratio_quantity shop vs client
+  # METHODES DE CLASSES RENVOYANT UN ARRAY d'ARRAYS [ID ; respectivement remaining_quantity / description / ratio_quantity shop vs client]
   def self.remaining_quantities(user)
     @products = Product.all
     remaining_quantities = []
@@ -101,7 +104,7 @@ class Product < ApplicationRecord
     return ratios
   end
 
-   # Méthodes pour les notifications du dashboard
+   # METHODE NOTIF DASHBOARD
   def self.total_value
     @products = Product.all
     products_total_value = 0
@@ -110,8 +113,6 @@ class Product < ApplicationRecord
     end
     return products_total_value/100
   end
-
-
 
   # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE PRODUITS (unités, mesures...)
 
@@ -135,6 +136,7 @@ class Product < ApplicationRecord
     ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "noisette", "poire", "pomme", "prune", "pêche", "raisin", "rhubarbe", "sureau"]
   end
 
+  # METHODES DEFINISSANT LES FILTRES DE L'INDEX PRODUITS
   # les méthodes ci-dessous répondent à une logique d'affichage uniquement donc pourraient être mises dans un helper plutôt
 
   def self.types_to_display
@@ -216,6 +218,5 @@ class Product < ApplicationRecord
       end
     end
   end
-
 
 end

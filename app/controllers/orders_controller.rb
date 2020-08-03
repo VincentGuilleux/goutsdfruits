@@ -27,9 +27,9 @@ class OrdersController < ApplicationController
     if params[:status].present?
       if "#{params[:status]}" == "A préparer"
         @orders = @orders.select {|order| order.status == 'pending'}
-      elsif "#{params[:status]}" == "Prête / A livrer"
+      elsif "#{params[:status]}" == "Préparées"
         @orders = @orders.select {|order| order.status == 'prepared'}
-      elsif "#{params[:status]}" == "Livrées / Non-payées"
+      elsif "#{params[:status]}" == "Livrées"
         @orders = @orders.select {|order| order.status == 'delivered'}
       elsif "#{params[:status]}" == "Payées"
         @orders = @orders.select {|order| order.status == 'paid'}
