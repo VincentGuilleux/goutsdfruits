@@ -61,14 +61,18 @@
         <% end %>
       </div>
       <div class="client-info">
-        <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
+        <div class="client-name-delete">
+          <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
+          <%= link_to client_path(client.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer ce client ?") }, method: :delete do %>
+          <i class="far fa-trash-alt green"></i>
+          <% end %>
+        </div>
         <p class="semi-small-text-bold"><%= client.city %></p>
         <p class="small-text grey-medium client-index-details"><%= client.phone.unpack("A2A2A2A2A2").join(" ") %></p>
         <p class="small-text grey-medium client-index-details"><%= client.email %></p>
         <% if client.amap != "Non-membre" %>
           <p class="small-text grey-medium client-index-details"><%= client.amap %></p>
         <% end %>
-
       </div>
     </div>
   <% end %>
