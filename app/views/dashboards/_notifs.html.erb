@@ -13,7 +13,7 @@
           <% if Product.lowest_stock.total_remaining_quantity == 0 %>
             Stock vide !
           <% else %>
-            <%= pluralize(lowest_stock.total_remaining_quantity, Product.lowest_stock.unit_type) %> en stock seulement !
+            <%= pluralize(Product.lowest_stock.total_remaining_quantity, Product.lowest_stock.unit_type) %> en stock seulement !
           <% end %>
         </p>
       </div>
