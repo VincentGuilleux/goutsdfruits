@@ -89,7 +89,6 @@
             </div>
           </div>
         <% else %>
-          <!-- <div id="product_price" style="display:none;"></div> Div masquée avec product_price pour les besoins de dropdown.JS fonction clearFilters qui reset le product_price.innertext donc besoin de cet id même si non utile seulemnt en admin -->
         <% end %>
       </div>
 
@@ -135,12 +134,7 @@
           <% end %>
         <% end %>
 
-        <%# unless client_signed_in? && current_client.role == "admin" %>
         <div class="card-product-infos">
-        <%# else %>
-          <!-- <div class="card-product-infos" style="cursor:pointer;" onclick="location.href='<%= product_path(product) %>'"> -->
-        <%# end %>
-
           <!-- Card display NA/top-middle: category -->
           <div class="card-product-text-line">
             <% if current_client && current_client.role == "admin" %>
@@ -168,7 +162,6 @@
                 <p class="big-text-bold-resp grey-dark hovereffect" > <%= product.name %></p>
               <% end %>
             <% end %>
-
           </div>
           <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
           <div class="card-product-text-line">

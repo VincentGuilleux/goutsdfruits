@@ -238,7 +238,7 @@
             <div class="col-12 col-lg-1 text-center">
               <% if order.status=="pending" %>
                 <%= link_to order_path(order.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer cette commande ?") }, method: :delete do %>
-                  <i class="far fa-trash-alt green"></i>
+                  <i class="far fa-trash-alt blue"></i>
                 <% end %>
               <% end %>
             </div>
