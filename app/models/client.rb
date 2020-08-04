@@ -26,6 +26,7 @@ class Client < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
+  # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE CLIENTS (segments, amap)
   def self.segments
     ["CE", "magasin", "marché", "particulier"]
   end
@@ -36,6 +37,16 @@ class Client < ApplicationRecord
 
   def self.amap
     ['Non-membre', 'Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs']
+  end
+
+  # METHODES DEFINISSANT LES FILTRES DE L'INDEX CLIENT
+  # les méthodes ci-dessous répondent à une logique d'affichage uniquement donc pourraient être mises dans un helper plutôt
+  def self.segments_to_display
+    Client.segments.unshift('Segment')
+  end
+
+  def self.amap_to_display
+    Client.amap.unshift('Amap')
   end
 
 end

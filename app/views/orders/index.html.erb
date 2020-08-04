@@ -16,7 +16,8 @@
         </div>
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
-          <div id="dropdownSegmentOrders" class="dropdown-content">
+          <div id="dropdownSegmentOrders" class="dropdown-content dropdown-status">
+            <a data-name="Segment" href="#">Segment</a>
             <a data-name="particulier" href="#">particulier</a>
             <a data-name="AMAP" href="#">AMAP</a>
             <a data-name="marché" href="#">marché</a>
@@ -31,9 +32,10 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
           <div id="dropdownStatusOrders" class="dropdown-content dropdown-status">
+            <a data-name="Statut" href="#">Statut</a>
             <a data-name="A préparer" href="#">A préparer</a>
-            <a data-name="Prêtes / A livrer" href="#">Prêtes / A livrer</a>
-            <a data-name="Livrées / Non-payées" href="#">Livrées / Non-payées</a>
+            <a data-name="Préparées" href="#">Préparées</a>
+            <a data-name="Livrées" href="#">Livrées</a>
             <a data-name="Payées" href="#">Payées</a>
           </div>
         </div>
@@ -44,13 +46,11 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text grey-medium prfilters"></i>
           <div id="dropdownDeliveryOrders" class="dropdown-content dropdown-status">
-            <% DeliveryPlace.all.each do |delivery| %>
-              <a data-name="<%= delivery.name %>" href="#"><%= delivery.name %></a>
+            <% DeliveryPlace.names_to_display.each do |name| %>
+              <a data-name="<%= name %>" href="#"><%= name %></a>
             <% end %>
           </div>
         </div>
-        <!-- Reset filters -->
-        <%= link_to "Effacer les filtres", orders_path, id: "clearing_filter_link", class: "btn middle-text-resp grey-medium nopnom" %>
       </div>
       <div class="add-new no-display-on-mobile">
         <%= link_to orders_path(format: :xlsx) do %>
