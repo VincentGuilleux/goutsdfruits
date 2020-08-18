@@ -101,6 +101,12 @@ class OrdersController < ApplicationController
       return
     end
 
+    if @order.client.nil? && @current_client.role == "admin"
+      flash.keep[:alert] = "Vous n'avez sélectionné aucun client - la commande ne peut pas être enregistrée."
+      redirect_to orders_path
+      return
+    end
+
     create_order_client
     create_order_payment_status # renvoit paid si méthode de paiement sélectionnée
     create_order_delivery_place
@@ -158,7 +164,7 @@ class OrdersController < ApplicationController
   def create_order_client
   # Si pas de client sélectionné, on affecte au current_client (sinon on est dans le cas de l'admin qui sélectionne le client)
     if @order.client_id.nil?
-      @order.client_id = current_client.id
+        @order.client_id = current_client.id
     end
   end
 
