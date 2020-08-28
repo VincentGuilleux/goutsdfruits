@@ -4,24 +4,29 @@
     <p class="green semi-small-text">MENU</p>
     <span class="navbar-toggler-icon"></span>
   </button>
+
   <%= image_tag "logo-goutsdfruits.png", id: 'logo-goutsdfruits' %>
 
   <div class="collapse navbar-collapse background-white" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item lien-navbar">
-        <%= link_to 'Accueil', root_path, class: " #{'active' if current_page?('/')}" %>
-      </li>
-      <li class="nav-item lien-navbar">
-        <%= link_to 'La ferme', "/pages/laferme", class: " #{'active' if current_page?('/pages/laferme')}" %>
+        <%= link_to 'Accueil', root_path, class: "d-block d-sm-none #{'active' if current_page?('/')}" %>
       </li>
       <li class="nav-item lien-navbar">
         <%= link_to 'Produits', products_path, class: " #{'active' if controller_name == 'products'}" %>
       </li>
+      <li class="nav-item lien-navbar mr-4">
+        <%= link_to 'La ferme', "/pages/laferme", class: " #{'active' if current_page?('/pages/laferme')}" %>
+      </li>
       <% unless client_signed_in? %>
-        <li class="nav-item lien-navbar">
+        <li class="nav-item lien-navbar ml-4">
           <%= link_to 'Connexion', new_client_session_path, class: " #{'active' if current_page?('/clients/sign_in')}" %>
         </li>
       <% end %>
+        <li class="nav-item lien-navbar">
+          <%= link_to 'Contact', "/pages/contact", class: " #{'active' if current_page?('/pages/contact')}" %>
+        </li>
+
       <% if client_signed_in? %>
         <li class="nav-item lien-navbar">
           <%= link_to 'Mes commandes', orders_path, class: " #{'active' if controller_name == 'orders'}" %>
