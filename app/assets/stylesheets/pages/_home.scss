@@ -1,22 +1,27 @@
 // Specific CSS for your home-page
 
 .banner {
-  padding-top: 5em;
-  background-size: cover;
+  height:78vh;
+  padding-top: 7%;
+  background-size: 100% auto;
   background-position: center;
   background-image: url(image_path('home-page.jpg'));
-  // background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url(image_path('home-page.jpg'));
+  // filter: brightness(200%);
+  //background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.2)), url(image_path('home-page.jpg'));
 }
 
 .banner h1 {
-  font-size: 34px;
+  font-size: 30px;
   color: white;
+  font-weight: 600;
+  padding: 0;
 }
 
 .banner p {
-  font-size: 20px;
+  font-size: 19px;
   color: white;
-  opacity: .85;
+  opacity: 0.95;
+  padding: 0;
   // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   a {
     color: white;
@@ -29,14 +34,14 @@
   }
 }
 
-.imghome img {
-  width: 100%;
-  min-width: 205px;
-  max-width: 50vw;
-  height: auto;
-  padding-left: 10px;
-  padding-right: 10px;
-}
+// .imghome img {
+//   width: 100%;
+//   min-width: 205px;
+//   max-width: 50vw;
+//   height: auto;
+//   padding-left: 10px;
+//   padding-right: 10px;
+// }
 
 .btn-right-home {
   color: white;
