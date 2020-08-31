@@ -9,7 +9,7 @@
     <%= image_tag "logo-goutsdfruits.png", id: 'logo-goutsdfruits' %>
   <% end %>
   <div class="collapse navbar-collapse background-white" id="navbarSupportedContent">
-    <ul class="navbar-nav jc-left">
+    <ul class="navbar-nav justify-content-start pl-8pc">
       <li class="nav-item lien-navbar d-block d-sm-none pr-4 mr-4">
         <%= link_to 'Accueil', root_path, class: "#{'active' if current_page?('/')}" %>
       </li>
@@ -17,27 +17,27 @@
         <%= link_to 'Produits', products_path, class: "#{'active' if controller_name == 'products'}" %>
       </li>
       <% if client_signed_in? %>
-        <li class="nav-item lien-navbar pr-4 mr-4">
+        <li class="nav-item lien-navbar pl-4 ml-4 pr-4 mr-4">
           <%= link_to 'Mes commandes', orders_path, class: " #{'active' if controller_name == 'orders'}" %>
         </li>
       <% end %>
-      <li class="nav-item lien-navbar">
+      <li class="nav-item lien-navbar pl-4 ml-4">
         <%= link_to 'La ferme', "/pages/laferme", class: " #{'active' if current_page?('/pages/laferme')}" %>
       </li>
     </ul>
-    <ul class="navbar-nav jc-right">
+    <ul class="navbar-nav justify-content-end pr-8pc">
       <li class="nav-item lien-navbar pr-4 mr-4">
         <%= link_to 'Contact', "/pages/contact", class: " #{'active' if current_page?('/pages/contact')}" %>
       </li>
       <% unless client_signed_in? %>
-        <li class="nav-item lien-navbar pr-4 mr-4">
+        <li class="nav-item lien-navbar pl-4 ml-4 pr-4 mr-4">
           <%= link_to 'Connexion', new_client_session_path, class: " #{'active' if current_page?('/clients/sign_in')}" %>
         </li>
       <% else %>
-        <li class="nav-item lien-navbar pr-4 mr-4">
+        <li class="nav-item lien-navbar pl-4 ml-4 pr-4 mr-4">
           <%= link_to 'Mon compte', edit_client_registration_path, class: " #{'active' if current_page?('/clients/edit')}" %>
         </li>
-       <li class="nav-item lien-navbar">
+       <li class="nav-item lien-navbar pl-4 ml-4">
         <%= link_to destroy_client_session_path, method: :delete do %>
           <%= image_tag "logout-2-green.svg", id: 'logout-navbartop'%>
         <% end %>
