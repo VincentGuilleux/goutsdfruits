@@ -39,7 +39,7 @@
 
     <% if client_signed_in? && current_client.role == "admin" %>
       <div>
-        <%= render 'shared/navbar' unless controller.action_name == "home" %>
+        <%= render 'shared/navbar-top-admin' unless controller.action_name == "home" %>
       </div>
     <% else %>
       <div>

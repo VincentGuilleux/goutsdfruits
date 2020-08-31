@@ -16,17 +16,32 @@
 // => prevents the bug of the bio logo to be displayed below the dropdown menu when on mobile
 
 .navbartop {
-  justify-content: space-between;
+  // justify-content: space-between; // spacing between all navbartop elements (logo GoutsdFruits, 'produit'...)
   background: $white;
   color: $green;
   height: 12vh;
 }
 
-.navbar-collapse {
-  flex-grow: 0;
-  justify-content: space-between;
+// .navbar-collapse {
+//   // flex-grow: 0;
+//   justify-content: right;
+//   display: flex;
+// }
+
+.navbar-nav {
+  width: 100%;
   display: flex;
 }
+
+.navbar-nav.jc-left {
+    padding-left: 8%;
+    justify-content: flex-start;
+  }
+
+.navbar-nav.jc-right {
+   justify-content: flex-end;
+   padding-right: 8%;
+  }
 
 #logout-navbartop {
   height: 3vh;

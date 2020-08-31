@@ -9,37 +9,39 @@
     <%= image_tag "logo-goutsdfruits.png", id: 'logo-goutsdfruits' %>
   <% end %>
   <div class="collapse navbar-collapse background-white" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item lien-navbar">
-        <%= link_to 'Accueil', root_path, class: "d-block d-sm-none #{'active' if current_page?('/')}" %>
+    <ul class="navbar-nav jc-left">
+      <li class="nav-item lien-navbar d-block d-sm-none pr-4 mr-4">
+        <%= link_to 'Accueil', root_path, class: "#{'active' if current_page?('/')}" %>
       </li>
-      <li class="nav-item lien-navbar">
-        <%= link_to 'Produits', products_path, class: " #{'active' if controller_name == 'products'}" %>
+      <li class="nav-item lien-navbar pr-4 mr-4">
+        <%= link_to 'Produits', products_path, class: "#{'active' if controller_name == 'products'}" %>
       </li>
-      <li class="nav-item lien-navbar mr-4">
-        <%= link_to 'La ferme', "/pages/laferme", class: " #{'active' if current_page?('/pages/laferme')}" %>
-      </li>
-      <% unless client_signed_in? %>
-        <li class="nav-item lien-navbar ml-4">
-          <%= link_to 'Connexion', new_client_session_path, class: " #{'active' if current_page?('/clients/sign_in')}" %>
-        </li>
-      <% end %>
-        <li class="nav-item lien-navbar">
-          <%= link_to 'Contact', "/pages/contact", class: " #{'active' if current_page?('/pages/contact')}" %>
-        </li>
-
       <% if client_signed_in? %>
-        <li class="nav-item lien-navbar">
+        <li class="nav-item lien-navbar pr-4 mr-4">
           <%= link_to 'Mes commandes', orders_path, class: " #{'active' if controller_name == 'orders'}" %>
         </li>
-        <li class="nav-item lien-navbar">
+      <% end %>
+      <li class="nav-item lien-navbar">
+        <%= link_to 'La ferme', "/pages/laferme", class: " #{'active' if current_page?('/pages/laferme')}" %>
+      </li>
+    </ul>
+    <ul class="navbar-nav jc-right">
+      <li class="nav-item lien-navbar pr-4 mr-4">
+        <%= link_to 'Contact', "/pages/contact", class: " #{'active' if current_page?('/pages/contact')}" %>
+      </li>
+      <% unless client_signed_in? %>
+        <li class="nav-item lien-navbar pr-4 mr-4">
+          <%= link_to 'Connexion', new_client_session_path, class: " #{'active' if current_page?('/clients/sign_in')}" %>
+        </li>
+      <% else %>
+        <li class="nav-item lien-navbar pr-4 mr-4">
           <%= link_to 'Mon compte', edit_client_registration_path, class: " #{'active' if current_page?('/clients/edit')}" %>
         </li>
-        <li class="nav-item lien-navbar">
-          <%= link_to destroy_client_session_path, method: :delete do %>
-            <%= image_tag "logout-2-green.svg", id: 'logout-navbartop'%>
-          <% end %>
-        </li>
+       <li class="nav-item lien-navbar">
+        <%= link_to destroy_client_session_path, method: :delete do %>
+          <%= image_tag "logout-2-green.svg", id: 'logout-navbartop'%>
+        <% end %>
+      </li>
       <% end %>
     </ul>
 
