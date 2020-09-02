@@ -33,13 +33,11 @@
   display: flex;
 }
 
-.navbar-nav.jc-left {
+.pl-8pc {
     padding-left: 8%;
-    justify-content: flex-start;
   }
 
-.navbar-nav.jc-right {
-   justify-content: flex-end;
+.pr-8pc {
    padding-right: 8%;
   }
 
