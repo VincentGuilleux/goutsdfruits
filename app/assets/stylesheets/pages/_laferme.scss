@@ -1,23 +1,24 @@
-// Specific CSS for your home-page
-
-// .same-height {
-//   flex: 1; /* additionally, equal width */
-//   padding: 1em;
-//   border: solid;
+// .imglaferme img {
+//   width: 100%;
+//   min-width: 205px;
+//   max-width: 25vw;
+//   height: auto;
+//   // max-height: 50vh;
 // }
 
-.imglaferme img {
+#madame-gazeau {
   width: 100%;
-  min-width: 205px;
-  max-width: 25vw;
-  height: auto;
-  // max-height: 50vh;
+  object-fit: cover;
+  max-height: 45vh;
 }
 
-#madame-gazeau {
+#arbre_en_fleurs {
+  width: 100%;
+  object-fit: cover;
+  max-height: 45vh;
 }
 
 #ferme-vue-du-ciel {
   height: auto;
-  max-height: 75vh;
+  max-height: 50vh;
 }
