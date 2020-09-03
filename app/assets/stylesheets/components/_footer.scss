@@ -1,6 +1,10 @@
 .page-footer {
   height:10vh;
+  flex-shrink: 0; // *
 }
+
+// *: necessary to make footer stick to bottom
+// Cf. https://css-tricks.com/couple-takes-sticky-footer/ flexbox solution
 
 .footercolors {
   background: $white;

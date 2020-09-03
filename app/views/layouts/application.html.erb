@@ -31,26 +31,17 @@
 
   <body>
     <%= render 'shared/flashes' %>
-    <% if client_signed_in? && current_client.role == "admin" %>
-      <div class="d-flex">
-    <% else %>
-      <div class="d-flex flex-column">
-    <% end %>
 
     <% if client_signed_in? && current_client.role == "admin" %>
-      <div>
         <%= render 'shared/navbar-top-admin' unless controller.action_name == "home" %>
-      </div>
     <% else %>
-      <div>
         <%= render 'shared/navbar-top' %>
-      </div>
     <% end %>
 
       <div class="page-layout-wrapper">
         <%= yield %>
       </div>
-    </div>  <!-- div qui ferme le d-flex ou le le d-flex flex-column -->
+
     <% unless client_signed_in? && current_client.role == "admin" %>
       <%= render 'shared/footer' %>
     <% end %>

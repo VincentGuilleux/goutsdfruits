@@ -14,14 +14,20 @@
 
 .page-layout-wrapper {
   width: 100%;
+  flex: 1 0 auto; // *
+}
+
+html, body {
+  height: 100%; // *
 }
 
 // https://stackoverflow.com/questions/26402156/put-div-below-navigation-bar-and-dont-overlap-content
 body {
+  display: flex; // *
+  flex-direction: column; // *
   padding-top: 12vh; /*10vh for the height of the navbar + 2vh for the offset*/
 }
-// .navbar-offset {
-//   top: 2vh; /*Offsets the top navbar from the top of the viewport*/
-// }
 
+// *: necessary to make footer stick to bottom
+// Cf. https://css-tricks.com/couple-takes-sticky-footer/ flexbox solution
 

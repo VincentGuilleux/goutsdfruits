@@ -12,6 +12,18 @@
  top: 12vh;
 }
 
+ul { list-style: none; } /* Remove default bullets */
+
+// li::before {
+//     font-family: 'Font Awesome 5 Free';
+//     content: "\f337";
+//     color: #5f6870;
+// }
+
+li {
+  line-height: 2;
+}
+
 .no-underline a:link {
   text-decoration : none;
 }
@@ -34,19 +46,12 @@
     border-radius: 5px;
     color: white;
     letter-spacing: 0.1em;
-    margin-top: 20px;
     &:hover {
       background-color: $green_dark;
       color: white;
       text-decoration: none !important;
     }
   }
-
-.page-title-static {
-  color: $grey_dark;
-  font-weight: 900;
-  font-size: 24px;
-}
 
 // for all page titles dashboard + monthly data results
 .page-title {
@@ -258,6 +263,10 @@ color: $green;
 color: $green_light;
 }
 
+.grey-bullet-points {
+color: $grey_bullet_points;
+}
+
 .grey-dark {
 color: $grey_dark;
 }
@@ -271,5 +280,5 @@ color: $grey_light;
 }
 
 .grey-very-light {
-color: $grey_very-light;
+color: $grey_very_light;
 }
