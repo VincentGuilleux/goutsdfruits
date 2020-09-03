@@ -22,7 +22,7 @@
   color: white;
   opacity: 0.95;
   padding: 0;
-  // text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
   a {
     color: white;
     font-weight: 700;
@@ -32,29 +32,4 @@
       transition: 100ms;
     }
   }
-}
-
-// .imghome img {
-//   width: 100%;
-//   min-width: 205px;
-//   max-width: 50vw;
-//   height: auto;
-//   padding-left: 10px;
-//   padding-right: 10px;
-// }
-
-.btn-right-home {
-  color: white;
-  padding: 10px 30px;
-  margin:10px;
-  border-radius: 30px;
-  background: $green;
-  transition: background 0.3s ease;
-  font-size: 20px;
-}
-
-.btn-right-home:hover {
-   background: $green_dark;
-   color: white;
-   text-decoration: none;
 }
