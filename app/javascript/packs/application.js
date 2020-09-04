@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import flatpickr from "flatpickr";
+import { initMapbox } from '../plugins/init_mapbox';
 
 // Internal imports, e.g:
 import { initSelect2 } from '../components/init_select2';
@@ -46,6 +47,7 @@ $(".more-info").click(function () {
 
 // en lien avec application_helper lignes 29 et suivantes (création d'order_lines_id temporaires)
 document.addEventListener('turbolinks:load', () => {
+  initMapbox();
   $("[data-form-prepend]").click(function(e) {
     var obj = $($(this).attr("data-form-prepend"));
     var time = new Date().getTime();
