@@ -148,7 +148,8 @@ class Product < ApplicationRecord
   end
 
   def self.types_to_display_positive_stock
-    types_to_display_positive_stock = Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_type).uniq.sort_by { |word| word.downcase }
+    types_to_display = Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_type).uniq.sort_by { |word| word.downcase }
+    types_to_display.unshift('Type')
   end
 
   def self.fruits_to_display
