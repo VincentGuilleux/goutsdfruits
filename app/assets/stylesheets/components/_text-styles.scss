@@ -12,6 +12,12 @@
  top: 12vh;
 }
 
+.no-border {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
 ul { list-style: none; } /* Remove default bullets */
 
 // li::before {

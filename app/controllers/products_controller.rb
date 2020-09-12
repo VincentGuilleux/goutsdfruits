@@ -22,6 +22,9 @@ class ProductsController < ApplicationController
     if params[:type].present?
       @products = @products.where(product_type: params[:type])
     end
+    if params[:search].present? && params[:search][:name] != ""
+      @products = Product.search_by_name(params[:search][:name])
+    end
 
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0

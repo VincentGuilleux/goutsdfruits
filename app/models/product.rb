@@ -18,6 +18,13 @@ class Product < ApplicationRecord
   validates :product_fruit, presence: true
   validates :product_category, presence: true
 
+  include PgSearch::Model
+  pg_search_scope :search_by_name,
+    against: :name,
+    using: {
+      tsearch: { prefix: true, dictionary: "french" }
+    }
+
   # METHODES CALCUL QUANTITE RESTANTE POUR UN PRODUIT DONNE (NON-SHOP/SHOP)
   def total_remaining_quantity
     product_lots.where("expiry_date > ?", Date.today).sum(:remaining_quantity)
