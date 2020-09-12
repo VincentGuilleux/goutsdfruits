@@ -23,7 +23,6 @@ class Product < ApplicationRecord
     against: :name,
     using: {
       tsearch: { prefix: true, dictionary: "french" }
-
     }
 
   # METHODES CALCUL QUANTITE RESTANTE POUR UN PRODUIT DONNE (NON-SHOP/SHOP)
