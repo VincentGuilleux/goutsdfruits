@@ -76,7 +76,10 @@ Rails.application.configure do
 
   config.after_initialize do
   Bullet.enable = true
+  Bullet.alert = true
+  Bullet.bullet_logger = true
   Bullet.rails_logger = true
+  Bullet.add_footer
  # Bullet.slack = { webhook_url: 'http://lewagon-alumni.slack.com', channel: '#goutdfruits_no-teachers', username: 'notifier' }
 end
 end
