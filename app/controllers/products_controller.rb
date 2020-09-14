@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     @order = Order.new # car création de commande depuis l'index client admin
-    @products = Product.includes(:product_lots, :photo_attachment) # initialement Product.all
+    @products = Product.includes(photo_attachment: :blob) # initialement Product.all
 
     # FILTRAGE DES PRODUITS AFFICHES
 
