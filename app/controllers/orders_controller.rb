@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
 
   def index
     if current_client.role == "admin"
-      @orders = Order.order(created_at: :desc).includes(:client, :order_lines, :products, :delivery_place)
+      @orders = Order.order(created_at: :desc).includes(:client, :delivery_place, order_lines: :product)
       # respond_to do |format| # lignes pour export Excel via gem caxlsx
       #   format.xlsx {
       #     response.headers[
@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
       # end
       # Supprimé car les filtres ne fonctionnent plus avec les lignes commmentées ci-dessus et a priori pas nécessaire pour générer le fichier Excel malgré la doc : https://medium.com/@JasonCodes/ruby-on-rails-exporting-data-to-excel-b3b204281085
     else
-      @orders = current_client.orders.order(created_at: :desc).includes(:client, :order_lines, :products) # pour l'instant en vue client on n'affiche pas la delivery place
+      @orders = current_client.orders.order(created_at: :desc).includes(:delivery_place, order_lines: :product) # même si pour l'instant en vue client on n'affiche pas la delivery place
     end
 
     if params[:segment_order].present?
