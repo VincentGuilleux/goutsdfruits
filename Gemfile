@@ -61,16 +61,16 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet'
-  gem 'rspec-rails', '~> 4.0.1'
 end
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '>= 2.15'
+  gem 'capybara'
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'rspec-rails', '~> 4.0.1'
+  gem 'shoulda'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
