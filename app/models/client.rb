@@ -18,7 +18,7 @@ class Client < ApplicationRecord
   validates :city, presence: true
   validates :segment, presence: true, inclusion: { in: %w(particulier magasin marché CE),
     message: "%{value} n'est pas un type de client valable" }
-  validates :amap, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs', 'Non-membre'], message: "%{value} n'est pas un nom d'AMAP valable" }
+  validates :amap, presence: true, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs', 'Non-membre'], message: "%{value} n'est pas un nom d'AMAP valable" }
 
   scope :new_clients_current_month, -> {where('extract(year from created_at) = ?', Date.today.year).where('extract(month from created_at) = ?', Date.today.month)}
 

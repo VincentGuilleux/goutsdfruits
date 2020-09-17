@@ -245,6 +245,12 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    shoulda (4.0.0)
+      shoulda-context (~> 2.0)
+      shoulda-matchers (~> 4.0)
+    shoulda-context (2.0.0)
+    shoulda-matchers (4.4.1)
+      activesupport (>= 4.2.0)
     simple_form (5.0.2)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
@@ -302,7 +308,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   bullet
   byebug
-  capybara (>= 2.15)
+  capybara
   caxlsx
   caxlsx_rails
   cloudinary (~> 1.12.0)
@@ -324,6 +330,7 @@ DEPENDENCIES
   rspec-rails (~> 4.0.1)
   sass-rails (>= 6)
   selenium-webdriver
+  shoulda
   simple_form
   slack-notifier
   spring
