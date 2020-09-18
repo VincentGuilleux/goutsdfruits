@@ -17,6 +17,16 @@ RSpec.configure do |config|
   # config.before(:suite) do
   #   Rails.application.load_seed # loads seeds from seeds.rb each time rspec is run
   # end
+
+  # capybara config (cf. le Wagon Testing + require nécessaire)
+  require 'capybara/rspec'
+  Capybara.register_driver :headless_chrome do |app|
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu window-size=1400,900])
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+  # Capybara.save_path = Rails.root.join('tmp/capybara')
+  Capybara.javascript_driver = :headless_chrome
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
