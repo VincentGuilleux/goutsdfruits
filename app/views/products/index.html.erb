@@ -19,7 +19,7 @@
 
 <div class="client-new-order">
 
-  <% if (current_client && current_client.role != "admin") %>
+  <% if client_non_admin? %>
   <!-- affichage du prix total commande et button validation cmd -->
     <div class="col-6 col-lg-3 product-index-new-order">
         <%= simple_form_for @order do |ff| %>
@@ -38,7 +38,7 @@
     </div>
   <% end %>
 
-  <% if current_client.nil? %> <!-- affichage d'un button link pour se connecter -->
+  <% if client_not_logged? %> <!-- affichage d'un button link pour se connecter -->
     <div class="row justify-content-center">
       <div class="col-12 col-lg-4 pb-2 no-underline">
         <%= link_to new_client_session_path do %>
@@ -61,7 +61,7 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownFruit" class="dropdown-content">
-            <% if (current_client.nil? || current_client.role != "admin") %>
+            <% if (client_not_logged? || current_client.role != "admin") %>
               <% Product.fruits_to_display_positive_stock.each do |fruit| %>
                 <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
               <% end %>
@@ -80,7 +80,7 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
-            <% if (current_client.nil? || current_client.role != "admin") %>
+            <% if (client_non_admin?) %>
               <% Product.types_to_display_positive_stock.each do |type| %>
                 <a data-name="<%= type %>" href="#"><%= type %></a>
               <% end %>
@@ -93,7 +93,7 @@
         </div>
 
         <!-- Price filter -->
-        <% if current_client && current_client.role == "admin" %>
+        <% if client_admin? %>
           <div id="product_price" class="middle-text-resp grey-medium mr5">
             <%= if params[:price].present? then params[:price] else 'Prix' end %>
           </div>
@@ -129,7 +129,7 @@
       </div>
 
       <!-- Add product button: only for admin -->
-      <% if client_signed_in? && current_client.role == "admin" %>
+      <% if client_admin? %>
         <div class="add-new">
           <%= link_to new_product_path do %>
             <p>Ajouter un produit</p>
@@ -145,7 +145,7 @@
 <!-- <script src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> -->
 <!-- for JSON5 -->
 <script>
-<% if (current_client && current_client.segment == 'magasin') %>
+<% if (client_shop?) %>
     var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
 <% else %>
     var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents).to_h.to_json %>');
@@ -162,7 +162,7 @@
       <% uuid = product.id %>
       <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
         <% if product.photo.attached? %>
-          <% if client_signed_in? && current_client.role == "admin" %>
+          <% if client_admin? %>
             <%= link_to product_path(product) do %>
               <%= cl_image_tag product.photo.key, alt: "image produit", class: "hovereffect" %>
             <% end %>
@@ -174,7 +174,7 @@
         <div class="card-product-infos">
           <!-- Card display NA/top-middle: category -->
           <div class="card-product-text-line">
-            <% if current_client && current_client.role == "admin" %>
+            <% if client_admin? %>
               <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
             <% end %>
             <!-- Card display top-middle/top-right: price -->
@@ -182,7 +182,7 @@
                <p>
                 <span class="semi-small-text-bold green" data-priceshop="<%= product.display_price(current_client, 'magasin') %>" data-pricenonshop="<%= product.display_price(current_client, 'non-magasin') %>" > <%= decimal_with_comma(product.display_price(current_client, @type_price)) %> </span> €
                 <sup>
-                  <% if current_client && current_client.segment == 'magasin' %> HT <% end %>
+                  <% if client_shop? %> HT <% end %>
                   /
                   <%= product.unit_type %>
                 </p>
@@ -191,7 +191,7 @@
           </div>
           <!-- Card display center-middle: name -->
           <div class="card-product-text-line no-underline">
-            <% unless client_signed_in? && current_client.role == "admin" %>
+            <% unless client_admin? %>
               <p class="big-text-bold-resp grey-dark hovereffect JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
               <%= product.name %></p>
             <% else %>
@@ -215,7 +215,7 @@
           </div>
         </div> <!-- Card-product-infos -->
 
-        <% if (current_client && current_client.role != "admin") %>
+        <% if (client_non_admin?) %>
           <div class="card-product-order-input">
               <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
               <span class="hidden-initially green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->

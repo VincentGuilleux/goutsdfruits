@@ -1,11 +1,11 @@
 <!-- classes used below are from product index -->
 
-<% if client_signed_in? && current_client.role != "admin" %>
+<% if client_non_admin? %>
   <p class="text-center middle-text font-italic pt-5">Les modalités de livraison des commandes sont précisées <a href="/pages/livraison">ici</a>.</p>
 <% end %>
 
 <!-- FILTERS (ONLY FOR ADMIN) -->
-<% if client_signed_in? && current_client.role == "admin" %>
+<% if client_admin? %>
   <div class="container">
     <div class="col-12 col-lg-12 title-container order-title-container">
         <!-- FILTERS DIV -->
