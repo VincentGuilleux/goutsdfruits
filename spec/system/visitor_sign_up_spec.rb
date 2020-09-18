@@ -1,19 +1,26 @@
 require 'rails_helper'
 
-describe "the signin process", type: :feature do
-  # before :each do
-  #   Client.make(email: 'user@example.com', password: 'password')
-  # end
+describe "sign-up process", type: :system do
+  before do
+    ENV['GMAIL_EMAIL']="vincent.guilleux11@gmail.com"
+    ENV['GMAIL_PASSWORD']="3597bobby"
+  end
 
-  it "signs me in" do
-    visit '/clients/sign_in'
-    save_and_open_page
-    # within("#session") do
-      fill_in 'client_email', with: 'vincent.guilleux11@gmail.com'
-      fill_in 'client_password', with: 'azerty'
+  it "new sign-up" do
+    visit '/clients/sign_up'
 
-    # end
-    click_button 'Connexion'
-    expect(page).to have_content 'Connecté'
+    fill_in 'client_first_name', with: 'Vincent'
+    fill_in 'client_last_name', with: 'Guilleux'
+    fill_in 'client_email', with: 'vincent.guilleux@yahoo.fr'
+    fill_in 'client_address', with: '28 rue Robert Chevrier'
+    fill_in 'client_post_code', with: '35200'
+    fill_in 'client_city', with: 'Rennes'
+    select('particulier', :from => 'client_segment')
+    select('Asphodèle', :from => 'client_amap')
+    fill_in 'client_password', with: 'azerty'
+    fill_in 'client_password_confirmation', with: 'azerty'
+    page.save_screenshot()
+    click_button 'Inscription'
+    expect(page).to have_content 'Bienvenue, vous êtes connecté'
   end
 end

@@ -14,18 +14,20 @@
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
+  # *to load seeds from seeds.rb each time rspec is run (not recommended)
   # config.before(:suite) do
-  #   Rails.application.load_seed # loads seeds from seeds.rb each time rspec is run
+  #   Rails.application.load_seed
   # end
 
-  # capybara config (cf. le Wagon Testing + require nécessaire)
-  require 'capybara/rspec'
+  # *capybara config (cf. le Wagon Testing + require nécessaire)
+  require 'capybara/rspec' # cf. Capybara doc
+
   Capybara.register_driver :headless_chrome do |app|
     options = Selenium::WebDriver::Chrome::Options.new(args: %w[no-sandbox headless disable-gpu window-size=1400,900])
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
-  # Capybara.save_path = Rails.root.join('tmp/capybara')
   Capybara.javascript_driver = :headless_chrome
+  # *if you want the default directory where screenshots and wepbages are saved by capybara cf. https://github.com/mattheworiordan/capybara-screenshot#custom-screenshot-directory and update Capybara.save_path = "/file/path"
 
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
