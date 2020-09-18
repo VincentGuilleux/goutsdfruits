@@ -7,8 +7,9 @@ describe "sign-up process", type: :system do
   end
 
   it "new sign-up" do
+    before_count = Client.count
+    binding.pry
     visit '/clients/sign_up'
-
     fill_in 'client_first_name', with: 'Vincent'
     fill_in 'client_last_name', with: 'Guilleux'
     fill_in 'client_email', with: 'vincent.guilleux@yahoo.fr'
@@ -21,6 +22,8 @@ describe "sign-up process", type: :system do
     fill_in 'client_password_confirmation', with: 'azerty'
     page.save_screenshot()
     click_button 'Inscription'
-    expect(page).to have_content 'Bienvenue, vous êtes connecté'
+    expect(Client.count).not_to eq(before_count)
+    binding.pry
+    # expect(page).to have_content 'Bienvenue, vous êtes connecté'
   end
 end
