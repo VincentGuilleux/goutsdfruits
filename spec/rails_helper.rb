@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path('../config/environment', __dir__)
 # Prevent database truncation if the environment is production
@@ -31,7 +32,8 @@ rescue ActiveRecord::PendingMigrationError => e
   exit 1
 end
 RSpec.configure do |config|
-  # config for Devise gem
+
+  # *config for Devise gem
   config.include Devise::Test::ControllerHelpers, type: :controller
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
@@ -65,7 +67,22 @@ RSpec.configure do |config|
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
 
-  # config for shoulda gem
+  # *saves an image copy for each failed system test in tmp/capybara
+  config.after(:each, :type => :system) do |example|
+    if example.exception
+      page.save_screenshot()
+    end
+  end
+
+  # *saves an image copy for each failed system test in tmp/capybara - https://stackoverflow.com/questions/39920130/capybara-how-to-set-files-names-and-directory-for-save-and-open-page-path
+  #  DOES NOT WORK BC NameError: uninitialized constant Capybara::Screenshot THAT I CANNOT FIGURE HOW TO FIX
+  # config.after { |example_group| CapybaraScreenshot.save_and_open_page_path if example_group.exception }
+
+  # Capybara::Screenshot.register_filename_prefix_formatter(:rspec) do |example|
+  #   "screenshot_#{example.description.gsub(' ', '-').gsub(/^.*\/spec\//,'')}"
+  # end
+
+  # *config for shoulda gem
   Shoulda::Matchers.configure do |config|
   config.integrate do |with|
     with.test_framework :rspec
