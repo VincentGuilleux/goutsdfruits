@@ -80,7 +80,7 @@
         <div class="dropdown">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
-            <% if (client_non_admin?) %>
+            <% if (client_not_logged? || client_non_admin?) %>
               <% Product.types_to_display_positive_stock.each do |type| %>
                 <a data-name="<%= type %>" href="#"><%= type %></a>
               <% end %>
