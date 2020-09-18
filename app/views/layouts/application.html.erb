@@ -32,7 +32,7 @@
   <body>
     <%= render 'shared/flashes' %>
 
-    <% if client_signed_in? && current_client.role == "admin" %>
+    <% if client_admin? %>
         <%= render 'shared/navbar-top-admin' unless controller.action_name == "home" %>
     <% else %>
         <%= render 'shared/navbar-top' %>
@@ -42,7 +42,7 @@
         <%= yield %>
       </div>
 
-    <% unless client_signed_in? && current_client.role == "admin" %>
+    <% unless client_admin? %>
       <%= render 'shared/footer' %>
     <% end %>
   </body>
