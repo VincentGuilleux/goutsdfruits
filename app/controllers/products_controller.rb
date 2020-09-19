@@ -24,6 +24,7 @@ class ProductsController < ApplicationController
     end
     if params[:search].present? && params[:search][:name] != ""
       @products = Product.search_by_name(params[:search][:name])
+      console
     end
 
     @products.each do |product|
