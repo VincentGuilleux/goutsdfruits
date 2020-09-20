@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe "sign-up process", type: :system do
-  # before do
-  #   ENV['GMAIL_EMAIL']="vincent.guilleux11@gmail.com"
-  #   ENV['GMAIL_PASSWORD']="3597bobby"
-  # end
 
   it "new sign-up" do
     before_count = Client.count
