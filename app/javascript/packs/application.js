@@ -74,8 +74,7 @@ document.addEventListener('turbolinks:load', () => {
     });
     // pour remplacer
     $("#product-search").on("ajax:success", function(event) {
-      console.log(event.detail[0]);
-      $(".container-index-products").html('toto');
+      $(".container-index-products").html(event.detail[0]);
     });
   });
 
