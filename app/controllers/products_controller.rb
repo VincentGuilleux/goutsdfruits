@@ -24,7 +24,6 @@ class ProductsController < ApplicationController
       #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
       # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
     if params[:search].present? && params[:search][:name] != ""
-      console
       @products = Product.search_by_name(params[:search][:name])
     end
     # Exemple avec form_tag au lieu de simple_form
