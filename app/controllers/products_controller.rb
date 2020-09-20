@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     @order = Order.new # car création de commande depuis l'index client admin
-    @products = Product.includes(photo_attachment: :blob) # initialement Product.all
+    @products = Product.all
 
     # FILTRAGE DES PRODUITS AFFICHES
     # Le filtrage selon les dropdowns menus (fruit/type) est géré via JS donc les params fruit/category/type ci-dessous ne sont activés que le si le user les saisit directement dans l'URL, par exemple http://www.goutsdfruits.fr/products?&fruit=cerise -> on pourrait supprimer les 3 premières conditions ci-dessous
@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     if params[:search].present? && params[:search][:name] != ""
       @products = Product.search_by_name(params[:search][:name])
     end
+    @products = @products.includes(photo_attachment: :blob)
     # Exemple avec form_tag au lieu de simple_form
     # if params[:search].present? && params[:search] != ""
       # @products = Product.search_by_name(params[:search])
