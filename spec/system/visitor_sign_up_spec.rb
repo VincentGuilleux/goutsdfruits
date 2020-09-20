@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe "sign-up process", type: :system do
-  before do
-    ENV['GMAIL_EMAIL']="vincent.guilleux11@gmail.com"
-    ENV['GMAIL_PASSWORD']="3597bobby"
-  end
+  # before do
+  #   ENV['GMAIL_EMAIL']="vincent.guilleux11@gmail.com"
+  #   ENV['GMAIL_PASSWORD']="3597bobby"
+  # end
 
   it "new sign-up" do
     before_count = Client.count
@@ -23,7 +23,6 @@ describe "sign-up process", type: :system do
     page.save_screenshot()
     click_button 'Inscription'
     expect(Client.count).not_to eq(before_count)
-    # binding.pry
-    # expect(page).to have_content 'Bienvenue, vous êtes connecté'
+    expect(page).to have_content 'Bienvenue, vous êtes connecté'
   end
 end
