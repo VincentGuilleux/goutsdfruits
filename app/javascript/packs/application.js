@@ -85,7 +85,6 @@ document.addEventListener('turbolinks:load', () => {
   dropdownFruit();
   dropdownType();
   dropdownPrice();
-  // search();
   dropdownSegment();
   dropdownAmap();
   dropdownSegmentOrders();
