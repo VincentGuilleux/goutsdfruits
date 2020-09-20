@@ -108,10 +108,6 @@
 
         <!-- Search bar -->
         <div class="middle-text-resp grey-medium mr5">
-          <%#= form_tag(products_path, method: "get") do %>
-            <%#= text_field_tag :search, params[:search], placeholder: "" %>
-            <%#= submit_tag "Search" %>
-          <%# end %>
           <%= simple_form_for :search, url: products_path, method: "GET", html: { class: 'form-inline' } do |f| %>
           <!-- https://medium.com/le-wagon/build-a-simple-search-with-the-simple-form-gem-in-rails-5-b247168282d1   -->
             <!-- 1. The first thing is the :search . Typically, we create the form for an instance variable when manipulating a model (i.e. @product) ). If I try to call the parameter @search, the application will tell me that the variable is undefined. By setting it as a symbol with the colon before :search, I can use it as a key in my params hash. -->
@@ -124,6 +120,11 @@
               <i class="fas fa-search grey-medium middle-text-resp"></i>
             <% end %>
           <% end %>
+          <!-- same form as above but with form_tag instead of simple_form  -->
+          <%#= form_tag(products_path, method: "get") do %>
+            <%#= text_field_tag :search, params[:search], placeholder: "" %>
+            <%#= submit_tag "Search" %>
+          <%# end %>
         </div>
 
       </div>
