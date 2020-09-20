@@ -13,7 +13,7 @@ const dropdownFruit = () => {
   fruit.addEventListener("click", (event) => {
     const product_fruit_value = (event.target.dataset.name) // stocke le fruit sur lequel l'utilisateur a cliqué
     product_fruit.innerText = product_fruit_value // on remplace dans l'HTML le titre du Dropdown menu par la valeur cliquée
-    getdropdownids
+    getdropdownids;
     toggling(); // fonction qui itère sur chaque carte produit pour l'afficher ou non
     event.preventDefault(); // vient prévenir le rechargement de la page par le navigateur (du au fait que le dropdown menu a une balise a avec href)
   });
@@ -26,7 +26,7 @@ const dropdownType = () => {
   type.addEventListener("click", (event) => {
     const product_type_value = (event.target.dataset.name)
     product_type.innerText = product_type_value
-    getdropdownids
+    getdropdownids;
     toggling();
     event.preventDefault();
   });
@@ -39,8 +39,8 @@ const dropdownPrice = () => {
   price.addEventListener("click", (event) => {
     const product_price_value = (event.target.dataset.name)
     product_price.innerText = product_price_value
-    getdropdownids
-    const displayPricesEl = document.querySelectorAll('[data-priceshop]'); // node list de tous les data-price-shop
+    getdropdownids;
+    const displayPricesEl = document.querySelectorAll('[data-priceshop]'); // node list de tous les data-price-shop (on aurait pu tagger data-pricenonshop plutôt)
     displayPricesEl.forEach((displayPrice) => {
       if (product_price.innerText === "magasin") {
         displayPrice.innerText = displayPrice.dataset.priceshop;
