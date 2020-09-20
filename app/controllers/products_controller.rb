@@ -8,28 +8,7 @@ class ProductsController < ApplicationController
     @order = Order.new # car création de commande depuis l'index client admin
     @products = Product.includes(photo_attachment: :blob) # initialement Product.all
 
-    # FILTRAGE DES PRODUITS AFFICHES
-    # Le filtrage selon les dropdowns menus (fruit/type) est géré via JS donc les params fruit/category/type ci-dessous ne sont activés que le si le user les saisit directement dans l'URL, par exemple http://www.goutsdfruits.fr/products?&fruit=cerise -> on pourrait supprimer les 3 premières conditions ci-dessous
-    # NB : on peut cumuler des requêtes Active Record car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
-    if params[:fruit].present?
-      @products = @products.where(product_fruit: params[:fruit])
-    end
-    if params[:category].present?
-      @products = @products.where(product_category: params[:category])
-    end
-    if params[:type].present?
-      @products = @products.where(product_type: params[:type])
-    end
-    # POUR MEMOIRE : params[:search] correspond à la query dans l'URL
-      #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
-      # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
-    if params[:search].present? && params[:search][:name] != ""
-      @products = Product.search_by_name(params[:search][:name])
-    end
-    # Exemple avec form_tag au lieu de simple_form
-    # if params[:search].present? && params[:search] != ""
-      # @products = Product.search_by_name(params[:search])
-    # end
+
 
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
@@ -63,6 +42,37 @@ class ProductsController < ApplicationController
         product.total_remaining_quantity
       end
     end
+  end
+
+  def search
+    # FILTRAGE DES PRODUITS AFFICHES
+    # Le filtrage selon les dropdowns menus (fruit/type) est géré via JS donc les params fruit/category/type ci-dessous ne sont activés que le si le user les saisit directement dans l'URL, par exemple http://www.goutsdfruits.fr/products?&fruit=cerise -> on pourrait supprimer les 3 premières conditions ci-dessous
+    # NB : on peut cumuler des requêtes Active Record car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
+
+
+    # POUR MEMOIRE : params[:search] correspond à la query dans l'URL
+      #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
+      # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
+    if params[:search].present? && params[:search][:name] != ""
+      @products = Product.search_by_name(params[:search][:name])
+    end
+     if params[:fruit].present?
+      @products = @products.where(product_fruit: params[:fruit])
+    end
+    if params[:category].present?
+      @products = @products.where(product_category: params[:category])
+    end
+    if params[:type].present?
+      @products = @products.where(product_type: params[:type])
+    end
+
+    # layout nil: renvoit juste le partial sans refaire appel à application.html.erb
+    # locals: render_to_string nécessite une syntaxe spécifique 'locals'
+    render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
+    # Exemple avec form_tag au lieu de simple_form
+    # if params[:search].present? && params[:search] != ""
+      # @products = Product.search_by_name(params[:search])
+    # end
   end
 
   def show

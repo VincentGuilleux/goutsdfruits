@@ -31,6 +31,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
 import { dropdownFruit, dropdownType, dropdownPrice, dropdownSegment, dropdownAmap, dropdownSegmentOrders, dropdownStatusOrders, dropdownDeliveryOrders} from '../components/dropdown';
+import { search } from '../components/search';
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
 
@@ -67,17 +68,24 @@ document.addEventListener('turbolinks:load', () => {
     return false;
   });
 
-  $(document).ready(function(){
+  $(document).ready(function(){ // quand page chargée, le navigateur exécute les lignes ci-dessous
     $(".payment-choice").click(function(){
       $(this).toggleClass("active");
     });
+    // pour remplacer
+    $("#product-search").on("ajax:success", function(event) {
+      $(".container-index-products").html(event.detail[0]);
+    });
   });
+
+
 
   initSelect2();
   flatpickrInit();
   dropdownFruit();
   dropdownType();
   dropdownPrice();
+  // search();
   dropdownSegment();
   dropdownAmap();
   dropdownSegmentOrders();
