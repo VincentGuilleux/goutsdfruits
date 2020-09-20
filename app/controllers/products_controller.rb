@@ -66,13 +66,9 @@ class ProductsController < ApplicationController
       @products = @products.where(product_type: params[:type])
     end
 
-    # layout nil: renvoit juste le partial sans refaire appel à application.html.erb
+    # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (sinon erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
     render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
-    # Exemple avec form_tag au lieu de simple_form
-    # if params[:search].present? && params[:search] != ""
-      # @products = Product.search_by_name(params[:search])
-    # end
   end
 
   def show
