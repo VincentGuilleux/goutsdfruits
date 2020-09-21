@@ -72,8 +72,12 @@ document.addEventListener('turbolinks:load', () => {
     $(".payment-choice").click(function(){
       $(this).toggleClass("active");
     });
-    // pour remplacer
+    // pour remplacer la liste des produits après saisie dans la barre de recherche
+    // la fonction search de products controller renvoit le partial _products avec les produits filtrés selon la recherche. On applique donc ce partial à la classe container-index-products (e)
     $("#product-search").on("ajax:success", function(event) {
+      // console.log(Array.isArray(event.detail))
+      // console.log(Array.isArray(event.detail))
+      // il faut renvoyer la valeur d'index 0 de l'array event.detail pour obtenir le résultat de la fonction search (la string égale à la partial filtrée de _products)
       $(".container-index-products").html(event.detail[0]);
     });
   });

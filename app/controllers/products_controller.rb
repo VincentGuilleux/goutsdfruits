@@ -1,14 +1,12 @@
 class ProductsController < ApplicationController
-  before_action :require_admin, :except => [:index]
-  skip_before_action :authenticate_client!, :only => [:index]
+  before_action :require_admin, :except => [:index, :search]
+  skip_before_action :authenticate_client!, :only => [:index, :search]
 
   # flash.now[:notice] = "Veuillez créer un compte pour pouvoir commander depuis cette page" if current_client.nil?
 
   def index
     @order = Order.new # car création de commande depuis l'index client admin
     @products = Product.includes(photo_attachment: :blob) # initialement Product.all
-
-
 
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
@@ -53,8 +51,8 @@ class ProductsController < ApplicationController
     # POUR MEMOIRE : params[:search] correspond à la query dans l'URL
       #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
       # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
-    if params[:search].present? && params[:search][:name] != ""
-      @products = Product.search_by_name(params[:search][:name])
+    if params[:search].present?
+      params[:search][:name] != "" ? @products = Product.search_by_name(params[:search][:name]) : @products = Product.all
     end
      if params[:fruit].present?
       @products = @products.where(product_fruit: params[:fruit])
