@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
   resources :products do
     resources :product_lots, only: [:create] # has many between orders & product_lots ? Not necessary
+    get :search, on: :collection #pour éviter que la route soit rattachée à un product id
   end
 
   resources :orders, only: [:index, :new, :create, :destroy] do # No show because info collapsed from /dashboard or /orders (no dedicated page for one order)
