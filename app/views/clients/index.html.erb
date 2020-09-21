@@ -56,7 +56,7 @@
       </div>
       <div class="client-info">
         <div class="client-name-delete">
-          <p class="big-text-bold grey-dark client-name"><%= full_name(client) %></p>
+          <p class="big-text-bold grey-dark client-name"><%= client.full_name %></p>
           <%= link_to client_path(client.id), data: { confirm: ("Etes-vous sûr(e) de vouloir supprimer ce client ?") }, method: :delete do %>
           <i class="far fa-trash-alt blue"></i>
           <% end %>
