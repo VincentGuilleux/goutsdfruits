@@ -62,11 +62,11 @@
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownFruit" class="dropdown-content">
             <% if (client_not_logged? || current_client.role != "admin") %>
-              <% Product.fruits_to_display_positive_stock.each do |fruit| %>
+              <% products_fruits_to_display_positive_stock.each do |fruit| %>
                 <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
               <% end %>
             <% else %>
-              <% Product.fruits_to_display.each do |fruit| %>
+              <% products_fruits_to_display.each do |fruit| %>
                 <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
               <% end %>
             <% end %>
@@ -81,11 +81,11 @@
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
             <% if (client_not_logged? || client_non_admin?) %>
-              <% Product.types_to_display_positive_stock.each do |type| %>
+              <% products_types_to_display_positive_stock.each do |type| %>
                 <a data-name="<%= type %>" href="#"><%= type %></a>
               <% end %>
             <% else %>
-              <% Product.types_to_display.each do |type| %>
+              <% products_types_to_display.each do |type| %>
                 <a data-name="<%= type %>" href="#"><%= type %></a>
               <% end %>
             <% end %>

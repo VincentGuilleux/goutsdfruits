@@ -15,10 +15,6 @@ class ClientsController < ApplicationController
     end
   end
 
-  def full_name
-    "#{first_name.capitalize} #{last_name.capitalize}"
-  end
-
   def destroy
     @client = Client.find(params[:id])
     unless @client.orders.nil?

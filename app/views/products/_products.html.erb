@@ -20,7 +20,7 @@
             <!-- Card display top-middle/top-right: price -->
             <div class="product-price">
                <p>
-                <span class="semi-small-text-bold green" data-priceshop="<%= product.display_price(current_client, 'magasin') %>" data-pricenonshop="<%= product.display_price(current_client, 'non-magasin') %>" > <%= decimal_with_comma(product.display_price(current_client, type_price)) %> </span> €
+                <span class="semi-small-text-bold green" data-priceshop="<%= display_price(product, current_client, 'magasin') %>" data-pricenonshop="<%= display_price(product, current_client, 'non-magasin') %>" > <%= decimal_with_comma(display_price(product, current_client, type_price)) %> </span> €
                 <sup>
                   <% if client_shop? %> HT <% end %>
                   /
@@ -44,13 +44,13 @@
           <div class="card-product-text-line">
             <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
               <% unless product.unit_type == "bocal" %>
-                <%= pluralize(product.display_quantity(current_client, type_price, product), product.unit_type) %>
+                <%= pluralize(display_quantity(current_client, type_price, product), product.unit_type) %>
               <% else %>
-                <%= product.display_quantity(current_client, type_price, product) %> bocaux
+                <%= display_quantity(current_client, type_price, product) %> bocaux
               <% end %>
                 de
-                  <%= product.display_unit_measure_quantity(current_client, type_price, product) %>
-                  <%= product.display_unit_measure(current_client, type_price, product) %>
+                  <%= display_unit_measure_quantity(current_client, type_price, product) %>
+                  <%= display_unit_measure(current_client, type_price, product) %>
             </p>
           </div>
         </div> <!-- Card-product-infos -->

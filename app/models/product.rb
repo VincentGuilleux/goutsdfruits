@@ -1,6 +1,4 @@
 class Product < ApplicationRecord
-  include ProductInstancesHelper
-  extend ProductClassesHelper
 
   has_many :product_lots
   has_many :order_lines

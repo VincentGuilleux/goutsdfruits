@@ -22,8 +22,9 @@ class Client < ApplicationRecord
 
   scope :new_clients_current_month, -> {where('extract(year from created_at) = ?', Date.today.year).where('extract(month from created_at) = ?', Date.today.month)}
 
+  # on ne met pas cette méthode dans un helper car on en a besoin pour le formulaire de création de commande admin
   def full_name
-    "#{first_name} #{last_name}"
+    "#{first_name.capitalize} #{last_name.capitalize}"
   end
 
   # METHODES AVEC CONSTANTES SUR LES DIFFERENTS TYPES DE CLIENTS (segments, amap)
