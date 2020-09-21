@@ -1,30 +1,88 @@
 module ProductsHelper
 
   def products_types_to_display
-      types_to_display = Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }
+      Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
       # on n'affiche ici que les types existants avec quantité positive dans les produits de la db contrairement à self.types qui contient tous les types potentiels
       #itération sur chaque produit, les doublons sont  éliminés grâce au .uniq.
     # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
-      types_to_display.unshift('Type')
     end
+
+  def products_types_to_display_positive_stock
+    Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
+  end
+
+  def products_fruits_to_display
+    Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
+  end
+
+  def products_fruits_to_display_positive_stock
+    Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
+  end
 
   def display_price(product, user, type_price)
     price = # raccourci Ruby pour stocker le résultat des conditions ci-dessous dans une variable price
       if user && user.role == "admin"
         if type_price == "magasin"
-          unit_price_cents_shop
+          product.unit_price_cents_shop
         else
-          unit_price_cents
+          product.unit_price_cents
         end
       elsif user && user.segment == 'magasin'
-        unit_price_cents_shop_ET
+        product.unit_price_cents_shop_ET
       else
-        unit_price_cents
+        product.unit_price_cents
       end
     if price
       price/100.to_f
     else
       nil # couvre le cas où il n'y a pas de unit_price_cent_shop (cas des produits non vendus aux magasins)
+    end
+  end
+
+  def display_quantity(user, type_price, product)
+    display_quantity =
+      if user && user.role == "admin"
+        if type_price == "magasin"
+          product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop
+        else
+          product.total_remaining_quantity
+        end
+      else
+        ""
+      end
+  end
+
+  def display_unit_measure_quantity(user, type_price, product)
+    display_unit_measure_quantity =
+    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
+      unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
+        product.unit_measure_quantity_shop
+      else
+        product.unit_measure_quantity_shop / 1000
+      end
+    else
+      unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g"
+        product.unit_measure_quantity
+      else
+        product.unit_measure_quantity / 1000
+      end
+    end
+  end
+
+  def display_unit_measure(user, type_price, product)
+    display_unit_measure =
+    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
+      unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
+        product.unit_measure
+      else
+        "kg"
+      end
+    else
+      unless product.unit_measure_quantity >= 1000 && product.unit_measure = "g"
+        product.unit_measure
+      else
+        "kg"
+      end
     end
   end
 
