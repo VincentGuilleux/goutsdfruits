@@ -12,6 +12,10 @@
         </div>
         <p class="card-product-show-title text-center"><%=@product.name.capitalize%></p>
         <div class="card-product-show-flex">
+          <span class="card-product-show-type">Particulier</span>
+          <span class="card-product-show-type">Magasin</span>
+        </div>
+        <div class="card-product-show-flex">
           <span class="card-product-show-price">
             <%= display_price(@product, current_client, 'non-magasin') %> €
             <sup>/ <%= @product.unit_type %>
@@ -23,7 +27,7 @@
             de <%= display_unit_measure_quantity(current_client, 'magasin', @product) %> <%= display_unit_measure(current_client, 'magasin', @product) %></sup>
           </span>
         </div>
-        <p class="product-show-description pt-4"><%= @product.description%></p>
+        <p class="product-show-description text-center pt-4"><%= @product.description%></p>
 
           <div class="card-product-stock">
             <%= simple_form_for [@product, @product_lot], html: { class: 'form-inline' } do |f| %>
