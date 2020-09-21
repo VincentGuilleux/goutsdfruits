@@ -15,12 +15,12 @@
           <span class="card-product-show-price">
             <%= display_price(@product, current_client, 'non-magasin') %> €
             <sup>/ <%= @product.unit_type %>
-            de <%= @product.unit_measure_quantity %> <%= @product.unit_measure %></sup>
+            de <%= display_unit_measure_quantity(current_client, 'non-magasin', @product) %> <%= display_unit_measure(current_client, 'non-magasin', @product) %></sup>
           </span>
           <span class="card-product-show-price">
             <%= display_price(@product, current_client, 'magasin') %> €
             <sup>/ <%= @product.unit_type %>
-            de <%= @product.unit_measure_quantity_shop %> <%= @product.unit_measure %></sup>
+            de <%= display_unit_measure_quantity(current_client, 'magasin', @product) %> <%= display_unit_measure(current_client, 'magasin', @product) %></sup>
           </span>
         </div>
         <p class="product-show-description pt-4"><%= @product.description%></p>
