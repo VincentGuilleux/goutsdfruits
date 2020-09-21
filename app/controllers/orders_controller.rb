@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     end
   end
 
-  # METHODES STATUS COMMANDES
+  # METHODES STATUTS COMMANDES
 
   def prepare
     @order = Order.find(params[:id])
@@ -92,7 +92,6 @@ class OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.date = Date.today
     @order.order_lines = @order.order_lines.to_a.reject {|order_line| order_line.quantity.zero?} # supprime tous les order_lines à quantité nulle
-
     @order.total_price_cents = create_order_total_price
 
     if @order.total_price_cents == 0
@@ -175,6 +174,7 @@ class OrdersController < ApplicationController
   end
 
   def create_order_delivery_place
+  # = magasin si client magasin / Ferme si client non-amap / AMAP si client AMAP
     if @order.delivery_place_id.nil? # nécessaire car si commande admin delivery_place déjà définie
       if @current_client.segment == "magasin"
         @order.delivery_place_id = DeliveryPlace.where("name = ?", "Magasin").first.id
