@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def index
     @order = Order.new # car création de commande depuis l'index client admin
-    @products = Product.all
+    @products = @products = Product.includes(photo_attachment: :blob)
 
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
@@ -63,8 +63,8 @@ class ProductsController < ApplicationController
     if params[:type].present?
       @products = @products.where(product_type: params[:type])
     end
-    @products = Product.includes(photo_attachment: :blob)
-    
+
+
     # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (sinon erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
     render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
