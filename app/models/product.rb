@@ -31,7 +31,8 @@ class Product < ApplicationRecord
   end
 
   def total_remaining_quantity_shop
-    product_lots.sum(:remaining_quantity) * unit_measure_quantity / unit_measure_quantity_shop
+  # renvoit un integer arrondi à l'inférieur (ce qui est voulu)
+    total_remaining_quantity * unit_measure_quantity / unit_measure_quantity_shop
   end
 
   # METHODE CALCUL RATIO UNIT MEASURE QTY SHOP VS NON-SHOP
