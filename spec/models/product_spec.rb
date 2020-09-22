@@ -20,7 +20,7 @@ RSpec.describe Product, type: :model do
                         )
   }
 
-  describe "#validation tests" do
+  describe "validation tests" do
     it "is valid with valid attributes" do
       subject_with_photo = subject.photo.attach(io: File.open(Rails.root.join('db/fixtures/products/product_nophoto.jpg')), filename: 'product_nophoto.jpg', content_type: 'image/jpg')
       expect(subject_with_photo.save).to be_truthy
@@ -43,7 +43,7 @@ RSpec.describe Product, type: :model do
   end
 
   # METHOD total_remaining_quantity
-  describe "#total_remaining_quantity" do
+  describe "total_remaining_quantity" do
     product = Product.new(name:"Compote",
                         description:"Pour petits et grands",
                         unit_price_cents: 380,
