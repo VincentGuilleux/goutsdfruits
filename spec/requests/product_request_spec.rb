@@ -5,7 +5,7 @@ RSpec.describe "Products", type: :request do
   describe "GET #index" do
     before(:example) { get products_path }
 
-    it "is a success" do
+    it "returns an http status ok" do
       expect(response).to have_http_status(:ok)
     end
 
