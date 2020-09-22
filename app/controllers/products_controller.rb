@@ -15,31 +15,9 @@ class ProductsController < ApplicationController
     # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
     @type_price = params[:price] || "non-magasin"
 
-    # Affichage des produits avec quantités > 0 (hormis pour profil admin)
-    if current_client && current_client.segment == 'magasin'
-      @products = @products.to_a.select { |product| product.total_remaining_quantity_shop > 0}
-    end
-    if current_client.nil? || current_client.role != "admin"
-     @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
-    end
+    product_display_filtering
+    product_display_sorting
 
-    # En vision magasin, on n'affiche pas les produits non vendus aux magasins
-    if (current_client && current_client.role == "admin" && @type_price == "magasin") || (current_client && current_client.segment == 'magasin')
-      @products = @products.to_a.reject {|product| product.unit_price_cents_shop.nil?}
-    end
-
-    # TRI D'AFFICHAGE DES PRODUITS
-
-    # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
-    if current_client.nil? || current_client.role != "admin"
-      @products = @products.sort_by do |product|
-        product.name
-      end
-    else
-      @products = @products.sort_by do |product|
-        product.total_remaining_quantity
-      end
-    end
   end
 
   def search
@@ -64,6 +42,8 @@ class ProductsController < ApplicationController
       @products = @products.where(product_type: params[:type])
     end
 
+    product_display_filtering
+    product_display_sorting
 
     # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (sinon erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
@@ -129,6 +109,37 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_measure, :unit_measure_quantity, :unit_measure_quantity_shop, :product_fruit, :product_type, :product_category, :photo)
+  end
+
+  def product_display_filtering
+    # Affichage des produits avec quantités > 0 => magasin / non-magasin non-admin
+    if current_client && current_client.segment == 'magasin'
+      @products = @products.to_a.select { |product| product.total_remaining_quantity_shop > 0}
+    end
+
+    if current_client.nil? || current_client.role != "admin"
+     @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
+    end
+
+    # Non-affichage des produits non vendus aux magasins => admin dropdown magasin / magasin
+    # NB : 1ère condition pour admin prix magasin ne fonctionne pas car le dropdown est pour l'instant géré en full JS et ne fait donc pas appel à cette fonction index
+    if (current_client && current_client.role == "admin" && @type_price == "magasin") || (current_client && current_client.segment == 'magasin')
+      @products = @products.to_a.reject {|product| product.unit_price_cents_shop.nil?}
+    end
+  end
+
+  def product_display_sorting
+    # TRI D'AFFICHAGE DES PRODUITS
+    # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
+    if current_client.nil? || current_client.role != "admin"
+      @products = @products.sort_by do |product|
+        product.name
+      end
+    else
+      @products = @products.sort_by do |product|
+        product.total_remaining_quantity
+      end
+    end
   end
 
 end
