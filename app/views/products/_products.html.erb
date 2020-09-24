@@ -4,10 +4,10 @@
         <% if product.photo.attached? %>
           <% if client_admin? %>
             <%= link_to product_path(product) do %>
-              <%= cl_image_tag product.photo.key, alt: "image produit", class: "hovereffect" %>
+              <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "hovereffect" %>
             <% end %>
           <% else %>
-            <%= cl_image_tag product.photo.key, :quality=>30, alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
+            <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
           <% end %>
         <% end %>
 
