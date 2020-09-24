@@ -7,7 +7,7 @@
               <%= cl_image_tag product.photo.key, alt: "image produit", class: "hovereffect" %>
             <% end %>
           <% else %>
-            <%= cl_image_tag product.photo.key, alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
+            <%= cl_image_tag product.photo.key, :quality=>30, alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
           <% end %>
         <% end %>
 
