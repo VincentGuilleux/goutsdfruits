@@ -1,17 +1,40 @@
 wb = xlsx_package.workbook
 
   wb.styles do |style|
-    project_heading = style.add_style(b: true, sz: 14)
-    heading = style.add_style(b: true)
+    heading_row = style.add_style(b: true, bg_color: 'a7c9c9')
+    order_row = style.add_style(b: true, bg_color: 'CCCCCC')
+    order_amount = style.add_style(b: true, bg_color: 'CCCCCC', num_fmt: 2)
+    order_date = style.add_style(b: true, bg_color: 'CCCCCC', num_fmt: 15)
+    order_line_row = style.add_style(num_fmt: 2)
+    order_line_date = style.add_style(num_fmt: 15)
+    raise
 
   wb.add_worksheet(name: "Orders") do |sheet|
     # Create the header row
-    sheet.add_row ["Nom du client", "Date", "Montant", "Statut", "Lieu de livraison", "Quantité", "Prix", "Produit"], style: heading
-    # Create entries for each item
+    sheet.add_row [     "Nom du client",
+                        "Date",
+                        "Montant",
+                        "Statut",
+                        "Lieu de livraison",
+                        "Quantité",
+                        "Produit"], style: heading_row
+
+    # Create a row for each order
     @orders.each do |order|
-      sheet.add_row [order.client.first_name + " " + order.client.last_name, order.date, decimal_with_comma(order.total_price_cents.to_f / 100), order.status, order.delivery_place.name]
+      sheet.add_row [   order.client.first_name + " " + order.client.last_name,
+                        order.date,
+                        decimal_with_comma(order.total_price_cents.to_f / 100), order.status,
+                        order.delivery_place.name], style: [order_row, order_date, order_amount, order_row, order_row]
+
+      # Create a row for each order_line
       order.order_lines.each do |order_line|
-        sheet.add_row ["","","","","",order_line.quantity, decimal_with_comma(order_line.total_price_cents.to_f / 100), order_line.product.name]
+        sheet.add_row [ order.client.first_name + " " + order.client.last_name,
+                        order.date,
+                        decimal_with_comma(order_line.total_price_cents.to_f / 100),
+                        order.status,
+                        order.delivery_place.name,
+                        order_line.quantity,
+                        order_line.product.name], style: [order_line_row, order_date, order_line_row, order_line_row, order_line_row]
       end
     end
   end
