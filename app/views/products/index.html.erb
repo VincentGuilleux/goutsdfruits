@@ -55,10 +55,10 @@
       <div class="container-index-filters bg-white">
 
         <!-- Fruit filter -->
-        <div id="product_fruit" class="middle-text-resp grey-medium mr5 pt05rem">
+        <div id="product_fruit" class="middle-text-resp grey-medium mr5 pt04rem">
           <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
         </div>
-        <div class="dropdown pt05rem">
+        <div class="dropdown pt04rem">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownFruit" class="dropdown-content">
             <% if (client_not_logged? || current_client.role != "admin") %>
@@ -74,10 +74,10 @@
         </div>
 
         <!-- Type filter -->
-        <div id="product_type" class="middle-text-resp grey-medium mr5 pt05rem">
+        <div id="product_type" class="middle-text-resp grey-medium mr5 pt04rem">
           <%= if params[:type].present? then params[:type] else 'Type' end %>
         </div>
-        <div class="dropdown pt05rem">
+        <div class="dropdown pt04rem">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
             <% if (client_not_logged? || client_non_admin?) %>
@@ -94,10 +94,10 @@
 
         <!-- Price filter -->
         <% if client_admin? %>
-          <div id="product_price" class="middle-text-resp grey-medium mr5 pt05rem">
+          <div id="product_price" class="middle-text-resp grey-medium mr5 pt04rem">
             <%= if params[:price].present? then params[:price] else 'Prix' end %>
           </div>
-          <div class="dropdown pt05rem">
+          <div class="dropdown pt04rem">
             <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
             <div id="DropdownPrice" class="dropdown-content">
               <a data-name="non-magasin" href="#">non-magasin</a>
@@ -127,7 +127,7 @@
 
       <!-- Add product button: only for admin -->
       <% if client_admin? %>
-        <div class="add-new">
+        <div class="add-new pt-3">
           <%= link_to new_product_path do %>
             <p>Ajouter un produit</p>
             <%= image_tag "add-circle.svg" %>
