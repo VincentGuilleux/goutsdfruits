@@ -7,7 +7,6 @@ wb = xlsx_package.workbook
     order_date = style.add_style(b: true, bg_color: 'CCCCCC', num_fmt: 15)
     order_line_row = style.add_style(num_fmt: 2)
     order_line_date = style.add_style(num_fmt: 15)
-    raise
 
   wb.add_worksheet(name: "Orders") do |sheet|
     # Create the header row
