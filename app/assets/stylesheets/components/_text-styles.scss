@@ -131,6 +131,10 @@ h2 {
   padding-left: 2rem;
 }
 
+.pt05rem {
+  padding-top: 0.4rem;
+}
+
 .mr5 {
   margin-right: 5px;
 }
@@ -229,6 +233,10 @@ font-weight: bold;
 
 
 // colors
+
+.bg-white {
+background-color: $white;
+}
 
 .white {
 color: $white;
