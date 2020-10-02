@@ -2,8 +2,6 @@ class ProductsController < ApplicationController
   before_action :require_admin, :except => [:index, :search]
   skip_before_action :authenticate_client!, :only => [:index, :search]
 
-  # flash.now[:notice] = "Veuillez créer un compte pour pouvoir commander depuis cette page" if current_client.nil?
-
   def index
     @order = Order.new # car création de commande depuis l'index client admin
     @products = Product.includes(photo_attachment: :blob)
