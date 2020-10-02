@@ -8,7 +8,6 @@ require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
 
-
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
 // or the `imagePath` JavaScript helper below.
@@ -35,7 +34,7 @@ import { search } from '../components/search';
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
 
-// event listener sur toutes les classes more-info qui déclenchent sur un click l'affichagae du contenu de la balise title
+// Event listener sur toutes les classes more-info qui déclenchent sur un click l'affichage du contenu de la balise title
 // utile pour mobiles => cf. https://stackoverflow.com/questions/12539006/tooltips-for-mobile-browsers
 $(".more-info").click(function () {
     var $title = $(this).find(".title");
@@ -63,26 +62,25 @@ document.addEventListener('turbolinks:load', () => {
       $(this).attr("data-uuid", time);
     });
     // obj = formulaire car lié à data-form-prepend (cf. lignes 38 & 39)
-    // Les 3 lignes ci-dessus permettent de substituer au data-uuid la
+    // Les 3 lignes ci-dessus permettent de substituer au data-uuid la valeur de la var time
     obj.insertBefore(this);
     return false;
   });
 
-  $(document).ready(function(){ // quand page chargée, le navigateur exécute les lignes ci-dessous
-    $(".payment-choice").click(function(){
-      $(this).toggleClass("active");
-    });
-    // pour remplacer la liste des produits après saisie dans la barre de recherche
-    // la fonction search de products controller renvoit le partial _products avec les produits filtrés selon la recherche. On applique donc ce partial à la classe container-index-products (e)
+  // Quand page chargée, le navigateur exécute les lignes ci-dessous
+  $(document).ready(function(){
+
+    // lignes commentées car choix du mode de paiement désactivé pour l'instant
+    // $(".payment-choice").click(function(){
+    //   $(this).toggleClass("active");
+    // });
+
+    // Pour remplacer la liste des produits après saisie dans la barre de recherche : la fonction search de products controller renvoit le partial _products avec les produits filtrés selon la recherche. On applique donc ce partial à la classe container-index-products quand le formulaire simple_form de recherche de produits (d'id product-search) est utilisé
     $("#product-search").on("ajax:success", function(event) {
-      // console.log(Array.isArray(event.detail))
-      // console.log(Array.isArray(event.detail))
       // il faut renvoyer la valeur d'index 0 de l'array event.detail pour obtenir le résultat de la fonction search (la string égale à la partial filtrée de _products)
       $(".container-index-products").html(event.detail[0]);
     });
   });
-
-
 
   initSelect2();
   flatpickrInit();

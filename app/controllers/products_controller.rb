@@ -45,7 +45,7 @@ class ProductsController < ApplicationController
     product_display_filtering
     product_display_sorting
 
-    # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (sinon erreur JS car déjà preload)
+    # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (afin d'éviter de générer une erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
     render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
   end
