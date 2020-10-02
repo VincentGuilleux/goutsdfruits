@@ -1,6 +1,6 @@
 <% uuid = SecureRandom.uuid %>
 <!-- on génère un code aléatoire qu'on stocke dans une variable uuid, on a donc une variable uuid par order_line_field générée dans le formulaire. C'est nécessaire pour pouvoir ensuite targeter distinctement chaque order line du formulaire dans le counter.js -->
-<%= f.association :product, collection: Product.select { |product| product.total_remaining_quantity > 0} , input_html: { class: 'product-input JSproductselect', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
+<%= f.association :product, collection: Product.order('name ASC').select { |product| product.total_remaining_quantity > 0} , input_html: { class: 'product-input JSproductselect', "data-uuid" => uuid }, label: false, prompt: "Quel produit ?" %>
 <!-- Methode Ruby -->
 <div><i class="fas fa-minus pl-1 pr-1 pb-3 JSminuscounter" data-uuid="<%= uuid %>"></i></div>
 <!-- les boutons Font Awesome sont encapsulés dans des div sinon on n'arrive pas à les targeter avec le code data-prepend de application.js -->
