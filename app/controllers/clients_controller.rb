@@ -10,9 +10,7 @@ class ClientsController < ApplicationController
       @clients = @clients.where(amap: params[:amap])
     end
 
-    @clients = @clients.sort_by do |client|
-      client.last_name
-    end
+    @clients = Client.ordered_by_last_name
   end
 
   def destroy

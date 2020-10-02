@@ -18,6 +18,8 @@ class Product < ApplicationRecord
   validates :product_fruit, presence: true
   validates :product_category, presence: true
 
+  scope :ordered_by_name, -> {order('name ASC')}
+
   include PgSearch::Model
   pg_search_scope :search_by_name,
     against: :name,

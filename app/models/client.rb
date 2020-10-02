@@ -1,4 +1,5 @@
 class Client < ApplicationRecord
+
   has_one_attached :avatar
   has_many :orders
 
@@ -21,6 +22,7 @@ class Client < ApplicationRecord
   validates :amap, presence: true, :inclusion => { :in => ['Ine Boune Penerie', 'Bocageot', 'Asphodèle' ,'Court Circuiteurs', 'Non-membre'], message: "%{value} n'est pas un nom d'AMAP valable" }
 
   scope :new_clients_current_month, -> {where('extract(year from created_at) = ?', Date.today.year).where('extract(month from created_at) = ?', Date.today.month)}
+  scope :ordered_by_last_name, -> {order('last_name ASC')}
 
   # on ne met pas cette méthode dans un helper car on en a besoin pour le formulaire de création de commande admin
   def full_name
