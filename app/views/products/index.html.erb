@@ -55,7 +55,7 @@
       <div class="container-index-filters bg-white">
 
         <!-- Fruit filter -->
-        <div id="product_fruit" class="middle-text-resp grey-medium mr5 pt04rem">
+        <!-- <div id="product_fruit" class="middle-text-resp grey-medium mr5 pt04rem">
           <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
         </div>
         <div class="dropdown pt04rem">
@@ -71,10 +71,10 @@
               <% end %>
             <% end %>
           </div>
-        </div>
+        </div> -->
 
         <!-- Type filter -->
-        <div id="product_type" class="middle-text-resp grey-medium mr5 pt04rem">
+        <!-- <div id="product_type" class="middle-text-resp grey-medium mr5 pt04rem">
           <%= if params[:type].present? then params[:type] else 'Type' end %>
         </div>
         <div class="dropdown pt04rem">
@@ -90,7 +90,7 @@
               <% end %>
             <% end %>
           </div>
-        </div>
+        </div> -->
 
         <!-- Price filter -->
         <% if client_admin? %>
@@ -115,7 +115,9 @@
             <!-- 3. By default, a simple_form has the method POST. Since a search is a GET request, we need to explicitly specify that in the first line. -->
             <!-- 4. The input :name is going to be a key inside of my params hash. The value is the keyword the user searches for. In order to reset the form on page refresh, I am giving it a default value of blank. -->
             <%= f.hidden_field :type_price, value: @type_price %>
-            <%= f.input :name, label: false, input_html: { class: 'width80px mr5', value: "" } %>
+            <%= f.input :fruit, collection: products_fruits_to_display, label: false, selected: 'Fruit' %>
+            <%= f.input :type, collection: products_types_to_display, label: false, selected: 'Type' %>
+            <%= f.input :name, label: false, placeholder: "Rechercher...", input_html: { class: 'width80px mr5', value: "" } %>
             <%= button_tag type: 'submit', class: 'pl-2 no-border' do %>
             <!-- After clicking submit, the program will reload the index product page, but this time with a :search param hash including the value typed by the user in the key name. -->
               <i class="fas fa-search grey-medium middle-text-resp"></i>

@@ -3,8 +3,9 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_client!, :only => [:index, :search]
 
   def index
+    products_initial_filter
     @order = Order.new # car création de commande depuis l'index client admin
-    @products = Product.includes(photo_attachment: :blob)
+    @product = Product.new
 
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
@@ -19,26 +20,12 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # FILTRAGE DES PRODUITS AFFICHES
-    # Le filtrage selon les dropdowns menus (fruit/type) est géré via JS donc les params fruit/category/type ci-dessous ne sont activés que le si le user les saisit directement dans l'URL, par exemple http://www.goutsdfruits.fr/products?&fruit=cerise -> on pourrait supprimer les 3 premières conditions ci-dessous
-    # NB : on peut cumuler des requêtes Active Record car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
+    products_initial_filter
+    # byebug
 
-
-    # POUR MEMOIRE : params[:search] correspond à la query dans l'URL
-      #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
-      # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
-    if params[:search].present?
-      params[:search][:name] != "" ? @products = Product.search_by_name(params[:search][:name]) : @products = Product.all
-    end
-     if params[:fruit].present?
-      @products = @products.where(product_fruit: params[:fruit])
-    end
-    if params[:category].present?
-      @products = @products.where(product_category: params[:category])
-    end
-    if params[:type].present?
-      @products = @products.where(product_type: params[:type])
-    end
+    @products = @products.search_by_name(params[:search][:name]) if params[:search].present? && params[:search][:name] != ""
+    @products = @products.where(product_fruit: params[:search][:fruit]) if params[:search][:fruit].present? && params[:search][:fruit] != "Fruit"
+    @products = @products.where(product_type: params[:search][:type]) if params[:search][:type].present? && params[:search][:type] != "Type"
 
     product_display_filtering
     product_display_sorting
@@ -104,6 +91,10 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def products_initial_filter
+    @products = Product.includes(photo_attachment: :blob)
+  end
 
   def product_params
     params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_measure, :unit_measure_quantity, :unit_measure_quantity_shop, :product_fruit, :product_type, :product_category, :photo)
