@@ -30,6 +30,12 @@ li {
   line-height: 2;
 }
 
+.center-hor {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+}
+
 .no-underline a:link {
   text-decoration : none;
 }
@@ -131,10 +137,6 @@ h2 {
   padding-left: 2rem;
 }
 
-.pt04rem {
-  padding-top: 0.4rem;
-}
-
 .mr5 {
   margin-right: 5px;
 }
@@ -233,11 +235,6 @@ font-weight: bold;
 
 
 // colors
-
-.bg-white {
-background-color: $white;
-}
-
 .white {
 color: $white;
 }

@@ -51,57 +51,8 @@
   <div class="col-12">
     <div class="title-container">
 
-      <!-- FILTERS DIV -->
-      <div class="container-index-filters bg-white">
-
-        <!-- Fruit filter -->
-        <!-- <div id="product_fruit" class="middle-text-resp grey-medium mr5 pt04rem">
-          <%= if params[:fruit].present? then params[:fruit] else 'Fruit' end %>
-        </div>
-        <div class="dropdown pt04rem">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownFruit" class="dropdown-content">
-            <% if (client_not_logged? || current_client.role != "admin") %>
-              <% products_fruits_to_display_positive_stock.each do |fruit| %>
-                <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
-              <% end %>
-            <% else %>
-              <% products_fruits_to_display.each do |fruit| %>
-                <a data-name="<%= fruit %>" href="#"><%= fruit %></a>
-              <% end %>
-            <% end %>
-          </div>
-        </div> -->
-
-        <!-- Type filter -->
-        <!-- <div id="product_type" class="middle-text-resp grey-medium mr5 pt04rem">
-          <%= if params[:type].present? then params[:type] else 'Type' end %>
-        </div>
-        <div class="dropdown pt04rem">
-          <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-          <div id="DropdownType" class="dropdown-content">
-              <% products_types_to_display.each do |type| %>
-                <a data-name="<%= type %>" href="#"><%= type %></a>
-              <% end %>
-          </div>
-        </div> -->
-
-        <!-- Price filter -->
-        <%# if client_admin? %>
-          <!-- <div id="product_price" class="middle-text-resp grey-medium mr5 pt04rem"> -->
-            <%#= if params[:price].present? then params[:price] else 'Prix' end %>
-          <!-- </div>
-          <div class="dropdown pt04rem">
-            <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
-            <div id="DropdownPrice" class="dropdown-content">
-              <a data-name="non-magasin" href="#">non-magasin</a>
-              <a data-name="magasin" href="#">magasin</a>
-            </div>
-          </div> -->
-        <%# end %>
-
         <!-- Search bar -->
-        <div class="middle-text-resp grey-medium mr5">
+        <div class="center-hor middle-text-resp grey-medium mr5">
           <%= simple_form_for :search, url: search_products_path, method: "GET", html: { class: 'form-inline', id: 'product-search' }, remote: true do |f| %>
           <!-- https://medium.com/le-wagon/build-a-simple-search-with-the-simple-form-gem-in-rails-5-b247168282d1   -->
             <!-- 1. The first thing is the :search . Typically, we create the form for an instance variable when manipulating a model (i.e. @product) ). If I try to call the parameter @search, the application will tell me that the variable is undefined. By setting it as a symbol with the colon before :search, I can use it as a key in my params hash. -->

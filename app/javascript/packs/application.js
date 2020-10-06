@@ -29,7 +29,7 @@ import { initMapbox } from '../plugins/init_mapbox';
 // Internal imports, e.g:
 import { initSelect2 } from '../components/init_select2';
 import { flatpickrInit } from '../components/flatpickr';
-import { dropdownFruit, dropdownType, dropdownPrice, dropdownSegment, dropdownAmap, dropdownSegmentOrders, dropdownStatusOrders, dropdownDeliveryOrders} from '../components/dropdown';
+import { dropdownSegment, dropdownAmap, dropdownSegmentOrders, dropdownStatusOrders, dropdownDeliveryOrders} from '../components/dropdown';
 import { search } from '../components/search';
 import { InitChart } from '../components/initchart';
 import { counter } from '../components/counter';
@@ -84,9 +84,6 @@ document.addEventListener('turbolinks:load', () => {
 
   initSelect2();
   flatpickrInit();
-  dropdownFruit();
-  dropdownType();
-  dropdownPrice();
   dropdownSegment();
   dropdownAmap();
   dropdownSegmentOrders();
