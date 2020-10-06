@@ -3,15 +3,16 @@ class ProductsController < ApplicationController
   skip_before_action :authenticate_client!, :only => [:index, :search]
 
   def index
+    products_initial_filter
     @order = Order.new # car création de commande depuis l'index client admin
-    @products = Product.includes(photo_attachment: :blob)
-
+    @product = Product.new
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
     end
 
-    # Filtre sur prix magasin / non-magasin, par défaut en non-magasin
-    @type_price = params[:price] || "non-magasin"
+    # instanciation de type_price car utilisé dans la private method product_display_filtering
+    # NB : même si par défaut type_price est setté sur "non-magasin", ne crée pas de problème de rendu de type de prix car la view partial _products fait appel à la product_helper method display_price qui affiche le prix adapté selon le client shop/non-shop
+    @type_price = "non-magasin"
 
     product_display_filtering
     product_display_sorting
@@ -19,32 +20,18 @@ class ProductsController < ApplicationController
   end
 
   def search
-    # FILTRAGE DES PRODUITS AFFICHES
-    # Le filtrage selon les dropdowns menus (fruit/type) est géré via JS donc les params fruit/category/type ci-dessous ne sont activés que le si le user les saisit directement dans l'URL, par exemple http://www.goutsdfruits.fr/products?&fruit=cerise -> on pourrait supprimer les 3 premières conditions ci-dessous
-    # NB : on peut cumuler des requêtes Active Record car elles ne sont pas appliquées tant qu'on ne fait pas un each ou un sort dessus (cf. ligne plus bas)
-
-
-    # POUR MEMOIRE : params[:search] correspond à la query dans l'URL
-      #par exemple pour l'URL http://www.goutsdfruits.fr/products??search%5Bname%5D=cer&button=
-      # params[:search] = <ActionController::Parameters {"name"=>"cer"} permitted: false>
-    if params[:search].present?
-      params[:search][:name] != "" ? @products = Product.search_by_name(params[:search][:name]) : @products = Product.all
-    end
-     if params[:fruit].present?
-      @products = @products.where(product_fruit: params[:fruit])
-    end
-    if params[:category].present?
-      @products = @products.where(product_category: params[:category])
-    end
-    if params[:type].present?
-      @products = @products.where(product_type: params[:type])
-    end
-
+    products_initial_filter
+    @products = @products.search_by_name(params[:search][:name]) if params[:search].present? && params[:search][:name] != ""
+    @products = @products.where(product_fruit: params[:search][:fruit]) if params[:search][:fruit].present? && params[:search][:fruit] != "Fruit"
+    @products = @products.where(product_type: params[:search][:type]) if params[:search][:type].present? && params[:search][:type] != "Type"
+    # instanciation de type_price car utilisé dans la private method product_display_filtering (on ne peut pas appeler params[:search][:type_price] depuis la méthode privée product_display_filtering)
+    @type_price = params[:search][:type_price]
     product_display_filtering
     product_display_sorting
 
     # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (afin d'éviter de générer une erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
+    # NB: en cas de connexion magasin, même si par défaut via l'index type_price est setté sur "non-magasin", ne crée pas de problème de rendu de type de prix car la view partial _products fait appel à la product_helper method display_price qui affiche le prix adapté selon le client shop/non-shop
     render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
   end
 
@@ -105,23 +92,26 @@ class ProductsController < ApplicationController
 
   private
 
+  def products_initial_filter
+    @products = Product.includes(photo_attachment: :blob)
+  end
+
   def product_params
     params.require(:product).permit(:name, :description, :unit_price_cents, :unit_price_cents_shop, :unit_type, :unit_measure, :unit_measure_quantity, :unit_measure_quantity_shop, :product_fruit, :product_type, :product_category, :photo)
   end
 
   def product_display_filtering
-    # Affichage des produits avec quantités > 0 => magasin / non-magasin non-admin
-    if current_client && current_client.segment == 'magasin'
+    # on sélectionne slt les produits à quantité positive (pour les non-admins en différenciant shop/non-shop)
+    if helpers.client_not_logged? || helpers.client_non_admin?
+     @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
+    end
+    if helpers.client_shop?
       @products = @products.to_a.select { |product| product.total_remaining_quantity_shop > 0}
     end
 
-    if current_client.nil? || current_client.role != "admin"
-     @products = @products.to_a.select { |product| product.total_remaining_quantity > 0}
-    end
-
-    # Non-affichage des produits non vendus aux magasins => admin dropdown magasin / magasin
-    # NB : 1ère condition pour admin prix magasin ne fonctionne pas car le dropdown est pour l'instant géré en full JS et ne fait donc pas appel à cette fonction index
-    if (current_client && current_client.role == "admin" && @type_price == "magasin") || (current_client && current_client.segment == 'magasin')
+    # On exclut les produits non vendus aux magasins (pour admin vue magasin et clients shop)
+    # NB : non géré pour les clients shop par la cond° plus haut car les produits non-shop ont une total_remaining_quantity_shop égale à la total_remanining_quantity donc qui peut être positive
+    if (helpers.client_admin? && @type_price == "magasin") || helpers.client_shop?
       @products = @products.to_a.reject {|product| product.unit_price_cents_shop.nil?}
     end
   end
