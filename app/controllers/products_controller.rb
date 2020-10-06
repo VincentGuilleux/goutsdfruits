@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
     @products = @products.search_by_name(params[:search][:name]) if params[:search].present? && params[:search][:name] != ""
     @products = @products.where(product_fruit: params[:search][:fruit]) if params[:search][:fruit].present? && params[:search][:fruit] != "Fruit"
     @products = @products.where(product_type: params[:search][:type]) if params[:search][:type].present? && params[:search][:type] != "Type"
+    byebug
 
     product_display_filtering
     product_display_sorting

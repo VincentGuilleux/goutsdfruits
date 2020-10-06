@@ -1,15 +1,16 @@
 module ProductsHelper
 
   def products_types_to_display
-      Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
-      # on n'affiche ici que les types existants avec quantité positive dans les produits de la db contrairement à self.types qui contient tous les types potentiels
-      #itération sur chaque produit, les doublons sont  éliminés grâce au .uniq.
+    #itération sur chaque produit, les doublons sont éliminés grâce au .uniq.
     # &:product_type est un raccourci syntaxtique qui correspond à : Product.all.map do |product| product.fruit_product
+    if (client_not_logged? || client_non_admin?)
+      # on n'affiche que les types existants des produits avec quantité positive
+      Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
+    else
+      Product.all.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
     end
-
-  def products_types_to_display_positive_stock
-    Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_type).uniq.sort_by { |word| word.downcase }.unshift('Type')
   end
+
 
   def products_fruits_to_display
     Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')

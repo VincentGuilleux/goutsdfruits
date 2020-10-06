@@ -80,31 +80,25 @@
         <div class="dropdown pt04rem">
           <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
           <div id="DropdownType" class="dropdown-content">
-            <% if (client_not_logged? || client_non_admin?) %>
-              <% products_types_to_display_positive_stock.each do |type| %>
-                <a data-name="<%= type %>" href="#"><%= type %></a>
-              <% end %>
-            <% else %>
               <% products_types_to_display.each do |type| %>
                 <a data-name="<%= type %>" href="#"><%= type %></a>
               <% end %>
-            <% end %>
           </div>
         </div> -->
 
         <!-- Price filter -->
-        <% if client_admin? %>
-          <div id="product_price" class="middle-text-resp grey-medium mr5 pt04rem">
-            <%= if params[:price].present? then params[:price] else 'Prix' end %>
-          </div>
+        <%# if client_admin? %>
+          <!-- <div id="product_price" class="middle-text-resp grey-medium mr5 pt04rem"> -->
+            <%#= if params[:price].present? then params[:price] else 'Prix' end %>
+          <!-- </div>
           <div class="dropdown pt04rem">
             <i class="fas fa-chevron-down middle-text-resp grey-medium prfilters"></i>
             <div id="DropdownPrice" class="dropdown-content">
               <a data-name="non-magasin" href="#">non-magasin</a>
               <a data-name="magasin" href="#">magasin</a>
             </div>
-          </div>
-        <% end %>
+          </div> -->
+        <%# end %>
 
         <!-- Search bar -->
         <div class="middle-text-resp grey-medium mr5">
@@ -115,6 +109,7 @@
             <!-- 3. By default, a simple_form has the method POST. Since a search is a GET request, we need to explicitly specify that in the first line. -->
             <!-- 4. The input :name is going to be a key inside of my params hash. The value is the keyword the user searches for. In order to reset the form on page refresh, I am giving it a default value of blank. -->
             <%= f.hidden_field :type_price, value: @type_price %>
+            <%= f.input :price, collection: ['non-magasin','magasin'], label: false, selected: 'non-magasin' %>
             <%= f.input :fruit, collection: products_fruits_to_display, label: false, selected: 'Fruit' %>
             <%= f.input :type, collection: products_types_to_display, label: false, selected: 'Type' %>
             <%= f.input :name, label: false, placeholder: "Rechercher...", input_html: { class: 'width80px mr5', value: "" } %>
