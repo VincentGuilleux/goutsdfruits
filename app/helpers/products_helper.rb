@@ -22,13 +22,13 @@ module ProductsHelper
 
   def display_price(product, user, type_price)
     price = # raccourci Ruby pour stocker le résultat des conditions ci-dessous dans une variable price
-      if user && user.role == "admin"
+      if client_admin?
         if type_price == "magasin"
           product.unit_price_cents_shop
         else
           product.unit_price_cents
         end
-      elsif user && user.segment == 'magasin'
+      elsif client_shop?
         product.unit_price_cents_shop_ET
       else
         product.unit_price_cents
@@ -42,7 +42,7 @@ module ProductsHelper
 
   def display_quantity(user, type_price, product)
     display_quantity =
-      if user && user.role == "admin"
+      if client_admin?
         if type_price == "magasin"
           product.total_remaining_quantity * product.unit_measure_quantity / product.unit_measure_quantity_shop
         else
@@ -55,7 +55,7 @@ module ProductsHelper
 
   def display_unit_measure_quantity(user, type_price, product)
     display_unit_measure_quantity =
-    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
+    if (client_admin? && type_price == "magasin") || (client_shop?)
       unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
         product.unit_measure_quantity_shop
       else
@@ -72,7 +72,7 @@ module ProductsHelper
 
   def display_unit_measure(user, type_price, product)
     display_unit_measure =
-    if (user && user.role == "admin" && type_price == "magasin") || (user && user.segment == 'magasin')
+    if (client_admin? && type_price == "magasin") || client_shop?
       unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
         product.unit_measure
       else
