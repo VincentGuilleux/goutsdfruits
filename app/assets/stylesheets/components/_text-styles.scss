@@ -30,12 +30,6 @@ li {
   line-height: 2;
 }
 
-.center-hor {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-}
-
 .no-underline a:link {
   text-decoration : none;
 }
@@ -86,7 +80,7 @@ h2 {
   padding:0;
 }
 
-.add-new a {
+.add-new-link a {
   display: flex;
   // padding: 20px 0;
   opacity: 1;

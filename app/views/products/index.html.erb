@@ -1,5 +1,7 @@
 <!-- ATTENTION A LUTILISATION DE BALISES SPAN AVEC DATA-UUID DANS CETTE PAGE (CF. COUNTER.JS) -->
 
+<div id="message"></div>
+
 <!-- Modal product description -->
 <div class="modal fade" id="descriptionModal" tabindex="-1" role="dialog" aria-labelledby="descriptionModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -52,7 +54,7 @@
     <div class="title-container">
 
         <!-- Search bar -->
-        <div class="center-hor middle-text-resp grey-medium mr5">
+        <div class="mx-auto middle-text-resp grey-medium mr5">
           <%= simple_form_for :search, url: search_products_path, method: "GET", html: { class: 'form-inline', id: 'product-search' }, remote: true do |f| %>
           <!-- https://medium.com/le-wagon/build-a-simple-search-with-the-simple-form-gem-in-rails-5-b247168282d1   -->
             <!-- 1. The first thing is the :search . Typically, we create the form for an instance variable when manipulating a model (i.e. @product) ). If I try to call the parameter @search, the application will tell me that the variable is undefined. By setting it as a symbol with the colon before :search, I can use it as a key in my params hash. -->
@@ -61,11 +63,11 @@
             <!-- 4. The input :name is going to be a key inside of my params hash. The value is the keyword the user searches for. In order to reset the form on page refresh, I am giving it a default value of blank. -->
             <%= f.hidden_field :type_price, value: @type_price %>
             <% if client_admin? %>
-              <%= f.input :type_price, collection: ['non-magasin','magasin'], label: false, selected: 'non-magasin' %>
+              <%= f.input :type_price, collection: ['non-magasin','magasin'], label: false, selected: 'non-magasin', input_html: { class: 'text-center' } %>
             <% end %>
-            <%= f.input :fruit, collection: products_fruits_to_display, label: false, selected: 'Fruit' %>
-            <%= f.input :type, collection: products_types_to_display, label: false, selected: 'Type' %>
-            <%= f.input :name, label: false, placeholder: "Rechercher...", input_html: { class: 'width80px mr5', value: "" } %>
+            <%= f.input :fruit, collection: products_fruits_to_display, label: false, selected: 'Fruit', input_html: { onchange: 'this.form.submit();' }  %>
+            <%= f.input :type, collection: products_types_to_display, label: false, selected: 'Type', input_html: { class: 'text-center' } %>
+            <%= f.input :name, label: false, placeholder: "Rechercher...", input_html: { class: 'width80px text-center mr5', value: "" } %>
             <%= button_tag type: 'submit', class: 'pl-2 no-border' do %>
             <!-- After clicking submit, the program will reload the index product page, but this time with a :search param hash including the value typed by the user in the key name. -->
               <i class="fas fa-search grey-medium middle-text-resp"></i>
@@ -73,17 +75,18 @@
           <% end %>
         </div>
 
+        <!-- Add product button: only for admin -->
+        <% if client_admin? %>
+          <div class="add-new-link pt-3">
+            <%= link_to new_product_path do %>
+              <p>Ajouter un produit</p>
+              <%= image_tag "add-circle.svg" %>
+            <% end %>
+          </div>
+        <% end %>
+
       </div>
 
-      <!-- Add product button: only for admin -->
-      <% if client_admin? %>
-        <div class="add-new pt-3">
-          <%= link_to new_product_path do %>
-            <p>Ajouter un produit</p>
-            <%= image_tag "add-circle.svg" %>
-          <% end %>
-        </div>
-      <% end %>
 
     </div>
   </div>

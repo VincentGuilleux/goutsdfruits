@@ -13,7 +13,6 @@ class ProductsController < ApplicationController
     # instanciation de type_price car utilisé dans la private method product_display_filtering
     # NB : même si par défaut type_price est setté sur "non-magasin", ne crée pas de problème de rendu de type de prix car la view partial _products fait appel à la product_helper method display_price qui affiche le prix adapté selon le client shop/non-shop
     @type_price = "non-magasin"
-
     product_display_filtering
     product_display_sorting
 
@@ -117,7 +116,11 @@ class ProductsController < ApplicationController
   end
 
   def product_display_sorting
-    # TRI D'AFFICHAGE DES PRODUITS
+    # message d'erreur si pas de produits
+    @products == [] ? @message = 'Aucun produit ne correspond à votre sélection' : @message = ''
+      # binding.pry
+      # flash.now[:notice] = "Aucun produit ne correspond à votre sélection"
+
     # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"
       @products = @products.sort_by do |product|
@@ -128,6 +131,7 @@ class ProductsController < ApplicationController
         product.total_remaining_quantity
       end
     end
+
   end
 
 end
