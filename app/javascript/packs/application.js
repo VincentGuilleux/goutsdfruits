@@ -79,8 +79,10 @@ document.addEventListener('turbolinks:load', () => {
       // il faut renvoyer la valeur d'index 0 de l'array event.detail pour obtenir le résultat de la fonction search (la string égale à la partial filtrée de _products)
       // console.log(event.detail[0]);
       $(".container-index-products").html(event.detail[0]);
+
+      // to show the message when no product after filtering/searching (cf. products controller product_display_sorting)
       // console.log(#{@message});
-      $('#message').text("#{@message}");
+      // $('#message').text("#{@message}");
     });
   });
 
