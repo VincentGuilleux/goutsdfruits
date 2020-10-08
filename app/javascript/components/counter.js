@@ -11,6 +11,7 @@ const counter = () => {
     let priceEl = document.querySelectorAll('span[data-uuid="' + uuid + '"]')[0];
     priceEl.innerText = (inputEl.innerText * productPrice / 100).toFixed(2).replace(".", ",")
     updateTotalPrice();
+    pricesDisplayHash[uuid] = priceEl.innerText; // alimentation du h d'utilisation des dropdowns/search pour réafficher le prix de chaque carte
   };
 
   const updateTotalPrice = () => {
@@ -47,6 +48,7 @@ const counter = () => {
       // affichage du bouton - (à chaque fois qu'on clique sur le bouton +)
       let minusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[1];
       minusButtonEl.style.visibility = "visible";
+      quantitiesDisplayHash[uuid] = inputEl.innerText; // nécessaire en cas d'utilisation des dropdowns/search pour réafficher le prix de chaque carte
     };
 
     if( event.target.matches(".JSminuscounterproductindex")) {
@@ -65,6 +67,7 @@ const counter = () => {
       // affichage du bouton + (à chaque fois qu'on clique sur le bouton -)
       let plusButtonEl = document.querySelectorAll('i[data-uuid="' + uuid + '"]')[0];
       plusButtonEl.style.visibility = "visible";
+      quantitiesDisplayHash[uuid] = inputEl.innerText; // nécessaire en cas d'utilisation des dropdowns/search pour réafficher le prix de chaque carte
     }
 
     // product description - pour chargement de l'info dans la modal
