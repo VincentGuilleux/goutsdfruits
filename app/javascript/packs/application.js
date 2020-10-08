@@ -73,11 +73,11 @@ document.addEventListener('turbolinks:load', () => {
         let current = element[i];
         let currentId = current.id;
         console.log(currentId);
-        if (quantitiesHash[currentId]) {
-          current.innerText = quantitiesHash[currentId];
+        if (quantitiesDisplayHash[currentId]) {
+          current.innerText = quantitiesDisplayHash[currentId];
           current.style.visibility = "visible";
           visibilityToggle(current);
-          // on affiche le bouton - car on est dans le cas ou ça matche avec quantitiesHash donc nécessairement une quantité positive
+          // on affiche le bouton - car on est dans le cas ou ça matche avec quantitiesDisplayHash donc nécessairement une quantité positive
           let minusButtonEl = document.querySelectorAll('i[data-uuid="' + currentId + '"]')[1];
           minusButtonEl.style.visibility = "visible";
           // on cache le bouton + si quantité max atteinte
@@ -94,8 +94,8 @@ document.addEventListener('turbolinks:load', () => {
         let current = element[i];
         let currentUuid = current.dataset.uuid;
         console.log(currentUuid);
-        if (pricesHash[currentUuid]) {
-          current.innerText = pricesHash[currentUuid];
+        if (pricesDisplayHash[currentUuid]) {
+          current.innerText = pricesDisplayHash[currentUuid];
           current.style.visibility = "visible";
           visibilityToggle(current);
         }
