@@ -94,6 +94,8 @@
 <!-- <script src="https://unpkg.com/json5@^2.0.0/dist/index.min.js"></script> -->
 <!-- for JSON5 -->
 <script>
+  var pricesHash = {};
+  var quantitiesHash = {};
 <% if (client_shop?) %>
     var prices = JSON.parse('<%= raw Product.pluck(:id,:unit_price_cents_shop).to_h.to_json %>');
 <% else %>
