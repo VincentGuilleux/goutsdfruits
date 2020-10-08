@@ -1,68 +1,68 @@
 <% products.each do |product| %>
-      <% uuid = product.id %>
-      <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
-        <% if product.photo.attached? %>
-          <% if client_admin? %>
-            <%= link_to product_path(product) do %>
-              <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "hovereffect" %>
-            <% end %>
-          <% else %>
-            <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
+  <% uuid = product.id %>
+  <div class="card-product" data-fruit="<%= product.product_fruit %>" data-category="<%= product.product_category %>" data-type="<%= product.product_type %>">
+    <% if product.photo.attached? %>
+      <% if client_admin? %>
+        <%= link_to product_path(product) do %>
+          <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "hovereffect" %>
+        <% end %>
+      <% else %>
+        <%= cl_image_tag product.photo.key, :quality=>"auto:good", :fetch_format=>:auto, :width=>120, :crop=>"scale", alt: "image produit", class: "JSproductname hovereffect",  :data => { :target => "#descriptionModal", :toggle => "modal", :uuid => uuid } %>
+      <% end %>
+    <% end %>
+
+    <div class="card-product-infos">
+      <!-- Card display NA/top-middle: category -->
+      <div class="card-product-text-line">
+        <% if client_admin? %>
+          <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
+        <% end %>
+        <!-- Card display top-middle/top-right: price -->
+        <div class="product-price">
+           <p>
+            <span class="semi-small-text-bold green" data-priceshop="<%= display_price(product, current_client, 'magasin') %>" data-pricenonshop="<%= display_price(product, current_client, 'non-magasin') %>" > <%= decimal_with_comma(display_price(product, current_client, type_price)) %> </span> €
+            <sup>
+              <% if client_shop? %> HT <% end %>
+              /
+              <%= product.unit_type %>
+            </p>
+            </sup>
+        </div>
+      </div>
+      <!-- Card display center-middle: name -->
+      <div class="card-product-text-line no-underline">
+        <% unless client_admin? %>
+          <p class="big-text-bold-resp grey-dark hovereffect JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
+          <%= product.name %></p>
+        <% else %>
+          <%= link_to edit_product_path(product.id) do %>
+            <p class="big-text-bold-resp grey-dark hovereffect" > <%= product.name %></p>
           <% end %>
         <% end %>
+      </div>
+      <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
+      <div class="card-product-text-line">
+        <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
+          <% unless product.unit_type == "bocal" %>
+            <%= pluralize(display_quantity(current_client, type_price, product), product.unit_type) %>
+          <% else %>
+            <%= display_quantity(current_client, type_price, product) %> bocaux
+          <% end %>
+            de
+              <%= display_unit_measure_quantity(current_client, type_price, product) %>
+              <%= display_unit_measure(current_client, type_price, product) %>
+        </p>
+      </div>
+    </div> <!-- Card-product-infos -->
 
-        <div class="card-product-infos">
-          <!-- Card display NA/top-middle: category -->
-          <div class="card-product-text-line">
-            <% if client_admin? %>
-              <p class="semi-small-text grey-medium"><%= product.product_category %> </p>
-            <% end %>
-            <!-- Card display top-middle/top-right: price -->
-            <div class="product-price">
-               <p>
-                <span class="semi-small-text-bold green" data-priceshop="<%= display_price(product, current_client, 'magasin') %>" data-pricenonshop="<%= display_price(product, current_client, 'non-magasin') %>" > <%= decimal_with_comma(display_price(product, current_client, type_price)) %> </span> €
-                <sup>
-                  <% if client_shop? %> HT <% end %>
-                  /
-                  <%= product.unit_type %>
-                </p>
-                </sup>
-            </div>
-          </div>
-          <!-- Card display center-middle: name -->
-          <div class="card-product-text-line no-underline">
-            <% unless client_admin? %>
-              <p class="big-text-bold-resp grey-dark hovereffect JSproductname" data-toggle="modal" data-target="#descriptionModal" data-uuid="<%= uuid %>">
-              <%= product.name %></p>
-            <% else %>
-              <%= link_to edit_product_path(product.id) do %>
-                <p class="big-text-bold-resp grey-dark hovereffect" > <%= product.name %></p>
-              <% end %>
-            <% end %>
-          </div>
-          <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
-          <div class="card-product-text-line">
-            <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-              <% unless product.unit_type == "bocal" %>
-                <%= pluralize(display_quantity(current_client, type_price, product), product.unit_type) %>
-              <% else %>
-                <%= display_quantity(current_client, type_price, product) %> bocaux
-              <% end %>
-                de
-                  <%= display_unit_measure_quantity(current_client, type_price, product) %>
-                  <%= display_unit_measure(current_client, type_price, product) %>
-            </p>
-          </div>
-        </div> <!-- Card-product-infos -->
+    <% if (client_non_admin?) %>
+      <div class="card-product-order-input">
+          <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
+          <span class="hidden-initially green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
+          <i class="hidden-initially fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
+          <span class="hidden-initially JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
+      </div>
+    <% end %>
 
-        <% if (client_non_admin?) %>
-          <div class="card-product-order-input">
-              <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
-              <span class="hidden-initially green-light pl-1 pr-1" id=<%= uuid %>>0</span> <!-- quantité commandée -->
-              <i class="hidden-initially fas fa-minus green JSminuscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
-              <span class="hidden-initially JSpriceperlineproductindex green-light very-small-text pl-1 pr-1" data-uuid="<%= uuid %>">0</span>
-          </div>
-        <% end %>
-
-      </div> <!-- Card-product -->
-    <% end %> <!-- Fin de l'itération sur les produits -->
+  </div> <!-- Card-product -->
+<% end %> <!-- Fin de l'itération sur les produits -->
