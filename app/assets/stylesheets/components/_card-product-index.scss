@@ -2,10 +2,6 @@
   cursor: help;
 }
 
-.width80px {
-  width: 80px;
-}
-
 .page-title-index {
   color: $grey_dark;
   z-index: 100;
@@ -42,6 +38,26 @@
   input {
     margin-top: 10px;
   }
+}
+
+#search_name {
+  border: 1px solid;
+  border-right: none;
+  border-radius: 2px 0px 0px 2px;
+  border-color: #ced4da;
+}
+
+#glass-submit {
+  background-color: $white;
+  height: 38px; // in line with search bar
+  padding-top: 0.375rem; // in line with search bar
+  padding-bottom: 0.375rem; // in line with search bar
+  line-height: 1.5; // in line with search bar
+  border: 1px solid;
+  border-radius: 2px;
+  border-color: #ced4da;
+  display: flex;
+  align-items: center; /* align vertical */
 }
 
 .card-product {

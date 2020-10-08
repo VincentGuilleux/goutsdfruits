@@ -12,19 +12,19 @@
  top: 12vh;
 }
 
-.no-border {
+.no-spacing-no-border {
   padding: 0;
+  margin: 0;
   border: none;
-  background: none;
+}
+
+select {
+    text-align: center;
+    text-align-last: center;
+    -moz-text-align-last: center;
 }
 
 ul { list-style: none; } /* Remove default bullets */
-
-// li::before {
-//     font-family: 'Font Awesome 5 Free';
-//     content: "\f337";
-//     color: #5f6870;
-// }
 
 li {
   line-height: 2;
@@ -102,46 +102,12 @@ h2 {
   }
 }
 
-.pt40 {
-  padding-top: 40px;
-}
-
-.pl-pr-8vw {
-  padding-left: 8vw;
-  padding-right: 8vw;
-}
-
 .prfilters {
   padding-right: 1vw;
 }
 
-.pl5 {
-  padding-left: 5px;
-}
-
-.pr10 {
-  padding-right: 10px;
-}
-
-.pb25 {
-  padding-bottom: 25px;
-}
-
-.pl2rem {
-  padding-left: 2rem;
-}
-
 .mr5 {
   margin-right: 5px;
-}
-
-.nopnom {
-  margin: 0;
-  padding: 0;
-}
-
-.right-header {
-  float: right;
 }
 
 .line-height-2 {
@@ -226,7 +192,6 @@ font-weight: 600;
 .bold {
 font-weight: bold;
 }
-
 
 // colors
 .white {

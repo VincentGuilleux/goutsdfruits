@@ -69,7 +69,6 @@ document.addEventListener('turbolinks:load', () => {
 
   // Quand page chargée, le navigateur exécute les lignes ci-dessous
   $(document).ready(function(){
-
     // lignes commentées car choix du mode de paiement désactivé pour l'instant
     // $(".payment-choice").click(function(){
     //   $(this).toggleClass("active");
@@ -83,11 +82,6 @@ document.addEventListener('turbolinks:load', () => {
       // console.log(#{@message});
       $('#message').text("#{@message}");
     });
-
-    // TO CHECK WITH FLO
-    // $("#product-search").on("change", function(event) {
-    //   console.log("toto")
-    // });
   });
 
   initSelect2();
