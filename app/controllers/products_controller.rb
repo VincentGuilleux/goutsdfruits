@@ -111,10 +111,8 @@ class ProductsController < ApplicationController
   end
 
   def product_display_sorting
-    # message d'erreur si pas de produits
-    @products == [] ? @message = 'Aucun produit ne correspond à votre sélection' : @message = ''
-      # binding.pry
-      # flash.now[:notice] = "Aucun produit ne correspond à votre sélection"
+    # message d'erreur si pas de produits - NON IMPLEMENTE
+    # @products == [] ? @message = 'Aucun produit ne correspond à votre sélection' : @message = ''
 
     # Tri par quantités croissantes pour admin, par ordre alphabétique sinon
     if current_client.nil? || current_client.role != "admin"

@@ -127,9 +127,6 @@ document.addEventListener('turbolinks:load', () => {
       reloadPrices(allPricesEl);
       reloadQuantities(allQuantitiesEl);
 
-      // to show the message when no product after filtering/searching (cf. products controller product_display_sorting)
-      // console.log(#{@message});
-      // $('#message').text("#{@message}");
     });
   });
 
