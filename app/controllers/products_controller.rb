@@ -9,10 +9,6 @@ class ProductsController < ApplicationController
     @products.each do |product|
       @order.order_lines.build product_id: product.id, quantity: 0
     end
-
-    # instanciation de type_price car utilisé dans la private method product_display_filtering
-    # NB : même si par défaut type_price est setté sur "non-magasin", ne crée pas de problème de rendu de type de prix car la view partial _products fait appel à la product_helper method display_price qui affiche le prix adapté selon le client shop/non-shop
-    @type_price = "non-magasin"
     product_display_filtering
     product_display_sorting
 
@@ -23,14 +19,14 @@ class ProductsController < ApplicationController
     @products = @products.search_by_name(params[:search][:name]) if params[:search].present? && params[:search][:name] != ""
     @products = @products.where(product_fruit: params[:search][:fruit]) if params[:search][:fruit].present? && params[:search][:fruit] != "Fruit"
     @products = @products.where(product_type: params[:search][:type]) if params[:search][:type].present? && params[:search][:type] != "Type"
-    # instanciation de type_price car utilisé dans la private method product_display_filtering (on ne peut pas appeler params[:search][:type_price] depuis la méthode privée product_display_filtering)
+    # instanciation de type_price car utilisé dans la private method product_display_filtering (on ne peut pas appeler params[:search][:type_price] depuis la méthode privée product_display_filtering). type_price n'est utile qu'en admin car les product_helper methods display____ ne font appel à cette variable qu'en connexion admin (sinon c'est selon client shop/non-shop) donc ok même si variable nil en non admin
+    binding.pry
     @type_price = params[:search][:type_price]
     product_display_filtering
     product_display_sorting
 
     # layout nil: renvoit juste le partial sans refaire appel à application.html.erb (afin d'éviter de générer une erreur JS car déjà preload)
     # locals: render_to_string nécessite une syntaxe spécifique 'locals'
-    # NB: en cas de connexion magasin, même si par défaut via l'index type_price est setté sur "non-magasin", ne crée pas de problème de rendu de type de prix car la view partial _products fait appel à la product_helper method display_price qui affiche le prix adapté selon le client shop/non-shop
     render plain: render_to_string("products/_products", layout: nil, locals: { products: @products, type_price: params[:search][:type_price] })
   end
 

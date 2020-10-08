@@ -61,7 +61,8 @@
           <!-- 2. The url of the search form tells us on which page the results will be displayed. -->
           <!-- 3. By default, a simple_form has the method POST. Since a search is a GET request, we need to explicitly specify that in the first line. -->
           <!-- 4. The input :name is going to be a key inside of my params hash. The value is the keyword the user searches for. In order to reset the form on page refresh, I am giving it a default value of blank. -->
-          <%= f.hidden_field :type_price, value: @type_price %>
+
+          <%#= f.hidden_field :type_price, value: @type_price %>
           <% if client_admin? %>
             <%= f.input :type_price, collection: ['non-magasin','magasin'], label: false, selected: 'non-magasin', input_html: {class: 'mr-3', onchange: "document.getElementById('submit-product-search').click();" } %>
           <% end %>
