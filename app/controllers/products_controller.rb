@@ -20,7 +20,6 @@ class ProductsController < ApplicationController
     @products = @products.where(product_fruit: params[:search][:fruit]) if params[:search][:fruit].present? && params[:search][:fruit] != "Fruit"
     @products = @products.where(product_type: params[:search][:type]) if params[:search][:type].present? && params[:search][:type] != "Type"
     # instanciation de type_price car utilisé dans la private method product_display_filtering (on ne peut pas appeler params[:search][:type_price] depuis la méthode privée product_display_filtering). type_price n'est utile qu'en admin car les product_helper methods display____ ne font appel à cette variable qu'en connexion admin (sinon c'est selon client shop/non-shop) donc ok même si variable nil en non admin
-    binding.pry
     @type_price = params[:search][:type_price]
     product_display_filtering
     product_display_sorting
