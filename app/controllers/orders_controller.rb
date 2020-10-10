@@ -228,13 +228,13 @@ class OrdersController < ApplicationController
   end
 
   def send_mail_new_order
-    OrderMailer.new_order_email(current_client).deliver
-    OrderMailer.new_order_email_notification(current_client).deliver
+    OrderMailer.new_order_email(current_client).deliver_later
+    OrderMailer.new_order_email_notification(current_client).deliver_later
   end
 
   def send_mail_deleted_order
-    OrderMailer.deleted_order_email(current_client).deliver
-    OrderMailer.deleted_order_email_notification(current_client).deliver
+    OrderMailer.deleted_order_email(current_client).deliver_later
+    OrderMailer.deleted_order_email_notification(current_client).deliver_later
   end
 
 end
