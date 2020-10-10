@@ -11,6 +11,10 @@ Bundler.require(*Rails.groups)
 
 module Goutsdfruits
   class Application < Rails::Application
+
+    # Setting back-end for Active Job to sucker_punch
+    config.active_job.queue_adapter = :sucker_punch
+
     # *Wagon lecture on Ajax - Unobtrusive JavaScript
     config.action_view.embed_authenticity_token_in_remote_forms = true
 

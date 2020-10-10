@@ -26,6 +26,7 @@ gem 'cloudinary', '~> 1.12.0'
 gem 'caxlsx'
 gem 'caxlsx_rails'
 gem 'pg_search'
+gem 'sucker_punch'
 
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
