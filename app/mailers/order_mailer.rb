@@ -9,7 +9,7 @@ class OrderMailer < ApplicationMailer
   end
 
   def new_order_email_notification(client)
-    mail(to: 'goutsdfruits@gmail.com', subject: "Nouvelle commande passée par #{client.first_name} #{client.last_name}")
+    mail(to: 'vincent.guilleux11@gmail.com', subject: "Nouvelle commande passée par #{client.first_name} #{client.last_name}")
   end
 
   def deleted_order_email_notification(client)

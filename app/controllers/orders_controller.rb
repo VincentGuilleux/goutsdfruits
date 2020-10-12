@@ -228,8 +228,8 @@ class OrdersController < ApplicationController
   end
 
   def send_mail_new_order
-    OrderMailer.new_order_email(current_client).deliver_later
-    OrderMailer.new_order_email_notification(current_client).deliver_later
+    NewOrderMailerJob.perform_async(current_client)
+    NewOrderMailerNotificationJob.perform_async(current_client)
   end
 
   def send_mail_deleted_order
