@@ -233,8 +233,8 @@ class OrdersController < ApplicationController
   end
 
   def send_mail_deleted_order
-    OrderMailer.deleted_order_email(current_client).deliver_later
-    OrderMailer.deleted_order_email_notification(current_client).deliver_later
+    DeletedOrderMailerJob.perform_async(current_client)
+    DeletedOrderMailerNotificationJob.perform_async(current_client)
   end
 
 end
