@@ -20,7 +20,7 @@ module ProductsHelper
     Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
   end
 
-  def display_price(product, user, type_price)
+  def display_price(product, type_price)
     price = # raccourci Ruby pour stocker le résultat des conditions ci-dessous dans une variable price
       if client_admin?
         if type_price == "magasin"
@@ -40,7 +40,7 @@ module ProductsHelper
     end
   end
 
-  def display_quantity(user, type_price, product)
+  def display_quantity(type_price, product)
     display_quantity =
       if client_admin?
         if type_price == "magasin"
@@ -53,7 +53,7 @@ module ProductsHelper
       end
   end
 
-  def display_unit_measure_quantity(user, type_price, product)
+  def display_unit_measure_quantity(type_price, product)
     display_unit_measure_quantity =
     if (client_admin? && type_price == "magasin") || (client_shop?)
       unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"
@@ -70,7 +70,7 @@ module ProductsHelper
     end
   end
 
-  def display_unit_measure(user, type_price, product)
+  def display_unit_measure(type_price, product)
     display_unit_measure =
     if (client_admin? && type_price == "magasin") || client_shop?
       unless product.unit_measure_quantity_shop >= 1000 && product.unit_measure = "g"

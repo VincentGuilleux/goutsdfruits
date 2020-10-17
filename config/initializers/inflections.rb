@@ -11,6 +11,7 @@
 # end
 
 # These inflection rules are supported but not enabled by default:
-# ActiveSupport::Inflector.inflections(:en) do |inflect|
-#   inflect.acronym 'RESTful'
-# end
+# On ne précise pas ici de paramètre de langue (:fr) car la méthode pluralize par défaut de Rails est override sur cette application par la méthode pluralize.rb qui ne prend pas en argument de locale.
+ActiveSupport::Inflector.inflections do |inflect|
+  inflect.plural 'bocal', 'bocaux'
+end
