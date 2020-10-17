@@ -20,7 +20,7 @@
         <!-- Card display top-middle/top-right: price -->
         <div class="product-price">
            <p>
-            <span class="semi-small-text-bold green" data-priceshop="<%= display_price(product, current_client, 'magasin') %>" data-pricenonshop="<%= display_price(product, current_client, 'non-magasin') %>" > <%= decimal_with_comma(display_price(product, current_client, type_price)) %> </span> €
+            <span class="semi-small-text-bold green" data-priceshop="<%= display_price(product, 'magasin') %>" data-pricenonshop="<%= display_price(product, 'non-magasin') %>" > <%= decimal_with_comma(display_price(product, type_price)) %> </span> €
             <sup>
               <% if client_shop? %> HT <% end %>
               /
@@ -43,18 +43,16 @@
       <!-- Card display bottom-middle: quantity per unit_measure of unit measure quantity -->
       <div class="card-product-text-line">
         <p class="semi-small-text-bold-resp <%= if product.total_remaining_quantity == 0 then 'red-alert bold' else 'grey-medium' end %>">
-          <% unless product.unit_type == "bocal" %>
-            <%= pluralize(display_quantity(current_client, type_price, product), product.unit_type) %>
-          <% else %>
-            <%= display_quantity(current_client, type_price, product) %> bocaux
-          <% end %>
-            de
-              <%= display_unit_measure_quantity(current_client, type_price, product) %>
-              <%= display_unit_measure(current_client, type_price, product) %>
+          <%= pluralize(display_quantity(type_price, product), product.unit_type) %>
+          <!-- Display quantity = "" si non-admin donc dans ce cas pluriel affiché (ce qui est voulu) d'après méthode confif/initializers/pluralize  -->
+          de
+          <%= display_unit_measure_quantity(type_price, product) %>
+          <%= display_unit_measure(type_price, product) %>
         </p>
       </div>
     </div> <!-- Card-product-infos -->
 
+    <!-- Card display right: buttons +/-, quantity ordered and price -->
     <% if (client_non_admin?) %>
       <div class="card-product-order-input">
           <i class="fas fa-plus green JSpluscounterproductindex pl-1 pr-1" data-uuid="<%= uuid %>"></i>
