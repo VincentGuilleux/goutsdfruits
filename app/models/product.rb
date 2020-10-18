@@ -143,7 +143,7 @@ class Product < ApplicationRecord
   end
 
   def self.fruits
-    ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mix", "mûre", "noisette", "poire", "pomme", "prune", "pêche", "raisin", "rhubarbe", "sureau"]
+    ["cassis", "cerise", "coing", "courge", "fraise", "framboise", "groseille", "menthe", "mirabelle", "mix", "mûre", "noisette", "poire", "pomme", "prune", "pêche", "raisin", "rhubarbe", "sureau"]
   end
 
 end
