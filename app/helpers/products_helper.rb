@@ -13,11 +13,11 @@ module ProductsHelper
 
 
   def products_fruits_to_display
+    if (client_not_logged? || client_non_admin?)
+      Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
+    else
     Product.all.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
-  end
-
-  def products_fruits_to_display_positive_stock
-    Product.all.select { |product| product.total_remaining_quantity > 0 }.map(&:product_fruit).uniq.sort_by { |word| word.downcase }.unshift('Fruit')
+    end
   end
 
   def display_price(product, type_price)
