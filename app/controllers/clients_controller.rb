@@ -2,15 +2,13 @@ class ClientsController < ApplicationController
   before_action :require_admin, :except => [:edit, :update]
 
   def index
-    @clients = Client.all
+    @clients = Client.all.ordered_by_last_name
     if params[:segment].present?
       @clients = @clients.where(segment: params[:segment])
     end
     if params[:amap].present?
       @clients = @clients.where(amap: params[:amap])
     end
-
-    @clients = Client.ordered_by_last_name
   end
 
   def destroy
